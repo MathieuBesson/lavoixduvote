@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+    apache:
+        build: './apache'
+        volumes:
+            - './symfony:/var/www/html'
+        ports:
+        -   '3000:80'
+    php:
+        build:
+            context: .
+            dockerfile: php/Dockerfile
+        volumes:
+            - ./symfony:/var/www/html
+    postgresql:
+        image: postgres:13
+        restart: always
+        env_file:
+            -   ./env/postgresql.env
+    symfony_console:
+        build:
+            context: .
+            dockerfile: php/Dockerfile
+        volumes:
+            - ./symfony:/var/www/html
+        entrypoint: ["php", "/var/www/html/bin/console" ]
+    composer:
+        build: ./composer
+        volumes:
+            - ./symfony:/var/www/html
+
