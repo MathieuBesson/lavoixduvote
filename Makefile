@@ -32,7 +32,7 @@ recreate: prune up
 ##		For example: make composer "update symfony/* --with-dependencies"
 .PHONY: composer
 composer:
-	docker run -it $(shell docker ps -a --filter name='^/lavoixduvote_composer' --format "{{ .Image }}") $(filter-out $@,$(MAKECMDGOALS))
+	docker run --interactive --tty --volume ${shell pwd}/symfony:/var/www/html $(shell docker ps -a --filter name='^/lavoixduvote_composer' --format "{{ .Image }}") $(filter-out $@,$(MAKECMDGOALS))
 
 # https://stackoverflow.com/a/6273809/1826109
 %:
