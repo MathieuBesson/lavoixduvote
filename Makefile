@@ -33,3 +33,7 @@ recreate: prune up
 .PHONY: composer
 composer:
 	docker run -it $(shell docker ps -a --filter name='^/lavoixduvote_composer' --format "{{ .Image }}") $(filter-out $@,$(MAKECMDGOALS))
+
+# https://stackoverflow.com/a/6273809/1826109
+%:
+	@:
