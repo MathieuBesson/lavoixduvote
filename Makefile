@@ -32,7 +32,14 @@ recreate: prune up
 ##		For example: make composer "update symfony/* --with-dependencies"
 .PHONY: composer
 composer:
-	docker run --interactive --tty --volume ${shell pwd}/symfony:/var/www/html $(shell docker ps -a --filter name='^/lavoixduvote_composer' --format "{{ .Image }}") $(filter-out $@,$(MAKECMDGOALS))
+	docker run --rm --interactive --tty --volume ${shell pwd}/symfony:/var/www/html $(shell docker ps -a --filter name='^/lavoixduvote_composer' --format "{{ .Image }}") $(filter-out $@,$(MAKECMDGOALS))
+
+## symfony	:	Executes `php bin/console` command in a specified `SYMFONY_ROOT` directory.
+##		To use "--flag" arguments include them in quotation marks.
+##		For example: make symfony "doctrine:schema:update --dump-sql"
+.PHONY: symfony
+symfony:
+	docker-compose exec php /var/www/html/bin/console $(filter-out $@,$(MAKECMDGOALS))
 
 # https://stackoverflow.com/a/6273809/1826109
 %:
