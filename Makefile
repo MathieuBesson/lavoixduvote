@@ -25,7 +25,10 @@ prune:
 
 ## recreate	:	Remove containers and their volumes and recreate them
 .PHONY: recreate
-recreate: prune up
+recreate:
+	docker-compose stop
+	docker-compose build
+	docker-compose up
 
 ## composer	:	Executes `composer` command in a specified `COMPOSER_ROOT` directory.
 ##		To use "--flag" arguments include them in quotation marks.
