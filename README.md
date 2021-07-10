@@ -12,7 +12,8 @@
 
 #### Première installation
 
-`make start` : pull les containers + composer install
+`make start` : pull les containers + composer install.
+
 Le projet est ensuite accessible à l'adresse http://localhost:3000
 
 #### Au quotidien...
