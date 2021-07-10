@@ -1,6 +1,10 @@
 COMPOSER_ROOT ?= /var/www/html
 SYMFONY_ROOT ?= /var/www/html/public
 
+.PHONY: start
+start:	up
+		$(MAKE) composer install
+
 ## up	:	Start up containers.
 .PHONY: up
 up:
