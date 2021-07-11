@@ -58,6 +58,11 @@ class Candidate
      */
     private $politicalParty;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Program::class, mappedBy="candidate", cascade={"persist", "remove"})
+     */
+    private $program;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,6 +160,23 @@ class Candidate
     public function setPoliticalParty(?PoliticalParty $politicalParty): self
     {
         $this->politicalParty = $politicalParty;
+
+        return $this;
+    }
+
+    public function getProgram(): ?Program
+    {
+        return $this->program;
+    }
+
+    public function setProgram(Program $program): self
+    {
+        // set the owning side of the relation if necessary
+        if ($program->getCandidate() !== $this) {
+            $program->setCandidate($this);
+        }
+
+        $this->program = $program;
 
         return $this;
     }
