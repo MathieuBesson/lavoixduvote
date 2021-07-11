@@ -116,4 +116,9 @@ class Primary
 
         return $this;
     }
+
+    public function __toString() {
+        return 'Primaire ' . $this->getPoliticalParty()->getName();
+    }
+
 }
