@@ -22,7 +22,9 @@ Le projet est ensuite accessible à l'adresse http://localhost:3000
 
 `make up` : lance les containers
 
-`make recreate` : rebuild les containers
+`make recreate` : recrée les containers
+
+`make rebuild` : rebuild les containers
 
 ##### Composer
 

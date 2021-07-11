@@ -31,7 +31,13 @@ prune:
 .PHONY: recreate
 recreate:
 	docker-compose down
-	docker-compose up --force-recreate
+	docker-compose up --force-recreate -d
+
+## rebuild:		Remove containers and their volumes and rebuild them
+.PHONY: rebuild
+rebuild:
+	docker-compose down
+	docker-compose up --build -d
 
 ## composer	:	Executes `composer` command in a specified `COMPOSER_ROOT` directory.
 ##		To use "--flag" arguments include them in quotation marks.
