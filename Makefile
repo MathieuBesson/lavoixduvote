@@ -1,6 +1,3 @@
-COMPOSER_ROOT ?= /var/www/html
-SYMFONY_ROOT ?= /var/www/html/public
-
 .PHONY: start
 start:	up
 		$(MAKE) composer install
@@ -39,14 +36,14 @@ rebuild:
 	docker-compose down
 	docker-compose up --build -d
 
-## composer	:	Executes `composer` command in a specified `COMPOSER_ROOT` directory.
+## composer	:	Executes `composer` command
 ##		To use "--flag" arguments include them in quotation marks.
 ##		For example: make composer "update symfony/* --with-dependencies"
 .PHONY: composer
 composer:
 	docker run --rm --interactive --tty --volume ${shell pwd}/symfony:/var/www/html $(shell docker ps -a --filter name='^/lavoixduvote_composer' --format "{{ .Image }}") $(filter-out $@,$(MAKECMDGOALS))
 
-## symfony	:	Executes `php bin/console` command in a specified `SYMFONY_ROOT` directory.
+## symfony	:	Executes `php bin/console` command
 ##		To use "--flag" arguments include them in quotation marks.
 ##		For example: make symfony "doctrine:schema:update --dump-sql"
 .PHONY: symfony
