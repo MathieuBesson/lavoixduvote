@@ -260,6 +260,9 @@ EOT
             }
             $manager->persist($theme);
         }
+        $manager->persist($programPtt);
+        $manager->persist($programAst);
+        $manager->persist($programStup);
         // Glossary
         for ($i = 0 ; $i < 5 ; $i++) {
             $glossary = new Glossary();
