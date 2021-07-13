@@ -24,4 +24,10 @@ services:
         build: ./composer
         volumes:
             - ./symfony:/var/www/html
+    node:
+      build: './node'
+      working_dir: /home/node/app
+      volumes:
+        - ./symfony:/home/node/app
+      user: '1000'
 

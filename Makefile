@@ -43,6 +43,15 @@ rebuild:
 composer:
 	docker run --rm --interactive --tty --volume ${shell pwd}/symfony:/var/www/html $(shell docker ps -a --filter name='^/lavoixduvote_composer' --format "{{ .Image }}") $(filter-out $@,$(MAKECMDGOALS))
 
+
+## composer	:	Executes `composer` command
+##		To use "--flag" arguments include them in quotation marks.
+##		For example: make composer "update symfony/* --with-dependencies"
+.PHONY: npm
+npm:
+	docker-compose run --rm node npm $(filter-out $@,$(MAKECMDGOALS))
+
+
 ## symfony	:	Executes `php bin/console` command
 ##		To use "--flag" arguments include them in quotation marks.
 ##		For example: make symfony "doctrine:schema:update --dump-sql"
