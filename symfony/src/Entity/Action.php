@@ -114,6 +114,6 @@ class Action
     }
 
     public function __toString() {
-        return $this->getTitle();
+        return $this->getTheme() . ' - ' . $this->getTitle();
     }
 }
