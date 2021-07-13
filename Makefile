@@ -1,6 +1,8 @@
 .PHONY: start
 start:	up
 		$(MAKE) composer install
+		$(MAKE) symfony doctrine:migrations:migrate
+		$(MAKE) symfony doctrine:fixtures:load
 
 ## up	:	Start up containers.
 .PHONY: up
