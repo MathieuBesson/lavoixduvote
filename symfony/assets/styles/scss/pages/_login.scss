@@ -1,0 +1,16 @@
+.form-page {
+	background-color: lighten($primary, 50);
+	padding-top: 2rem;
+	@include media-breakpoint-up(md) {
+		padding-top: 10rem;
+	}
+	height: 100vh;
+	.form-login {
+		h1 {
+			color: #031a8c;
+		}
+		background-color: white;
+		box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	}
+}
+
