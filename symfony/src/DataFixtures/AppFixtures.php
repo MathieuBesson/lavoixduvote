@@ -49,7 +49,7 @@ EOT
                 case 0:
                     $party->setName('PTT - Partie des travailleurs transfontaliers');
                     $party->setDescription('Parti qui défend les intérêts de tous les travailleurs transfontaliers, au Zimbabwe comme au Groënland');
-                    $party->setSiteLink('www.ptt.ptt');
+                    $party->setSiteLink('https://www.ptt.ptt');
                     $candidate->setFirstName('Potato');
                     $candidate->setLastName('Duhamel');
                     $candidatPtt = $candidate;
@@ -57,7 +57,7 @@ EOT
                 case 1:
                     $party->setName('AST - Association des sauveurs de tam-tam');
                     $party->setDescription('Lutte contre toutes les discriminations faites aux joueurs de djembé, tambour, maracas');
-                    $party->setSiteLink('www.ast.bzh');
+                    $party->setSiteLink('https://www.ast.bzh');
                     $candidate->setFirstName('TamTam');
                     $candidate->setLastName('Tom');
                     $candidatAst = $candidate;
@@ -66,7 +66,7 @@ EOT
                 case 2:
                     $party->setName('Stupeflip Crou');
                     $party->setDescription('Association de stup fanatique');
-                    $party->setSiteLink('www.stupefip.fr');
+                    $party->setSiteLink('https://www.stupefip.fr');
                     $candidate->setFirstName('King');
                     $candidate->setLastName('Ju');
                     $candidatStup = $candidate;
@@ -90,17 +90,17 @@ EOT
             switch ($i) {
                 case 0:
                     $program->setCandidate($candidatAst);
-                    $program->setProgramLink('www.astprogram.ast');
+                    $program->setProgramLink('https://www.astprogram.ast');
                     $programAst = $program;
                     break;
                 case 1:
                     $program->setCandidate($candidatPtt);
-                    $program->setProgramLink('www.pttprogram.bzh');
+                    $program->setProgramLink('https://www.pttprogram.bzh');
                     $programPtt = $program;
                     break;
                 case 2:
                     $program->setCandidate($candidatStup);
-                    $program->setProgramLink('www.stupeflip.com');
+                    $program->setProgramLink('https://www.stupeflip.com');
                     $programStup = $program;
                     break;
             }
