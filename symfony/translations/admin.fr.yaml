@@ -1,9 +1,10 @@
 PoliticalParty: Parti politique
-Political party: Parti politique
+Political party: Parti politiques
 Candidate: Candidat
 Candidates: Candidats
 Program: Programme
 Programs: Programmes
+Primary: Primaires
 Theme: Thème
 Themes: Thèmes
 Action: Action
@@ -24,3 +25,5 @@ Label: Libellé
 Word: Mot
 Definition: Définition
 Importance: Importance
+Date of the first round: Date du premier tour
+Date of the second round: Date du deuxième tour

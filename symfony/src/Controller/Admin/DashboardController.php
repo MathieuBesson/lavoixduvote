@@ -6,6 +6,7 @@ use App\Entity\Action;
 use App\Entity\Candidate;
 use App\Entity\Glossary;
 use App\Entity\PoliticalParty;
+use App\Entity\Primary;
 use App\Entity\Program;
 use App\Entity\Theme;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -41,6 +42,7 @@ class DashboardController extends AbstractDashboardController {
     {
         yield MenuItem::linkToCrud('Political party', 'fas fa-landmark', PoliticalParty::class);
         yield MenuItem::linkToCrud('Candidates', 'fas fa-user-tie', Candidate::class);
+        yield MenuItem::linkToCrud('Primary', 'fas fa-poll', Primary::class);
         yield MenuItem::linkToCrud('Programs', 'fas fa-scroll', Program::class);
         yield MenuItem::linkToCrud('Themes', 'fas fa-project-diagram', Theme::class);
         yield MenuItem::linkToCrud('Actions', 'fas fa-balance-scale-left', Action::class);
