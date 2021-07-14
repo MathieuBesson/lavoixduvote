@@ -18,9 +18,9 @@ class ActionCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('theme', 'Thème'),
+            AssociationField::new('theme', 'Theme'),
             TextField::new('title', 'Action'),
-            IntegerField::new('Importance'),
+            IntegerField::new('importance', 'Importance'),
         ];
     }
 }

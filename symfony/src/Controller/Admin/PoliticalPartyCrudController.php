@@ -21,14 +21,14 @@ class PoliticalPartyCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name', 'Nom'),
+            TextField::new('name', 'Name'),
             TextEditorField::new('description', 'Description'),
-            ImageField::new('picture', 'Photo')
+            ImageField::new('picture', 'Picture')
                       ->setBasePath('uploads/politicalParties')
                       ->setUploadDir('public/uploads/politicalParties')
                       ->setUploadedFileNamePattern('[randomhash].[extension]')
                       ->setRequired(FALSE),
-            UrlField::new('siteLink', 'Site du parti')
+            UrlField::new('siteLink', 'Party website')
         ];
     }
 

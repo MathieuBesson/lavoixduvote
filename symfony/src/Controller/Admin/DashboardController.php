@@ -33,11 +33,11 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToCrud('Partis Politiques', 'fas fa-landmark', PoliticalParty::class);
-        yield MenuItem::linkToCrud('Candidats', 'fas fa-user-tie', Candidate::class);
-        yield MenuItem::linkToCrud('Programmes', 'fas fa-scroll', Program::class);
-        yield MenuItem::linkToCrud('Thèmes', 'fas fa-project-diagram', Theme::class);
+        yield MenuItem::linkToCrud('Political party', 'fas fa-landmark', PoliticalParty::class);
+        yield MenuItem::linkToCrud('Candidates', 'fas fa-user-tie', Candidate::class);
+        yield MenuItem::linkToCrud('Programs', 'fas fa-scroll', Program::class);
+        yield MenuItem::linkToCrud('Themes', 'fas fa-project-diagram', Theme::class);
         yield MenuItem::linkToCrud('Actions', 'fas fa-balance-scale-left', Action::class);
-        yield MenuItem::linkToCrud('Glossaire', 'fas fa-spell-check', Glossary::class);
+        yield MenuItem::linkToCrud('Glossary', 'fas fa-spell-check', Glossary::class);
     }
 }

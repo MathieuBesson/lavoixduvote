@@ -19,17 +19,17 @@ class CandidateCrudController extends AbstractCrudController {
 
     public function configureFields(string $pageName): iterable {
         return [
-            AssociationField::new('politicalParty', 'Parti Politique'),
-            TextField::new('lastName', 'Nom'),
-            TextField::new('firstName', 'Prénom'),
-            ImageField::new('picture', 'Photo')
+            AssociationField::new('politicalParty', 'Political party'),
+            TextField::new('lastName', 'Last name'),
+            TextField::new('firstName', 'First name'),
+            ImageField::new('picture', 'Picture')
                       ->setBasePath('uploads/candidates')
                       ->setUploadDir('public/uploads/candidates')
                       ->setUploadedFileNamePattern('[randomhash].[extension]')
                       ->setRequired(FALSE),
-            TextEditorField::new('biography', 'Biographie'),
-            BooleanField::new('electedByPrimary', 'Élu aux primaires'),
-            BooleanField::new('secondRoundElections', 'Présent au deuxième tour des élections'),
+            TextEditorField::new('biography', 'Biography'),
+            BooleanField::new('electedByPrimary', 'Elected by primary'),
+            BooleanField::new('secondRoundElections', 'Present at the second round of election'),
         ];
     }
 

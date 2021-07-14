@@ -18,9 +18,9 @@ class ProgramCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('candidate', 'Candidat'),
-            TextEditorField::new('presentation', 'Présentation'),
-            UrlField::new('programLink', 'Lien vers le programme'),
+            AssociationField::new('candidate', 'Candidate'),
+            TextEditorField::new('presentation', 'Presentation'),
+            UrlField::new('programLink', 'Program link'),
             AssociationField::new('actions', 'Actions'),
         ];
     }

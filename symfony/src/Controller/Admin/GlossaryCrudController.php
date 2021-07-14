@@ -17,8 +17,8 @@ class GlossaryCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('word', 'Mot'),
-            TextEditorField::new('definition', 'Définition'),
+            TextField::new('word', 'Word'),
+            TextEditorField::new('definition', 'Definition'),
         ];
     }
 }
