@@ -3,6 +3,7 @@ start:	up
 		$(MAKE) composer install
 		$(MAKE) symfony doctrine:migrations:migrate
 		$(MAKE) symfony doctrine:fixtures:load
+		$(MAKE) npm run dev
 
 ## up	:	Start up containers.
 .PHONY: up
