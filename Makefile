@@ -62,10 +62,11 @@ npm:
 symfony:
 	docker-compose exec php /var/www/html/bin/console $(filter-out $@,$(MAKECMDGOALS))
 
-.PHONY: deploy
-deploy:
+.PHONY: deploy-preprod
+deploy-preprod:
 	sudo -u www-data -H git pull
-	sudo -u www-data -H composer install --no-dev
+	@cd /var/www/preprod/symfony
+	sudo -u www-data -H composer install
 	sudo -u www-data -H npm install
 	sudo -u www-data -H make npm run build
 
