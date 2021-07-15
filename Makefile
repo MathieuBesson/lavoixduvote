@@ -62,12 +62,13 @@ npm:
 symfony:
 	docker-compose exec php /var/www/html/bin/console $(filter-out $@,$(MAKECMDGOALS))
 
-.PHONY: deploy-preprod
-deploy-preprod:
-	sudo -u www-data -H git pull
-	sudo -u www-data -H composer install --working-dir=/var/www/preprod/symfony
-	cd /var/www/preprod/symfony && sudo -u www-data -H npm install
-	cd /var/www/preprod/symfony && sudo -u www-data -H npm run build
+# deploy : Pull, install dependencies, compile assets
+#		e.g: make deploy preprod, make deploy prod
+.PHONY: deploy
+deploy:
+	sudo -u www-data -H composer install --working-dir=/var/www/$(filter-out $@,$(MAKECMDGOALS))/symfony
+	cd /var/www/$(filter-out $@,$(MAKECMDGOALS))/symfony && sudo -u www-data -H npm install
+	cd /var/www/$(filter-out $@,$(MAKECMDGOALS))/symfony && sudo -u www-data -H npm run build
 
 # https://stackoverflow.com/a/6273809/1826109
 %:
