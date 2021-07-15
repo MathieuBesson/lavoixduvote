@@ -67,7 +67,7 @@ deploy-preprod:
 	sudo -u www-data -H git pull
 	sudo -u www-data -H composer install --working-dir=/var/www/preprod/symfony
 	cd /var/www/preprod/symfony && sudo -u www-data -H npm install
-	sudo -u www-data -H npm run build
+	cd /var/www/preprod/symfony && sudo -u www-data -H npm run build
 
 # https://stackoverflow.com/a/6273809/1826109
 %:
