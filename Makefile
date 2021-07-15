@@ -8,14 +8,12 @@ start:	up
 ## up	:	Start up containers.
 .PHONY: up
 up:
-	@echo "Starting up containers for lavoixduvote..."
 	docker-compose pull
 	docker-compose up -d --remove-orphans
 
 ## stop	:	Stop containers.
 .PHONY: stop
 stop:
-	@echo "Stopping containers for lavoixduvote..."
 	@docker-compose stop
 
 ## prune	:	Remove containers and their volumes.
@@ -24,7 +22,6 @@ stop:
 ##		prune mariadb solr	: Prune `mariadb` and `solr` containers and remove their volumes.
 .PHONY: prune
 prune:
-	@echo "Removing containers for lavoixduvote..."
 	@docker-compose down -v $(filter-out $@,$(MAKECMDGOALS))
 
 ## recreate	:	Remove containers and their volumes and recreate them
