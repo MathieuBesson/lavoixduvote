@@ -62,6 +62,13 @@ npm:
 symfony:
 	docker-compose exec php /var/www/html/bin/console $(filter-out $@,$(MAKECMDGOALS))
 
+.PHONY: deploy
+deploy:
+	sudo -u www-data -H git pull
+	sudo -u www-data -H composer install --no-dev
+	sudo -u www-data -H npm install
+	sudo -u www-data -H make npm run build
+
 # https://stackoverflow.com/a/6273809/1826109
 %:
 	@:
