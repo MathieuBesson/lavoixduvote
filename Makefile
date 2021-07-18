@@ -4,6 +4,7 @@ start:	up
 		$(MAKE) composer install
 		$(MAKE) symfony doctrine:migrations:migrate
 		$(MAKE) symfony doctrine:fixtures:load
+		$(MAKE) npm install
 		$(MAKE) npm run dev
 
 ## up		:	Start up containers.
@@ -63,6 +64,7 @@ symfony:
 ##		e.g: "make deploy preprod" for deploying to /var/www/preprod
 .PHONY: deploy
 deploy:
+	sudo -u www-data -H git pull
 	sudo -u www-data -H composer install --working-dir=/var/www/$(filter-out $@,$(MAKECMDGOALS))/symfony
 	cd /var/www/$(filter-out $@,$(MAKECMDGOALS))/symfony && sudo -u www-data -H npm install
 	cd /var/www/$(filter-out $@,$(MAKECMDGOALS))/symfony && sudo -u www-data -H npm run build
