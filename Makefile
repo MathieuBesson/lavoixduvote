@@ -1,3 +1,5 @@
+# DOCKER RULES
+
 ## start	: 	Start containers and prepare a dev environment
 .PHONY: start
 start:	up
@@ -59,6 +61,8 @@ npm:
 symfony:
 	docker-compose exec php /var/www/html/bin/console $(filter-out $@,$(MAKECMDGOALS))
 
+# PRODUCTION RULES
+
 # deploy 	: 	Pull, install dependencies, compile assets
 ## 		Mandatory argument is for folder's name in /var/www
 ##		e.g: "make deploy preprod" for deploying to /var/www/preprod
@@ -68,6 +72,8 @@ deploy:
 	sudo -u www-data -H composer install --working-dir=/var/www/$(filter-out $@,$(MAKECMDGOALS))/symfony
 	cd /var/www/$(filter-out $@,$(MAKECMDGOALS))/symfony && sudo -u www-data -H npm install
 	cd /var/www/$(filter-out $@,$(MAKECMDGOALS))/symfony && sudo -u www-data -H npm run build
+	cd /var/www/$(filter-out $@,$(MAKECMDGOALS))/symfony && sudo -u www-data -H php bin/console doctrine:migrations:migrate
+	cd /var/www/$(filter-out $@,$(MAKECMDGOALS))/symfony && sudo -u www-data -H php bin/console c:c
 
 # https://stackoverflow.com/a/6273809/1826109
 %:
