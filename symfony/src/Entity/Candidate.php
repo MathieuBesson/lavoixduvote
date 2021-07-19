@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CandidateRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -62,6 +64,16 @@ class Candidate
      * @ORM\OneToOne(targetEntity=Program::class, mappedBy="candidate", cascade={"persist", "remove"})
      */
     private $program;
+
+    /**
+     * @ORM\OneToMany(targetEntity=StarMeasure::class, mappedBy="candidate", orphanRemoval=true)
+     */
+    private $starMeasures;
+
+    public function __construct()
+    {
+        $this->starMeasures = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -183,6 +195,36 @@ class Candidate
 
     public function __toString() {
         return $this->getFirstName() . ' ' . $this->getLastName();
+    }
+
+    /**
+     * @return Collection|StarMeasure[]
+     */
+    public function getStarMeasures(): Collection
+    {
+        return $this->starMeasures;
+    }
+
+    public function addStarMeasure(StarMeasure $starMeasure): self
+    {
+        if (!$this->starMeasures->contains($starMeasure)) {
+            $this->starMeasures[] = $starMeasure;
+            $starMeasure->setCandidate($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStarMeasure(StarMeasure $starMeasure): self
+    {
+        if ($this->starMeasures->removeElement($starMeasure)) {
+            // set the owning side to null (unless already changed)
+            if ($starMeasure->getCandidate() === $this) {
+                $starMeasure->setCandidate(null);
+            }
+        }
+
+        return $this;
     }
 
 }

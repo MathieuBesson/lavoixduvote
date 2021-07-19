@@ -8,6 +8,7 @@ use App\Entity\Glossary;
 use App\Entity\PoliticalParty;
 use App\Entity\Primary;
 use App\Entity\Program;
+use App\Entity\StarMeasure;
 use App\Entity\Theme;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -61,7 +62,6 @@ EOT
                     $candidate->setFirstName('TamTam');
                     $candidate->setLastName('Tom');
                     $candidatAst = $candidate;
-
                     break;
                 case 2:
                     $party->setName('Stupeflip Crou');
@@ -73,9 +73,46 @@ EOT
                     break;
             }
             $manager->persist($party);
-            $manager->persist($candidate);
             $manager->persist($primary);
         }
+        // StarMeasure
+        for ($i = 0 ; $i < 3 ; $i++) {
+            $icons = ['fas fa-archway', 'fas fa-angle-double', 'fas fa-basketball-ball', 'fas fa-broom', 'fas fa-campground'];
+            $titles = ['La dette', 'L\'environnement', 'La culture', 'Le sport', 'Le cinema', 'L\'éducation', 'Les traditions'];
+
+            for ($j = 0; $j < 3; $j++){
+                $starMeasure = new StarMeasure();
+                $starMeasure->setIcon($icons[array_rand($icons, 1)]);
+                $starMeasure->setTitle($titles[array_rand($titles, 1)]);
+
+                $starMeasure->setDescription(<<<EOT
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum est sine dolore esse, alterum cum voluptate. Audeo dicere, inquit. Hoc sic expositum dissimile est superiori. Omnes enim iucundum motum, quo sensus hilaretur. </p>
+<p>Honesta oratio, Socratica, Platonis etiam. Duo Reges: constructio interrete. Quo igitur, inquit, modo? Est, ut dicis, inquam. Restatis igitur vos; Multoque hoc melius nos veriusque quam Stoici. Et quod est munus, quod opus sapientiae? </p>
+<p>Explanetur igitur. Igitur ne dolorem quidem. Tamen a proposito, inquam, aberramus. Et nemo nimium beatus est; Quid est igitur, inquit, quod requiras? </p>
+EOT
+                );
+
+                switch ($i) {
+                    case 0:
+                        $starMeasure->setCandidate($candidatAst);
+                        $candidatAst->addStarMeasure($starMeasure);
+                        break;
+                    case 1:
+                        $starMeasure->setCandidate($candidatPtt);
+                        $candidatPtt->addStarMeasure($starMeasure);
+                        break;
+                    case 2:
+                        $starMeasure->setCandidate($candidatStup);
+                        $candidatStup->addStarMeasure($starMeasure);
+                        break;
+                }
+                $manager->persist($starMeasure);
+            }
+        }
+        $manager->persist($candidatAst);
+        $manager->persist($candidatPtt);
+        $manager->persist($candidatStup);
+
         // Programs
         for ($i = 0 ; $i < 3 ; $i++) {
             $program = new Program();
