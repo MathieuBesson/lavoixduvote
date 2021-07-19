@@ -46,3 +46,7 @@ Par ex. : `make symfony cache:clear`.
 
 `make symfony "doctrine:schema:update --dump-sql"`
 
+##### Webpack Encore
+
+Lancement du serveur front : `npm run dev`
+
