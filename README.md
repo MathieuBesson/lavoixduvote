@@ -51,3 +51,9 @@ Par ex. : `make symfony cache:clear`.
 `make npm run dev` : Compilation des assets
 
 `make npm run watch` : Lancement du serveur front en observer (re-compilation des assets à chaque modification)
+
+##### Mise en production
+
+`make deploy $context` : Mise en production. L'argument $context correspond au nom du dossier dans /var/www/.
+                         Par exemple, si on envoyer en prod les modifications du projet hébergé dans /var/www/preprod
+                         Il suffira de faire `make deploy preprod`
