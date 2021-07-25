@@ -48,5 +48,6 @@ Par ex. : `make symfony cache:clear`.
 
 ##### Webpack Encore
 
-Lancement du serveur front : `npm run dev`
+Compilation des assets : `make npm run dev`
 
+Lancement du serveur front en observer : `make npm run watch`
