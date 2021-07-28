@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header>
+        <div class="w-100 header-wrapper">
+            <div class="container">
+                HEADER
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            {% block main %}
+                MAIN
+            {% endblock %}
+        </div>
+    </main>
+    <div class="w-100 supportus-wrapper">
+        <div class="container">
+            {% block supportus %}
+                SUPPORT US
+            {% endblock %}
+        </div>
+    </div>
+    <div class="w-100 footer-wrapper">
+        <footer>
+            {% block footer %}
+                <div class="container">
+                    FOOTER
+                </div>
+            {% endblock footer %}
+        </footer>
+    </div>
+
+{% endblock %}
