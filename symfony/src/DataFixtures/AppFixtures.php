@@ -143,7 +143,7 @@ EOT
             }
         }
         // Themes and Actions
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i <= 9; $i++) {
             $theme = new Theme();
             switch ($i) {
                 case 0:
@@ -279,24 +279,124 @@ EOT
                     }
                     break;
                 case 5:
-                    $theme->setLabel('Défense');
+                    $theme->setLabel('Protection sociale');
                     for ($j = 0 ; $j < 3 ; $j++) {
                         $action = new Action();
                         $action->setTheme($theme);
                         switch ($j) {
                             case 0:
                                 $action->setImportance(5);
-                                $action->setTitle('Retour du service militaire');
+                                $action->setTitle('Création d\'un système de mère au foyer à partir de 12 enfants');
                                 $programStup->addAction($action);
                                 break;
                             case 1:
                                 $action->setImportance(2);
-                                $action->setTitle('Sortie de l\'OTAN');
+                                $action->setTitle('Supprimer le bouclier fiscal');
                                 $programAst->addAction($action);
                                 break;
                             case 2:
                                 $action->setImportance(3);
-                                $action->setTitle('Déclarer la guerre au Zimbabwe');
+                                $action->setTitle('Création d\'un revenu universel');
+                                $programPtt->addAction($action);
+                                break;
+                        }
+                        $manager->persist($action);
+                    }
+                    break;
+                case 6:
+                    $theme->setLabel('Immigration');
+                    for ($j = 0 ; $j < 3 ; $j++) {
+                        $action = new Action();
+                        $action->setTheme($theme);
+                        switch ($j) {
+                            case 0:
+                                $action->setImportance(5);
+                                $action->setTitle('Régularisation de tous les sans-papiers');
+                                $programStup->addAction($action);
+                                break;
+                            case 1:
+                                $action->setImportance(2);
+                                $action->setTitle('Expulsion de tous les sans-papiers');
+                                $programAst->addAction($action);
+                                break;
+                            case 2:
+                                $action->setImportance(3);
+                                $action->setTitle('Suppression du rassemblement familial');
+                                $programPtt->addAction($action);
+                                break;
+                        }
+                        $manager->persist($action);
+                    }
+                    break;
+                case 7:
+                    $theme->setLabel('Culture');
+                    for ($j = 0 ; $j < 3 ; $j++) {
+                        $action = new Action();
+                        $action->setTheme($theme);
+                        switch ($j) {
+                            case 0:
+                                $action->setImportance(5);
+                                $action->setTitle('Pass Culture monté à 10000000€');
+                                $programStup->addAction($action);
+                                break;
+                            case 1:
+                                $action->setImportance(2);
+                                $action->setTitle('Subvention pour les artistes');
+                                $programAst->addAction($action);
+                                break;
+                            case 2:
+                                $action->setImportance(3);
+                                $action->setTitle('Brûler tous les livres');
+                                $programPtt->addAction($action);
+                                break;
+                        }
+                        $manager->persist($action);
+                    }
+                    break;
+                case 8:
+                    $theme->setLabel('Innovation');
+                    for ($j = 0 ; $j < 3 ; $j++) {
+                        $action = new Action();
+                        $action->setTheme($theme);
+                        switch ($j) {
+                            case 0:
+                                $action->setImportance(5);
+                                $action->setTitle('On va sur la Lune !');
+                                $programStup->addAction($action);
+                                break;
+                            case 1:
+                                $action->setImportance(2);
+                                $action->setTitle('Budget de 1 000 000 000 € pour la recherche');
+                                $programAst->addAction($action);
+                                break;
+                            case 2:
+                                $action->setImportance(3);
+                                $action->setTitle('On reprend la recherche sur les cellules souches');
+                                $programPtt->addAction($action);
+                                break;
+                        }
+                        $manager->persist($action);
+                    }
+                    break;
+                case 9:
+                    $theme->setLabel('Éducation');
+                    for ($j = 0 ; $j < 3 ; $j++) {
+                        $action = new Action();
+                        $action->setTheme($theme);
+                        switch ($j) {
+                            case 0:
+                                $action->setImportance(5);
+                                $action->setTitle('Suppression du bac');
+                                $programStup->addAction($action);
+                                break;
+                            case 1:
+                                $action->setImportance(2);
+                                $action->setTitle('Recrutement de 50 000 profs');
+                                $programAst->addAction($action);
+                                break;
+                            case 2:
+                                $action->setImportance(3);
+                                $action->setTitle('Suppression des prépas');
                                 $programPtt->addAction($action);
                                 break;
                         }
