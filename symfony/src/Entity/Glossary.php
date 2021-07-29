@@ -27,6 +27,11 @@ class Glossary
      */
     private $definition;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=GlossaryCategory::class, inversedBy="glossaries")
+     */
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -56,8 +61,19 @@ class Glossary
         return $this;
     }
 
+    public function getCategory(): ?GlossaryCategory
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?GlossaryCategory $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
     public function __toString() {
         return $this->word;
     }
-
 }

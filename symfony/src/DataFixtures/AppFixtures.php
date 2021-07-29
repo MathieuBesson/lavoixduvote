@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Action;
 use App\Entity\Candidate;
 use App\Entity\Glossary;
+use App\Entity\GlossaryCategory;
 use App\Entity\PoliticalParty;
 use App\Entity\Primary;
 use App\Entity\Program;
@@ -410,6 +411,24 @@ EOT
         $manager->persist($programAst);
         $manager->persist($programStup);
         // Glossary
+        // Category
+        for ($i = 0 ; $i < 3 ; $i++) {
+            $glossaryCategory = new GlossaryCategory();
+            switch ($i) {
+                case 0:
+                    $glossaryCategory->setLabel('Textes de loi');
+                    break;
+                case 1:
+                    $glossaryCategory->setLabel('Évènements');
+                    break;
+                case 2:
+                    $glossaryCategory->setLabel('Jargon politique');
+                    break;
+            }
+
+            $manager->persist($glossaryCategory);
+        }
+
         for ($i = 0 ; $i < 5 ; $i++) {
             $glossary = new Glossary();
             $glossary->setDefinition(<<<EOT
@@ -419,7 +438,8 @@ EOT
 <p>Sedulo, inquam, faciam. Age sane, inquam. Quis Aristidem non mortuum diligit? Erat enim Polemonis. </p>
 <p>Quae ista amicitia est? Tamen a proposito, inquam, aberramus. Ut in geometria, prima si dederis, danda sunt omnia. Vide, quantum, inquam, fallare, Torquate. Duo enim genera quae erant, fecit tria. Quid vero? </p>
 EOT
-);
+            );
+            $glossary->setCategory($glossaryCategory);
             switch ($i) {
                 case 0:
                     $glossary->setWord('Lorem');
@@ -439,7 +459,6 @@ EOT
             }
             $manager->persist($glossary);
         }
-
         $user = new User();
         $user->setUsername('admin');
         $user->setPassword($this->passwordHasher->hashPassword($user, '1231'));

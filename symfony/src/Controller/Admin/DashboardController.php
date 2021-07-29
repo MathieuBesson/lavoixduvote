@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Action;
 use App\Entity\Candidate;
 use App\Entity\Glossary;
+use App\Entity\GlossaryCategory;
 use App\Entity\PoliticalParty;
 use App\Entity\Primary;
 use App\Entity\Program;
@@ -49,5 +50,6 @@ class DashboardController extends AbstractDashboardController {
         yield MenuItem::linkToCrud('Actions', 'fas fa-balance-scale-left', Action::class);
         yield MenuItem::linkToCrud('Star Measures', 'fas fa-star', StarMeasure::class);
         yield MenuItem::linkToCrud('Glossary', 'fas fa-spell-check', Glossary::class);
+        yield MenuItem::linkToCrud('Glossary Themes', 'far fa-bookmark', GlossaryCategory::class);
     }
 }
