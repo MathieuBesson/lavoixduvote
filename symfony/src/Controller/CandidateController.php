@@ -25,7 +25,7 @@ class CandidateController extends AbstractController
     }
 
     /**
-     * @Route(name="_test", path="/test")
+     * @Route(name="_list_name", path="/list-name")
      */
     public function listCandidatesName(): Response
     {
