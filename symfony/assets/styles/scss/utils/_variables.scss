@@ -2,9 +2,16 @@ $primary: #0D009D;
 $primary-mid-darker: #011B60;
 $primary-darker: #001447;
 
+$white-min-opacity: rgba(255, 255, 255, 0.5);
+
 $regular: 400;
 $medium: 500;
 $bold: 700;
+
+$font-small: 14px;
+$font-normal: 16px;
+$font-large: 18px;
+$font-extra-large: 20px;
 
 $container-max-widths: (
         sm: 364px,

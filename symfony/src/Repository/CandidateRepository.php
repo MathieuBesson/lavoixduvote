@@ -36,6 +36,7 @@ class CandidateRepository extends ServiceEntityRepository
     }
     */
 
+
     /*
     public function findOneBySomeField($value): ?Candidate
     {
@@ -47,4 +48,13 @@ class CandidateRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+    public function findAllNames()
+    {
+        return $this->createQueryBuilder('candidates')
+            ->select(['candidates.firstName', 'candidates.lastName'])
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -1,0 +1,28 @@
+
+.icon{
+  width: 20px;
+  height: 20px;
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+[class*='icon-']{
+  @extend .icon;
+}
+
+.icon-facebook-white {
+  background-image: url('../../images/icons/facebook-logo-white.svg');
+}
+
+.icon-instagram-white {
+  background-image: url('../../images/icons/instagram-logo-white.svg');
+}
+
+.icon-linkedin-white {
+  background-image: url('../../images/icons/linkedin-logo-white.svg');
+}
+
+.icon-twitter-white {
+  background-image: url('../../images/icons/twitter-logo-white.svg');
+}
