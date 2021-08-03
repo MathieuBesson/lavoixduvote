@@ -25,36 +25,67 @@
     <div class="w-100 footer-wrapper">
         <footer>
             {% block footer %}
-                <div class="container">
-                    <div class="footer-wrapper__main row">
-                        <aside class="footer-wrapper__main-social-network col-3 pe-5">
-                            <img src="/images/logo-text-lvdv-white.svg" alt="Logo La Voix Du Vote">
-                            <div class="d-flex mt-3 justify-content-around">
-                                <span class="icon-facebook-white"></span>
-                                <span class="icon-instagram-white"></span>
-                                <span class="icon-linkedin-white"></span>
-                                <span class="icon-twitter-white"></span>
-                            </div>
-                        </aside>
-                        <section class="footer-wrapper__main-programmes col-6">
-                            <strong>Les programmes</strong>
-                            <ul class="footer-wrapper__main-programmes-list row pl-0 mt-4">
-                                {{ render(url('candidates_list_name')) }}
-                            </ul>
-                        </section>
-                        <aside class="footer-wrapper__main-menu col-3">
-                            <ul>
-                                <li class="mb-4">Pourquoi voter ?</li>
-                                <li class="mb-4">Glossaire</li>
-                                <li>Nous contacter</li>
-                            </ul>
-                        </aside>
-                    </div>
-                    <div class="footer-wrapper__legal-notice text-center pb-4">
-                        <em>Politique de confidentialité - @LaVoixDuVote</em>
-                    </div>
+{#                <div class="container">#}
+{#                    <div class="footer-wrapper__main d-flex flex-column flex-lg-row ">#}
+{#                        <aside class="footer-wrapper__main-social-network d-flex flex-row flex-lg-column justify-content-around col-lg-3 col-12 me-auto">#}
+{#                            <img class="col-6" src="/images/logo-text-lvdv-white.svg" alt="Logo La Voix Du Vote">#}
+{#                            <div class="footer-wrapper__main-social-network-icons d-flex flex-row flex-lg-row justify-content-lg-between flex-sm-wrap flex-lg-nowrap col-4 col-lg-12 mt-3">#}
+{#                                <span class="icon-facebook-white"></span>#}
+{#                                <span class="icon-instagram-white"></span>#}
+{#                                <span class="icon-linkedin-white"></span>#}
+{#                                <span class="icon-twitter-white"></span>#}
+{#                            </div>#}
+{#                        </aside>#}
+{#                        <section class="footer-wrapper__main-programmes col-6">#}
+{#                            <strong>Les programmes</strong>#}
+{#                            <ul class="footer-wrapper__main-programmes-list row pl-0 mt-4">#}
+{#                                {{ render(url('candidates_list_name')) }}#}
+{#                            </ul>#}
+{#                        </section>#}
+{#                        <aside class="footer-wrapper__main-menu col-md-2 col-12">#}
+{#                            <ul>#}
+{#                                <li class="mb-4"><a href="#">Pourquoi voter ?</a></li>#}
+{#                                <li class="mb-4"><a href="#">Glossaire</a></li>#}
+{#                                <li><a href="#">Nous contacter</a></li>#}
+{#                            </ul>#}
+{#                        </aside>#}
+{#                    </div>#}
+{#                    <div class="footer-wrapper__legal-notice text-center pb-4">#}
+{#                        <em>Politique de confidentialité - @LaVoixDuVote</em>#}
+{#                    </div>#}
+{#                </div>#}
+
+            <div class="container">
+                <div class="footer-wrapper__main d-flex flex-column flex-lg-row">
+                    <aside class="footer-wrapper__main-social-network d-flex flex-row flex-lg-column justify-content-around align-items-lg-end col-12 col-lg-3 me-auto">
+                        <img class="col-4" src="/images/logo-text-lvdv-white.svg" alt="Logo La Voix Du Vote">
+                        <div class="footer-wrapper__main-social-network-icons d-flex flex-row col-4 col-lg-12 flex-wrap justify-content-between">
+                            <span class="icon-facebook-white col-6 col-lg-3"></span>
+                            <span class="icon-instagram-white col-6 col-lg-3"></span>
+                            <span class="icon-linkedin-white col-6 col-lg-3"></span>
+                            <span class="icon-twitter-white col-6 col-lg-3"></span>
+                        </div>
+                    </aside>
+                    <section class="footer-wrapper__main-programmes col-6">
+                        <strong>Les programmes</strong>
+                        <ul class="footer-wrapper__main-programmes-list d-flex flex-wrap">
+                            {{ render(url('candidates_list_name')) }}
+                        </ul>
+                    </section>
+                    <aside class="footer-wrapper__main-menu text-lg-left text-center col-12 col-lg-2">
+                        <ul>
+                            <li><a href="#">Pourquoi voter ?</a></li>
+                            <li><a href="#">Glossaire</a></li>
+                            <li><a href="#">Nous contacter</a></li>
+                        </ul>
+                    </aside>
                 </div>
+                <div class="footer-wrapper__legal-notice text-center">
+                    <em>Politique de confidentialité - @LaVoixDuVote</em>
+                </div>
+            </div>
             {% endblock footer %}
+
         </footer>
     </div>
 
