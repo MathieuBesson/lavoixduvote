@@ -1,5 +1,8 @@
 .header-wrapper {
     padding-top: 18px;
+    position: sticky;
+    top: 0;
+    background-color: $secondary;
 
     .logo-wrapper {
         max-height: 45px;
