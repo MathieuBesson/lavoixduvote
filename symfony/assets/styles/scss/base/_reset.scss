@@ -14,7 +14,7 @@ li{
 a{
 	text-decoration: none;
 	transition: all 0.2s ease;
-	&:hover{
+	&:hover, &:focus, &:active {
 		text-decoration: underline;
 	}
 }

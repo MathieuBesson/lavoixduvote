@@ -1,6 +1,6 @@
 @mixin link($color, $hover-color) {
   color: $color;
-  &:hover{
+  &:hover, &:focus, &:active {
     color: $hover-color;
   }
 }
