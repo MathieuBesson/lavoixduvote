@@ -1,29 +1,29 @@
 
-.icon{
-  width: 25px;
-  height: 25px;
-  display: block;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+.icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-[class^='icon-']{
-  @extend .icon;
+[class^='icon-'] {
+    @extend .icon;
 }
 
 .icon-facebook-white {
-  background-image: url(#{$icon-path} + 'facebook-logo-white.svg');
+    background-image: url(#{$icon-path} + 'facebook-logo-white.svg');
 }
 
 .icon-instagram-white {
-  background-image: url(#{$icon-path} + 'instagram-logo-white.svg');
+    background-image: url(#{$icon-path} + 'instagram-logo-white.svg');
 }
 
 .icon-linkedin-white {
-  background-image: url(#{$icon-path} + 'linkedin-logo-white.svg');
+    background-image: url(#{$icon-path} + 'linkedin-logo-white.svg');
 }
 
 .icon-twitter-white {
-  background-image: url(#{$icon-path} + 'twitter-logo-white.svg');
+    background-image: url(#{$icon-path} + 'twitter-logo-white.svg');
 }

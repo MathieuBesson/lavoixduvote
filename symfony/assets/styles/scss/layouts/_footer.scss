@@ -1,89 +1,92 @@
 .footer-wrapper {
-  background-color: $primary-darker;
-  color: rgba($white, 0.9);
+    background-color: $primary-darker;
+    color: rgba($white, 0.9);
 
-  &__main{
-    padding: 75px 0;
-
-    // List of programs
-    &-programmes{
-      &-list {
-        padding: 20px 0;
-
-        li a {
-          @include link($secondary-mid-clear, $secondary);
-          @include border-bottom-animation($secondary)
-        }
-      }
-
-      strong {
-        font-weight: $bold;
-      }
-    }
-
-    // Logo + social network links
-    &-social-network {
-      &-icons {
-        padding-left: 35%;
-      }
-
-      img {
-        width: 100%;
-        max-width: 300px;
-      }
-    }
-
-    // Menu right
-    &-menu {
-      li{
-        margin-bottom: 25px;
-        a {
-          @include link($secondary, $secondary-mid-clear);
-          @include border-bottom-animation($secondary-mid-clear)
-        }
-      }
-    }
-  }
-
-
-  // Privacy policy
-  &__legal-notice {
-    color: $secondary-mid-clear;
-    padding-bottom: 45px;
-
-    em {
-      font-style: normal;
-    }
-  }
-
-  @include media-breakpoint-down(lg) {
-
-    &__main{
-
-        // Menu right
-        &-menu{
-          margin-top: 50px;
-        }
+    &__main {
+        padding: 75px 0;
 
         // List of programs
         &-programmes {
-          display: none;
+            &-list {
+                padding: 20px 0;
+
+                li a {
+                    @include link($secondary-mid-clear, $secondary);
+                    @include border-bottom-animation($secondary)
+                }
+            }
+
+            strong {
+                font-weight: $bold;
+            }
         }
 
         // Logo + social network links
-        &-social-network{
-          &-icons {
-            padding-left: 0;
-            span {
-              margin: 10px 0;
+        &-social-network {
+            &-icons {
+                padding-left: 35%;
             }
-          }
-          img {
-            width: 60%;
-          }
+
+            img {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        // Menu right
+        &-menu {
+            li {
+                margin-bottom: 25px;
+
+                a {
+                    @include link($secondary, $secondary-mid-clear);
+                    @include border-bottom-animation($secondary-mid-clear)
+                }
+            }
         }
     }
-  }
+
+
+    // Privacy policy
+    &__legal-notice {
+        color: $secondary-mid-clear;
+        padding-bottom: 45px;
+
+        em {
+            font-style: normal;
+        }
+    }
+
+    @include media-breakpoint-down(lg) {
+
+        &__main {
+
+            // Menu right
+            &-menu {
+                margin-top: 50px;
+            }
+
+            // List of programs
+            &-programmes {
+                display: none;
+            }
+
+            // Logo + social network links
+            &-social-network {
+                &-icons {
+                    padding-left: 0;
+
+                    span {
+                        margin: 10px 0;
+                    }
+                }
+
+                img {
+                    width: 60%;
+                }
+            }
+        }
+    }
 }
 
 
