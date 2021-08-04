@@ -8,7 +8,7 @@
   background-position: center;
 }
 
-[class*='icon-']{
+[class^='icon-']{
   @extend .icon;
 }
 
