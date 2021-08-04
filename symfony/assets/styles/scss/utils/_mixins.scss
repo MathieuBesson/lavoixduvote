@@ -1,6 +1,31 @@
+// Basic styling for links
 @mixin link($color, $hover-color) {
-  color: $color;
-  &:hover, &:focus, &:active {
-    color: $hover-color;
-  }
+    text-decoration: none;
+    color: $color;
+    transition: all .5s ease;
+    &:hover, &:focus, &:active {
+        color: $hover-color;
+    }
+}
+
+// Animate an absolute border on hover / active / focus
+@mixin border-bottom-animation($border-color) {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        border-bottom: 2px solid transparent;
+        width: 0;
+        bottom: -4px;
+        left: 0;
+        transition: all .5s ease;
+    }
+
+    &:hover, &:focus, &:active {
+        &::after {
+            border-bottom: 2px solid $border-color;
+            width: 100%;
+        }
+    }
 }
