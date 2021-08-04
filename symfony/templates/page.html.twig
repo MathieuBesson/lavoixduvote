@@ -16,6 +16,7 @@
                 {% block menuresponsive %}
                     <div class="d-block d-md-none">
                         <div class="d-flex justify-content-between align-items-center">
+                            <input id="responsive-menu-checkbox" type="checkbox" class="responsive-menu-checkbox">
                             <div class="back-wrapper">
                                 <img src="/images/pictos/back.svg" alt="Page précédente">
                             </div>
@@ -28,9 +29,21 @@
                                     <img src="/images/icons/icon-grid.svg" alt="Choisir la grille">
                                 </div>
                             {% endif %}
-                            <div class="menu-wrapper">
-                                <img src="/images/icons/icon-menu.svg" alt="Afficher le menu">
+                            <div class="responsive-menu-wrapper">
+                                <label for="responsive-menu-checkbox" class="responsive-menu-wrapper__icon">
+                                    <img src="/images/icons/icon-menu.svg" alt="Afficher le menu">
+                                </label>
+                                <div class="responsive-menu-wrapper__background"></div>
+                                <nav class="responsive-menu-wrapper__menu">
+                                    <ul>
+                                        <li><a href="#">item 1</a></li>
+                                        <li><a href="#">Item 2</a></li>
+                                        <li><a href="#">Item 3</a></li>
+                                        <li><a href="#">Item 4</a></li>
+                                    </ul>
+                                </nav>
                             </div>
+
                         </div>
                     </div>
                 {% endblock %}

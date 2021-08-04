@@ -1,6 +1,8 @@
 .footer-wrapper {
     background-color: $primary-darker;
     color: rgba($white, 0.9);
+    position: relative;
+    z-index: -1;
 
     &__main {
         padding: 75px 0;
