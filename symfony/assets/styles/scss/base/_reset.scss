@@ -18,3 +18,7 @@ a{
 		text-decoration: underline;
 	}
 }
+
+img {
+	@extend .img-fluid
+}
