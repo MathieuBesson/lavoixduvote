@@ -3,9 +3,21 @@
 {% block body %}
     <header>
         <div class="w-100 header-wrapper">
-            <div class="container">
-                HEADER
-            </div>
+            {% block header %}
+                <div class="container">
+                    HEADER
+                    {% block menudesktop %}
+                        <div class="d-none d-md-block">
+                            MENU DESKTOP
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+            {% block menuresponsive %}
+                <div class="d-block d-md-none">
+                    MENU RESPONSIVE
+                </div>
+            {% endblock %}
         </div>
     </header>
     <main>
