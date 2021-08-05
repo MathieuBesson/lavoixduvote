@@ -33,7 +33,7 @@ class CandidateController extends AbstractController
             ->getRepository(Candidate::class)
             ->findAllNames();
 
-        return $this->render('candidate/list_candidates_name.html.twig', [
+        return $this->render('candidate/candidate_list_names.html.twig', [
             'candidates' => $candidates
         ]);
     }
