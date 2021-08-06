@@ -35,15 +35,19 @@
                                 </label>
                                 <div class="responsive-menu-wrapper__background"></div>
                                 <nav class="responsive-menu-wrapper__menu">
-                                    <ul>
-                                        <li><a href="#">item 1</a></li>
-                                        <li><a href="#">Item 2</a></li>
-                                        <li><a href="#">Item 3</a></li>
-                                        <li><a href="#">Item 4</a></li>
-                                    </ul>
+                                   {{ include('navigation/menu.html.twig') }}
+                                    <div class="responsive-menu-wrapper__menu-supportus text-center">
+                                        <div class="d-flex justify-content-center responsive-menu-wrapper__menu-supportus-socialmedia">
+                                            <span class="icon-facebook-white"></span>
+                                            <span class="icon-instagram-white"></span>
+                                            <span class="icon-linkedin-white"></span>
+                                            <span class="icon-twitter-white"></span>
+                                        </div>
+                                        Vous souhaitez nous soutenir ?<br />
+                                        <a href="">Payez-nous un café :)</a>
+                                    </div>
                                 </nav>
                             </div>
-
                         </div>
                     </div>
                 {% endblock %}
