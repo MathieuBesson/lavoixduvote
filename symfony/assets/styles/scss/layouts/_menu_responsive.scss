@@ -53,10 +53,10 @@
             }
             // Specific dropdown
             .dropdown-menu {
-                background-color: $primary-mid-darker;
+                background-color: $secondary;
 
                 a {
-                    @include link($secondary-mid-clear, $primary)
+                    @include link($primary, $primary-mid-darker)
                 }
             }
 
@@ -122,8 +122,11 @@
                         width: 100%;
                         right: 0;
 
-                        ul li > a, .dropdown-toggle {
-                            @include link($secondary-mid-clear, $secondary);
+                        ul {
+                            padding-left: 0;
+                            li > a, .dropdown-toggle {
+                                @include link($secondary-mid-clear, $secondary);
+                            }
                         }
                     }
                 }
