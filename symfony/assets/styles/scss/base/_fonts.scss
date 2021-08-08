@@ -1,3 +1,26 @@
+
+@font-face {
+    font-family: 'objectivity';
+    src: url('../../fonts/objectivity/objectivity-light-webfont.eot');
+    src: url('../../fonts/objectivity/objectivity-light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/objectivity/objectivity-light-webfont.woff2') format('woff2'),
+    url('../../fonts/objectivity/objectivity-light-webfont.ttf') format('truetype'),
+    url('../../fonts/objectivity/objectivity-light-webfont.svg#objectivitybold') format('svg');
+    font-weight: $font-light;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'objectivity';
+    src: url('../../fonts/objectivity/objectivity-lightslanted-webfont.eot');
+    src: url('../../fonts/objectivity/objectivity-lightslanted-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/objectivity/objectivity-lightslanted-webfont.woff2') format('woff2'),
+    url('../../fonts/objectivity/objectivity-lightslanted-webfont.ttf') format('truetype'),
+    url('../../fonts/objectivity/objectivity-lightslanted-webfont.svg#objectivitybold') format('svg');
+    font-weight: $font-light;
+    font-style: italic;
+}
+
 @font-face {
     font-family: 'objectivity';
     src: url('../../fonts/objectivity/objectivity-regularslanted-webfont.eot');
