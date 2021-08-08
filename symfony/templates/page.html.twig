@@ -1,63 +1,67 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% block menuresponsive %}
+    <div class="d-block d-md-none header-responsive">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center">
+                <input id="responsive-menu-checkbox" type="checkbox" class="responsive-menu-checkbox">
+                <div class="back-wrapper">
+                    <img src="/images/pictos/back.svg" alt="Page précédente">
+                </div>
+                <div class="logo-wrapper">
+                    <img src="/images/logos/Logo_45x45.svg" alt="Logo La Voix du Vote">
+                </div>
+                {% if route_prefix == 'home' %}
+                    <div class="grid-or-roll-wrapper d-flex">
+                        <img src="/images/icons/icon-roll.svg" alt="Choisir la roue">
+                        <img src="/images/icons/icon-grid.svg" alt="Choisir la grille">
+                    </div>
+                {% endif %}
+                <div class="responsive-menu-wrapper">
+                    <label for="responsive-menu-checkbox" class="responsive-menu-wrapper__icon">
+                        <img src="/images/icons/icon-menu.svg" alt="Afficher le menu">
+                    </label>
+                    <div class="responsive-menu-wrapper__background"></div>
+                    <nav class="responsive-menu-wrapper__menu">
+                        {{ include('navigation/menu.html.twig') }}
+                        <div class="responsive-menu-wrapper__menu-supportus text-center">
+                            <div class="d-flex justify-content-center responsive-menu-wrapper__menu-supportus-socialmedia">
+                                <span class="icon-facebook-white"></span>
+                                <span class="icon-instagram-white"></span>
+                                <span class="icon-linkedin-white"></span>
+                                <span class="icon-twitter-white"></span>
+                            </div>
+                            Vous souhaitez nous soutenir ?<br />
+                            <a href="">Payez-nous un café :)</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endblock %}
+
     <header>
         <div class="w-100 header-wrapper">
+
             <div class="container-fluid">
-
-                {% block header %}
-                    {% block menudesktop %}
-                        <div class="d-none d-md-block">
-                            MENU DESKTOP
-                        </div>
-                    {% endblock %}
-
-                {% endblock %}
-                {% block menuresponsive %}
-                    <div class="d-block d-md-none">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <input id="responsive-menu-checkbox" type="checkbox" class="responsive-menu-checkbox">
-                            <div class="back-wrapper">
-                                <img src="/images/pictos/back.svg" alt="Page précédente">
-                            </div>
-                            <div class="logo-wrapper">
-                                <img src="/images/logos/Logo_45x45.svg" alt="Logo La Voix du Vote">
-                            </div>
-                            {% if route_prefix == 'home' %}
-                                <div class="grid-or-roll-wrapper d-flex">
-                                    <img src="/images/icons/icon-roll.svg" alt="Choisir la roue">
-                                    <img src="/images/icons/icon-grid.svg" alt="Choisir la grille">
-                                </div>
-                            {% endif %}
-                            <div class="responsive-menu-wrapper">
-                                <label for="responsive-menu-checkbox" class="responsive-menu-wrapper__icon">
-                                    <img src="/images/icons/icon-menu.svg" alt="Afficher le menu">
-                                </label>
-                                <div class="responsive-menu-wrapper__background"></div>
-                                <nav class="responsive-menu-wrapper__menu">
-                                   {{ include('navigation/menu.html.twig') }}
-                                    <div class="responsive-menu-wrapper__menu-supportus text-center">
-                                        <div class="d-flex justify-content-center responsive-menu-wrapper__menu-supportus-socialmedia">
-                                            <span class="icon-facebook-white"></span>
-                                            <span class="icon-instagram-white"></span>
-                                            <span class="icon-linkedin-white"></span>
-                                            <span class="icon-twitter-white"></span>
-                                        </div>
-                                        Vous souhaitez nous soutenir ?<br />
-                                        <a href="">Payez-nous un café :)</a>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
+                {% block menudesktop %}
+                    <div class="d-none d-md-block">
+                        MENU DESKTOP
                     </div>
                 {% endblock %}
+
             </div>
         </div>
     </header>
     <main>
         <div class="container">
             {% block main %}
-                MAIN
+                <div>
+                    lorem ipsum dolor lolilol loiiiolloll
+                </div>
             {% endblock %}
         </div>
     </main>
