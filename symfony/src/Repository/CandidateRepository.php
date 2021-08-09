@@ -19,36 +19,23 @@ class CandidateRepository extends ServiceEntityRepository
         parent::__construct($registry, Candidate::class);
     }
 
-    // /**
-    //  * @return Candidate[] Returns an array of Candidate objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Returns the candidate whom last name match the parameter in
+     * a case insentitive way
+     *
+     * @param $lastName
+     * @return Candidate|null
+     */
+    public function findOneByLastNameCaseInsensitive($lastName): ?Candidate
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+        $result = $this->createQueryBuilder('a')
+            ->where('upper(a.lastName) = upper(:lastName)')
+            ->setParameter('lastName', $lastName)
             ->getQuery()
-            ->getResult()
-        ;
+            ->setMaxResults(1)
+            ->getResult();
+        return array_shift($result);
     }
-    */
-
-
-    /*
-    public function findOneBySomeField($value): ?Candidate
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
-
 
     public function findAllNames()
     {
