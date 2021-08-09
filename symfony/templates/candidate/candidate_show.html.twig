@@ -1,0 +1,15 @@
+{% extends 'page.html.twig' %}
+
+{% block main %}
+    <div class="col-12 candidate">
+        <div class="candidate__header">
+            {% if candidate.picture %}
+                <img src="{{ candidate.displayPicture }}" alt="Photo de {{ candidate.firstName }} {{ candidate.lastName }}">
+            {% endif %}
+            <div class="candidate__header-info d-flex flex-column justify-content-end">
+                <span class="candidate__header-info-party">{{ candidate.politicalParty.name }}</span>
+                <span class="candidate__header-info-name">{{ candidate.firstName }} {{ candidate.lastName }}</span>
+            </div>
+        </div>
+    </div>
+{% endblock %}

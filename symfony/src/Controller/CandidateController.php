@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Candidate;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,8 +21,26 @@ class CandidateController extends AbstractController
     /**
      * @Route(name="_index", path="/")
      */
-    public function index() {
+    public function index()
+    {
         return $this->render('candidate/candidate_index.html.twig');
+    }
+
+    /**
+     * Display a candidate, the slug is for lastName
+     *
+     * @Route(name="_show", path="/{candidate}", requirements={"candidate"="\w+"})
+     */
+    public function show(string $candidate)
+    {
+        $repository = $this->getDoctrine()->getRepository('App\Entity\Candidate');
+        $candidate = $repository->findOneByLastNameCaseInsensitive($candidate);
+        if (!$candidate) {
+            throw $this->createNotFoundException('Ce candidat n\'existe pas');
+        }
+        return $this->render('candidate/candidate_show.html.twig', [
+            'candidate' => $candidate,
+        ]);
     }
 
     /**

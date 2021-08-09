@@ -1,0 +1,29 @@
+.candidate {
+    &__header {
+        position: relative;
+        img {
+            border-radius: 15px;
+        }
+        &-info {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            color: $secondary;
+            &-party {
+                font-size: 22px;
+                font-style: normal;
+                font-weight: $bold;
+                line-height: 22px;
+                letter-spacing: 0.02em;
+            }
+            &-name {
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 20px;
+                letter-spacing: 0.02em;
+            }
+        }
+    }
+}
