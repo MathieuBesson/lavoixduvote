@@ -116,6 +116,11 @@ class Candidate
         return $this;
     }
 
+    public function displayPicture(): ?string
+    {
+        return '/uploads/candidates/' . $this->picture;
+    }
+
     public function getBiography(): ?string
     {
         return $this->biography;
