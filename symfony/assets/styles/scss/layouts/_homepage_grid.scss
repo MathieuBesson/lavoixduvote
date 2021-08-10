@@ -1,24 +1,21 @@
 .candidates-grid-wrapper {
-  position: relative;
-  padding: 40px 0px 120px 0px;
   display: flex;
+  width: 100%;
+  padding: 0px 0px 120px 0px;
   transition: all 1s ease;
 
   &__item {
-    width: calc(25% - 2rem);
-    max-width: 300px;
     text-decoration: none;
-
-    .bg-image {
+    .card {
       background-position: center;
       background-size: cover;
       border-radius: 15px;
       border: 0px;
-      margin: 15px;
       height: 260px;
       transition: all 0.2s ease;
-      &:hover{
-        box-shadow: -1px 5px 12px -6px rgba(0,0,0,0.83);
+
+      &:hover {
+        box-shadow: -1px 5px 12px -6px rgba(0, 0, 0, 0.83);
         transform: scale(1.02);
       }
     }
@@ -32,24 +29,14 @@
       font-size: $font-small;
     }
   }
-
-
-  @include media-breakpoint-down(lg) {
-    &__item {
-      width: 45%;
-    }
-  }
-
-  @include media-breakpoint-down(md) {
-    &__item {
-      margin: 7px auto;
-    }
-  }
 }
 
-.switcher-home-wrapper__icon {
-  margin: 10px;
-  cursor: pointer;
+.switcher-home-wrapper{
+  padding: 30px 0px 45px 0px;
+  &__icon {
+    margin: 0px 10px;
+    cursor: pointer;
+  }
 }
 
 

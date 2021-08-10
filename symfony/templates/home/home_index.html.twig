@@ -2,16 +2,28 @@
 
 {% block main %}
     <div class="home-content-wrapper">
-
-        <div class="switcher-home-wrapper d-flex justify-content-center">
-            <img id="switcher-roll" src="/images/icons/icon-roll.svg" class="switcher-home-wrapper__icon" alt="Choisir la roue">
-            <img id="switcher-grid" src="/images/icons/icon-grid.svg" class="switcher-home-wrapper__icon" alt="Choisir la grille">
+        <div class="switcher-home-wrapper d-none d-xl-flex justify-content-center">
+            <img src="/images/icons/icon-roll.svg" class="switcher-home-wrapper__icon switcher-roll" alt="Choisir la roue">
+            <img src="/images/icons/icon-grid.svg" class="switcher-home-wrapper__icon switcher-grid" alt="Choisir la grille">
         </div>
 
         <div class="choice-tab-wrapper d-flex flex-column">
-            <section id="candidates-grid-wrapper" class="candidates-grid-wrapper flex-wrap switcher-appearance">
+            <section id="candidates-grid-wrapper" class="candidates-grid-wrapper row g-3 g-lg-4 flex-wrap w-100 switcher-appearance">
                 {% for candidate in candidates %}
-                    <a class="candidates-grid-wrapper__item" href="{{ path('candidates_show', {candidate: candidate.lastName}) }}">
+                    <a class="candidates-grid-wrapper__item col-6 col-lg-3" href="{{ path('candidates_show', {candidate: candidate.lastName}) }}">
+                        <div class="bg-image card shadow-1-strong"
+                             style="background-image: url('/uploads/candidates/{{ candidate.picture }}');">
+                            <div class="candidates-grid-wrapper__item-card card-body d-flex flex-column justify-content-end text-white">
+                                <h3 class="card-title mt-auto">{{ candidate.firstName }} {{ candidate.lastName }}</h3>
+                                <p class="card-subtitle">
+                                    {{ candidate.politicalParty.name }}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+                {% for candidate in candidates %}
+                    <a class="candidates-grid-wrapper__item col-6 col-lg-3" href="{{ path('candidates_show', {candidate: candidate.lastName}) }}">
                         <div class="bg-image card shadow-1-strong"
                              style="background-image: url('/uploads/candidates/{{ candidate.picture }}');">
                             <div class="candidates-grid-wrapper__item-card card-body d-flex flex-column justify-content-end text-white">
