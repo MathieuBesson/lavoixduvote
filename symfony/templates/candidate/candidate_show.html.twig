@@ -4,7 +4,8 @@
     <div class="col-12 candidate">
         <div class="candidate__header">
             {% if candidate.picture %}
-                <img src="{{ candidate.displayPicture }}" alt="Photo de {{ candidate.firstName }} {{ candidate.lastName }}">
+                <img src="{{ candidate.displayPicture }}"
+                     alt="Photo de {{ candidate.firstName }} {{ candidate.lastName }}">
             {% endif %}
             <div class="candidate__header-info d-flex flex-column justify-content-end">
                 <span class="candidate__header-info-party">{{ candidate.politicalParty.name }}</span>
@@ -12,4 +13,32 @@
             </div>
         </div>
     </div>
+    <div class="col-12 star-measure">
+        <ul class="nav nav-tabs" id="starMeasuresTab" role="tablist">
+            {% for measure in candidate.starMeasures %}
+                {% set measure_id = 'id-' ~ measure.id %}
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link {% if loop.first %}active{% endif %}" id="{{ measure_id }}-tab"
+                            data-bs-toggle="tab" data-bs-target="#{{ measure_id }}" type="button" role="tab"
+                            aria-controls="{{ measure_id }}"
+                            aria-selected="{% if loop.first %}true{% else %}false{% endif %}"><i class="{{ measure.icon }}"></i></button>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="tab-content" id="starMeasuresTabContent">
+            {% for measure in candidate.starMeasures %}
+                {% set measure_id = 'id-' ~ measure.id %}
+                <div class="tab-pane fade {% if loop.first %}show active{% endif %}" id="{{ measure_id }}"
+                     role="tabpanel" aria-labelledby="{{ measure_id }}-tab">
+                    <h2>
+                        {{ measure.title }}
+                    </h2>
+                    <div class="measure-description">
+                        {{ measure.description|raw }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}

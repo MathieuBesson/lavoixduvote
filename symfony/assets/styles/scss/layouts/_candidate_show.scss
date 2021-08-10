@@ -1,6 +1,7 @@
 .candidate {
     &__header {
         position: relative;
+        margin-bottom: 30px;
         img {
             border-radius: 15px;
         }
@@ -16,14 +17,81 @@
                 font-weight: $bold;
                 line-height: 22px;
                 letter-spacing: 0.02em;
+                margin-bottom: 10px;
             }
             &-name {
                 font-size: 13px;
                 font-style: normal;
-                font-weight: 700;
+                font-weight: $bold;
                 line-height: 20px;
                 letter-spacing: 0.02em;
+                margin-bottom: 25px;
             }
         }
+    }
+}
+
+// Star measures tab
+// Wrapper
+.star-measure {
+    border-radius: 8px;
+    background-color: $primary;
+    color: $secondary;
+    // Bootstrap reset
+    .nav-tabs {
+        border-bottom: 0;
+    }
+    .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+        background-color: inherit;
+        border: 0;
+        border-bottom: 2px solid $secondary !important;
+    }
+    #starMeasuresTab {
+        // Align icons
+        display: flex;
+        justify-content: center;
+        .nav-item {
+            // Some space around
+            width: 27.5%;
+            // Link
+            .nav-link {
+                border: 0;
+                border-bottom: 2px solid rgba($secondary, 10%);
+                margin: 0;
+                width: 100%;
+                // Icon
+                i {
+                    margin: 30px auto 20px;
+                    height: 35px;
+                    width: 35px;
+                }
+                transition: 0.2s all ease;
+                // Animation of hover
+                &:hover, &:focus, &:active {
+                    border-right: 0;
+                    border-left: 0;
+                }
+                &:not(.active, :hover, &:focus, &:active) {
+                    filter: brightness(0) saturate(100%) invert(43%) sepia(68%) saturate(439%) hue-rotate(205deg) brightness(88%) contrast(94%);
+                }
+            }
+        }
+    }
+    // Star measure title
+    h2 {
+        font-size: 18px;
+        font-weight: $bold;
+        line-height: 22px;
+        letter-spacing: 0.02em;
+        text-align: center;
+        padding: 25px 20px 20px;
+    }
+    // Star measure description
+    .measure-description {
+        font-size: 15px;
+        line-height: 20px;
+        letter-spacing: 0;
+        text-align: center;
+        padding: 0 20px;
     }
 }
