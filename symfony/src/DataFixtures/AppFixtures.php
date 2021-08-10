@@ -78,20 +78,47 @@ EOT
         }
         // StarMeasure
         for ($i = 0 ; $i < 3 ; $i++) {
-            $icons = ['fas fa-archway', 'fas fa-angle-double', 'fas fa-basketball-ball', 'fas fa-broom', 'fas fa-campground'];
-            $titles = ['La dette', 'L\'environnement', 'La culture', 'Le sport', 'Le cinema', 'L\'éducation', 'Les traditions'];
+            $measures = [
+                'Santé' => 'icon-lvdv-heart-white',
+                'Immigration' => 'icon-lvdv-immigrations-white',
+                'Innovation' => 'icon-lvdv-innovations-white',
+                'Protection Sociale' => 'icon-lvdv-social-protection-white',
+                'Environnement' => 'icon-lvdv-environment-white',
+                'Économie' => 'icon-lvdv-economy-white',
+                'Défense' => 'icon-lvdv-shield-white'
+            ];
 
             for ($j = 0; $j < 3; $j++){
                 $starMeasure = new StarMeasure();
-                $starMeasure->setIcon($icons[array_rand($icons, 1)]);
-                $starMeasure->setTitle($titles[array_rand($titles, 1)]);
+                $starMeasure->setTitle(array_rand($measures, 1));
+                $starMeasure->setIcon(array_rand(array_flip($measures), 1));
 
-                $starMeasure->setDescription(<<<EOT
+                switch($j) {
+                    case 0:
+                        $starMeasure->setDescription(<<<EOT
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum est sine dolore esse, alterum cum voluptate. Audeo dicere, inquit. Hoc sic expositum dissimile est superiori. Omnes enim iucundum motum, quo sensus hilaretur. </p>
+<p>Explanetur igitur. Igitur ne dolorem quidem. Tamen a proposito, inquam, aberramus. Et nemo nimium beatus est; Quid est igitur, inquit, quod requiras? </p>
+<p>Honesta oratio, Socratica, Platonis etiam. Duo Reges: constructio interrete. Quo igitur, inquit, modo? Est, ut dicis, inquam. Restatis igitur vos; Multoque hoc melius nos veriusque quam Stoici. Et quod est munus, quod opus sapientiae? </p>
+EOT
+                        );
+                        break;
+                    case 1:
+                        $starMeasure->setDescription(<<<EOT
 <p>Honesta oratio, Socratica, Platonis etiam. Duo Reges: constructio interrete. Quo igitur, inquit, modo? Est, ut dicis, inquam. Restatis igitur vos; Multoque hoc melius nos veriusque quam Stoici. Et quod est munus, quod opus sapientiae? </p>
 <p>Explanetur igitur. Igitur ne dolorem quidem. Tamen a proposito, inquam, aberramus. Et nemo nimium beatus est; Quid est igitur, inquit, quod requiras? </p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum est sine dolore esse, alterum cum voluptate. Audeo dicere, inquit. Hoc sic expositum dissimile est superiori. Omnes enim iucundum motum, quo sensus hilaretur. </p>
 EOT
-                );
+                        );
+                        break;
+                    case 2:
+                        $starMeasure->setDescription(<<<EOT
+<p>Honesta oratio, Socratica, Platonis etiam. Duo Reges: constructio interrete. Quo igitur, inquit, modo? Est, ut dicis, inquam. Restatis igitur vos; Multoque hoc melius nos veriusque quam Stoici. Et quod est munus, quod opus sapientiae? </p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum est sine dolore esse, alterum cum voluptate. Audeo dicere, inquit. Hoc sic expositum dissimile est superiori. Omnes enim iucundum motum, quo sensus hilaretur. </p>
+<p>Explanetur igitur. Igitur ne dolorem quidem. Tamen a proposito, inquam, aberramus. Et nemo nimium beatus est; Quid est igitur, inquit, quod requiras? </p>
+EOT
+                        );
+                        break;
+                }
 
                 switch ($i) {
                     case 0:
