@@ -6,9 +6,11 @@
             <div class="container-fluid">
                 <div class="d-flex justify-content-between align-items-center">
                     <input id="responsive-menu-checkbox" type="checkbox" class="responsive-menu-checkbox">
-                    <div class="back-wrapper">
-                        <img src="/images/pictos/back.svg" alt="Page précédente">
-                    </div>
+                    {% if route_prefix == 'candidates' %}
+                        <div class="back-wrapper">
+                            <img src="/images/pictos/back.svg" alt="Page précédente">
+                        </div>
+                    {% endif %}
                     <div class="logo-wrapper">
                         <img src="/images/logos/Logo_45x45.svg" alt="Logo La Voix du Vote">
                     </div>
