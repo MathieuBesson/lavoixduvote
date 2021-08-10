@@ -91,7 +91,7 @@ EOT
             for ($j = 0; $j < 3; $j++){
                 $starMeasure = new StarMeasure();
                 $starMeasure->setTitle(array_rand($measures, 1));
-                $starMeasure->setIcon(array_rand(array_flip($measures), 1));
+                $starMeasure->setIcon($measures[$starMeasure->getTitle()]);
 
                 switch($j) {
                     case 0:
