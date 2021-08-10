@@ -8,7 +8,7 @@
                     <input id="responsive-menu-checkbox" type="checkbox" class="responsive-menu-checkbox">
                     {% if route_prefix == 'candidates' %}
                         <div class="back-wrapper">
-                            <img src="/images/pictos/back.svg" alt="Page précédente">
+                            <a href="{{ path('home') }}"><img src="/images/pictos/back.svg" alt="Page précédente"></a>
                         </div>
                     {% endif %}
                     <div class="logo-wrapper">
