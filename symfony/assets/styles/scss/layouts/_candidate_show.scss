@@ -102,7 +102,9 @@
         &__header {
             &-info {
                 bottom: 110px;
+                // offset-xl-2
                 left: 16.66666667%;
+                right: 16.66666667%;
                 &-party {
                     font-size: 55px;
                     line-height: 70px;
@@ -123,7 +125,6 @@
             font-size: 18px;
             font-weight: 400;
             line-height: 25px;
-
         }
     }
 }
