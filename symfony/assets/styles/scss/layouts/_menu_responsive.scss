@@ -11,6 +11,12 @@
         max-height: 45px;
         max-width: 45px;
     }
+
+    // Choice between grid and roll view
+    .grid-or-roll-wrapper img{
+        margin: 7px;
+        cursor: pointer;
+    }
     // Responsive menu
     .responsive-menu-wrapper {
         // Cliquable icon
