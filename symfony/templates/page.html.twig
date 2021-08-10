@@ -49,7 +49,10 @@
             <div class="container">
                 {% block menudesktop %}
                     <div class="d-none d-xl-flex">
-                        <img class="header-desktop-logo" src="/images/logos/logo-text-lvdv-color.svg" alt="Logo La Voix du Vote">
+                        <a href="{{ path('home') }}">
+                            <img class="header-desktop-logo" src="/images/logos/logo-text-lvdv-color.svg" alt="Logo La Voix du Vote">
+                        </a>
+
                         {% include 'navigation/menu.html.twig' %}
                         <div class="d-flex justify-content-center align-items-center nav-social-icon">
                             <span class="icon-facebook-primary"></span>
