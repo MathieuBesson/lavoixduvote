@@ -1,0 +1,76 @@
+.candidates-grid-wrapper {
+  position: relative;
+  padding: 40px 0px 120px 0px;
+  display: flex;
+  transition: all 1s ease;
+
+  &__item {
+    width: calc(25% - 2rem);
+    max-width: 300px;
+    text-decoration: none;
+
+    .bg-image {
+      background-position: center;
+      background-size: cover;
+      border-radius: 15px;
+      border: 0px;
+      margin: 15px;
+      height: 260px;
+      transition: all 0.2s ease;
+      &:hover{
+        box-shadow: -1px 5px 12px -6px rgba(0,0,0,0.83);
+        transform: scale(1.02);
+      }
+    }
+
+    .card-title {
+      font-size: $font-normal;
+      font-weight: $bold;
+    }
+
+    .card-subtitle {
+      font-size: $font-small;
+    }
+  }
+
+
+  @include media-breakpoint-down(lg) {
+    &__item {
+      width: 45%;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    &__item {
+      margin: 7px auto;
+    }
+  }
+}
+
+.switcher-home-wrapper__icon {
+  margin: 10px;
+  cursor: pointer;
+}
+
+
+.candidates-grid-wrapper, .candidates-roll-wrapper {
+  opacity: 0;
+  display: none;
+}
+
+.switcher-appearance {
+  display: flex;
+  animation: appearance 0.5s ease 1 normal forwards;
+}
+
+@keyframes appearance {
+  0% {
+    top: 20px;
+    opacity: 0;
+  }
+  100% {
+    top: 0px;
+    opacity: 1;
+    display: flex;
+  }
+}
