@@ -1,4 +1,3 @@
-
 .icon {
     width: 25px;
     height: 25px;
@@ -11,6 +10,8 @@
 [class^='icon-'] {
     @extend .icon;
 }
+
+// Social networks icons
 
 .icon-facebook-white {
     background-image: url(#{$icon-path} + 'facebook-logo-white.svg');
@@ -42,4 +43,58 @@
 
 .icon-twitter-primary {
     background-image: url(#{$icon-path} + 'twitter-logo-primary.svg');
+}
+
+// White custom icons
+
+.icon-lvdv-shield-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/shield.svg');
+}
+
+.icon-lvdv-coffee-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/coffee.svg');
+}
+
+.icon-lvdv-economy-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/economy.svg');
+}
+
+.icon-lvdv-education-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/education.svg');
+}
+
+.icon-lvdv-environment-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/environment.svg');
+}
+
+.icon-lvdv-world-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/world.svg');
+}
+
+.icon-lvdv-social-protection-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/social_protection.svg');
+}
+
+.icon-lvdv-world-research-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/research.svg');
+}
+
+.icon-lvdv-innovations-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/innovations.svg');
+}
+
+.icon-lvdv-immigrations-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/immigrations.svg');
+}
+
+.icon-lvdv-immigrations-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/immigrations.svg');
+}
+
+.icon-lvdv-heart-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/heart.svg');
+}
+
+.icon-lvdv-cutlery-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/cutlery.svg');
 }
