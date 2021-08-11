@@ -11,3 +11,12 @@
     @include btn-ripple($purple-mid, $purple);
 }
 
+.btn-ripple-secondary {
+    @include btn-ripple($secondary, $primary);
+    border: 1px solid transparent;
+    &:hover, &:focus, &:active {
+        color: $secondary!important;
+        border: 1px solid $secondary;
+    }
+}
+
