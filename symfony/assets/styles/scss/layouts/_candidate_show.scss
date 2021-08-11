@@ -64,14 +64,14 @@
                     margin: 30px auto 20px;
                     height: 35px;
                     width: 35px;
+                    transition: 0.2s all ease;
                 }
-                transition: 0.2s all ease;
                 // Animation of hover
                 &:hover, &:focus, &:active {
                     border-right: 0;
                     border-left: 0;
                 }
-                &:not(.active, :hover, &:focus, &:active) {
+                &:not(.active, :hover, &:focus, &:active) i {
                     filter: brightness(0) saturate(100%) invert(43%) sepia(68%) saturate(439%) hue-rotate(205deg) brightness(88%) contrast(94%);
                 }
             }
@@ -217,7 +217,9 @@
                 font-weight: $bold;
                 line-height: 22px;
                 letter-spacing: 0.02em;
-                color: #6f68c5;
+                &, &:focus, &:active, &:hover {
+                    color: #6e66c4;
+                }
             }
             &.active .title {
                 color: $secondary;
