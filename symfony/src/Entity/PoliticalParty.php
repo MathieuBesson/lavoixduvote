@@ -49,6 +49,16 @@ class PoliticalParty
      */
     private $candidates;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adress;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $mail;
+
     public function __construct()
     {
         $this->candidates = new ArrayCollection();
@@ -156,6 +166,30 @@ class PoliticalParty
 
     public function __toString() {
         return $this->name;
+    }
+
+    public function getAdress(): ?string
+    {
+        return $this->adress;
+    }
+
+    public function setAdress(?string $adress): self
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
+
+    public function setMail(?string $mail): self
+    {
+        $this->mail = $mail;
+
+        return $this;
     }
 
 

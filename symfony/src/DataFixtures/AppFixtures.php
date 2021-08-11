@@ -54,6 +54,8 @@ EOT
                     $party->setName('PTT - Partie des travailleurs transfontaliers');
                     $party->setDescription('Parti qui défend les intérêts de tous les travailleurs transfontaliers, au Zimbabwe comme au Groënland');
                     $party->setSiteLink('https://www.ptt.ptt');
+                    $party->setMail('ptt@ptt.ptt');
+                    $party->setAdress('213 rue des PTT 93000 PTT');
                     $candidate->setFirstName('Potato');
                     $candidate->setLastName('Duhamel');
                     $candidatPtt = $candidate;
@@ -62,6 +64,8 @@ EOT
                     $party->setName('AST - Association des sauveurs de tam-tam');
                     $party->setDescription('Lutte contre toutes les discriminations faites aux joueurs de djembé, tambour, maracas');
                     $party->setSiteLink('https://www.ast.bzh');
+                    $party->setMail('ast@ast.ast');
+                    $party->setAdress('213 rue des AST 93000 AST');
                     $candidate->setFirstName('TamTam');
                     $candidate->setLastName('Tom');
                     $candidatAst = $candidate;
@@ -70,6 +74,8 @@ EOT
                     $party->setName('Stupeflip Crou');
                     $party->setDescription('Association de stup fanatique');
                     $party->setSiteLink('https://www.stupefip.fr');
+                    $party->setMail('stup@stupeflip.fr');
+                    $party->setAdress('Région sud');
                     $candidate->setFirstName('King');
                     $candidate->setLastName('Ju');
                     $candidatStup = $candidate;
