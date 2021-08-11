@@ -51,7 +51,8 @@ EOT
             $primary->setPoliticalParty($party);
             switch ($i) {
                 case 0:
-                    $party->setName('PTT - Partie des travailleurs transfontaliers');
+                    $party->setName('Parti des travailleurs transfontaliers');
+                    $party->setAcronym('PTT');
                     $party->setDescription('Parti qui défend les intérêts de tous les travailleurs transfontaliers, au Zimbabwe comme au Groënland');
                     $party->setSiteLink('https://www.ptt.ptt');
                     $party->setMail('ptt@ptt.ptt');
@@ -61,7 +62,8 @@ EOT
                     $candidatPtt = $candidate;
                     break;
                 case 1:
-                    $party->setName('AST - Association des sauveurs de tam-tam');
+                    $party->setName('Association des sauveurs de tam-tam');
+                    $party->setAcronym('AST');
                     $party->setDescription('Lutte contre toutes les discriminations faites aux joueurs de djembé, tambour, maracas');
                     $party->setSiteLink('https://www.ast.bzh');
                     $party->setMail('ast@ast.ast');
@@ -72,6 +74,7 @@ EOT
                     break;
                 case 2:
                     $party->setName('Stupeflip Crou');
+                    $party->setAcronym('LECROU');
                     $party->setDescription('Association de stup fanatique');
                     $party->setSiteLink('https://www.stupefip.fr');
                     $party->setMail('stup@stupeflip.fr');

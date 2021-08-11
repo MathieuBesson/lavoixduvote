@@ -59,6 +59,11 @@ class PoliticalParty
      */
     private $mail;
 
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $acronym;
+
     public function __construct()
     {
         $this->candidates = new ArrayCollection();
@@ -188,6 +193,18 @@ class PoliticalParty
     public function setMail(?string $mail): self
     {
         $this->mail = $mail;
+
+        return $this;
+    }
+
+    public function getAcronym(): ?string
+    {
+        return $this->acronym;
+    }
+
+    public function setAcronym(string $acronym): self
+    {
+        $this->acronym = $acronym;
 
         return $this;
     }
