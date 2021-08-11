@@ -82,6 +82,7 @@ EOT
                     $party->setAdress('Région sud');
                     $candidate->setFirstName('King');
                     $candidate->setLastName('Ju');
+                    $candidate->setElectedByPrimary(true);
                     $candidatStup = $candidate;
                     break;
             }

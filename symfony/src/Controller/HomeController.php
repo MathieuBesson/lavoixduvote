@@ -21,7 +21,7 @@ class HomeController extends AbstractController
         if ($primaryId = $session->get('primaryChoice')) {
             $candidates = $repository->getCandidatesByPrimaries($primaryId);
         } else {
-            $candidates = $repository->findAll();
+            $candidates = $repository->getPresidentialCandidates();
         }
 
         return $this->render('home/home_index.html.twig', [

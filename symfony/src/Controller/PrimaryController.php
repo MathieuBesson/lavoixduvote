@@ -34,9 +34,14 @@ class PrimaryController extends AbstractController
     /**
      * @Route(name="choiceprimary", path="/selection/{primaryId}")
      */
-    public function choicePrimary($primaryId, RequestStack $requestStack) {
+    public function choicePrimary($primaryId, RequestStack $requestStack)
+    {
         $session = $requestStack->getSession();
-        $session->set('primaryChoice', $primaryId);
+        if ($primaryId === 0) {
+            $session->remove('primaryChoice');
+        } else {
+            $session->set('primaryChoice', $primaryId);
+        }
 
         return $this->redirectToRoute('home');
     }

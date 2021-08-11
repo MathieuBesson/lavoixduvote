@@ -74,12 +74,21 @@ class CandidateRepository extends ServiceEntityRepository
 
     public function getCandidatesByPrimaries($primaryId)
     {
-       return $this->createQueryBuilder('c')
+        return $this->createQueryBuilder('c')
             ->join('c.partyPrimary', 'p')
             ->select('c')
             ->addSelect('p')
             ->where('p.id = :primaryId')
             ->setParameter('primaryId', $primaryId)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getPresidentialCandidates()
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c')
+            ->where('c.electedByPrimary = true')
             ->getQuery()
             ->getResult();
     }
