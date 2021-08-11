@@ -1,0 +1,13 @@
+.btn {
+    border-radius: 31px;
+    border: 0;
+
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.btn-ripple-primary {
+    @include btn-ripple($purple-mid, $purple);
+}
+

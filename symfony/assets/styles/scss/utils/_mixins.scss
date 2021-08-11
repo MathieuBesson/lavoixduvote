@@ -34,3 +34,19 @@
 @mixin filter-primary() {
     filter: brightness(0) saturate(100%) invert(8%) sepia(82%) saturate(5301%) hue-rotate(249deg) brightness(97%) contrast(131%);
 }
+
+// Ripple effect
+@mixin btn-ripple($mid, $end) {
+    background-position: center;
+    transition: background 0.8s;
+
+    &:hover {
+        background: $end radial-gradient(circle, transparent 1%, $end 1%) center/15000%;
+    }
+
+    &:active {
+        background-color: $mid;
+        background-size: 100%;
+        transition: background 0s;
+    }
+}
