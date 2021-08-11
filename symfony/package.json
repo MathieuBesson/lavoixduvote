@@ -11,7 +11,8 @@
         "webpack-notifier": "^1.6.0"
     },
     "dependencies": {
-        "@symfony/webpack-encore": "^1.0.0"
+        "@symfony/webpack-encore": "^1.0.0",
+        "@tannerhodges/match-height": "^1.1.1"
     },
     "license": "UNLICENSED",
     "private": true,
