@@ -47,8 +47,8 @@
     <div class="program">
         <div class="row">
             {% for theme, actions in program %}
-                <div class="col-12">
-                    <h3>Mesures <span class="program__theme theme-{{ theme|clean_class }}">{{ theme }}</span></h3>
+                <div class="col-12 col-md-5 {% if loop.index % 2 == 1 %}offset-md-1{% endif %}">
+                    <h3 class="program__title program__title-{{ theme|clean_class }}"><span>Mesures&nbsp;</span><span class="program__title-theme">{{ theme }}</span></h3>
                     <ul class="program__actions">
                         {% for action in actions %}
                             <li class="program__action">{{ action.title }}</li>

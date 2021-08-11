@@ -94,8 +94,89 @@
         text-align: center;
         padding: 0 20px 30px;
         margin-bottom: 60px;
+        font-weight: $medium;
     }
 }
+// Program
+.program {
+    &__title {
+        display: flex;
+        position: relative;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 22px;
+        letter-spacing: 0.02em;
+        color: $primary;
+        padding-left: 25px;
+        &-theme {
+            color: $danger;
+            white-space: nowrap;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background-size: cover;
+            margin-right: 10px;
+        }
+        &.program__title-ecologie::before {
+            background-image: url($icon-path + '/lvdv_lib/colorful/environment.svg');
+        }
+        &.program__title-ecologie::before {
+            background-image: url($icon-path + '/lvdv_lib/colorful/environment.svg');
+        }
+        &.program__title-sante::before {
+            background-image: url($icon-path + '/lvdv_lib/colorful/heart.svg');
+        }
+        &.program__title-economie::before {
+            background-image: url($icon-path + '/lvdv_lib/colorful/economy.svg');
+        }
+        &.program__title-emploi::before {
+            background-image: url($icon-path + '/lvdv_lib/colorful/employment.svg');
+        }
+        &.program__title-securite::before {
+            background-image: url($icon-path + '/lvdv_lib/colorful/shield.svg');
+        }
+        &.program__title-education::before {
+            background-image: url($icon-path + '/lvdv_lib/colorful/education.svg');
+        }
+        &.program__title-protection-sociale::before {
+            background-image: url($icon-path + '/lvdv_lib/colorful/social_protection.svg');
+        }
+        &.program__title-immigration::before {
+            background-image: url($icon-path + '/lvdv_lib/colorful/immigrations.svg');
+        }
+        &.program__title-culture::before {
+            background-image: url($icon-path + '/lvdv_lib/colorful/culture.svg');
+        }
+        &.program__title-innovation::before {
+            background-image: url($icon-path + '/lvdv_lib/colorful/innovations.svg');
+        }
+        &::after {
+            content: '';
+            display: inline-block;
+            width: 100%;
+            border-bottom: 2px solid rgba($primary, 40%);
+            margin-bottom: 5px;
+            margin-left: 15px;
+        }
+    }
+    &__actions {
+        margin-bottom: 45px;
+        li {
+            list-style: url($icon-path + '/list_style.svg');
+            font-size: 15px;
+            font-weight: $medium;
+            line-height: 20px;
+            letter-spacing: 0;
+            padding-bottom: 10px;
+        }
+    }
+}
+
+
 // Desktop
 @include media-breakpoint-up(xl) {
     .candidate {
@@ -125,6 +206,23 @@
             font-size: 18px;
             font-weight: 400;
             line-height: 25px;
+        }
+    }
+    .program {
+        &__title {
+            font-size: 20px;
+            line-height: 30px;
+            letter-spacing: 0.02em;
+            padding-left: 30px;
+            &::before {
+                width: 25px;
+                height: 25px;
+            }
+        }
+        &__actions li {
+            font-size: 18px;
+            line-height: 25px;
+            letter-spacing: 0;
         }
     }
 }
