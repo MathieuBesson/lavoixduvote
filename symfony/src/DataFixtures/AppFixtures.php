@@ -16,7 +16,8 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class AppFixtures extends Fixture {
+class AppFixtures extends Fixture
+{
 
     private UserPasswordHasherInterface $passwordHasher;
 
@@ -25,7 +26,8 @@ class AppFixtures extends Fixture {
         $this->passwordHasher = $passwordHasher;
     }
 
-    public function load(ObjectManager $manager) {
+    public function load(ObjectManager $manager)
+    {
         // Political Party, primary and candidates
         for ($i = 0; $i < 3; $i++) {
             $party = new PoliticalParty();
@@ -77,23 +79,26 @@ EOT
             $manager->persist($primary);
         }
         // StarMeasure
-        for ($i = 0 ; $i < 3 ; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $measures = [
-                'Santé' => 'icon-lvdv-heart-white',
-                'Immigration' => 'icon-lvdv-immigrations-white',
-                'Innovation' => 'icon-lvdv-innovations-white',
+                'Santé'              => 'icon-lvdv-heart-white',
+                'Sécurité'           => 'icon-lvdv-shield-white',
+                'Économie'           => 'icon-lvdv-economy-white',
+                'Écologie'           => 'icon-lvdv-environment-white',
+                'Immigration'        => 'icon-lvdv-immigrations-white',
+                'Éducation'          => 'icon-lvdv-education',
+                'Culture'            => 'icon-lvdv-culture-white',
                 'Protection Sociale' => 'icon-lvdv-social-protection-white',
-                'Environnement' => 'icon-lvdv-environment-white',
-                'Économie' => 'icon-lvdv-economy-white',
-                'Défense' => 'icon-lvdv-shield-white'
+                'Innovation'         => 'icon-lvdv-innovations-white',
+                'Emploi'             => 'icon-lvdv-employment-white',
             ];
 
-            for ($j = 0; $j < 3; $j++){
+            for ($j = 0; $j < 3; $j++) {
                 $starMeasure = new StarMeasure();
                 $starMeasure->setTitle(array_rand($measures, 1));
                 $starMeasure->setIcon($measures[$starMeasure->getTitle()]);
 
-                switch($j) {
+                switch ($j) {
                     case 0:
                         $starMeasure->setDescription(<<<EOT
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum est sine dolore esse, alterum cum voluptate. Audeo dicere, inquit. Hoc sic expositum dissimile est superiori. Omnes enim iucundum motum, quo sensus hilaretur. </p>
@@ -142,7 +147,7 @@ EOT
         $manager->persist($candidatStup);
 
         // Programs
-        for ($i = 0 ; $i < 3 ; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $program = new Program();
             $program->setPresentation(<<<EOT
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum est sine dolore esse, alterum cum voluptate. Audeo dicere, inquit. Hoc sic expositum dissimile est superiori. Omnes enim iucundum motum, quo sensus hilaretur. </p>
@@ -176,7 +181,7 @@ EOT
             switch ($i) {
                 case 0:
                     $theme->setLabel('Écologie');
-                    for ($j = 0 ; $j < 3 ; $j++) {
+                    for ($j = 0; $j < 3; $j++) {
                         $action = new Action();
                         $action->setTheme($theme);
                         switch ($j) {
@@ -204,7 +209,7 @@ EOT
                     break;
                 case 1:
                     $theme->setLabel('Santé');
-                    for ($j = 0 ; $j < 3 ; $j++) {
+                    for ($j = 0; $j < 3; $j++) {
                         $action = new Action();
                         $action->setTheme($theme);
                         switch ($j) {
@@ -230,7 +235,7 @@ EOT
                     break;
                 case 2:
                     $theme->setLabel('Économie');
-                    for ($j = 0 ; $j < 3 ; $j++) {
+                    for ($j = 0; $j < 3; $j++) {
                         $action = new Action();
                         $action->setTheme($theme);
                         switch ($j) {
@@ -256,7 +261,7 @@ EOT
                     break;
                 case 3:
                     $theme->setLabel('Sécurité');
-                    for ($j = 0 ; $j < 3 ; $j++) {
+                    for ($j = 0; $j < 3; $j++) {
                         $action = new Action();
                         $action->setTheme($theme);
                         switch ($j) {
@@ -281,7 +286,7 @@ EOT
                     break;
                 case 4:
                     $theme->setLabel('Emploi');
-                    for ($j = 0 ; $j < 3 ; $j++) {
+                    for ($j = 0; $j < 3; $j++) {
                         $action = new Action();
                         $action->setTheme($theme);
                         switch ($j) {
@@ -308,7 +313,7 @@ EOT
                     break;
                 case 5:
                     $theme->setLabel('Protection sociale');
-                    for ($j = 0 ; $j < 3 ; $j++) {
+                    for ($j = 0; $j < 3; $j++) {
                         $action = new Action();
                         $action->setTheme($theme);
                         switch ($j) {
@@ -333,7 +338,7 @@ EOT
                     break;
                 case 6:
                     $theme->setLabel('Immigration');
-                    for ($j = 0 ; $j < 3 ; $j++) {
+                    for ($j = 0; $j < 3; $j++) {
                         $action = new Action();
                         $action->setTheme($theme);
                         switch ($j) {
@@ -358,7 +363,7 @@ EOT
                     break;
                 case 7:
                     $theme->setLabel('Culture');
-                    for ($j = 0 ; $j < 3 ; $j++) {
+                    for ($j = 0; $j < 3; $j++) {
                         $action = new Action();
                         $action->setTheme($theme);
                         switch ($j) {
@@ -383,7 +388,7 @@ EOT
                     break;
                 case 8:
                     $theme->setLabel('Innovation');
-                    for ($j = 0 ; $j < 3 ; $j++) {
+                    for ($j = 0; $j < 3; $j++) {
                         $action = new Action();
                         $action->setTheme($theme);
                         switch ($j) {
@@ -408,7 +413,7 @@ EOT
                     break;
                 case 9:
                     $theme->setLabel('Éducation');
-                    for ($j = 0 ; $j < 3 ; $j++) {
+                    for ($j = 0; $j < 3; $j++) {
                         $action = new Action();
                         $action->setTheme($theme);
                         switch ($j) {
@@ -439,7 +444,7 @@ EOT
         $manager->persist($programStup);
         // Glossary
         // Category
-        for ($i = 0 ; $i < 3 ; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $glossaryCategory = new GlossaryCategory();
             switch ($i) {
                 case 0:
@@ -456,7 +461,7 @@ EOT
             $manager->persist($glossaryCategory);
         }
 
-        for ($i = 0 ; $i < 5 ; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $glossary = new Glossary();
             $glossary->setDefinition(<<<EOT
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Illi enim inter se dissentiunt. Bestiarum vero nullum iudicium puto. Respondeat totidem verbis. Illum mallem levares, quo optimum atque humanissimum virum, Cn. Duo Reges: constructio interrete. </p>
