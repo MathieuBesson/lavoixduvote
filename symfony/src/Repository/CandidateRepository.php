@@ -72,6 +72,12 @@ class CandidateRepository extends ServiceEntityRepository
         return $measuresByThemes;
     }
 
+    /**
+     * Get all candidates from a specific primary
+     *
+     * @param $primaryId
+     * @return int|mixed|string
+     */
     public function getCandidatesByPrimaries($primaryId)
     {
         return $this->createQueryBuilder('c')
@@ -84,6 +90,11 @@ class CandidateRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * Get all candidates to the presidential, aka that had been elected to the primary
+     *
+     * @return int|mixed|string
+     */
     public function getPresidentialCandidates()
     {
         return $this->createQueryBuilder('c')

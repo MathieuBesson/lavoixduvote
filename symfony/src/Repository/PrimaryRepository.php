@@ -19,6 +19,11 @@ class PrimaryRepository extends ServiceEntityRepository
         parent::__construct($registry, Primary::class);
     }
 
+    /**
+     * Select all primaries that are not over, aka : no elected candidates
+     *
+     * @return int|mixed|string
+     */
     public function getCurrentPrimaries()
     {
         return $this->createQueryBuilder('p')
