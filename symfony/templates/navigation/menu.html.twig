@@ -11,9 +11,7 @@
                 Changer la sélection
             </a>
             <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">Présidentielles 2022</a>
-                <a class="dropdown-item" href="#">Primaires PS</a>
-                <a class="dropdown-item" href="#">Primaires LR</a>
+                {{ render(url('primaries_list_name')) }}
             </div>
         </div>
     </li>
