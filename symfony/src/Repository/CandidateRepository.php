@@ -53,7 +53,7 @@ class CandidateRepository extends ServiceEntityRepository
             ->innerJoin('c.program', 'p')
             ->innerJoin('p.actions', 'a')
             ->innerJoin('a.theme', 't')
-            ->where('c.id = :id', )
+            ->where('c.id = :id',)
             ->orderBy('a.title', 'ASC')
             ->orderBy('a.importance', 'DESC')
             ->setParameter('id', $candidateId)
@@ -70,6 +70,18 @@ class CandidateRepository extends ServiceEntityRepository
         }
 
         return $measuresByThemes;
+    }
+
+    public function getCandidatesByPrimaries($primaryId)
+    {
+       return $this->createQueryBuilder('c')
+            ->join('c.partyPrimary', 'p')
+            ->select('c')
+            ->addSelect('p')
+            ->where('p.id = :primaryId')
+            ->setParameter('primaryId', $primaryId)
+            ->getQuery()
+            ->getResult();
     }
 
     public function findAllNames()

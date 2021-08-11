@@ -49,6 +49,7 @@ EOT
             $primary->setDateSecondRound(new \DateTime('+4 months'));
             $candidate->setPoliticalParty($party);
             $primary->setPoliticalParty($party);
+            $candidate->setPartyPrimary($primary);
             switch ($i) {
                 case 0:
                     $party->setName('Parti des travailleurs transfontaliers');

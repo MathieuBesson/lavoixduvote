@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Candidate;
 use App\Entity\Primary;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -31,9 +32,12 @@ class PrimaryController extends AbstractController
     }
 
     /**
-     * @Route(name="choiceprimary", path="/choice/{primary}")
+     * @Route(name="choiceprimary", path="/selection/{primaryId}")
      */
-    public function choicePrimary($primary) {
+    public function choicePrimary($primaryId, RequestStack $requestStack) {
+        $session = $requestStack->getSession();
+        $session->set('primaryChoice', $primaryId);
 
+        return $this->redirectToRoute('home');
     }
 }
