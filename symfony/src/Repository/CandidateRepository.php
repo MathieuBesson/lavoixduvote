@@ -37,6 +37,41 @@ class CandidateRepository extends ServiceEntityRepository
         return array_shift($result);
     }
 
+    /**
+     * Get program of a candidate, grouped by themes and order by importance of action
+     *
+     * @param int $candidateId
+     * @return array
+     */
+    public function getProgramByThemes(int $candidateId): array
+    {
+        $scalarResult = $this->createQueryBuilder('c')
+            ->select('c')
+            ->addSelect('p')
+            ->addSelect('a')
+            ->addSelect('t')
+            ->innerJoin('c.program', 'p')
+            ->innerJoin('p.actions', 'a')
+            ->innerJoin('a.theme', 't')
+            ->where('c.id = :id', )
+            ->orderBy('a.title', 'ASC')
+            ->orderBy('a.importance', 'DESC')
+            ->setParameter('id', $candidateId)
+            ->getQuery()
+            ->getScalarResult();
+
+        $measuresByThemes = [];
+        foreach ($scalarResult as $result) {
+            if (!isset($measuresByThemes[$result['t_label']])) {
+                $measuresByThemes[$result['t_label']] = [];
+            }
+            $measuresByThemes[$result['t_label']][$result['a_id']]['title'] = $result['a_title'];
+            $measuresByThemes[$result['t_label']][$result['a_id']]['importance'] = $result['a_importance'];
+        }
+
+        return $measuresByThemes;
+    }
+
     public function findAllNames()
     {
         return $this->createQueryBuilder('candidates')
