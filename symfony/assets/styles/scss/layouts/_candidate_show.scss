@@ -206,6 +206,22 @@
             font-size: 18px;
             font-weight: 400;
             line-height: 25px;
+            margin-top: 30px;
+        }
+        #starMeasuresTab .nav-item .nav-link {
+            i, .title {
+                margin: 40px 5px 25px;
+            }
+            .title {
+                font-size: 18px;
+                font-weight: $bold;
+                line-height: 22px;
+                letter-spacing: 0.02em;
+                color: #6f68c5;
+            }
+            &.active .title {
+                color: $secondary;
+            }
         }
     }
     .program {
