@@ -67,6 +67,34 @@
             </div>
         </div>
     </div>
+    {# Party history #}
+    <div class="party-history">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="party-history__title d-flex flex-column flex-md-row">
+                    <span>À propos de&nbsp;</span>
+                    <span class="party-history__title-name">{{ candidate.politicalParty.name }}</span>
+                </h3>
+            </div>
+            <div class="col-12">
+                <div class="party-history__description">
+                    {{ candidate.politicalParty.description }}
+                </div>
+            </div>
+            {% if candidate.politicalParty.adress %}
+                <div class="col-12">
+                    <div class="party-history__localisation">
+                        <strong>Localisation:&nbsp;</strong>{{ candidate.politicalParty.adress }}
+                    </div>
+                </div>
+            {% endif %}
+            {% if candidate.politicalParty.mail %}
+                <div class="col-12">
+                    <strong>Contact:&nbsp;</strong>{{ candidate.politicalParty.mail }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
 
 
 
