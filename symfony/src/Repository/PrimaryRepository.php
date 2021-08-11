@@ -18,4 +18,15 @@ class PrimaryRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Primary::class);
     }
+
+    public function getCurrentPrimaries()
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p')
+            ->addSelect('c')
+            ->join('p.candidates', 'c')
+            ->where('c.electedByPrimary <> true')
+            ->getQuery()
+            ->getResult();
+    }
 }

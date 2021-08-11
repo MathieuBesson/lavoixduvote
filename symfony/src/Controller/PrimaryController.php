@@ -24,7 +24,7 @@ class PrimaryController extends AbstractController
     {
         $primaries = $this->getDoctrine()
             ->getRepository(Primary::class)
-            ->findAll();
+            ->getCurrentPrimaries();
 
         return $this->render('primary/primary_list_name.html.twig', [
             'primaries' => $primaries
