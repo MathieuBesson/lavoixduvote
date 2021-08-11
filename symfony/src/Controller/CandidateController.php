@@ -38,8 +38,11 @@ class CandidateController extends AbstractController
         if (!$candidate) {
             throw $this->createNotFoundException('Ce candidat n\'existe pas');
         }
+        $program = $repository->getProgramByThemes($candidate->getId());
+
         return $this->render('candidate/candidate_show.html.twig', [
             'candidate' => $candidate,
+            'program'   => $program,
         ]);
     }
 

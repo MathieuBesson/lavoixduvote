@@ -1,6 +1,7 @@
 {% extends 'page.html.twig' %}
 
 {% block main %}
+    {# Header, picture / name #}
     <div class="col-12 candidate">
         <div class="candidate__header">
             {% if candidate.picture %}
@@ -13,6 +14,7 @@
             </div>
         </div>
     </div>
+    {# Star measures tab #}
     <div class="col-12 col-xl-8 offset-xl-2 star-measure">
         <ul class="nav nav-tabs" id="starMeasuresTab" role="tablist">
             {% for measure in candidate.starMeasures %}
@@ -21,7 +23,8 @@
                     <button class="nav-link {% if loop.first %}active{% endif %}" id="{{ measure_id }}-tab"
                             data-bs-toggle="tab" data-bs-target="#{{ measure_id }}" type="button" role="tab"
                             aria-controls="{{ measure_id }}"
-                            aria-selected="{% if loop.first %}true{% else %}false{% endif %}"><i class="{{ measure.icon }}"></i></button>
+                            aria-selected="{% if loop.first %}true{% else %}false{% endif %}"><i
+                                class="{{ measure.icon }}"></i></button>
                 </li>
             {% endfor %}
         </ul>
@@ -40,5 +43,19 @@
             {% endfor %}
         </div>
     </div>
-
+    {# Program #}
+    <div class="program">
+        <div class="row">
+            {% for theme, actions in program %}
+                <div class="col-12">
+                    <h3>Mesures <span class="program__theme theme-{{ theme|clean_class }}">{{ theme }}</span></h3>
+                    <ul class="program__actions">
+                        {% for action in actions %}
+                            <li class="program__action">{{ action.title }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
