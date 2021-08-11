@@ -1,0 +1,5 @@
+// Will make a flex row to break (the containers needs flex-wrap: wrap;)
+.flex-break {
+    height: 0!important;
+    flex-basis: 100%;
+}
