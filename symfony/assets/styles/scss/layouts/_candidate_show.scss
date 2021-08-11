@@ -294,24 +294,28 @@
             margin-top: 30px;
         }
 
-        #starMeasuresTab .nav-item .nav-link {
-            i, .title {
-                margin: 40px 5px 25px;
-            }
+        #starMeasuresTab .nav-item {
+            width: 30%;
 
-            .title {
-                font-size: 18px;
-                font-weight: $bold;
-                line-height: 22px;
-                letter-spacing: 0.02em;
-
-                &, &:focus, &:active, &:hover {
-                    color: #6e66c4;
+            .nav-link {
+                i, .title {
+                    margin: 40px 5px 25px;
                 }
-            }
 
-            &.active .title {
-                color: $secondary;
+                .title {
+                    font-size: 18px;
+                    font-weight: $bold;
+                    line-height: 22px;
+                    letter-spacing: 0.02em;
+
+                    &, &:focus, &:active, &:hover {
+                        color: #6e66c4;
+                    }
+                }
+
+                &.active .title {
+                    color: $secondary;
+                }
             }
         }
     }

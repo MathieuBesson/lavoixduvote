@@ -22,6 +22,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link {% if loop.first %}active{% endif %} d-md-flex align-items-md-center justify-content-md-center"
                             id="{{ measure_id }}-tab"
+                            data-match-height="navlink"
                             data-bs-toggle="tab" data-bs-target="#{{ measure_id }}" type="button" role="tab"
                             aria-controls="{{ measure_id }}"
                             aria-selected="{% if loop.first %}true{% else %}false{% endif %}"><i
