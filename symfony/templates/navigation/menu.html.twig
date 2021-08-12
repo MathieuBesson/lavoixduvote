@@ -5,10 +5,16 @@
     <li><a href="#">Glossaire</a></li>
     <li><a href="#">Nous contacter</a></li>
     <li>
+
+
         <div class="dropdown">
             <a class="dropdown-toggle d-flex justify-content-center align-items-center" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="/images/logos/logo_alt_white.svg" alt="Logo la voix du vote">
-                Changer la sélection
+                {% if primaryChoice is defined %}
+                        <span class="menu-primary-selection">{{ primaryChoice }}</span>
+                    {% else %}
+                        Changer la sélection
+                {% endif %}
             </a>
             <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuLink">
                 {#

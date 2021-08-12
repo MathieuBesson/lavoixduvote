@@ -2,6 +2,14 @@
 header {
     padding: 30px 0;
 
+    #dropdownMenuLink {
+        min-width: 175px;
+    }
+
+    .menu-primary-selection {
+        color: $primary;
+    }
+
     .header-desktop-logo {
         width: 110px;
         height: 30px;
