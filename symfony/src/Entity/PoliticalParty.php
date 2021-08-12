@@ -110,6 +110,11 @@ class PoliticalParty
         return $this;
     }
 
+    public function displayPicture(): ?string
+    {
+        return '/uploads/politicalParties/' . $this->picture;
+    }
+
     public function getSiteLink(): ?string
     {
         return $this->siteLink;

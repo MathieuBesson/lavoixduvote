@@ -1,0 +1,46 @@
+{% extends 'page.html.twig' %}
+
+{% block main %}
+    <div class="primary-index">
+        <h1 class="d-none">Choix des primaires</h1>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <div class="primary-index__wrapper">
+                    <div class="primary-index__image">
+                        <img src="/uploads/candidates/fixture.jpg" alt="Illustrations présidentielles 2022">
+                    </div>
+                    <div class="primary-index__content">
+                        <div class="primary-index__content-wrapper">
+                            <h2 class="primary-index__content-title">
+                                Présidentielles 2022
+                            </h2>
+                            <a class="primary-index__content-link"
+                               href="{{ path('primarieschoiceprimary', {'primaryId': 0 }) }}">Découvrir les
+                                programmes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for primary in primaries %}
+                <div class="col-12 col-lg-6">
+                    <div class="primary-index__wrapper">
+                        <div class="primary-index__image">
+                            <img src="{{ primary.politicalParty.displayPicture }}"
+                                 alt="Illustration {{ primary.politicalParty.acronym }}">
+                        </div>
+                        <div class="primary-index__content">
+                            <div class="primary-index__content-wrapper">
+                                <h2 class="primary-index__content-title">
+                                    Primaire {{ primary.politicalParty.acronym }}
+                                </h2>
+                                <a class="primary-index__content-link"
+                                   href="{{ path('primarieschoiceprimary', {'primaryId': primary.id }) }}">Découvrir les
+                                    programmes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

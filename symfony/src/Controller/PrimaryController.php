@@ -32,6 +32,20 @@ class PrimaryController extends AbstractController
     }
 
     /**
+     * @Route(name="_index"), path="/"
+     */
+    public function primariesIndex(): Response
+    {
+        $primaries = $this->getDoctrine()
+            ->getRepository(Primary::class)
+            ->getCurrentPrimaries();
+
+        return $this->render('primary/primary_index.html.twig', [
+            'primaries' => $primaries
+        ]);
+    }
+
+    /**
      * @Route(name="choiceprimary", path="/selection/{primaryId}")
      */
     public function choicePrimary($primaryId, RequestStack $requestStack)

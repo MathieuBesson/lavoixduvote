@@ -1,0 +1,68 @@
+.primary-index {
+    &__wrapper {
+        position: relative;
+        margin-bottom: 25px;
+        border-radius: 15px;
+        @include zoom-effect();
+
+        & a::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+
+        }
+    }
+
+    // Image of party
+    &__image {
+        position: relative;
+        // Make it square
+        &:after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+
+        img {
+            border-radius: 15px;
+            position: absolute;
+            max-width: 600px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    // Title and link
+    &__content {
+        position: absolute;
+        inset: 0;
+        color: $secondary;
+
+        &-wrapper {
+            margin-top: 80%;
+            margin-left: 25px;
+        }
+
+        &-title {
+            font-size: 30px;
+            font-weight: $bold;
+            line-height: 40px;
+            letter-spacing: 0.02em;
+            margin-bottom: 20px;
+        }
+
+        &-link {
+            font-size: 12px;
+            font-weight: $bold;
+            line-height: 12px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+
+            &, &:hover, &:active, &:focus {
+                color: $secondary;
+            }
+        }
+    }
+}
