@@ -1,8 +1,11 @@
 .primary-index {
     &__wrapper {
         position: relative;
-        margin-bottom: 25px;
+        margin-bottom: 50px;
         border-radius: 15px;
+        max-height: 550px;
+        max-width: 600px;
+
         @include zoom-effect();
 
         & a::before {
@@ -15,6 +18,7 @@
 
     // Image of party
     &__image {
+        max-height: 550px;
         position: relative;
         // Make it square
         &:after {
@@ -68,7 +72,7 @@
                 content: url($icon-path + '../arrow.svg');
                 position: absolute;
                 left: 25px;
-                bottom: 25px;
+                bottom: 15px;
             }
 
             &, &:hover, &:active, &:focus {
