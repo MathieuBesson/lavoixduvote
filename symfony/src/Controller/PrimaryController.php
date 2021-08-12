@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Candidate;
 use App\Entity\Primary;
+use App\EventSubscriber\PrimaryChoiceSubscriber;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,13 +54,7 @@ class PrimaryController extends AbstractController
         // We set a session variable when the user select a different primary
         // Then we will adapt every necessary requests by this variable
         $session = $requestStack->getSession();
-        // If user select presidential, an id of 0 is passed to this method
-        // so we remove the variable
-        if ($primaryId === 0) {
-            $session->remove('primaryChoice');
-        } else {
-            $session->set('primaryChoice', $primaryId);
-        }
+        $session->set(PrimaryChoiceSubscriber::PRIMARY_CHOICE_ID, $primaryId);
 
         return $this->redirectToRoute('home');
     }

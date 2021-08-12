@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Candidate;
+use App\EventSubscriber\PrimaryChoiceSubscriber;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +20,9 @@ class HomeController extends AbstractController
         $repository = $this->getDoctrine()
             ->getRepository(Candidate::class);
         // If we have a primary choice, let's adapt our doctrine request !
-        if ($primaryId = $session->get('primaryChoice')) {
+        $primaryId = $session->get(PrimaryChoiceSubscriber::PRIMARY_CHOICE_ID);
+        // 0 is for presidential choice
+        if ($primaryId !== PrimaryChoiceSubscriber::PRIMARY_CHOICE_PRESIDENTIAL) {
             $candidates = $repository->getCandidatesByPrimaries($primaryId);
         } else {
             // If we have no session variable, it's the default choice : the great presidential
