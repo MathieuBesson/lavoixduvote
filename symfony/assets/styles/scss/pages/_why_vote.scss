@@ -88,19 +88,16 @@
 
     // Slider
     $slider-width: 400px;
-    $slider-height: 350px;
-    $dot-height: 50px;
 
     .slider {
       width: $slider-width;
-      height: $slider-height;
+      height: 350px;
       padding: 0;
 
       &-wrapper {
         overflow: hidden;
         position: relative;
         width: 100%;
-        height: $slider-height - $dot-height;
         z-index: 1;
 
         &__slides {
@@ -109,7 +106,6 @@
           top: 0;
           left: -$slider-width;
           width: 10000px;
-          height: $slider-height - $dot-height;
 
           &.shifting {
             transition: left .2s ease-out;
@@ -118,7 +114,6 @@
           &-item {
             display: flex;
             width: $slider-width;
-            height: $slider-height - $dot-height;
             cursor: pointer;
             transition: all 1s ease;
             position: relative;
