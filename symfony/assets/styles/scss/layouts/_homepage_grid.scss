@@ -12,12 +12,7 @@
       border-radius: 15px;
       border: 0;
       height: 260px;
-      transition: all 0.2s ease;
-
-      &:hover {
-        box-shadow: -1px 5px 12px -6px rgba(0, 0, 0, 0.83);
-        transform: scale(1.02);
-      }
+      @include zoom-effect()
     }
 
     .card-title {
