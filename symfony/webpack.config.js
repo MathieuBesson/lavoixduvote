@@ -23,6 +23,8 @@ Encore
     .addEntry('app', './assets/app.js')
 
     .addEntry('switch-grid-roll', './assets/switch-grid-roll.js')
+    .addEntry('slider-why-vote', './assets/slider-why-vote.js')
+
 
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
