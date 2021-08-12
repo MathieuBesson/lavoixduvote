@@ -57,20 +57,22 @@ class PrimaryChoiceSubscriber implements EventSubscriberInterface
         $session = $this->requestStack->getSession();
         $primaryChoice = $session->get(self::PRIMARY_CHOICE_ID);
         $currentRoute = $event->getRequest()->attributes->get('_route');
-        // If he hasn't made his choice, and he is not on a route that will help him to make a choice, we redirect
-        if (!isset($primaryChoice) && ($currentRoute !== 'primaries_index' && $currentRoute !== 'primarieschoiceprimary')) {
-            $url = $this->router->generate('primaries_index');
-            $event->setResponse(new RedirectResponse($url));
-        } elseif (isset($primaryChoice) && $primaryChoice !== self::PRIMARY_CHOICE_PRESIDENTIAL) {
-            $primary = $this->em->getRepository(Primary::class)
-                ->find($primaryChoice);
-            $name = 'Primaire ' . $primary->getPoliticalParty()->getAcronym();
-        } else {
-            $name = 'Présidentielles 2022';
+
+        if ($currentRoute === 'home') {
+            // If he hasn't made his choice, and he is not on a route that will help him to make a choice, we redirect
+            if (!isset($primaryChoice) && ($currentRoute !== 'primaries_index' && $currentRoute !== 'primarieschoiceprimary')) {
+                $url = $this->router->generate('primaries_index');
+                $event->setResponse(new RedirectResponse($url));
+            } elseif (isset($primaryChoice)) {
+                if ($primaryChoice !== self::PRIMARY_CHOICE_PRESIDENTIAL) {
+                    $primary = $this->em->getRepository(Primary::class)
+                        ->find($primaryChoice);
+                    $name = 'Primaire ' . $primary->getPoliticalParty()->getAcronym();
+                } else {
+                    $name = 'Présidentielles 2022';
+                }
+                $this->twig->addGlobal(self::PRIMARY_CHOICE_ID, $name);
+            }
         }
-
-
-        $this->twig->addGlobal(self::PRIMARY_CHOICE_ID, $name);
-
     }
 }
