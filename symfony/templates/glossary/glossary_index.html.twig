@@ -1,0 +1,28 @@
+{% extends 'page.html.twig' %}
+
+{% block main %}
+    <div class="glossary-wrapper row">
+        <h1>Jargon Politique</h1>
+        <hr class="w-100">
+
+        <nav>
+            <ul>
+                <li>Tout</li>
+                {% for glossaryCategorie in glossaryCategories %}
+                    <li>{{ glossaryCategorie }}</li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+        <section class="glossary-wrapper__definitions">
+            <ul>
+                {% for definition in definitions %}
+                    <li data-category="{{ definition.category }}">
+                        {{ definition.word }}
+                        {{ definition.definition|raw }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+{% endblock %}
