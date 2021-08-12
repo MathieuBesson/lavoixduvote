@@ -8,11 +8,10 @@
 
         @include zoom-effect();
 
-        & a::before {
-            content: '';
+        &-link-zone {
             position: absolute;
             inset: 0;
-
+            z-index: 100;
         }
     }
 
@@ -67,12 +66,13 @@
             text-transform: uppercase;
             text-decoration: none;
             margin-left: 20px;
+            position: relative;
 
             &::after {
                 content: url($icon-path + '../arrow.svg');
                 position: absolute;
-                left: 25px;
-                bottom: 30px;
+                left: -20px;
+                bottom: -10px;
             }
 
             &, &:hover, &:active, &:focus {

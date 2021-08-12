@@ -24,6 +24,8 @@
             {% for primary in primaries %}
                 <div class="col-12 col-lg-6">
                     <div class="primary-index__wrapper">
+                        <a class="primary-index__wrapper-link-zone"
+                           href="{{ path('primarieschoiceprimary', {'primaryId': primary.id }) }}"></a>
                         <div class="primary-index__image">
                             <img src="{{ primary.politicalParty.displayPicture }}"
                                  alt="Illustration {{ primary.politicalParty.acronym }}">
