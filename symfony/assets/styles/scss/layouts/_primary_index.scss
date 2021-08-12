@@ -26,7 +26,6 @@
         img {
             border-radius: 15px;
             position: absolute;
-            max-width: 600px;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -40,16 +39,20 @@
         color: $secondary;
 
         &-wrapper {
-            margin-top: 80%;
+            margin-top: 75%;
             margin-left: 25px;
         }
 
         &-title {
-            font-size: 30px;
+            font-size: 22px;
+            line-height: 25px;
             font-weight: $bold;
-            line-height: 40px;
             letter-spacing: 0.02em;
             margin-bottom: 20px;
+            @include media-breakpoint-up(lg) {
+                font-size: 30px;
+                line-height: 40px;
+            }
         }
 
         &-link {
@@ -59,6 +62,14 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
             text-decoration: none;
+            margin-left: 20px;
+
+            &::after {
+                content: url($icon-path + '../arrow.svg');
+                position: absolute;
+                left: 25px;
+                bottom: 25px;
+            }
 
             &, &:hover, &:active, &:focus {
                 color: $secondary;
