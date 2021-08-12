@@ -1,0 +1,54 @@
+.glossary-wrapper {
+  &__header {
+    &-title {
+      font-weight: $bold;
+      font-size: $font-title-h1;
+      color: $primary;
+      margin-bottom: 30px;
+    }
+
+    &-delimiter {
+      height: 2px;
+      color: $primary;
+    }
+  }
+
+  &__nav {
+    margin-top: 10px;
+
+    &-list {
+      height: 55px;
+      margin: 0;
+      padding: 0;
+      &-item {
+        &:first-child{
+         padding-left: 0;
+        }
+        width: auto;
+        button {
+          height: 100%;
+          border: 0;
+          color: $primary;
+          opacity: 0.4;
+          font-size: $font-small;
+          font-weight: $bold;
+          transition: all 0.2s ease;
+          position: relative;
+          &.active{
+            opacity: 1;
+            border-bottom: 2px solid $primary;
+            &:after{
+              position: absolute;
+              top: 25px;
+              height: 15px;
+              width: 15px;
+              background-color: red;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
