@@ -36,7 +36,11 @@ class PrimaryController extends AbstractController
      */
     public function choicePrimary($primaryId, RequestStack $requestStack)
     {
+        // We set a session variable when the user select a different primary
+        // Then we will adapt every necessary requests by this variable
         $session = $requestStack->getSession();
+        // If user select presidential, an id of 0 is passed to this method
+        // so we remove the variable
         if ($primaryId === 0) {
             $session->remove('primaryChoice');
         } else {

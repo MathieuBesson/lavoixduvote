@@ -18,9 +18,11 @@ class HomeController extends AbstractController
         $session = $requestStack->getSession();
         $repository = $this->getDoctrine()
             ->getRepository(Candidate::class);
+        // If we have a primary choice, let's adapt our doctrine request !
         if ($primaryId = $session->get('primaryChoice')) {
             $candidates = $repository->getCandidatesByPrimaries($primaryId);
         } else {
+            // If we have no session variable, it's the default choice : the great presidential
             $candidates = $repository->getPresidentialCandidates();
         }
 
