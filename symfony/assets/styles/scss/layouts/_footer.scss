@@ -52,8 +52,16 @@
         color: $secondary-mid-clear;
         padding-bottom: 45px;
 
-        em {
-            font-style: normal;
+        ul {
+            list-style: none;
+            li a {
+                @include link($secondary-mid-clear, $secondary);
+                @include border-bottom-animation($secondary);
+                margin-right: 10px;
+                em {
+                    font-style: normal;
+                }
+            }
         }
     }
 

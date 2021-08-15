@@ -24,6 +24,7 @@ Encore
 
     .addEntry('switch-grid-roll', './assets/switch-grid-roll.js')
     .addEntry('slider-why-vote', './assets/slider-why-vote.js')
+    .addEntry('tac', './assets/tac.js')
 
 
 
