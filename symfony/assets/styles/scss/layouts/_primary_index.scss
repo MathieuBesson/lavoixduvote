@@ -63,17 +63,8 @@
             font-weight: $bold;
             line-height: 12px;
             letter-spacing: 0.05em;
-            text-transform: uppercase;
-            text-decoration: none;
-            margin-left: 20px;
-            position: relative;
 
-            &::after {
-                content: url($icon-path + '../arrow.svg');
-                position: absolute;
-                left: -20px;
-                bottom: -10px;
-            }
+            @include arrow-link();
 
             &, &:hover, &:active, &:focus {
                 color: $secondary;
