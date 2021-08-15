@@ -1,0 +1,75 @@
+#candidates-roll-wrapper {
+    color: $secondary;
+}
+
+.candidate-roll-wrapper {
+    height: 500px;
+    // background-image is defined dynamically with twig as inline style
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    padding-left: 15px;
+    position: relative;
+    @include media-breakpoint-up(xl) {
+        padding-right: 50%;
+    }
+
+    &__link-zone {
+        position: absolute;
+        inset: 0;
+        z-index: 100;
+    }
+
+    &__party-name {
+        font-size: 30px;
+        font-weight: $bold;
+        line-height: 40px;
+        letter-spacing: 0.02em;
+        @include media-breakpoint-up(xl) {
+            font-size: 55px;
+            line-height: 70px;
+        }
+    }
+
+    &__candidate-name {
+        font-size: 15px;
+        font-weight: $bold;
+        line-height: 15px;
+        letter-spacing: 0.02em;
+        margin-bottom: 45px;
+        @include media-breakpoint-up(xl) {
+            font-size: 25px;
+            line-height: 26px;
+        }
+    }
+
+    &__biography {
+        font-size: 15px;
+        font-weight: $regular;
+        line-height: 20px;
+        letter-spacing: 0;
+        text-align: left;
+        margin-bottom: 30px;
+
+    }
+
+    &__link {
+        margin-bottom: 30px;
+
+        font-size: 12px;
+        font-weight: $bold;
+        line-height: 12px;
+        letter-spacing: 0.05em;
+
+        @include arrow-link();
+        @include media-breakpoint-up(xl) {
+            font-size: 16px;
+            line-height: 16px;
+            margin-bottom: 60px;
+        }
+
+        &, &:hover, &:active, &:focus {
+            color: $secondary;
+        }
+    }
+}

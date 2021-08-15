@@ -3,14 +3,17 @@
 {% block main %}
     <div class="home-content-wrapper">
         <div class="switcher-home-wrapper d-none d-xl-flex justify-content-center mx-auto">
-            <img src="/images/icons/icon-roll.svg" class="switcher-home-wrapper__icon switcher-roll" alt="Choisir la roue">
-            <img src="/images/icons/icon-grid.svg" class="switcher-home-wrapper__icon switcher-grid" alt="Choisir la grille">
+            <img src="/images/icons/icon-roll.svg" class="switcher-home-wrapper__icon switcher-roll"
+                 alt="Choisir la roue">
+            <img src="/images/icons/icon-grid.svg" class="switcher-home-wrapper__icon switcher-grid"
+                 alt="Choisir la grille">
         </div>
 
         <div class="choice-tab-wrapper d-flex flex-column">
-            <section id="candidates-grid-wrapper" class="candidates-grid-wrapper row g-3 g-lg-4 flex-wrap w-100 switcher-appearance">
+            <section id="candidates-grid-wrapper" class="candidates-grid-wrapper row g-3 g-lg-4 flex-wrap w-100">
                 {% for candidate in candidates %}
-                    <a class="candidates-grid-wrapper__item col-6 col-lg-3" href="{{ path('candidates_show', {candidate: candidate.lastName}) }}">
+                    <a class="candidates-grid-wrapper__item col-6 col-lg-3"
+                       href="{{ path('candidates_show', {candidate: candidate.lastName}) }}">
                         <div class="bg-image card shadow-1-strong"
                              style="background-image: url('/uploads/candidates/{{ candidate.picture }}');">
                             <div class="candidates-grid-wrapper__item-card card-body d-flex flex-column justify-content-end text-white">
@@ -23,7 +26,8 @@
                     </a>
                 {% endfor %}
                 {% for candidate in candidates %}
-                    <a class="candidates-grid-wrapper__item col-6 col-lg-3" href="{{ path('candidates_show', {candidate: candidate.lastName}) }}">
+                    <a class="candidates-grid-wrapper__item col-6 col-lg-3"
+                       href="{{ path('candidates_show', {candidate: candidate.lastName}) }}">
                         <div class="bg-image card shadow-1-strong"
                              style="background-image: url('/uploads/candidates/{{ candidate.picture }}');">
                             <div class="candidates-grid-wrapper__item-card card-body d-flex flex-column justify-content-end text-white">
@@ -36,9 +40,30 @@
                     </a>
                 {% endfor %}
             </section>
+            <section id="candidates-roll-wrapper" class="candidates-roll-wrapper flex-wrap switcher-appearance">
+                <div class="container">
+                    <div class="row">
+                        {% for candidate in candidates %}
+                            <div class="col-12 col-xl-11">
+                                <div class="candidate-roll-wrapper d-flex flex-column justify-content-end"
+                                    style="background-image: url({{ candidate.displayPicture }});">
+                                    <a class="candidate-roll-wrapper__link-zone"
+                                       href="{{ path('candidates_show', {'candidate': candidate.lastName}) }}"></a>
+                                    <h2 class="candidate-roll-wrapper__party-name">{{ candidate.politicalParty.name }}</h2>
+                                    <h3 class="candidate-roll-wrapper__candidate-name">Candidat
+                                        : {{ candidate.firstName }} {{ candidate.lastName }}</h3>
+                                    <div class="candidate-roll-wrapper__biography d-none d-xl-block">
+                                        {{ candidate.biography|raw }}
+                                    </div>
+                                    <a class="candidate-roll-wrapper__link"
+                                       href="{{ path('candidates_show', {'candidate': candidate.lastName}) }}">Découvrir
+                                        le programme</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
 
-            <section id="candidates-roll-wrapper" class="candidates-roll-wrapper flex-wrap">
-                ROOOOOOOOOOLL
             </section>
         </div>
     </div>
