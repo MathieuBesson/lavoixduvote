@@ -37,10 +37,6 @@ class AppFixtures extends Fixture
             $candidate->setSecondRoundElections(false);
             $candidate->setBiography(<<<EOT
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Minime vero, inquit ille, consentit. Qua tu etiam inprudens utebare non numquam. Nulla erit controversia. Duo Reges: constructio interrete. Omnia contraria, quos etiam insanos esse vultis. Ut pulsi recurrant? </p>
-<p>Hoc loco tenere se Triarius non potuit. Vestri haec verecundius, illi fortasse constantius. Age, inquies, ista parva sunt. An hoc usque quaque, aliter in vita? Quid enim est a Chrysippo praetermissum in Stoicis? Quaerimus enim finem bonorum. </p>
-<p>Tubulo putas dicere? Collatio igitur ista te nihil iuvat. Est, ut dicis, inquit; Virtutis, magnitudinis animi, patientiae, fortitudinis fomentis dolor mitigari solet. Hoc loco tenere se Triarius non potuit. Qui ita affectus, beatum esse numquam probabis; Sed fortuna fortis; </p>
-<p>Quid sequatur, quid repugnet, vident. At certe gravius. Sed in rebus apertissimis nimium longi sumus. Immo videri fortasse. Quis enim redargueret? Non semper, inquam; Omnia contraria, quos etiam insanos esse vultis. Vide, quantum, inquam, fallare, Torquate. </p>
-<p>Duarum enim vitarum nobis erunt instituta capienda. Nonne igitur tibi videntur, inquit, mala? Quare attende, quaeso. </p>
 EOT
             );
             $party->setPicture('fixture.png');
