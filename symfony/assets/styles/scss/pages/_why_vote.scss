@@ -1,3 +1,6 @@
+$slider-width: 400px;
+$slider-width-sm : 250px;
+
 .why-vote-wrapper {
   margin-top: 30px;
   margin-bottom: 85px;
@@ -82,38 +85,37 @@
       }
     }
 
-    .clone {
-      display: flex;
-    }
 
+    
     // Slider
-    $slider-width: 400px;
-
     .slider {
       width: $slider-width;
-      height: 350px;
       padding: 0;
+      margin-bottom: 50px;
 
+      // Slide wrapper 
       &-wrapper {
         overflow: hidden;
         position: relative;
         width: 100%;
         z-index: 1;
 
+        // Slide group 
         &__slides {
           margin: 0;
           position: relative;
           top: 0;
-          left: -$slider-width;
-          width: 10000px;
+          left: -100%;
+          width: 500%;
 
           &.shifting {
             transition: left .2s ease-out;
           }
 
+          // Each slide 
           &-item {
             display: flex;
-            width: $slider-width;
+            width: 20%;
             cursor: pointer;
             transition: all 1s ease;
             position: relative;
@@ -123,6 +125,12 @@
         }
       }
 
+      // Display the slide clone to create infinite slider
+      .clone {
+        display: flex;
+      }
+
+      // Dot class on bottom of th slider 
       &-dots-item {
         transition: width 0.4s ease;
         padding: 0;
@@ -141,14 +149,10 @@
     }
   }
 
+  // Update the slider width for small screen 
   @include media-breakpoint-down(sm) {
-    $slider-width: 250px;
-    .slides {
-      left: -$slider-width;
-    }
-    .slider, .slide {
-      width: $slider-width !important;
+    .slider {
+      width: $slider-width-sm !important;
     }
   }
 }
-
