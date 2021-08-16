@@ -42,9 +42,9 @@
             </section>
             <section id="candidates-roll-wrapper" class="candidates-roll-wrapper flex-wrap switcher-appearance">
                 <div class="container">
-                    <div class="row">
+                    <div class="rolling-base row flex-nowrap overflow-auto">
                         {% for candidate in candidates %}
-                            <div class="col-12 col-xl-11">
+                            <div class="col-12 {% if not loop.last %}col-xl-11{% else%}col-xl-12{% endif %} {% if not loop.first %}offset-xl-1{% endif %}">
                                 <div class="candidate-roll-wrapper d-flex flex-column justify-content-end"
                                     style="background-image: url({{ candidate.displayPicture }});">
                                     <a class="candidate-roll-wrapper__link-zone"
@@ -63,7 +63,19 @@
                         {% endfor %}
                     </div>
                 </div>
-
+                <div class="d-flex flex-nowrap mx-auto mx-xl-0 ms-xl-auto circle-roll">
+                    <div class="quarter-circle-bottom-left"></div>
+                    <div class="quarter-circle-bottom-right"></div>
+                    <button id="roll-left" class="btn btn-primary">
+                        <img class="rotate" src="/images/icons/roll/arrow_left.svg" alt="Aller au candidat à gauche">
+                    </button>
+                    <button id="letsroll" class="btn btn-primary">
+                        <img class="rotate" src="/images/icons/roll/random.svg" alt="Choisir un candidat aléatoirement">
+                    </button>
+                    <button id="roll-right" class="btn btn-primary">
+                        <img class="rotate" src="/images/icons/roll/arrow_right.svg" alt="Aller au candidat à droite">
+                    </button>
+                </div>
             </section>
         </div>
     </div>
@@ -75,5 +87,6 @@
 {% block javascripts %}
     {{ parent() }}
     {{ encore_entry_script_tags('switch-grid-roll') }}
+    {{ encore_entry_script_tags('roll') }}
 {% endblock %}
 

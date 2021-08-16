@@ -1,8 +1,71 @@
 #candidates-roll-wrapper {
     color: $secondary;
+    .rolling-base {
+        &::-webkit-scrollbar {
+            display: none; // Chrome
+        }
+        scrollbar-width: none;  // Firefox
+    }
+
+    .circle-roll {
+        margin-bottom: 60px;
+        position: relative;
+        @include media-breakpoint-up(xl) {
+            margin-top: -160px;
+            z-index: 2000;
+        }
+        .quarter-circle-bottom-left{
+            width: 150px;
+            height: 150px;
+            @include media-breakpoint-up(md) {
+                width: 180px;
+                height: 180px;
+            }
+            background: #E1E9FF;
+            border-radius: 180px 0 0 0;
+        }
+        .quarter-circle-bottom-right{
+            width: 150px;
+            height: 150px;
+            @include media-breakpoint-up(md) {
+                width: 180px;
+                height: 180px;
+            }
+            background: #B6CAFF;
+            border-radius: 0 180px 0 0;
+        }
+        button {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            padding: 0;
+            transition: all 0.4s ease;
+        }
+        #letsroll {
+            &.rotate {
+                transform:rotate(720deg);
+            }
+            top: -30px;
+            left: calc(50% - 30px);
+        }
+        #roll-left {
+            left: 10%;
+            @include media-breakpoint-up(md) {
+                top: 15px;
+            }
+        }
+        #roll-right {
+            right: 10%;
+            @include media-breakpoint-up(md) {
+                top: 15px;
+            }
+        }
+    }
 }
 
 .candidate-roll-wrapper {
+    margin-bottom: 60px;
     height: 500px;
     // background-image is defined dynamically with twig as inline style
     background-size: cover;
@@ -10,6 +73,7 @@
     border-radius: 15px;
     padding-left: 15px;
     position: relative;
+    @include zoom-effect();
     @include media-breakpoint-up(xl) {
         padding-right: 50%;
     }
@@ -23,11 +87,11 @@
     &__party-name {
         font-size: 30px;
         font-weight: $bold;
-        line-height: 40px;
+        line-height: 30px;
         letter-spacing: 0.02em;
         @include media-breakpoint-up(xl) {
             font-size: 55px;
-            line-height: 70px;
+            line-height: 60px;
         }
     }
 
@@ -72,4 +136,5 @@
             color: $secondary;
         }
     }
+
 }
