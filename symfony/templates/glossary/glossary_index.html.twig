@@ -1,7 +1,7 @@
 {% extends 'page.html.twig' %}
 
 {% block main %}
-    <div class="glossary-wrapper row col-8 m-auto">
+    <div class="glossary-wrapper row col-12 col-md-8 m-auto">
         <header class="glossary-wrapper__header">
             <h1 class="glossary-wrapper__header-title text-center">Glossaire</h1>
             <hr class="w-100 glossary-wrapper__header-delimiter" size="0">
@@ -10,14 +10,15 @@
         <nav class="glossary-wrapper__nav">
             <ul class="glossary-wrapper__nav-list row flex-row" id="starMeasuresTab" role="tablist">
                 <li class="glossary-wrapper__nav-list-item">
-                    <button class="active d-md-flex align-items-md-center justify-content-md-center">
+                    <button class="active d-md-flex align-items-md-center justify-content-md-center" data-id="all">
                         Tout
                     </button>
                 </li>
 
                 {% for glossaryCategorie in glossaryCategories %}
                     <li class="glossary-wrapper__nav-list-item">
-                        <button class="d-md-flex align-items-md-center justify-content-md-center">
+                        <button class="d-md-flex align-items-md-center justify-content-md-center"
+                                data-id="{{ glossaryCategorie.label|lower|slug }}">
                             {{ glossaryCategorie.label }}
                         </button>
                     </li>
@@ -26,11 +27,14 @@
         </nav>
 
         <section class="glossary-wrapper__definitions">
-            <ul>
+            <ul class="glossary-wrapper__definitions-list">
                 {% for definition in definitions %}
-                    <li data-category="{{ definition.category }}">
-                        {{ definition.word }}
-                        {{ definition.definition|raw }}
+                    <li class="glossary-wrapper__definitions-list-item"
+                        data-category="{{ definition.category|lower|slug }}">
+                        <h3 class="glossary-wrapper__definitions-list-item-title">{{ definition.word }}</h3>
+                        <article class="glossary-wrapper__definitions-list-item-content">
+                            {{ definition.definition|raw }}
+                        </article>
                     </li>
                 {% endfor %}
             </ul>
@@ -39,6 +43,7 @@
 
     <script>
         const buttons = document.querySelectorAll('.glossary-wrapper__nav-list-item button');
+        const definitions = document.querySelectorAll('.glossary-wrapper__definitions-list-item');
 
         [...buttons].forEach(currentButton => {
             currentButton.addEventListener('click', e => {
@@ -46,8 +51,20 @@
                     button.classList.remove('active')
                 })
                 currentButton.classList.add('active')
+
+                getdefinitionByCategorie(currentButton.dataset.id);
             });
         })
+
+        function getdefinitionByCategorie(id) {
+            [...definitions].forEach(definition => {
+                if ([definition.dataset.category, 'all'].includes(id)) {
+                    definition.classList.remove('invisible');
+                } else {
+                    definition.classList.add('invisible');
+                }
+            })
+        }
 
     </script>
 

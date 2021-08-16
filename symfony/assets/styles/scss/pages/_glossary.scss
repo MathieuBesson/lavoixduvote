@@ -15,16 +15,20 @@
 
   &__nav {
     margin-top: 10px;
+    margin-bottom: 50px;
 
     &-list {
       height: 55px;
       margin: 0;
       padding: 0;
+
       &-item {
-        &:first-child{
-         padding-left: 0;
+        &:first-child {
+          padding-left: 0;
         }
+
         width: auto;
+
         button {
           height: 100%;
           border: 0;
@@ -32,12 +36,14 @@
           opacity: 0.4;
           font-size: $font-small;
           font-weight: $bold;
-          transition: all 0.2s ease;
+          transition: opacity 0.2s ease;
           position: relative;
-          &.active{
+
+          &.active {
             opacity: 1;
             border-bottom: 2px solid $primary;
-            &:after{
+
+            &:after {
               position: absolute;
               top: 25px;
               height: 15px;
@@ -50,5 +56,53 @@
 
     }
   }
+
+
+  &__definitions {
+    margin-bottom: 50px;
+    &-list {
+      padding: 0;
+
+      &-item {
+        margin-bottom: 45px;
+        transition: all 0.3s ease;
+        &-title {
+          color: $primary;
+          font-weight: $bold;
+          font-size: $font-large;
+          margin-bottom: 20px;
+        }
+
+        &-content {
+          padding-left: 20px;
+
+          p, div {
+            font-weight: $medium;
+            font-size: $font-small;
+            position: relative;
+            margin-bottom: 15px;
+
+            &::before {
+              position: absolute;
+              content: "";
+              left: -20px;
+              top: 5px;
+              width: 8px;
+              height: 8px;
+              background: white;
+              border: solid 2px black;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.invisible{
+  visibility: hidden;
+  opacity: 0;
+  display: none;
 }
 
