@@ -74,7 +74,7 @@
         }
 
         &-content {
-          padding-left: 20px;
+          padding-left: 40px;
 
           p, div {
             font-weight: $medium;
@@ -95,14 +95,15 @@
             }
           }
         }
+        &.invisible{
+          visibility: hidden;
+          opacity: 0;
+          display: none;
+        }
       }
     }
   }
 }
 
-.invisible{
-  visibility: hidden;
-  opacity: 0;
-  display: none;
-}
+
 
