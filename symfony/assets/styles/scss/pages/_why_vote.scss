@@ -106,7 +106,7 @@ $slider-width-sm : 250px;
           position: relative;
           top: 0;
           left: -100%;
-          width: 500%;
+          width: var(--slider-items-width);
 
           &.shifting {
             transition: left .2s ease-out;
@@ -115,7 +115,7 @@ $slider-width-sm : 250px;
           // Each slide 
           &-item {
             display: flex;
-            width: 20%;
+            width: var(--slide-width);
             cursor: pointer;
             transition: all 1s ease;
             position: relative;
