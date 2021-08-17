@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\PoliticalParty;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -22,6 +23,9 @@ class PoliticalPartyCrudController extends AbstractCrudController
     {
         return [
             TextField::new('name', 'Name'),
+            TextField::new('acronym', 'Acronym'),
+            TextField::new('adress', 'Address'),
+            EmailField::new('mail', 'Mail'),
             TextEditorField::new('description', 'Description'),
             ImageField::new('picture', 'Picture')
                       ->setBasePath('uploads/politicalParties')

@@ -18,7 +18,11 @@ class PrimaryCrudController extends AbstractCrudController
     {
         return [
             AssociationField::new('politicalParty', 'Political party'),
-            AssociationField::new('candidates', 'Candidates'),
+            AssociationField::new('candidates', 'Candidates')
+                ->setFormTypeOptions([
+                        'by_reference' => false,
+                    ]
+                ),
             DateField::new('dateFirstRound', 'Date of the first round'),
             DateField::new('dateSecondRound', 'Date of the second round'),
         ];
