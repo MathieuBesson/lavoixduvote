@@ -25,20 +25,6 @@
                         </div>
                     </a>
                 {% endfor %}
-                {% for candidate in candidates %}
-                    <a class="candidates-grid-wrapper__item col-6 col-lg-3"
-                       href="{{ path('candidates_show', {candidate: candidate.lastName}) }}">
-                        <div class="bg-image card shadow-1-strong"
-                             style="background-image: url('/uploads/candidates/{{ candidate.picture }}');">
-                            <div class="candidates-grid-wrapper__item-card card-body d-flex flex-column justify-content-end text-white">
-                                <h3 class="card-title mt-auto">{{ candidate.firstName }} {{ candidate.lastName }}</h3>
-                                <p class="card-subtitle">
-                                    {{ candidate.politicalParty.name }}
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                {% endfor %}
             </section>
             <section id="candidates-roll-wrapper" class="candidates-roll-wrapper flex-wrap switcher-appearance">
                 <div class="container">
