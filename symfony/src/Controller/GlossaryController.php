@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class GlossaryController
  * @package App\Controller
  *
- * @Route (name="glossary", path="/jargon-politique")
+ * @Route (name="glossary", path="/glossaire")
  */
 class GlossaryController extends AbstractController
 {
