@@ -6,6 +6,16 @@ let widthToCenter = rollWrapper.clientWidth;
 let maxWidthToScroll = rollWrapper.scrollWidth - rollWrapper.clientWidth;
 // The elements to scroll
 const elementsToRoll = rollWrapper.children;
+
+// Vertical smoth scroll on rollWraper element
+function smoothScrollit(newScrollLeft) {
+    rollWrapper.scroll({
+        left: newScrollLeft,
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
 // On resize we should do something
 document.addEventListener('resize', function() {
     widthToCenter = rollWrapper.clientWidth;
@@ -17,8 +27,9 @@ const rollButton = document.getElementById('letsroll');
 const leftButton = document.getElementById('roll-left');
 const rightButton = document.getElementById('roll-right');
 // Random at start
-rollWrapper.scrollLeft = widthToCenter * (Math.floor(Math.random() * elementsToRoll.length));
-// Random on click
+smoothScrollit(widthToCenter * (Math.floor(Math.random() * elementsToRoll.length)));
+
+// Random scroll
 rollButton.addEventListener('click', function(e) {
     // random index of our elementsToRoll array factorized with our with to set
     rollButton.classList.toggle('rotate');
@@ -32,11 +43,7 @@ rollButton.addEventListener('click', function(e) {
         }
     }
     // Smoooth it
-    rollWrapper.scroll({
-        left: newScrollLeft,
-        top: 0,
-        behavior: 'smooth'
-    });
+    smoothScrollit(newScrollLeft);
 });
 leftButton.addEventListener('click', (e) => {
     let newScrollLeft = rollWrapper.scrollLeft - widthToCenter;
@@ -45,11 +52,7 @@ leftButton.addEventListener('click', (e) => {
         newScrollLeft = maxWidthToScroll;
     }
     // Smoooth it
-    rollWrapper.scroll({
-        left: newScrollLeft,
-        top: 0,
-        behavior: 'smooth'
-    });
+    smoothScrollit(newScrollLeft);
 });
 rightButton.addEventListener('click', (e) => {
     let newScrollLeft = rollWrapper.scrollLeft + widthToCenter;
@@ -57,9 +60,5 @@ rightButton.addEventListener('click', (e) => {
         newScrollLeft = 0;
     }
     // Smoooth it
-    rollWrapper.scroll({
-        left: newScrollLeft,
-        top: 0,
-        behavior: 'smooth'
-    });
+    smoothScrollit(newScrollLeft);
 });
