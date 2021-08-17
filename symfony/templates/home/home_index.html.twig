@@ -35,7 +35,13 @@
                                     style="background-image: url({{ candidate.displayPicture }});">
                                     <a class="candidate-roll-wrapper__link-zone"
                                        href="{{ path('candidates_show', {'candidate': candidate.lastName}) }}"></a>
-                                    <h2 class="candidate-roll-wrapper__party-name">{{ candidate.politicalParty.name }}</h2>
+
+                                    <h2 class="candidate-roll-wrapper__party-name">
+                                        {% if primaryChoice != 0 %}
+                                            Primaire {{ candidate.politicalParty.acronym }}
+                                        {% else %}
+                                            {{ candidate.politicalParty.name }}</h2>
+                                        {% endif %}
                                     <h3 class="candidate-roll-wrapper__candidate-name">Candidat
                                         : {{ candidate.firstName }} {{ candidate.lastName }}</h3>
                                     <div class="candidate-roll-wrapper__biography d-none d-xl-block">
