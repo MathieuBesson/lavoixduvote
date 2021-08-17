@@ -158,10 +158,6 @@ EOT
             $program = new Program();
             $program->setPresentation(<<<EOT
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unum est sine dolore esse, alterum cum voluptate. Audeo dicere, inquit. Hoc sic expositum dissimile est superiori. Omnes enim iucundum motum, quo sensus hilaretur. </p>
-<p>Honesta oratio, Socratica, Platonis etiam. Duo Reges: constructio interrete. Quo igitur, inquit, modo? Est, ut dicis, inquam. Restatis igitur vos; Multoque hoc melius nos veriusque quam Stoici. Et quod est munus, quod opus sapientiae? </p>
-<p>Explanetur igitur. Igitur ne dolorem quidem. Tamen a proposito, inquam, aberramus. Et nemo nimium beatus est; Quid est igitur, inquit, quod requiras? </p>
-<p>Murenam te accusante defenderem. Paria sunt igitur. Prioris generis est docilitas, memoria; Sine ea igitur iucunde negat posse se vivere? Bonum liberi: misera orbitas. Summum ením bonum exposuit vacuitatem doloris; </p>
-<p>Post enim Chrysippum eum non sane est disputatum. Utilitatis causa amicitia est quaesita. Quid autem habent admirationis, cum prope accesseris? Omnia peccata paria dicitis. Videamus animi partes, quarum est conspectus illustrior; </p>
 EOT
             );
             switch ($i) {

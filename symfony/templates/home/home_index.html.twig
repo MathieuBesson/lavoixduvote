@@ -53,7 +53,7 @@
                                     <h3 class="candidate-roll-wrapper__candidate-name">Candidat
                                         : {{ candidate.firstName }} {{ candidate.lastName }}</h3>
                                     <div class="candidate-roll-wrapper__biography d-none d-xl-block">
-                                        {{ candidate.biography|raw }}
+                                        {{ candidate.program.presentation|raw }}
                                     </div>
                                     <a class="candidate-roll-wrapper__link"
                                        href="{{ path('candidates_show', {'candidate': candidate.lastName}) }}">Découvrir
