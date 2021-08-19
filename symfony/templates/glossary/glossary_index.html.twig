@@ -7,25 +7,36 @@
             <hr class="w-100 glossary-wrapper__header-delimiter" size="0">
         </header>
 
-        <nav class="glossary-wrapper__nav">
-            <ul class="glossary-wrapper__nav-list row flex-row" id="starMeasuresTab" role="tablist">
-                <li class="glossary-wrapper__nav-list-item">
-                    <button class="active d-md-flex align-items-md-center justify-content-md-center" data-id="all">
-                        Tout
-                    </button>
-                </li>
-
-                {% for glossaryCategorie in glossaryCategories %}
+        <nav class="glossary-wrapper__nav d-flex justify-content-between">
+            <div id="slider-nav-wrapper" class="glossary-wrapper__nav-list-wrapper col-9">
+                <ul id="slider-nav-wrapper__list" class="glossary-wrapper__nav-list d-flex flex-row">
                     <li class="glossary-wrapper__nav-list-item">
-                        <button class="d-md-flex align-items-md-center justify-content-md-center"
-                                data-id="{{ glossaryCategorie.label|lower|slug }}">
-                            {{ glossaryCategorie.label }}
+                        <button class="active d-md-flex align-items-md-center justify-content-md-center" data-id="all">
+                            Tout
                         </button>
                     </li>
-                {% endfor %}
-            </ul>
-        </nav>
 
+                    {% for glossaryCategorie in glossaryCategories %}
+                        <li class="glossary-wrapper__nav-list-item">
+                            <button class="d-md-flex align-items-md-center justify-content-md-center"
+                                    data-id="{{ glossaryCategorie.label|lower|slug }}">
+                                {{ glossaryCategorie.label }}
+                            </button>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="nav-research"
+                 class="glossary-wrapper__nav-research d-flex justify-content-end align-items-center col-3">
+                <input id="research-input" type="text" placeholder="Rechercher"
+                       class="glossary-wrapper__nav-research-input">
+                <i id="research-icon"
+                   class="glossary-wrapper__nav-research-icon icon icon-lvdv-world-research flex-shrink-0"></i>
+            </div>
+
+        </nav>
+        <p id="no-definitions" class="glossary-wrapper__no-definitions">Pas de résultat pour votre recherche... Essayez
+            plutôt avec un autre terme !</p>
         <section class="glossary-wrapper__definitions">
             <ul class="glossary-wrapper__definitions-list">
                 {% for definition in definitions %}
@@ -42,30 +53,15 @@
     </div>
 
     <script>
-        const buttons = document.querySelectorAll('.glossary-wrapper__nav-list-item button');
-        const definitions = document.querySelectorAll('.glossary-wrapper__definitions-list-item');
-
-        [...buttons].forEach(currentButton => {
-            currentButton.addEventListener('click', e => {
-                [...buttons].forEach(button => {
-                    button.classList.remove('active')
-                })
-                currentButton.classList.add('active')
-
-                getdefinitionByCategorie(currentButton.dataset.id);
-            });
-        })
-
-        function getdefinitionByCategorie(id) {
-            [...definitions].forEach(definition => {
-                if ([definition.dataset.category, 'all'].includes(id)) {
-                    definition.classList.remove('invisible');
-                } else {
-                    definition.classList.add('invisible');
-                }
-            })
-        }
-
+        
     </script>
 
+{% endblock %}
+
+
+
+{# Add JS scripts #}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('glossary') }}
 {% endblock %}

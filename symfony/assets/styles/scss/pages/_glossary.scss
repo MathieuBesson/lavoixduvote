@@ -1,4 +1,6 @@
 .glossary-wrapper {
+
+  // Header part
   &__header {
     &-title {
       font-weight: $bold;
@@ -11,61 +13,116 @@
       height: 2px;
       color: $primary;
     }
+
+    @include media-breakpoint-down(lg) {
+      &-title {
+        font-size: $font-title-h1-lg;
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      &-title {
+        font-size: $font-title-h1-md;
+      }
+    }
   }
 
+  // Nav part
   &__nav {
     margin-top: 10px;
     margin-bottom: 50px;
-
     &-list {
       height: 55px;
       margin: 0;
       padding: 0;
-
+      position: relative;
+      top: 0;
+      left: 0px;
       &-item {
+        padding: 0 12px;
         &:first-child {
           padding-left: 0;
         }
-
         width: auto;
-
         button {
+          white-space: nowrap;
           height: 100%;
           border: 0;
           color: $primary;
           opacity: 0.4;
           font-size: $font-small;
           font-weight: $bold;
-          transition: opacity 0.2s ease;
-          position: relative;
-
-          &.active {
+          transition: all 0.3s ease;
+          @include border-bottom-animation($primary);
+          &::after {
+            bottom: 0px;
+          }
+          &:hover, &:focus, &:active {
             opacity: 1;
-            border-bottom: 2px solid $primary;
-
-            &:after {
-              position: absolute;
-              top: 25px;
-              height: 15px;
-              width: 15px;
-              background-color: red;
-            }
           }
         }
       }
+    }
 
+
+    // Research part
+    &-research {
+      &-icon {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+      }
+
+      &-input {
+        width: 0;
+        padding: 0;
+        opacity: 0;
+        border: 0;
+        outline: none;
+        font-weight: $medium;
+        font-size: $font-normal;
+        transition: all 0.5s ease;
+        margin: 0 10px;
+
+        &.visible {
+          width: 100%;
+          opacity: 1;
+        }
+
+        &:focus::placeholder {
+          opacity: 1;
+        }
+
+        &::placeholder {
+          color: $primary;
+          opacity: 0.4;
+          font-weight: $medium;
+          font-size: $font-normal;
+        }
+      }
+    }
+
+    @include media-breakpoint-down(lg) {
+      &-research.visible {
+        width: 100%;
+      }
+      &-list-wrapper.no-visible {
+        width: 0%;
+      }
     }
   }
 
-
+  // Content part (defintions)
   &__definitions {
     margin-bottom: 50px;
+
     &-list {
       padding: 0;
 
       &-item {
         margin-bottom: 45px;
         transition: all 0.3s ease;
+
         &-title {
           color: $primary;
           font-weight: $bold;
@@ -95,7 +152,8 @@
             }
           }
         }
-        &.invisible{
+
+        &.invisible {
           visibility: hidden;
           opacity: 0;
           display: none;
@@ -103,7 +161,25 @@
       }
     }
   }
+
+  &__no-definitions {
+    display: none;
+    color: $primary;
+    font-weight: $medium;
+    font-size: $font-normal;
+  }
 }
 
+
+// Slide Nav
+#slider-nav-wrapper {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+#slider-nav-wrapper__list {
+  width: max-content;
+}
 
 
