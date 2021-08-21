@@ -20,6 +20,8 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
+    app.services.la_voix_du_vote_service:
+      class: App\Services\LaVoixDuVoteService
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
