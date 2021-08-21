@@ -58,6 +58,4 @@ class PrimaryController extends AbstractController
 
         return $this->redirectToRoute('home');
     }
-
-
 }

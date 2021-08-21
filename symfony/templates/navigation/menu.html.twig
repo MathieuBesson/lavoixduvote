@@ -1,27 +1,32 @@
 <ul class="d-xl-flex">
-    <li><a href="{{ path('primaries_index') }}">Les programmes</a></li>
-    <li><a href="{{ path('why_vote_index') }}">Pourquoi voter ?</a></li>
-    <li><a href="#">Comparateur</a></li>
-    <li><a href="{{ path('glossary_index') }}">Glossaire</a></li>
-    <li><a href="#">Nous contacter</a></li>
-    <li>
-        <div class="dropdown">
-            <a class="dropdown-toggle d-flex justify-content-center align-items-center" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="/images/logos/logo_alt_white.svg" alt="Logo la voix du vote">
-                {% if primaryChoice is defined %}
-                        <span class="menu-primary-selection">{{ primaryChoice }}</span>
-                    {% else %}
-                        Changer la sélection
-                {% endif %}
-            </a>
-            <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuLink">
-                {#
-                    Specific choice, for presidential, we pass an 0 primaryId that will be used
-                    in the method to erase the session variable
-                #}
-                <a class="dropdown-item" href="{{ path('primarieschoiceprimary', {'primaryId': 0 }) }}">Présidentielles 2022</a>
-                {{ render(url('primaries_list_name')) }}
-            </div>
-        </div>
-    </li>
+	<li><a href="{{ path('primaries_index') }}">Les programmes</a></li>
+	<li><a href="{{ path('why_vote_index') }}">Pourquoi voter ?</a></li>
+	<li><a href="#">Comparateur</a></li>
+	<li><a href="{{ path('glossary_index') }}">Glossaire</a></li>
+	<li><a href="#">Nous contacter</a></li>
+	{% if lvdvService.isThereAnyPrimaryChoice %}
+		<li>
+			<div class="dropdown">
+				<a class="dropdown-toggle d-flex justify-content-center align-items-center" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+					<img src="/images/logos/logo_alt_white.svg" alt="Logo la voix du vote">
+					{% if primaryChoice is defined %}
+						<span class="menu-primary-selection">{{ primaryChoice }}</span>
+					{% else %}
+						Changer la sélection
+					{% endif %}
+				</a>
+				<div class="dropdown-menu w-100" aria-labelledby="dropdownMenuLink">
+					{#
+					Specific choice, for presidential, we pass an 0 primaryId that will be used
+					in the method to erase the session variable
+					#}
+					<a class="dropdown-item" href="{{ path('primarieschoiceprimary', {'primaryId': 0 }) }}">Présidentielles 2022</a>
+					{{ render(url('primaries_list_name')) }}
+				</div>
+			</div>
+		</li>
+	{% else %}
+		{# Leave it empty to let our flex rules still applies #}
+		<li></li>
+	{% endif %}
 </ul>
