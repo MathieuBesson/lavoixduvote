@@ -68,7 +68,7 @@
     width: fit-content;
     width: -moz-fit-content;
     // For dealing with alt, hover and focus
-    z-index: 1000;
+    z-index: 800;
 
     &::after {
         content: url($icon-path + '../arrow.svg');

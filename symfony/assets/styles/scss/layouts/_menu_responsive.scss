@@ -3,7 +3,7 @@
     padding-top: 18px;
     background-color: $secondary;
     position: sticky;
-    z-index: 100;
+    z-index: 1000;
     top: 0;
 
     // Lavoixduvote logo
@@ -23,7 +23,7 @@
         &__icon img {
             cursor: pointer;
             position: relative;
-            z-index: 300;
+            z-index: 3000;
         }
         // Menu
         &__menu {
@@ -32,7 +32,7 @@
             overflow-y: scroll;
             top: 80px;
             bottom: 0;
-            z-index: 950;
+            z-index: 9500;
             width: 0;
             transition: all .8s ease;
             right: -100px;
@@ -97,7 +97,7 @@
             top: 30px;
             right: 30px;
             background-color: $secondary;
-            z-index: 100;
+            z-index: 1000;
             border-radius: 25px;
             transition: transform .8s cubic-bezier(0.83, 0, 0.17, 1);
         }
@@ -112,7 +112,7 @@
             & ~ .back-wrapper img,
             & ~ .responsive-menu-wrapper img {
                 position: relative;
-                z-index: 200;
+                z-index: 2000;
                 filter: brightness(0) saturate(100%) invert(100%) sepia(6%) saturate(0%) hue-rotate(115deg) brightness(108%) contrast(108%);
             }
             // Background will change color and scale
