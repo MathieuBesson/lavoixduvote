@@ -38,11 +38,17 @@
     // Title and link
     &__content {
         position: absolute;
-        inset: 0;
+        top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 20px;
         color: $secondary;
 
         &-wrapper {
-            margin-top: 75%;
+            margin-top: 70%;
+	        @include media-breakpoint-up(sm) {
+		        margin-top: 75%;
+	        }
             margin-left: 25px;
         }
 
