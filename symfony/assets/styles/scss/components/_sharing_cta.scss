@@ -1,0 +1,51 @@
+.cta__button {
+	display: none;
+	&:checked ~ .cta {
+		height: 190px;
+		.cta__menu {
+			.cta__menu-collapse {
+				height: 20px;
+				filter: unset;
+				display: block;
+				opacity: 1;
+			}
+			label:first-child {
+				display: none;
+			}
+		}
+	}
+}
+.cta {
+	width: 70px;
+	height: 70px;
+	background-color: $primary;
+	border-radius: 35px;
+	padding: 10px 0;
+	position: fixed;
+	right: 25px;
+	bottom: 25px;
+	transition: all .5s ease;
+	cursor: pointer;
+	&__menu {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		> * {
+			cursor: pointer;
+			margin: 10px;
+			height: 20px;
+			width: 20px;
+			img {
+				height: 20px;
+				width: 20px;
+				margin: 0;
+			}
+		}
+		&-collapse {
+			opacity: 0;
+			display: none;
+			@include filter-primary();
+		}
+	}
+}
