@@ -24,6 +24,10 @@
 	position: fixed;
 	right: 25px;
 	bottom: 25px;
+	@include media-breakpoint-up(xxl) {
+		bottom: 150px;
+		right: calc((100vw - 1320px) / 1.75);
+	}
 	transition: all .5s ease;
 	cursor: pointer;
 	&__menu {
