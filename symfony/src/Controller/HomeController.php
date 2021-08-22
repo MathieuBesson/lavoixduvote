@@ -28,7 +28,8 @@ class HomeController extends AbstractController
             // If we have no session variable, it's the default choice : the great presidential
             $candidates = $repository->getPresidentialCandidates();
         }
-
+		// Shuffle for objectivity
+	    shuffle($candidates);
         return $this->render('home/home_index.html.twig', [
             'candidates' => $candidates,
         ]);
