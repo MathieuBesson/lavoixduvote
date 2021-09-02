@@ -27,6 +27,7 @@ Encore
     .addEntry('tac', './assets/tac.js')
     .addEntry('roll', './assets/roll.js')
     .addEntry('glossary', './assets/glossary.js')
+    .addEntry('comparator', './assets/comparator.js')    
 
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)

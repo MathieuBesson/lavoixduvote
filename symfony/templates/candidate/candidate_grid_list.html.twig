@@ -1,0 +1,25 @@
+<section id="candidates-grid-wrapper" class="candidates-grid-wrapper row g-3 g-lg-4 flex-wrap w-100">
+    {% for candidate in candidates %}
+
+        {% if markup == 'div' %}
+            <div class="candidates-grid-wrapper__item col-6 col-lg-3" data-name="{{ candidate.firstName }} {{ candidate.lastName }}">
+        {% else %}
+            <a class="candidates-grid-wrapper__item col-6 col-lg-3" href="{{ path('candidates_show', {candidate: candidate.lastName}) }}">
+        {% endif %}
+
+        <div class="bg-image card shadow-1-strong {{ greyFilter ? 'grey-filter' : ''}}" style="background-image: url('/uploads/candidates/{{ candidate.picture }}');">
+            <div class="candidates-grid-wrapper__item-card card-body d-flex flex-column justify-content-end text-white">
+                <h3 class="card-title mt-auto">{{ candidate.firstName }} {{ candidate.lastName }}</h3>
+                <p class="card-subtitle">
+                    {{ candidate.politicalParty.name }}
+                </p>
+            </div>
+        </div>
+        {% if markup == 'div' %}
+            </div>
+        {% else %}
+            </a>
+        {% endif %}        
+    {% endfor %}
+</section>
+

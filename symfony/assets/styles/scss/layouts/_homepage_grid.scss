@@ -6,6 +6,7 @@
 
   &__item {
     text-decoration: none;
+    cursor: pointer;
     .card {
       background-position: center;
       background-size: cover;
@@ -34,13 +35,14 @@
   }
 }
 
-
-.candidates-grid-wrapper, .candidates-roll-wrapper {
-  opacity: 0;
-  display: none;
+.choice-tab-wrapper {
+  .candidates-grid-wrapper, .candidates-roll-wrapper {
+    opacity: 0;
+    display: none;
+  }
 }
 
-.switcher-appearance {
+.choice-tab-wrapper .switcher-appearance {
   display: flex;
   animation: appearance 0.5s ease 1 normal forwards;
 }

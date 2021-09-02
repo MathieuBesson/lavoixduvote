@@ -1,0 +1,27 @@
+{% extends 'page.html.twig' %}
+
+
+{% block main %}
+    <div class="comparator-wrapper">
+        <section class="comparator-wrapper__header header row">
+            <h1 class="header-title">Comparateur</h1>
+            <h2 id="sub-title" class="header-subtitle col-10 mx-auto">Sélectionnez les candidats que vous souhaitez comparer</h2>
+            <hr class="header-delimiter col-12 col-lg-8 mx-auto" size="0"/>
+        </section>
+        <section class="comparator-wrapper-content">
+            {% include 'candidate/candidate_grid_list.html.twig' with {'markup': 'div', 'greyFilter': true} %}
+            <div class="comparator-wrapper-content__compare-two-programs-cta">
+                <div class="row">
+                    <a target="_blank" id="start-comparaison" class="btn btn-primary btn-ripple-primary mx-auto">Comparer les&nbsp;<span id="nb-candidates-selected">...</span>&nbsp;programmes</a>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+
+{# Add JS scripts #}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('comparator') }}
+{% endblock %}

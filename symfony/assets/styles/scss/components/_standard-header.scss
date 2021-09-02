@@ -1,0 +1,33 @@
+.header{
+  padding: 30px 0;
+  &-title, &-subtitle{
+    font-weight: $bold;
+    color: $primary;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  &-title{
+    font-size: $font-title-h1;
+    @include media-breakpoint-down(lg) {
+      font-size: $font-title-h1-lg;
+    }
+    @include media-breakpoint-down(md) {
+      font-size: $font-title-h1-md;
+    }
+  }
+
+  &-subtitle{
+    font-size: $font-title-h2-lg;
+    @include media-breakpoint-down(lg) {
+        font-size: $font-title-h2-lg;
+    }
+    @include media-breakpoint-down(md) {
+        font-size: $font-title-h2-md;
+    }
+  }
+
+  &-delimiter{
+    height: 2px;
+    color: #0D009D;
+  }
+}
