@@ -1,6 +1,19 @@
-.comparator-wrapper{
+.comparator-wrapper {
   margin-bottom: 120px;
-  &-content {
+
+  &__header-reveal {
+    display: none;
+    margin-top: 45px;
+
+    &-title {
+      font-size: $font-extra-large;
+      font-weight: $bold;
+      color: $primary;
+      margin-bottom: 30px;
+    }
+  }
+
+  &-grid {
     &__compare-two-programs-cta .btn {
       width: auto;
       font-size: $font-large;
@@ -11,28 +24,39 @@
       display: flex;
     }
 
-    .candidates-grid-wrapper__item{
-      position: relative;
-      .card{
-        z-index: 10;
+    .candidates-grid-wrapper {
+      padding-bottom: 30px;
+
+      &__item {
+        position: relative;
+
+        .card {
+          z-index: 10;
+          border-radius: 5px;
+        }
+
+        &.comparator-card .card {
+          height: 180px;
+        }
       }
     }
 
-    .grey-filter{
+    .grey-filter {
       filter: grayscale(60%);
       transition: all 0.2s ease;
-      &:hover{
+
+      &:hover {
         filter: grayscale(0%);
       }
     }
 
 
-    .tick-selection-candidate{
+    .tick-selection-candidate {
       position: absolute;
       background-color: $primary;
       height: 25px;
       width: 25px;
-      top: 20px; 
+      top: 20px;
       right: 30px;
       z-index: 20;
       border: solid 1px $secondary;
@@ -45,12 +69,22 @@
     }
   }
 
+  .drag-nav-slider-wrapper__list-item button::after {
+    bottom: -4px;
+  }
 
   @include media-breakpoint-down(md) {
     &-content {
       &__compare-two-programs-cta .btn {
         padding: 20px 20px;
       }
+    }
+    &-grid .candidates-grid-wrapper__item.comparator-card .card {
+      height: 80px;
+    }
+
+    &__header-reveal {
+      margin-top: 0px;
     }
   }
 }

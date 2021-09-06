@@ -1,61 +1,92 @@
-const allCandidates = document.querySelectorAll('.candidates-grid-wrapper__item'); 
-const nbCandidatesSelected = document.getElementById('nb-candidates-selected');
+const dragNav = require('./drag-nav');
+
+const comparatorWrapper = document.querySelector('.comparator-wrapper'); 
+const allCardCandidates = document.querySelectorAll('.candidates-grid-wrapper__item'); 
+const nbCandidateCardsSelected = document.getElementById('nb-candidates-selected');
 const startComparaison = document.getElementById('start-comparaison'); 
-const subTitle = document.getElementById('sub-title');
+const comparatorHeaderStandard = document.querySelector('.comparator-wrapper__header-standard');
+const comparatorHeaderReveal = document.querySelector('.comparator-wrapper__header-reveal');
 const candidateWrapper = document.querySelector('.candidates-grid-wrapper'); 
 const tickElementClass = 'tick-selection-candidate';
 const tickElement = (number) => `<span class="${tickElementClass}">${number}</span>`;
-let candidatesSelected = {};
+let candidateCardsSelected = {};
+
+let stepComparaison = 'choice'; 
 
 let idsTicks = [1, 2, 3, 4]; 
 let nbElementSelected = 0; 
 
-allCandidates.forEach(candidate => {
-    candidate.addEventListener('click', e => {
-        if(candidate.innerHTML.includes(tickElementClass)){
-            removeCandidate(candidate.querySelector('.' + tickElementClass))
+const gridDisplayStandard = {normal: 'col-6', lg: 'col-lg-3'};
+const gridDisplayComparator = {normal: 'col-3'};
 
-            // Update number of candidates selected
-            nbElementSelected--; 
-            updateNbCandidatesSelected(nbElementSelected);
-
-            // Add .grey-filter class
-            candidate.querySelector('.card').classList.add('grey-filter');
-        } else {
-            if(idsTicks.length !== 0){
-                addCandidate(candidate);
-
+allCardCandidates.forEach(candidateCard => {
+    candidateCard.addEventListener('click', e => {
+        if(stepComparaison === 'choice'){
+            if(candidateCard.innerHTML.includes(tickElementClass)){
+                removeCandidate(candidateCard.querySelector('.' + tickElementClass))
+    
                 // Update number of candidates selected
-                nbElementSelected++; 
-                updateNbCandidatesSelected(nbElementSelected);
-
-                // Remove .grey-filter class
-                candidate.querySelector('.card').classList.remove('grey-filter');
+                nbElementSelected--; 
+                updateNbcandidateCardsSelected(nbElementSelected);
+    
+                // Add .grey-filter class
+                candidateCard.querySelector('.card').classList.add('grey-filter');
             } else {
-                // Message erreur
-                addFlashMessage('Vous ne pouvez selectionner que 4 éléments', 'icon-lvdv-shield-white'); 
+                if(idsTicks.length !== 0){
+                    addCandidate(candidateCard);
+    
+                    // Update number of candidates selected
+                    nbElementSelected++; 
+                    updateNbcandidateCardsSelected(nbElementSelected);
+    
+                    // Remove .grey-filter class
+                    candidateCard.querySelector('.card').classList.remove('grey-filter');
+                } else {
+                    // Message erreur
+                    addFlashMessage('Vous ne pouvez selectionner que 4 éléments', 'icon-lvdv-shield-white'); 
+                }
             }
+            console.log(candidateCardsSelected)
         }
-        console.log(candidatesSelected)
     })
 })
 
 startComparaison.addEventListener('click', e => {
-    if(Object.keys(candidatesSelected).length >= 2){
-        subTitle.textContent = 'Résultats de la comparaison...'; 
 
-        let candidates = []
-        for (const order in candidatesSelected) {
-            candidates.push(candidatesSelected[order]); 
+    if(Object.keys(candidateCardsSelected).length >= 2){
+        stepComparaison = 'reveal'; 
+        comparatorWrapper.classList.add('col-12', 'col-lg-10', 'mx-auto');
+
+        comparatorHeaderStandard.style.display = 'none';
+        comparatorHeaderReveal.style.display = 'flex';
+
+        let candidateSelectedNames = []
+        for (const order in candidateCardsSelected) {
+            candidateSelectedNames.push(candidateCardsSelected[order]); 
         }
 
-        allCandidates.forEach(candidate => {
-            if(!candidates.includes(candidate.dataset.name)){
+        allCardCandidates.forEach(candidate => {
+            if(!candidateSelectedNames.includes(candidate.dataset.name)){
                 candidate.style.display = 'none'; 
+            } else {
+                candidate.querySelector('.card-title').style.display = 'none'; 
+                candidate.querySelector('.card-subtitle').style.display = 'none'; 
+                for(className in gridDisplayStandard){
+                    candidate.classList.remove(gridDisplayStandard[className]); 
+                }
+                for(className in gridDisplayComparator){
+                    candidate.classList.add(gridDisplayComparator[className]); 
+                }
+                candidate.classList.add('comparator-card'); 
+        
             }
         })
 
         startComparaison.style.display = 'none'; 
+
+        document.querySelectorAll('.tick-selection-candidate').forEach(tick => {
+            tick.style.display = 'none'; 
+        })
 
 
     } else {
@@ -63,6 +94,20 @@ startComparaison.addEventListener('click', e => {
     }
 
 })
+
+
+// Slide nav for small screens
+var sliderWrapper = document.getElementById('slider-nav-wrapper'),
+    sliderItems = document.getElementById('slider-nav-wrapper__list');
+
+dragNav(sliderItems, sliderWrapper);
+
+// Afficher les images des candidats selectionnés 
+// col-2 + gap à la place de col-3 sur toutes les images selectionnées 
+// on vire le nom du candidat 
+
+
+
 
 
 /**
@@ -76,7 +121,7 @@ function removeCandidate(tick){
     idsTicks.push(counter);
 
     // Remove candidate of selected candidates 
-    delete candidatesSelected[counter]; 
+    delete candidateCardsSelected[counter]; 
 
     // Remove the tick of the DOM
     tick.parentNode.removeChild(tick)
@@ -91,14 +136,14 @@ function addCandidate(candidate){
     const counter = idsTicks.splice(idsTicks.indexOf(Math.min(...idsTicks)), 1);
 
     // Add candidate to selected candidates 
-    candidatesSelected[counter] =  candidate.dataset.name;
+    candidateCardsSelected[counter] =  candidate.dataset.name;
 
     // Add the tick in the DOM
     candidate.innerHTML += tickElement(counter);
 }
 
-function updateNbCandidatesSelected(nbElementSelected){
-    nbCandidatesSelected.textContent = nbElementSelected === 0 ? '...' : nbElementSelected; 
+function updateNbcandidateCardsSelected(nbElementSelected){
+    nbCandidateCardsSelected.textContent = nbElementSelected === 0 ? '...' : nbElementSelected; 
 }
 
 /**

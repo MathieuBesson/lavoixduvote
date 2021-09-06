@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Candidate;
+use App\Entity\Theme;
+use App\Entity\Program;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,15 +23,22 @@ class ComparatorController extends AbstractController
     public function index(): Response
     {
 
-        $repository = $this->getDoctrine()
+        $candidatesRepository = $this->getDoctrine()
             ->getRepository(Candidate::class);
 
-        $candidates = $repository->getPresidentialCandidates();
+        $candidatesPresidential = $candidatesRepository->getPresidentialCandidates();
 
-        // Shuffle for objectivity
-        shuffle($candidates);
+        $themesRepository = $this->getDoctrine()
+            ->getRepository(Theme::class);
+
+        $themesNames = $themesRepository->findAll();
+
+        $candidatesActionsByTheme = $candidatesRepository->getAllWithProgramPartyActionsAndTheme();
+        
         return $this->render('comparator/comparator_index.html.twig', [
-            'candidates' => $candidates,
+            'candidatesPresidential' => $candidatesPresidential,
+            'themesNames' => $themesNames,
+            'candidatesActionsByTheme' => $candidatesActionsByTheme
         ]);
     }
 }

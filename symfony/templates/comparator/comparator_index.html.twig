@@ -3,19 +3,74 @@
 
 {% block main %}
     <div class="comparator-wrapper">
-        <section class="comparator-wrapper__header header row">
-            <h1 class="header-title">Comparateur</h1>
-            <h2 id="sub-title" class="header-subtitle col-10 mx-auto">Sélectionnez les candidats que vous souhaitez comparer</h2>
-            <hr class="header-delimiter col-12 col-lg-8 mx-auto" size="0"/>
+        <section class="comparator-wrapper__header row">
+            <div class="comparator-wrapper__header-standard header-standard">
+                <h1 class="header-standard-title">Comparateur</h1>
+                <h2 id="sub-title" class="header-standard-subtitle col-10 mx-auto">Sélectionnez les candidats que vous
+                    souhaitez comparer</h2>
+                <hr class="header-standard-delimiter col-12 col-lg-8 mx-auto" size="0"/>
+            </div>
+            <div class="comparator-wrapper__header-reveal">
+                <h1 class="comparator-wrapper__header-reveal-title">Les candidats</h1>
+            </div>
         </section>
-        <section class="comparator-wrapper-content">
-            {% include 'candidate/candidate_grid_list.html.twig' with {'markup': 'div', 'greyFilter': true} %}
-            <div class="comparator-wrapper-content__compare-two-programs-cta">
+        <section class="comparator-wrapper-grid">
+            {% include 'candidate/candidate_grid_list.html.twig' with {'markup': 'div', 'greyFilter': true, 'candidates' : candidatesPresidential} %}
+            <div class="comparator-wrapper-grid__compare-two-programs-cta">
                 <div class="row">
-                    <a target="_blank" id="start-comparaison" class="btn btn-primary btn-ripple-primary mx-auto">Comparer les&nbsp;<span id="nb-candidates-selected">...</span>&nbsp;programmes</a>
+                    <a target="_blank" id="start-comparaison" class="btn btn-primary btn-ripple-primary mx-auto">Comparer
+                        les&nbsp;<span id="nb-candidates-selected">...</span>&nbsp;programmes</a>
                 </div>
             </div>
         </section>
+
+        <nav class="drag-nav-slider d-flex justify-content-between">
+            <div id="slider-nav-wrapper" class="drag-nav-slider-wrapper">
+                <ul id="slider-nav-wrapper__list" class="drag-nav-slider-wrapper__list d-flex flex-row">
+                    {% for themeName in themesNames %}
+                        <li class="drag-nav-slider-wrapper__list-item">
+                            <button class="mesure-list__title mesure-list__title-{{ themeName|clean_class }} d-md-flex align-items-md-center justify-content-md-center">
+                                <span>Mesures&nbsp;</span>
+                                <span class="mesure-list__title-theme">{{ themeName }}</span>
+                            </button>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+
+        {# <div class="row"> #}
+        {# {% for theme, actions in program %} #}
+        {# <div class="col-12 col-md-5 {% if loop.index % 2 == 1 %}offset-md-1{% endif %}"> #}
+        {# <h3 class="program__title mesure-list__title mesure-list__title-{{ theme|clean_class }}"><span>Mesures&nbsp;</span><span #}
+        {# class="mesure-list__title-theme">{{ theme }}</span></h3> #}
+        {# <ul class="mesure-list__actions"> #}
+        {# {% for action in actions %} #}
+        {# <li class="mesure-list__action">{{ action.title }}</li> #}
+        {# {% endfor %} #}
+        {# </ul> #}
+        {# </div> #}
+        {# {% endfor %} #}
+        {# </div> #}
+
+
+        <div>
+            {% for theme, candidates in candidatesActionsByTheme %}
+                <section data-theme="{{ theme }}">
+                    {% for candidate in candidates %}
+                        {{ candidate.name }}
+                        {{ candidate.politicalParty }}
+                        <ul>
+                            {% for action in candidate.actions %}
+                                <li>
+                                    {{ action }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </section>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
 

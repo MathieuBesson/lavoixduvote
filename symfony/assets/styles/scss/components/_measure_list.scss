@@ -1,0 +1,81 @@
+.mesure-list{
+  &__title {
+    display: flex;
+    position: relative;
+    font-weight: bold;
+    color: $primary;
+    padding-left: 25px;
+
+    &-theme {
+      color: $danger;
+      white-space: nowrap;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background-size: cover;
+      margin-right: 10px;
+    }
+
+    &.mesure-list__title{
+      &-ecologie::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/environment.svg');
+      }
+      &-employment::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/employment.svg');
+      }
+      &-sante::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/heart.svg');
+      }
+      &-economie::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/economy.svg');
+      }
+      &-emploi::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/employment.svg');
+      }
+      &-securite::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/shield.svg');
+      }
+      &-education::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/education.svg');
+      }
+      &-protection-sociale::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/social_protection.svg');
+      }
+      &-immigration::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/immigrations.svg');
+      }
+      &-culture::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/culture.svg');
+      }
+      &-innovation::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/innovations.svg');
+      }
+    }
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+      border-bottom: 2px solid rgba($primary, 40%);
+      margin-bottom: 5px;
+      padding-left: 15px;
+    }
+  }
+
+  &__actions {
+    margin-bottom: 45px;
+    li {
+      list-style: url($icon-path + '/list_style.svg');
+      font-size: 15px;
+      font-weight: $medium;
+      line-height: 20px;
+      letter-spacing: 0;
+      padding-bottom: 10px;
+    }
+  }
+}

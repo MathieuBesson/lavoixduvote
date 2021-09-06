@@ -111,4 +111,35 @@ class CandidateRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+
+    public function getAllWithProgramPartyActionsAndTheme(): array
+    {
+        $scalarResult = $this->createQueryBuilder('c')
+            ->select('c')
+            ->addSelect('pr')
+            ->addSelect('po')
+            ->addSelect('a')
+            ->addSelect('t')
+            ->innerJoin('c.program', 'pr')
+            ->innerJoin('c.politicalParty', 'po')
+            ->innerJoin('pr.actions', 'a')
+            ->innerJoin('a.theme', 't')
+            ->orderBy('a.title', 'ASC')
+            ->orderBy('a.importance', 'DESC')
+            ->getQuery()
+            ->getScalarResult();
+
+        $measuresByThemes = [];
+        foreach ($scalarResult as $result) {
+            if (!isset($measuresByThemes[$result['t_label']])) {
+                $measuresByThemes[$result['t_label']] = [];
+            }
+            $measuresByThemes[$result['t_label']][$result['c_id']]['actions'][] = $result['a_title'];
+            $measuresByThemes[$result['t_label']][$result['c_id']]['name'] = $result['c_firstName'] . ' ' . $result['c_lastName'];
+            $measuresByThemes[$result['t_label']][$result['c_id']]['politicalParty'] = $result['po_name'];
+        }
+        
+        return $measuresByThemes;
+    }
 }

@@ -51,11 +51,11 @@
         <div class="row">
             {% for theme, actions in program %}
                 <div class="col-12 col-md-5 {% if loop.index % 2 == 1 %}offset-md-1{% endif %}">
-                    <h3 class="program__title program__title-{{ theme|clean_class }}"><span>Mesures&nbsp;</span><span
-                                class="program__title-theme">{{ theme }}</span></h3>
-                    <ul class="program__actions">
+                    <h3 class="program__title mesure-list__title mesure-list__title-{{ theme|clean_class }}"><span>Mesures&nbsp;</span><span
+                                class="mesure-list__title-theme">{{ theme }}</span></h3>
+                    <ul class="mesure-list__actions">
                         {% for action in actions %}
-                            <li class="program__action">{{ action.title }}</li>
+                            <li class="mesure-list__action">{{ action.title }}</li>
                         {% endfor %}
                     </ul>
                 </div>

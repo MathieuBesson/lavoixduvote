@@ -1,0 +1,95 @@
+// Nav part
+.drag-nav-slider {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  background-color: $grey;
+
+  &-wrapper {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+
+    &__list {
+      height: 55px;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      top: 0;
+      left: 0px;
+      width: max-content;
+
+      &-item {
+        padding: 0 18px;
+        width: auto;
+
+        button {
+          background-color: transparent;
+          white-space: nowrap;
+          height: 100%;
+          border: 0;
+          color: $primary;
+          opacity: 0.4;
+          font-size: $font-small;
+          font-weight: $bold;
+          transition: all 0.3s ease;
+          @include border-bottom-animation($primary);
+
+          &::after {
+            bottom: 0px;
+          }
+
+          &:hover, &:focus, &:active, &.active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  // Research part
+  &__nav-research {
+    &-icon {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
+
+    &-input {
+      width: 0;
+      padding: 0;
+      opacity: 0;
+      border: 0;
+      outline: none;
+      font-weight: $medium;
+      font-size: $font-normal;
+      transition: all 0.5s ease;
+      margin: 0 10px;
+      background-color: transparent;
+
+      &.visible {
+        width: 100%;
+        opacity: 1;
+      }
+
+      &:focus::placeholder {
+        opacity: 1;
+      }
+
+      &::placeholder {
+        color: $primary;
+        opacity: 0.4;
+        font-weight: $medium;
+        font-size: $font-normal;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    &__nav-research.visible {
+      width: 100%;
+    }
+    &-wrapper.no-visible {
+      width: 0%;
+    }
+  }
+}
