@@ -11,7 +11,7 @@
                 <hr class="header-standard-delimiter col-12 col-lg-8 mx-auto" size="0"/>
             </div>
             <div class="comparator-wrapper__header-reveal">
-                <h1 class="comparator-wrapper__header-reveal-title">Les candidats</h1>
+                <h1 class="comparator-wrapper__header-reveal-title"><span>Les candidats</span></h1>
             </div>
         </section>
         <section class="comparator-wrapper-grid">
@@ -24,52 +24,40 @@
             </div>
         </section>
 
-        <nav class="drag-nav-slider d-flex justify-content-between">
-            <div id="slider-nav-wrapper" class="drag-nav-slider-wrapper">
-                <ul id="slider-nav-wrapper__list" class="drag-nav-slider-wrapper__list d-flex flex-row">
-                    {% for themeName in themesNames %}
-                        <li class="drag-nav-slider-wrapper__list-item">
-                            <button class="mesure-list__title mesure-list__title-{{ themeName|clean_class }} d-md-flex align-items-md-center justify-content-md-center">
-                                <span>Mesures&nbsp;</span>
-                                <span class="mesure-list__title-theme">{{ themeName }}</span>
-                            </button>
-                        </li>
-                    {% endfor %}
-                </ul>
+        <div class="comparator-wrapper__content-reveal d-none">
+            <nav class="drag-nav-slider d-flex justify-content-between">
+                <div id="slider-nav-wrapper" class="drag-nav-slider-wrapper">
+                    <ul id="slider-nav-wrapper__list" class="drag-nav-slider-wrapper__list d-flex flex-row">
+                        {% for themeName in themesNames %}
+                            <li class="drag-nav-slider-wrapper__list-item">
+                                <button class="mesure-list__title mesure-list__title-{{ themeName|clean_class }} d-md-flex align-items-md-center justify-content-md-center">
+                                    <span>Mesures&nbsp;</span>
+                                    <span class="mesure-list__title-theme">{{ themeName }}</span>
+                                </button>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </nav>
+            <div class="comparator-wrapper-measures">
+                {% for theme, candidates in candidatesActionsByTheme %}
+                    <div class="comparator-wrapper-measures__theme col-12"
+                         data-theme="{{ theme }}">
+                        {% for candidate in candidates %}
+                            <h3 class="comparator-wrapper-measures__theme-candidate-name">
+                                <span>{{ candidate.name }}</span>
+                            </h3>
+                            <h3 class="comparator-wrapper-measures__theme-candidate-party"><span>{{ candidate.politicalParty }}</span></h3>
+
+                            <ul class="mesure-list__actions d-flex row">
+                                {% for action in candidate.actions %}
+                                    <li class="mesure-list__action col-6">{{ action }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
             </div>
-        </nav>
-
-        {# <div class="row"> #}
-        {# {% for theme, actions in program %} #}
-        {# <div class="col-12 col-md-5 {% if loop.index % 2 == 1 %}offset-md-1{% endif %}"> #}
-        {# <h3 class="program__title mesure-list__title mesure-list__title-{{ theme|clean_class }}"><span>Mesures&nbsp;</span><span #}
-        {# class="mesure-list__title-theme">{{ theme }}</span></h3> #}
-        {# <ul class="mesure-list__actions"> #}
-        {# {% for action in actions %} #}
-        {# <li class="mesure-list__action">{{ action.title }}</li> #}
-        {# {% endfor %} #}
-        {# </ul> #}
-        {# </div> #}
-        {# {% endfor %} #}
-        {# </div> #}
-
-
-        <div>
-            {% for theme, candidates in candidatesActionsByTheme %}
-                <section data-theme="{{ theme }}">
-                    {% for candidate in candidates %}
-                        {{ candidate.name }}
-                        {{ candidate.politicalParty }}
-                        <ul>
-                            {% for action in candidate.actions %}
-                                <li>
-                                    {{ action }}
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% endfor %}
-                </section>
-            {% endfor %}
         </div>
     </div>
 {% endblock %}

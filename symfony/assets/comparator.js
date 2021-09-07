@@ -6,7 +6,8 @@ const nbCandidateCardsSelected = document.getElementById('nb-candidates-selected
 const startComparaison = document.getElementById('start-comparaison'); 
 const comparatorHeaderStandard = document.querySelector('.comparator-wrapper__header-standard');
 const comparatorHeaderReveal = document.querySelector('.comparator-wrapper__header-reveal');
-const candidateWrapper = document.querySelector('.candidates-grid-wrapper'); 
+const candidateWrapper = document.querySelector('.candidates-grid-wrapper');
+const comparatorRevealContent = document.querySelector('.comparator-wrapper__content-reveal');
 const tickElementClass = 'tick-selection-candidate';
 const tickElement = (number) => `<span class="${tickElementClass}">${number}</span>`;
 let candidateCardsSelected = {};
@@ -56,9 +57,10 @@ startComparaison.addEventListener('click', e => {
     if(Object.keys(candidateCardsSelected).length >= 2){
         stepComparaison = 'reveal'; 
         comparatorWrapper.classList.add('col-12', 'col-lg-10', 'mx-auto');
+        comparatorHeaderStandard.classList.add('d-none');
+        comparatorHeaderReveal.classList.add('d-flex');
 
-        comparatorHeaderStandard.style.display = 'none';
-        comparatorHeaderReveal.style.display = 'flex';
+        comparatorRevealContent.classList.remove('d-none')
 
         let candidateSelectedNames = []
         for (const order in candidateCardsSelected) {

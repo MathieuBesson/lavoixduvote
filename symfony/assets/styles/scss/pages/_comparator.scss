@@ -10,6 +10,18 @@
       font-weight: $bold;
       color: $primary;
       margin-bottom: 30px;
+      display: flex;
+      position: relative;
+      width: 100%;
+
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 78%;
+        border-bottom: 2px solid rgba($primary, 40%);
+        margin-bottom: 5px;
+        margin-left: 15px;
+      }
     }
   }
 
@@ -72,6 +84,32 @@
   .drag-nav-slider-wrapper__list-item button::after {
     bottom: -4px;
   }
+
+  &-measures__theme {
+    &-candidate-name {
+      font-weight: $bold;
+      font-size: $font-extra-large;
+      color: $primary;
+    }
+    &-candidate-party {
+      display: flex;
+      position: relative;
+      font-weight: $bold;
+      font-size: $font-large;
+      color: $thirdary-color;
+      margin-bottom: 30px;
+      &::after {
+        content: "";
+        display: inline-block;
+        flex: 1;
+        border-bottom: 2px solid rgba($primary, 40%);
+        margin-bottom: 5px;
+        margin-left: 15px;
+      }
+
+    }
+  }
+
 
   @include media-breakpoint-down(md) {
     &-content {
