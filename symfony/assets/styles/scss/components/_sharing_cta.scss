@@ -2,25 +2,38 @@
 	display: none;
 	&:checked ~ .cta {
 		height: 160px;
+		bottom: 115px;
+		// Background will rise
+		.cta__background {
+			height: 100%;
+		}
+		// Items are with absolute position...
 		.cta__menu {
-			margin-top: 12px;
+			// ... because they have to come from the sky
+			> * {
+				&:nth-child(1) {
+					top: 0;
+				}
+				&:nth-child(2) {
+					top: 30%;
+				}
+			}
+
 			.cta__menu-collapse {
-				height: 20px;
 				filter: unset;
-				display: block;
 				opacity: 1;
 			}
-			label:first-child {
-				display: none;
+			// + becomes x
+			.cross img {
+				transform: rotate(45deg);
 			}
 		}
 	}
 }
 .cta {
+	// Menu wrapper
 	width: 70px;
-	height: 70px;
-	background-color: $primary;
-	border-radius: 35px;
+	height: 160px;
 	position: fixed;
 	right: 25px;
 	bottom: 25px;
@@ -28,35 +41,57 @@
 		bottom: 150px;
 		right: calc((100vw - 1320px) / 1.75);
 	}
-	transition: all .5s ease;
+	transition: all .5s;
 	cursor: pointer;
+	// Dynamic background
+	&__background {
+		background-color: $primary;
+		border-radius: 35px;
+		height: 70px;
+		width: 100%;
+		transition: all .5s;
+		// Css magic, margin-top at 100%...
+		margin-top: 100%;
+	}
 	&__menu {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
+		position: relative;
+		height: 160px;
+		margin-top: 12px;
+		// ... and translateY à -100, ninja style no one never seen me
+		transform: translateY(-100%);
 		> * {
+			// Absolute positioning for our 3 items
 			cursor: pointer;
-			margin: 10px;
+			position: absolute;
+			top: 0;
+			left: 15px;
+			margin: 5px 10px;
 			height: 20px;
 			width: 20px;
+			transition: top .5s ease-in;
+			&:nth-child(1) {
+				top: -15%;
+			}
+			&:nth-child(2) {
+				top: 15%;
+			}
+			&:nth-child(3) {
+				top: 60%;
+			}
 			img {
 				height: 20px;
 				width: 20px;
 				margin: 0;
 			}
 		}
-		> label {
-			height: 100%;
-			width: 100%;
-			text-align: center;
-			padding: 20px;
-			margin: 0;
-		}
 		&-collapse {
 			opacity: 0;
-			display: none;
 			@include filter-primary();
+		}
+		.cross img {
+			// x becomes +
+			transition: transform .5s ease;
+			transform: rotate(0);
 		}
 	}
 }
