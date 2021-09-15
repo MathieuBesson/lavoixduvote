@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Candidate;
 use App\Entity\Primary;
 use App\EventSubscriber\PrimaryChoiceSubscriber;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,6 +39,11 @@ class PrimaryController extends AbstractController
         $primaries = $this->getDoctrine()
             ->getRepository(Primary::class)
             ->getCurrentPrimaries();
+
+		// No primaries to print...
+		if (empty($primaries)) {
+			return $this->redirectToRoute('home');
+		}
 
         return $this->render('primary/primary_index.html.twig', [
             'primaries' => $primaries
