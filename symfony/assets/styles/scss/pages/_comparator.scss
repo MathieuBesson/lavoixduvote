@@ -83,6 +83,7 @@
 
   .drag-nav-slider-wrapper__list-item button::after {
     bottom: -4px;
+    left: -14px;
   }
 
   &-measures__theme {
@@ -125,4 +126,9 @@
       margin-top: 0px;
     }
   }
+}
+
+.fixed-measures-nav{
+  position: fixed;
+  top: var(--top-position-nav-measures);
 }

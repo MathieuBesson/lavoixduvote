@@ -1,29 +1,41 @@
-body{
-    position: relative;
+body {
+  position: relative;
 }
 
-.flash-message-wrapper{
-    position: fixed;
-    width: 100%;
-    z-index: 5000;
-    animation: 4s ease-in-out 0s flash-appearition;
-    &__content{
-        text-align: center;
-        background-color: $danger; 
-        padding: 15px 25px;
-        font-weight: $bold;
-        font-size: $font-normal;
-        color: $secondary;
-        border-radius: 10px;
-    }
-    .icon{
-        margin-right: 15px;
-    }
+.flash-message-wrapper {
+  position: fixed;
+  width: 100%;
+  z-index: 5000;
+  bottom: 30px;
+  animation: 4s ease-in-out 0s flash-appearition;
+
+  &__content {
+    text-align: center;
+    background-color: $danger;
+    padding: 15px 25px;
+    font-weight: $bold;
+    font-size: $font-normal;
+    color: $secondary;
+    border-radius: 10px;
+    margin: 0 5%;
+  }
+
+  .icon {
+    margin-right: 15px;
+  }
 }
 
 @keyframes flash-appearition {
-    0% { bottom: -100px; }
-    20% { bottom: 30px; }
-    80% { bottom: 30px; }
-    100%   { bottom: -100px; }
+  0% {
+    bottom: -100px;
+  }
+  20% {
+    bottom: 30px;
+  }
+  80% {
+    bottom: 30px;
+  }
+  100% {
+    bottom: -100px;
+  }
 }

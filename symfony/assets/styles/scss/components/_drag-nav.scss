@@ -2,12 +2,12 @@
 .drag-nav-slider {
   margin-top: 10px;
   margin-bottom: 50px;
-  background-color: $grey;
 
   &-wrapper {
     overflow: hidden;
     position: relative;
     z-index: 1;
+    background-color: $grey;
 
     &__list {
       height: 55px;

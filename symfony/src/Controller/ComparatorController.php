@@ -22,7 +22,6 @@ class ComparatorController extends AbstractController
      */
     public function index(): Response
     {
-
         $candidatesRepository = $this->getDoctrine()
             ->getRepository(Candidate::class);
 

@@ -30,7 +30,9 @@
                     <ul id="slider-nav-wrapper__list" class="drag-nav-slider-wrapper__list d-flex flex-row">
                         {% for themeName in themesNames %}
                             <li class="drag-nav-slider-wrapper__list-item">
-                                <button class="mesure-list__title mesure-list__title-{{ themeName|clean_class }} d-md-flex align-items-md-center justify-content-md-center">
+                                <button class="mesure-list__title mesure-list__title-{{ themeName|clean_class }} d-md-flex align-items-md-center justify-content-md-center"
+                                        data-theme="{{ themeName|clean_class }}"
+                                >
                                     <span>Mesures&nbsp;</span>
                                     <span class="mesure-list__title-theme">{{ themeName }}</span>
                                 </button>
@@ -42,18 +44,22 @@
             <div class="comparator-wrapper-measures">
                 {% for theme, candidates in candidatesActionsByTheme %}
                     <div class="comparator-wrapper-measures__theme col-12"
-                         data-theme="{{ theme }}">
+                         data-theme="{{ theme|clean_class }}"
+                         id="{{ theme|clean_class }}"
+                    >
                         {% for candidate in candidates %}
-                            <h3 class="comparator-wrapper-measures__theme-candidate-name">
-                                <span>{{ candidate.name }}</span>
-                            </h3>
-                            <h3 class="comparator-wrapper-measures__theme-candidate-party"><span>{{ candidate.politicalParty }}</span></h3>
+                            <div class="comparator-wrapper-measures__theme-candidate" data-name="{{ candidate.name|clean_class }}">
+                                <h3 class="comparator-wrapper-measures__theme-candidate-name">
+                                    <span>{{ candidate.name }}</span>
+                                </h3>
+                                <h3 class="comparator-wrapper-measures__theme-candidate-party"><span>{{ candidate.politicalParty }}</span></h3>
 
-                            <ul class="mesure-list__actions d-flex row">
-                                {% for action in candidate.actions %}
-                                    <li class="mesure-list__action col-6">{{ action }}</li>
-                                {% endfor %}
-                            </ul>
+                                <ul class="mesure-list__actions d-flex row">
+                                    {% for action in candidate.actions %}
+                                        <li class="mesure-list__action col-12 col-md-6">{{ action }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         {% endfor %}
                     </div>
                 {% endfor %}
