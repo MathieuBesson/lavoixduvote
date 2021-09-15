@@ -1,4 +1,5 @@
 const dragNav = require('./drag-nav'),
+    flashMessage = require('./flash-message'),
     comparatorWrapper = document.querySelector('.comparator-wrapper'),
     allCardCandidates = document.querySelectorAll('.candidates-grid-wrapper__item'),
     nbCandidateCardsSelected = document.getElementById('nb-candidates-selected'),
@@ -55,7 +56,7 @@ allCardCandidates.forEach(candidateCard => {
                     candidateCard.querySelector('.card').classList.remove('grey-filter');
                 } else {
                     // Error message
-                    addFlashMessage('Vous ne pouvez selectionner que ' + nbMaxCandidatesToCompare + ' éléments', 'icon-lvdv-shield-white');
+                    flashMessage('Vous ne pouvez selectionner que ' + nbMaxCandidatesToCompare + ' éléments', 'icon-lvdv-shield-white');
                 }
             }
         }
@@ -109,7 +110,7 @@ startComparaisonButton.addEventListener('click', e => {
         onClickOnOneMeasure(mesuresButtons[0]);
     } else {
         // Error message
-        addFlashMessage('Sélectionner au moins 2 candidats pour effectuer une comparaison', 'icon-lvdv-shield-white');
+        flashMessage('Sélectionner au moins 2 candidats pour effectuer une comparaison', 'icon-lvdv-shield-white');
     }
 })
 
@@ -138,7 +139,7 @@ dragNav(sliderItems, sliderWrapper);
  * Action on click on one measure button
  * @param {Element} measureButton - Clcked element
  */
-function onClickOnOneMeasure(measureButton){
+function onClickOnOneMeasure(measureButton) {
     // Add active class on button
     toggleClass(mesuresButtons, measureButton, 'active');
 
@@ -163,7 +164,6 @@ function onClickOnOneMeasure(measureButton){
         }
     })
 }
-
 
 
 /**
@@ -228,43 +228,4 @@ function addCandidate(candidate) {
 
 function updateNbCandidateCardsSelected(nbElementSelected) {
     nbCandidateCardsSelected.textContent = nbElementSelected === 0 ? '...' : nbElementSelected;
-}
-
-/**
- * Display flash message on screen and remove it
- * @param {string} message - Content of flash message
- * @param {string} icon - CSS class of the icon choose
- */
-function addFlashMessage(message, icon) {
-    if (document.body.querySelector('.flash-message-wrapper') === null) {
-        const flashMessage = createFlashMessage(message, icon);
-        document.body.appendChild(flashMessage);
-        setTimeout(() => {
-            document.body.removeChild(flashMessage);
-        }, 6000);
-    }
-}
-
-/**
- * Create flash message element
- * @param {string} message - Content of flash message
- * @param {string} icon - CSS class of the icon choose
- * @return {Element} - The HTML flash message
- */
-const createFlashMessage = (message, icon) => htmlToElement(`<div class="flash-message-wrapper d-flex justify-content-center ">
-                                                                <div class="flash-message-wrapper__content d-flex flex-sm-row flex-column align-items-center">
-                                                                    <span>${message}</span>
-                                                                </div>
-                                                            </div>`)
-
-/**
- * Transform a string to DOM element
- * @param {string} html - The string to stransform in HTML
- * @return {Element} A DOM element
- */
-function htmlToElement(html) {
-    var template = document.createElement('template');
-    html = html.trim(); // Never return a text node of whitespace as the result
-    template.innerHTML = html;
-    return template.content.firstChild;
 }
