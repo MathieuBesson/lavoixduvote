@@ -1,8 +1,9 @@
 .cta__button {
 	display: none;
 	&:checked ~ .cta {
-		height: 190px;
+		height: 160px;
 		.cta__menu {
+			margin-top: 12px;
 			.cta__menu-collapse {
 				height: 20px;
 				filter: unset;

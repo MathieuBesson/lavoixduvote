@@ -1,13 +1,18 @@
-<svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g>
+<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.5">
+<mask id="mask0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="21" height="20">
+<rect x="0.370117" width="20" height="20" fill="#C4C4C4"/>
+</mask>
+<g mask="url(#mask0)">
 <g filter="url(#filter0_d)">
-<circle r="8.42593" transform="matrix(0 1 1 0 15.6486 15.3703)" stroke="white" stroke-width="1.05324"/>
+<circle r="8.42593" transform="matrix(0 1 1 0 10.496 9.92593)" stroke="white" stroke-width="1.5"/>
 </g>
-<path d="M15.6482 12.0935V15.8384" stroke="white" stroke-width="1.57986" stroke-linecap="round"/>
-<circle cx="15.6489" cy="18.1789" r="0.936214" fill="white"/>
+<path d="M10.4956 6.64941V10.3943" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="10.4963" cy="12.7346" r="0.936214" fill="white"/>
+</g>
 </g>
 <defs>
-<filter id="filter0_d" x="0.376601" y="0.0982804" width="30.544" height="30.544" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_d" x="-4.99933" y="-5.56944" width="30.9907" height="30.9907" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset/>
