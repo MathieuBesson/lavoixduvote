@@ -108,6 +108,7 @@ returnToChoice.addEventListener('click', () => {
  * Questions :
  *      - A voir avec sensei : Mettre fix la barre des noms de mesure dès qu'elle touche le haut de la page
  *      - Poser la question si le 'comparer les X programmes' est nécéssaire et pas seulement => "compareer les programmes"
+ *      - Demander à Kiki une UI pour le bouton retour
  */
 
 // Slide nav for small screens
@@ -171,6 +172,7 @@ function switchStandardToReveal(state = 'reveal') {
 
     // Don't display all tick on candidates cards
     if (state === 'reveal') {
+        // Remove all ticks
         document.querySelectorAll('.tick-selection-candidate').forEach(tick => {
             tick.remove();
         })
@@ -179,6 +181,9 @@ function switchStandardToReveal(state = 'reveal') {
         candidateCardsSelectedByOrder = {};
         idsTicks = [1, 2, 3, 4];
         nbElementSelected = 0;
+
+        // Measures slider go to left 0
+        sliderItems.style.left = 0;
     }
 
 }
