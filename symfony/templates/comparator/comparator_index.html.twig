@@ -3,6 +3,7 @@
 
 {% block main %}
     <div class="comparator-wrapper">
+        <button id="return-to-choice" class="btn btn-primary d-none">Retour au choix des candidats</button>
         <section class="comparator-wrapper__header row">
             <div class="comparator-wrapper__header-standard header-standard">
                 <h1 class="header-standard-title">Comparateur</h1>
@@ -14,7 +15,7 @@
                 <h1 class="comparator-wrapper__header-reveal-title"><span>Les candidats</span></h1>
             </div>
         </section>
-        <section class="comparator-wrapper-grid">
+        <section class="comparator-wrapper-grid standard">
             {% include 'candidate/candidate_grid_list.html.twig' with {'markup': 'div', 'greyFilter': true, 'candidates' : candidatesPresidential} %}
             <div class="comparator-wrapper-grid__compare-two-programs-cta">
                 <div class="row">
@@ -48,11 +49,13 @@
                          id="{{ theme|clean_class }}"
                     >
                         {% for candidate in candidates %}
-                            <div class="comparator-wrapper-measures__theme-candidate" data-name="{{ candidate.name|clean_class }}">
+                            <div class="comparator-wrapper-measures__theme-candidate"
+                                 data-name="{{ candidate.name|clean_class }}">
                                 <h3 class="comparator-wrapper-measures__theme-candidate-name">
                                     <span>{{ candidate.name }}</span>
                                 </h3>
-                                <h3 class="comparator-wrapper-measures__theme-candidate-party"><span>{{ candidate.politicalParty }}</span></h3>
+                                <h3 class="comparator-wrapper-measures__theme-candidate-party">
+                                    <span>{{ candidate.politicalParty }}</span></h3>
 
                                 <ul class="mesure-list__actions d-flex row">
                                     {% for action in candidate.actions %}

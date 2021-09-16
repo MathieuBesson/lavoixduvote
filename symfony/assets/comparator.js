@@ -11,7 +11,9 @@ const dragNav = require('./drag-nav'),
     measuresGroup = document.querySelectorAll('.comparator-wrapper-measures__theme'),
     comparatorRevealContent = document.querySelector('.comparator-wrapper__content-reveal'),
     sliderWrapper = document.getElementById('slider-nav-wrapper'),
-    sliderItems = document.getElementById('slider-nav-wrapper__list');
+    sliderItems = document.getElementById('slider-nav-wrapper__list'),
+    comparatorWrapperGrid = document.querySelector('.comparator-wrapper-grid');
+    returnToChoice = document.getElementById('return-to-choice');
 
 
 const tickElementClass = 'tick-selection-candidate';
@@ -20,7 +22,7 @@ const nbMaxCandidatesToCompare = 4;
 const nbMinCandidatesToCompare = 2;
 let candidateCardsSelectedByOrder = {};
 
-let stepComparaison = 'choice';
+let stepComparaison = 'standard';
 
 let idsTicks = [1, 2, 3, 4];
 let nbElementSelected = 0;
@@ -28,11 +30,14 @@ let nbElementSelected = 0;
 const gridDisplayStandard = {normal: 'col-6', lg: 'col-lg-3'};
 const gridDisplayComparator = {normal: 'col-sm-3', sm: 'col-6'};
 
+const comparatorWidthRevealClass = ['col-12', 'col-lg-10', 'mx-auto'];
+
+
 // Event listener on choice of candidates to compare
 allCardCandidates.forEach(candidateCard => {
     candidateCard.addEventListener('click', e => {
         // Activation of the choice only on "choice" part of the comparator (not in "reveal")
-        if (stepComparaison === 'choice') {
+        if (stepComparaison === 'standard') {
 
             // Toggle on tick in card on click
             if (candidateCard.innerHTML.includes(tickElementClass)) {
@@ -67,45 +72,8 @@ allCardCandidates.forEach(candidateCard => {
 startComparaisonButton.addEventListener('click', e => {
     // Verification of the number of candidates choose
     if (Object.keys(candidateCardsSelectedByOrder).length >= nbMinCandidatesToCompare) {
-        stepComparaison = 'reveal';
-        // Pass screen to col-10 on large screen
-        comparatorWrapper.classList.add('col-12', 'col-lg-10', 'mx-auto');
 
-        // Don't display standard header and display reveal header
-        comparatorHeaderStandard.classList.add('d-none');
-        comparatorHeaderReveal.classList.add('d-flex');
-
-        // Display comparator measures
-        comparatorRevealContent.classList.remove('d-none')
-
-        allCardCandidates.forEach(candidate => {
-            // Don't display all candidates cards
-            if (!Object.keys(candidateCardsSelectedByOrder).includes(candidate.dataset.name)) {
-                candidate.classList.add('d-none');
-            } else {
-                // Don't display all candidates card titles
-                candidate.querySelector('.card-title').classList.add('d-none');
-                candidate.querySelector('.card-subtitle').classList.add('d-none');
-
-                // Change col disposition on candidates card
-                for (className in gridDisplayStandard) {
-                    candidate.classList.remove(gridDisplayStandard[className]);
-                }
-                for (className in gridDisplayComparator) {
-                    candidate.classList.add(gridDisplayComparator[className]);
-                }
-                candidate.classList.add('comparator-card');
-            }
-        })
-
-        // Don't display start comparaison button
-        startComparaisonButton.classList.add('d-none');
-
-        // Don't display all tick on candidates cards
-        document.querySelectorAll('.tick-selection-candidate').forEach(tick => {
-            tick.classList.add('d-none');
-        })
-
+        switchStandardToReveal('reveal');
         // Click on the first measure
         onClickOnOneMeasure(mesuresButtons[0]);
     } else {
@@ -117,13 +85,23 @@ startComparaisonButton.addEventListener('click', e => {
 // Event on click on measure nav
 mesuresButtons.forEach(measureButton => {
     measureButton.addEventListener('click', () => {
-        onClickOnOneMeasure(measureButton);
+        // if this measures is not already selected
+        if (!measureButton.classList.contains('active')) {
+            onClickOnOneMeasure(measureButton);
+        }
     })
 })
 
+
+returnToChoice.addEventListener('click', () => {
+    switchStandardToReveal('standard');
+})
+
+
 /**
  * Reste à faire :
- *      - Revenir au choix du des candidats du comparateur
+ *      - Commenter le code muet
+ *      - Voir le buf d'ordre lors du retour au choix + => reveal
  */
 
 /**
@@ -134,6 +112,76 @@ mesuresButtons.forEach(measureButton => {
 
 // Slide nav for small screens
 dragNav(sliderItems, sliderWrapper);
+
+function switchStandardToReveal(state = 'reveal') {
+
+    const oppositeState = state === 'reveal' ? 'standard' : 'reveal';
+    // Set action for each block
+    let action = {};
+    if (state === 'reveal') {
+        action = {
+            toggleAdd: 'add',
+            toggleRemove: 'remove',
+        }
+    } else {
+        action = {
+            toggleAdd: 'remove',
+            toggleRemove: 'add',
+        }
+    }
+
+    stepComparaison = state;
+
+    returnToChoice.classList[action.toggleRemove]('d-none');
+    comparatorWrapperGrid.classList[action.toggleAdd](state);
+    comparatorWrapperGrid.classList[action.toggleRemove](oppositeState);
+
+    // Pass screen to col-10 on large screen
+    comparatorWrapper.classList.[action.toggleAdd](comparatorWidthRevealClass);
+
+    // Don't display standard header and display reveal header
+    comparatorHeaderStandard.classList[action.toggleAdd]('d-none');
+    comparatorHeaderReveal.classList[action.toggleAdd]('d-flex');
+
+    // Display comparator measures
+    comparatorRevealContent.classList[action.toggleRemove]('d-none')
+
+    // Don't display start comparaison button
+    startComparaisonButton.classList[action.toggleAdd]('d-none');
+
+    allCardCandidates.forEach(candidate => {
+        // Don't display all candidates cards
+        if (!Object.keys(candidateCardsSelectedByOrder).includes(candidate.dataset.name)) {
+            candidate.classList[action.toggleAdd]('d-none');
+        } else {
+            // Don't display all candidates card titles
+            candidate.querySelector('.card-title').classList[action.toggleAdd]('d-none');
+            candidate.querySelector('.card-subtitle').classList[action.toggleAdd]('d-none');
+
+            // Change col disposition on candidates card
+            for (className in gridDisplayStandard) {
+                candidate.classList[action.toggleRemove](gridDisplayStandard[className]);
+            }
+            for (className in gridDisplayComparator) {
+                candidate.classList[action.toggleAdd](gridDisplayComparator[className]);
+            }
+            candidate.classList[action.toggleAdd]('comparator-card');
+        }
+    })
+
+    // Don't display all tick on candidates cards
+    if (state === 'reveal') {
+        document.querySelectorAll('.tick-selection-candidate').forEach(tick => {
+            tick.remove();
+        })
+    } else {
+        // Reset vars
+        candidateCardsSelectedByOrder = {};
+        idsTicks = [1, 2, 3, 4];
+        nbElementSelected = 0;
+    }
+
+}
 
 /**
  * Action on click on one measure button
