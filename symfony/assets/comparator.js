@@ -12,9 +12,8 @@ const dragNav = require('./drag-nav'),
     comparatorRevealContent = document.querySelector('.comparator-wrapper__content-reveal'),
     sliderWrapper = document.getElementById('slider-nav-wrapper'),
     sliderItems = document.getElementById('slider-nav-wrapper__list'),
-    comparatorWrapperGrid = document.querySelector('.comparator-wrapper-grid');
+    comparatorWrapperGrid = document.querySelector('.comparator-wrapper-grid'),
     returnToChoice = document.getElementById('return-to-choice');
-
 
 const tickElementClass = 'tick-selection-candidate';
 const tickElement = (number) => `<span class="${tickElementClass}">${number}</span>`;
@@ -27,8 +26,8 @@ let stepComparaison = 'standard';
 let idsTicks = [1, 2, 3, 4];
 let nbElementSelected = 0;
 
-const gridDisplayStandard = {normal: 'col-6', lg: 'col-lg-3'};
-const gridDisplayComparator = {normal: 'col-sm-3', sm: 'col-6'};
+const gridDisplayStandard = ['col-6', 'col-lg-3'];
+const gridDisplayComparator = ['col-sm-3', 'col-6'];
 
 const comparatorWidthRevealClass = ['col-12', 'col-lg-10', 'mx-auto'];
 
@@ -92,28 +91,26 @@ mesuresButtons.forEach(measureButton => {
     })
 })
 
-
+// Action to return to choice screen
 returnToChoice.addEventListener('click', () => {
     switchStandardToReveal('standard');
 })
 
-
-/**
- * Reste à faire :
- *      - Commenter le code muet
- *      - Voir le buf d'ordre lors du retour au choix + => reveal
- */
-
 /**
  * Questions :
- *      - A voir avec sensei : Mettre fix la barre des noms de mesure dès qu'elle touche le haut de la page
- *      - Poser la question si le 'comparer les X programmes' est nécéssaire et pas seulement => "compareer les programmes"
- *      - Demander à Kiki une UI pour le bouton retour
+ *      - A voir avec sensei : Mettre fix la barre des noms de mesure dès qu'elle touche le haut de la page, j'y arrive pas...
+ *      - A voir avec Kiki :
+ *           - Poser la question si le 'comparer les X programmes' est nécéssaire et pas seulement => "Comparer les programmes" => POse des problème en responsive
+ *           - Trouver une UI pour le bouton retour
  */
 
 // Slide nav for small screens
 dragNav(sliderItems, sliderWrapper);
 
+/**
+ * Switch between choice view and reveal view
+ * @param state {string} - State of the screen 'standard' or 'reveal'
+ */
 function switchStandardToReveal(state = 'reveal') {
 
     const oppositeState = state === 'reveal' ? 'standard' : 'reveal';
@@ -155,17 +152,15 @@ function switchStandardToReveal(state = 'reveal') {
         if (!Object.keys(candidateCardsSelectedByOrder).includes(candidate.dataset.name)) {
             candidate.classList[action.toggleAdd]('d-none');
         } else {
+            candidate.querySelector('.card').classList.[action.toggleRemove]('grey-filter');
             // Don't display all candidates card titles
             candidate.querySelector('.card-title').classList[action.toggleAdd]('d-none');
             candidate.querySelector('.card-subtitle').classList[action.toggleAdd]('d-none');
 
             // Change col disposition on candidates card
-            for (className in gridDisplayStandard) {
-                candidate.classList[action.toggleRemove](gridDisplayStandard[className]);
-            }
-            for (className in gridDisplayComparator) {
-                candidate.classList[action.toggleAdd](gridDisplayComparator[className]);
-            }
+            gridDisplayStandard.forEach(className => {candidate.classList[action.toggleRemove](gridDisplayStandard[className])})
+            gridDisplayComparator.forEach(className => {candidate.classList[action.toggleAdd](gridDisplayComparator[className])})
+
             candidate.classList[action.toggleAdd]('comparator-card');
         }
     })
@@ -190,7 +185,7 @@ function switchStandardToReveal(state = 'reveal') {
 
 /**
  * Action on click on one measure button
- * @param {Element} measureButton - Clcked element
+ * @param {Element} measureButton - Clicked element
  */
 function onClickOnOneMeasure(measureButton) {
     // Add active class on button
@@ -208,7 +203,7 @@ function onClickOnOneMeasure(measureButton) {
     // Sorting candidates choices by order of selection
     sortingCandidatesByOrderSelected(measureButton.dataset.theme);
 
-    // Don't display the measureGroup if the theme no corresponding
+    // Don't display the measureGroup for themes no selected
     measuresGroup.forEach(measureGroup => {
         if (measureButton.dataset.theme !== measureGroup.dataset.theme) {
             measureGroup.classList.add('d-none');
@@ -221,23 +216,40 @@ function onClickOnOneMeasure(measureButton) {
 
 /**
  * Sort candidates by slected order choice
+ * @param {string} theme - Theme selected
  */
 function sortingCandidatesByOrderSelected(theme) {
     const themeGroup = document.getElementById(theme);
 
-    candidatesMeasures = [].slice.call(themeGroup.children).sort((a, b) => candidateCardsSelectedByOrder[a.dataset.name] > candidateCardsSelectedByOrder[b.dataset.name] ? 1 : -1)
+    // Separation between displayed elements from the non-displayed
+    let dNoneCandidateMeasure = [];
+    let displayedCandidateMeasure = [];
+    [...themeGroup.children].map(candidateMeasure => {
+        if (candidateMeasure.classList.contains('d-none')) {
+            dNoneCandidateMeasure.push(candidateMeasure);
+        } else {
+            displayedCandidateMeasure.push(candidateMeasure);
+        }
+    })
+
+    // Sort all displayed candidates measures by user choice
+    displayedCandidateMeasure = displayedCandidateMeasure.sort((a, b) => candidateCardsSelectedByOrder[a.dataset.name] > candidateCardsSelectedByOrder[b.dataset.name] ? 1 : -1)
 
     // Delete previous order of candidates
     themeGroup.innerHTML = '';
 
     // Add new order of candidates
-    candidatesMeasures.forEach((val) => {
-        themeGroup.appendChild(val);
-    });
+    themeGroup.append(...displayedCandidateMeasure, ...dNoneCandidateMeasure);
 }
 
 /**
+ */
+
+/**
  * Remove active class of all and add active on selected
+ * @param all {HTMLCollection} - Collection of elements in which to remove the class
+ * @param selected {Element} - Element selected
+ * @param className {string} - Classname to add on selected element
  */
 function toggleClass(all, selected, className) {
     all.forEach(one => {
@@ -257,7 +269,7 @@ function removeCandidate(candidate) {
     // Add Id of the tick in array
     idsTicks.push(parseInt(tick.textContent));
 
-    // Remove candidate of selected candidates 
+    // Remove candidate of selected candidates
     delete candidateCardsSelectedByOrder[candidate.dataset.name];
 
     // Remove the tick of the DOM

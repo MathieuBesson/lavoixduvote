@@ -60,7 +60,7 @@
 
     .grey-filter {
       filter: grayscale(60%);
-      transition: all 0.2s ease;
+      transition: filter 0.2s ease;
 
       &:hover {
         filter: grayscale(0%);
