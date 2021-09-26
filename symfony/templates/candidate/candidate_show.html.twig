@@ -1,5 +1,9 @@
 {% extends 'page.html.twig' %}
 
+{% block title %}
+	La Voix du Vote - {{ candidate.firstName }} {{ candidate.lastName }}
+{% endblock %}
+
 {% block main %}
     {# Header, picture / name #}
     <div class="col-12 candidate">
