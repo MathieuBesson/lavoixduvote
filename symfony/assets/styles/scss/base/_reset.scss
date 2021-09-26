@@ -14,3 +14,8 @@ li {
 img {
     @extend .img-fluid
 }
+
+a {
+	@include link($primary, lighten($primary, 10%));
+	font-weight: $bold;
+}
