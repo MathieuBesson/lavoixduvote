@@ -14,6 +14,8 @@ const navList = document.querySelector('.drag-nav-slider-wrapper');
 const navResearch = document.querySelector('#nav-research');
 // Element to display in case of non-result
 const noDefinitions = document.querySelector('#no-definitions');
+// Get parameter to search
+const queryArgs = window.location.pathname.split('/');
 
 // Add .active class for nav items and display or not definitions
 [...buttons].forEach(currentButton => {
@@ -75,3 +77,12 @@ var sliderWrapper = document.querySelector('.drag-nav-slider-wrapper'),
     sliderItems = document.querySelector('.drag-nav-slider-wrapper__list');
 
 dragNav(sliderItems, sliderWrapper);
+
+// Split the first param
+queryArgs.shift();
+if (queryArgs.length > 1) {
+    // We have a search term
+    researchIcon.dispatchEvent(new Event('click'));
+    researchInput.value = decodeURIComponent(decodeURIComponent(queryArgs[1]));
+    researchInput.dispatchEvent(new Event('input', { bubbles: true}));
+}

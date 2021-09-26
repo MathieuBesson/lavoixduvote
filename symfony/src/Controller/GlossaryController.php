@@ -15,9 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class GlossaryController extends AbstractController
 {
     /**
-     * @Route(name="_index", path="/")
+     * @param string $search The search to look for, this is only for JS treatment
+     * @Route(name="_index", path="/{search}")
      */
-    public function index(): Response
+    public function index(string $search = ''): Response
     {
         $repository = $this->getDoctrine()->getRepository('App\Entity\GlossaryCategory');
         $glossaryCategories = $repository->findAll();
