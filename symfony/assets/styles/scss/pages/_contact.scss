@@ -1,0 +1,17 @@
+.contact {
+	text-align: center;
+	font-size: 30px;
+
+	&__text {
+		color: $danger;
+		&-flex {
+			margin: 15px;
+		}
+	}
+	&__mail {
+		color: $primary;
+		a {
+			@include link($danger, darken($danger, 10%))
+		}
+	}
+}
