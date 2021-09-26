@@ -54,6 +54,7 @@ class PrimaryChoiceSubscriber implements EventSubscriberInterface
      */
     public function doesUserHaveChosen(RequestEvent $event)
     {
+
         if (!$event->isMainRequest()) {
             return;
         }
