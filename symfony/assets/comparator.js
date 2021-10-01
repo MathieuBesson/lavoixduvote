@@ -135,7 +135,7 @@ function switchStandardToReveal(state = 'reveal') {
     comparatorWrapperGrid.classList[action.toggleRemove](oppositeState);
 
     // Pass screen to col-10 on large screen
-    comparatorWrapper.classList.[action.toggleAdd](comparatorWidthRevealClass);
+    comparatorWrapper.classList[action.toggleAdd](comparatorWidthRevealClass);
 
     // Don't display standard header and display reveal header
     comparatorHeaderStandard.classList[action.toggleAdd]('d-none');
@@ -152,14 +152,18 @@ function switchStandardToReveal(state = 'reveal') {
         if (!Object.keys(candidateCardsSelectedByOrder).includes(candidate.dataset.name)) {
             candidate.classList[action.toggleAdd]('d-none');
         } else {
-            candidate.querySelector('.card').classList.[action.toggleRemove]('grey-filter');
+            candidate.querySelector('.card').classList[action.toggleRemove]('grey-filter');
             // Don't display all candidates card titles
             candidate.querySelector('.card-title').classList[action.toggleAdd]('d-none');
             candidate.querySelector('.card-subtitle').classList[action.toggleAdd]('d-none');
 
             // Change col disposition on candidates card
-            gridDisplayStandard.forEach(className => {candidate.classList[action.toggleRemove](gridDisplayStandard[className])})
-            gridDisplayComparator.forEach(className => {candidate.classList[action.toggleAdd](gridDisplayComparator[className])})
+            gridDisplayStandard.forEach(className => {
+                candidate.classList[action.toggleRemove](gridDisplayStandard[className])
+            })
+            gridDisplayComparator.forEach(className => {
+                candidate.classList[action.toggleAdd](gridDisplayComparator[className])
+            })
 
             candidate.classList[action.toggleAdd]('comparator-card');
         }
@@ -294,3 +298,32 @@ function addCandidate(candidate) {
 function updateNbCandidateCardsSelected(nbElementSelected) {
     nbCandidateCardsSelected.textContent = nbElementSelected === 0 ? '...' : nbElementSelected;
 }
+
+/**
+ * Makes the slider sticky, but not on footer, and not on his top
+ */
+function sliderShouldBeSticky() {
+    const sliderInitialYPosition = getOffset(sliderWrapper).top;
+    const footerInitialYPosition = getOffset(document.querySelector('.supportus-wrapper')).top;
+    window.addEventListener('scroll', function(_) {
+        if (window.matchMedia("(max-width:991px)").matches) {
+            const scrollYPosition = window.scrollY;
+            if (scrollYPosition > sliderInitialYPosition + 210 && scrollYPosition < (footerInitialYPosition - document.querySelector('.supportus-wrapper').clientHeight)) {
+                const topMenuHeight = document.querySelector('.header-responsive').clientHeight;
+                sliderWrapper.style.transform = "translateY(" + ((- sliderInitialYPosition - topMenuHeight - 210) + scrollYPosition) + "px)";
+            } else if (getOffset(sliderWrapper).top !== sliderInitialYPosition) {
+                sliderWrapper.style.transform = "translateY(0px)";
+            }
+        }
+    });
+}
+
+function getOffset(el) {
+    const rect = el.getBoundingClientRect();
+    return {
+        left: rect.left + window.scrollX,
+        top: rect.top + window.scrollY
+    };
+}
+
+sliderShouldBeSticky();
