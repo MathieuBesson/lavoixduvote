@@ -18,5 +18,8 @@
         {% block body %}{% endblock %}
     </body>
     {# wtf tarteaucitron - https://stackoverflow.com/questions/66455125/tarteaucitronjs-not-found-using-symfony-and-webpack #}
+    <script>tarteaucitronForceLanguage = 'fr';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tarteaucitronjs/1.9.3/tarteaucitron.min.js" integrity="sha512-r/kjLI/1jNJCXAUuhhnzD7sFvFX9Vkq3yL2+5Fcs/hQzEzwA2JdiOFLbpQ01m73U4zfG/9lNN/K/MLq5niG8GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tarteaucitronjs/1.9.3/lang/tarteaucitron.fr.min.js" integrity="sha512-vjNsKriK1pBT20r7VSEZ4U1x+UjXc123bOcH6vn5i84bwjfTbflr8STFK1fzxSYsKF1GGoEOIs5d9ow8Lueihg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {{ encore_entry_script_tags('tac') }}
 </html>
