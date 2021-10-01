@@ -182,7 +182,7 @@ function switchStandardToReveal(state = 'reveal') {
         nbElementSelected = 0;
 
         // Measures slider go to left 0
-        sliderItems.style.left = 0;
+        sliderItems.style.left = "0";
     }
 
 }
@@ -270,14 +270,38 @@ function removeCandidate(candidate) {
 
     const tick = candidate.querySelector('.' + tickElementClass);
 
-    // Add Id of the tick in array
-    idsTicks.push(parseInt(tick.textContent));
+    actualizeCandidatesTick(tick.innerHTML);
 
-    // Remove candidate of selected candidates
     delete candidateCardsSelectedByOrder[candidate.dataset.name];
 
     // Remove the tick of the DOM
     candidate.removeChild(tick)
+}
+
+/**
+ * Actualise the ticks to recalculate position of every elements
+ *
+ * @param numberRemoved
+ */
+function actualizeCandidatesTick(numberRemoved) {
+    // The tick already there
+    let currentTick = [];
+    document.querySelectorAll('.' + tickElementClass).forEach(function(tick) {
+        let tickNumber = tick.innerHTML;
+        if (parseInt(tickNumber) > parseInt(numberRemoved)) {
+            tickNumber--;
+           tick.innerHTML = tickNumber.toString();
+        }
+        currentTick.push(parseInt(tick.innerHTML));
+    });
+    // Invert the tab to create the new idTicks array with the tick that aren't in html DOM
+    let newIdTick = [];
+    for (let i = 1; i <= 4 ; i++) {
+        if (!currentTick.includes(i)) {
+            newIdTick.push(i);
+        }
+    }
+    idsTicks = newIdTick;
 }
 
 /**
