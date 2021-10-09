@@ -36,7 +36,7 @@ class Program
     private $programLink;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Action::class, inversedBy="programs")
+     * @ORM\ManyToMany(targetEntity=Action::class, inversedBy="programs", cascade={"persist"})
      */
     private $actions;
 
