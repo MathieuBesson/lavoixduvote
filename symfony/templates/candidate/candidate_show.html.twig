@@ -83,7 +83,7 @@
             </div>
             <div class="col-12">
                 <div class="party-history__description">
-                    {{ candidate.politicalParty.description }}
+                    {{ candidate.politicalParty.description|raw }}
                 </div>
             </div>
             {% if candidate.politicalParty.adress %}
