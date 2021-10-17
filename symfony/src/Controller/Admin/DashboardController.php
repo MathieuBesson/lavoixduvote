@@ -47,7 +47,6 @@ class DashboardController extends AbstractDashboardController {
         yield MenuItem::linkToCrud('Primary', 'fas fa-poll', Primary::class);
         yield MenuItem::linkToCrud('Programs', 'fas fa-scroll', Program::class);
         yield MenuItem::linkToCrud('Themes', 'fas fa-project-diagram', Theme::class);
-        yield MenuItem::linkToCrud('Actions', 'fas fa-balance-scale-left', Action::class);
         yield MenuItem::linkToCrud('Star Measures', 'fas fa-star', StarMeasure::class);
         yield MenuItem::linkToCrud('Glossary', 'fas fa-spell-check', Glossary::class);
         yield MenuItem::linkToCrud('Glossary Themes', 'far fa-bookmark', GlossaryCategory::class);
