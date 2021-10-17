@@ -17,6 +17,10 @@
 		line-height: 90px;
 		color: $primary;
 		margin-bottom: 45px;
+		@include media-breakpoint-down(lg) {
+			font-size: 32px;
+			line-height: 45px;
+		}
 	}
 	&__code {
 		color: $danger;
