@@ -43,6 +43,9 @@
 @mixin filter-primary() {
     filter: brightness(0) saturate(100%) invert(8%) sepia(82%) saturate(5301%) hue-rotate(249deg) brightness(97%) contrast(131%);
 }
+@mixin filter-grey() {
+	filter: brightness(0) saturate(100%) invert(15%) sepia(7%) saturate(424%) hue-rotate(187deg) brightness(99%) contrast(87%);
+}
 
 // Ripple effect
 @mixin btn-ripple($mid, $end) {
