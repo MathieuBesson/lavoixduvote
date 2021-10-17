@@ -1,0 +1,10 @@
+{% extends 'page.html.twig' %}
+
+{% block main %}
+	<div class="error-container">
+		<img src="{{ asset('images/logos/error.svg') }}" alt="Logo Erreur">
+		<h2>Votre bulletin s'est perdu en route</h2>
+		<h1>Oups, erreur <span class="error-container__code">{{ status_code }}</span></h1>
+		<a class="error-container__cta btn btn-primary btn-ripple-secondary" href="{{ path('home') }}">Revenir sur les programmes</a>
+	</div>
+{% endblock %}

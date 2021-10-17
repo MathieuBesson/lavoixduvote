@@ -1,0 +1,31 @@
+.error-container {
+	text-align: center;
+	img {
+		width: 300px;
+		margin-bottom: 65px;
+		margin-top: 110px;
+	}
+	h2 {
+		font-weight: $bold;
+		font-size: 17px;
+		color: $primary;
+		margin-bottom: 15px;
+	}
+	h1 {
+		font-weight: $bold;
+		font-size: 64px;
+		line-height: 90px;
+		color: $primary;
+		margin-bottom: 45px;
+	}
+	&__code {
+		color: $danger;
+	}
+	&__cta {
+		font-weight: $bold;
+		font-size: 18px;
+		line-height: 22px;
+		padding: 20px 45px;
+		margin-bottom: 150px;
+	}
+}

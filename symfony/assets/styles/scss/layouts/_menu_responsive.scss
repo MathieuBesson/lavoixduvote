@@ -59,10 +59,42 @@
             }
             // Specific dropdown
             .dropdown-menu {
-                background-color: $secondary;
+                background-color: $primary-lighter;
+				border: none;
+				margin-top: 20px;
+
+	            &::before, &::after {
+		            content :'';
+		            position: absolute;
+		            width: 300px;
+		            right: calc((100% - 300px) / 2);
+
+		            height: auto;
+	            }
+
+	            &::before {
+		            top: 0;
+		            height: 100%;
+		            border-top: 1px solid $secondary;
+		            border-bottom: 1px solid $secondary;
+		            z-index: -100;
+	            }
+	            &::after {
+		            bottom: -30px;
+		            left: -100vw;
+		            right: 100vw;
+		            width: 200vw;
+		            background-color: $primary-lighter;
+		            height: 30px;
+	            }
+
 
                 a {
-                    @include link($primary, $primary-mid-darker)
+                    @include link(rgb($secondary, .5), $secondary);
+	                max-height: 300px;
+	                &:hover, &:active, &:focus {
+		                background-color: $primary-lighter;
+	                }
                 }
             }
 
