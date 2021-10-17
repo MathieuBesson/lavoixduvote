@@ -1,17 +1,30 @@
 .contact {
 	text-align: center;
-	font-size: 30px;
+	font-size: 18px;
+	line-height: 25px;
+	color: #010519;
 
-	&__text {
-		color: $danger;
-		&-flex {
-			margin: 15px;
-		}
+	img {
+		margin-top: 100px;
+		margin-bottom: 45px;
 	}
-	&__mail {
+	h1 {
+		font-weight: $bold;
+		font-size: 55px;
+		line-height: 70px;
+		margin-bottom: 30px;
 		color: $primary;
-		a {
-			@include link($danger, darken($danger, 10%))
-		}
+	}
+	&__text {
+		margin-bottom: 45px;
+	}
+	&__cta {
+		padding: 20px 45px;
+		font-weight: $bold;
+		line-height: 22px;
+		margin-bottom: 150px;
+	}
+	&__dynamic-word {
+		color: $danger;
 	}
 }
