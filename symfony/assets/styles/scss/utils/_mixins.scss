@@ -2,8 +2,10 @@
 @mixin link($color, $hover-color) {
     text-decoration: none;
     color: $color;
-    transition: all .5s ease;
-    &:hover, &:focus, &:active {
+    transition: all 0.5s ease;
+    &:hover,
+    &:focus,
+    &:active {
         color: $hover-color;
     }
 }
@@ -13,16 +15,18 @@
     position: relative;
 
     &::after {
-        content: '';
+        content: "";
         position: absolute;
         border-bottom: 2px solid transparent;
         width: 0;
         bottom: -4px;
         left: 0;
-        transition: all .5s ease;
+        transition: all 0.5s ease;
     }
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
         &::after {
             border-bottom: 2px solid $border-color;
             width: 100%;
@@ -32,19 +36,23 @@
 
 // Zooming effect on hover
 @mixin zoom-effect() {
-    transition: all 0.2s ease;
-    &:hover, &:active, &:focus {
-        box-shadow: -1px 5px 12px -6px rgba(0, 0, 0, 0.83);
-        transform: scale(1.02);
+    transition: all 0.35s ease;
+    &:hover,
+    &:active,
+    &:focus {
+        box-shadow: -1px 5px 12px -6px rgba(0, 0, 0, 0.45);
+        transform: scale(1.008);
     }
 }
 
 // Filter svg to primary color
 @mixin filter-primary() {
-    filter: brightness(0) saturate(100%) invert(8%) sepia(82%) saturate(5301%) hue-rotate(249deg) brightness(97%) contrast(131%);
+    filter: brightness(0) saturate(100%) invert(8%) sepia(82%) saturate(5301%)
+        hue-rotate(249deg) brightness(97%) contrast(131%);
 }
 @mixin filter-grey() {
-	filter: brightness(0) saturate(100%) invert(15%) sepia(7%) saturate(424%) hue-rotate(187deg) brightness(99%) contrast(87%);
+    filter: brightness(0) saturate(100%) invert(15%) sepia(7%) saturate(424%)
+        hue-rotate(187deg) brightness(99%) contrast(87%);
 }
 
 // Ripple effect
@@ -53,7 +61,8 @@
     transition: background 0.8s;
 
     &:hover {
-        background: $end radial-gradient(circle, transparent 1%, $end 1%) center/15000%;
+        background: $end radial-gradient(circle, transparent 1%, $end 1%)
+            center/15000%;
     }
 
     &:active {
@@ -74,7 +83,7 @@
     z-index: 800;
 
     &::after {
-        content: url($icon-path + '../arrow.svg');
+        content: url($icon-path + "../arrow.svg");
         position: absolute;
         left: -20px;
         bottom: -10px;

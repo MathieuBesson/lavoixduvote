@@ -1,31 +1,26 @@
 .candidates-grid-wrapper {
-  display: flex;
-  width: 100%;
-  padding: 0 0 120px;
-  transition: all 1s ease;
+    display: flex;
+    width: 100%;
+    padding: 0 0 120px;
+    transition: all 1s ease;
 
-  &__item {
-    text-decoration: none;
+    &__item {
+        text-decoration: none;
+        .card {
+            background-position: center;
+            background-size: cover;
+            border-radius: 15px;
+            border: 0;
+            height: 260px;
+        }
 
-    .card {
-      background-position: center;
-      background-size: cover;
-      border-radius: 15px;
-      border: 0;
-      height: 260px;
+        .card-title {
+            font-size: $font-normal;
+            font-weight: $bold;
+        }
+
+        .card-subtitle {
+            font-size: $font-small;
+        }
     }
-
-    .card-title {
-      font-size: $font-normal;
-      font-weight: $bold;
-    }
-
-    .card-subtitle {
-      font-size: $font-small;
-    }
-  }
 }
-
-
-
-
