@@ -1,11 +1,11 @@
 #candidates-roll-wrapper {
     color: $secondary;
     .rolling-base {
-	    padding-top: 10px;
+        padding-top: 10px;
         &::-webkit-scrollbar {
             display: none; // Chrome
         }
-        scrollbar-width: none;  // Firefox
+        scrollbar-width: none; // Firefox
     }
 
     .circle-roll {
@@ -15,24 +15,24 @@
             margin-top: -160px;
             z-index: 2000;
         }
-        .quarter-circle-bottom-left{
+        .quarter-circle-bottom-left {
             width: 150px;
             height: 150px;
             @include media-breakpoint-up(md) {
                 width: 180px;
                 height: 180px;
             }
-            background: #E1E9FF;
+            background: #e1e9ff;
             border-radius: 180px 0 0 0;
         }
-        .quarter-circle-bottom-right{
+        .quarter-circle-bottom-right {
             width: 150px;
             height: 150px;
             @include media-breakpoint-up(md) {
                 width: 180px;
                 height: 180px;
             }
-            background: #B6CAFF;
+            background: #b6caff;
             border-radius: 0 180px 0 0;
         }
         button {
@@ -45,7 +45,7 @@
         }
         #letsroll {
             &.rotate {
-                transform:rotate(720deg);
+                transform: rotate(720deg);
             }
             top: -30px;
             left: calc(50% - 30px);
@@ -72,7 +72,7 @@
     background-size: cover;
     background-position: center;
     border-radius: 15px;
-    padding-left: 15px;
+    padding-left: 25px;
     position: relative;
     @include zoom-effect();
     @include media-breakpoint-up(xl) {
@@ -115,7 +115,6 @@
         letter-spacing: 0;
         text-align: left;
         margin-bottom: 30px;
-
     }
 
     &__link {
@@ -133,9 +132,11 @@
             margin-bottom: 60px;
         }
 
-        &, &:hover, &:active, &:focus {
+        &,
+        &:hover,
+        &:active,
+        &:focus {
             color: $secondary;
         }
     }
-
 }

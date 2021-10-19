@@ -15,7 +15,7 @@
                 <div class="container">
                     <div class="rolling-base row flex-nowrap overflow-auto">
                         {% for candidate in candidates %}
-                            <div class="col-12 {% if not loop.last %}col-xl-11{% else%}col-xl-12{% endif %} {% if not loop.first %}offset-xl-1{% endif %}">
+                            <div class="col-12 {% if not loop.last %}col-xl-11{% else %}col-xl-12{% endif %} {% if not loop.first %}offset-xl-1{% endif %}">
                                 <div class="candidate-roll-wrapper d-flex flex-column justify-content-end"
                                     style="background-image: url({{ candidate.displayPicture }});">
                                     <a class="candidate-roll-wrapper__link-zone"
