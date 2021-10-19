@@ -1,9 +1,9 @@
 <ul class="d-xl-flex">
-	<li><a href="{{ path('primaries_index') }}">Les programmes</a></li>
-	<li><a href="{{ path('why_vote_index') }}">Pourquoi&nbsp;voter&nbsp;?</a></li>
-	<li><a href="{{ path('comparator_index') }}">Comparateur</a></li>
-	<li><a href="{{ path('glossary_index') }}">Glossaire</a></li>
-	<li><a href="{{ path('contact_index') }}">Nous contacter</a></li>
+	<li><a class="{% if route_prefix == 'primaries' or route_prefix == 'home' %}active{% endif %}" href="{{ path('primaries_index') }}">Les programmes</a></li>
+	<li><a class="{% if route_prefix == 'why' %}active{% endif %}" href="{{ path('why_vote_index') }}">Pourquoi&nbsp;voter&nbsp;?</a></li>
+	<li><a class="{% if route_prefix == 'comparator' %}active{% endif %}" href="{{ path('comparator_index') }}">Comparateur</a></li>
+	<li><a class="{% if route_prefix == 'glossary' %}active{% endif %}" href="{{ path('glossary_index') }}">Glossaire</a></li>
+	<li><a class="{% if route_prefix == 'contact' %}active{% endif %}" href="{{ path('contact_index') }}">Nous contacter</a></li>
 	{% if lvdvService.isThereAnyPrimaryChoice %}
 		<li>
 			<div class="dropdown">
