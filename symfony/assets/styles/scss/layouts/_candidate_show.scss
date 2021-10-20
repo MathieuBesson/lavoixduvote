@@ -81,6 +81,9 @@
                 &:active {
                     border-right: 0;
                     border-left: 0;
+                    .title {
+                        color: $secondary;
+                    }
                 }
 
                 &:not(.active, :hover, &:focus, &:active) i {

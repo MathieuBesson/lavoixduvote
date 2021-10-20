@@ -1,53 +1,66 @@
-const dragNav = require('./drag-nav'),
-    flashMessage = require('./flash-message'),
-    comparatorWrapper = document.querySelector('.comparator-wrapper'),
-    allCardCandidates = document.querySelectorAll('.candidates-grid-wrapper__item'),
-    nbCandidateCardsSelected = document.getElementById('nb-candidates-selected'),
-    startComparaisonButton = document.getElementById('start-comparaison'),
-    comparatorHeaderStandard = document.querySelector('.comparator-wrapper__header-standard'),
-    comparatorHeaderReveal = document.querySelector('.comparator-wrapper__header-reveal'),
-    candidateWrapper = document.querySelector('.candidates-grid-wrapper'),
-    mesuresButtons = document.querySelectorAll('.mesure-list__title'),
-    measuresGroup = document.querySelectorAll('.comparator-wrapper-measures__theme'),
-    comparatorRevealContent = document.querySelector('.comparator-wrapper__content-reveal'),
-    sliderWrapper = document.getElementById('slider-nav-wrapper'),
-    sliderItems = document.getElementById('slider-nav-wrapper__list'),
-    comparatorWrapperGrid = document.querySelector('.comparator-wrapper-grid'),
-    returnToChoice = document.getElementById('return-to-choice');
+const dragNav = require("./drag-nav"),
+    flashMessage = require("./flash-message"),
+    comparatorWrapper = document.querySelector(".comparator-wrapper"),
+    allCardCandidates = document.querySelectorAll(
+        ".candidates-grid-wrapper__item"
+    ),
+    nbCandidateCardsSelected = document.getElementById(
+        "nb-candidates-selected"
+    ),
+    startComparaisonButton = document.getElementById("start-comparaison"),
+    comparatorHeaderStandard = document.querySelector(
+        ".comparator-wrapper__header-standard"
+    ),
+    comparatorHeaderReveal = document.querySelector(
+        ".comparator-wrapper__header-reveal"
+    ),
+    candidateWrapper = document.querySelector(".candidates-grid-wrapper"),
+    mesuresButtons = document.querySelectorAll(".mesure-list__title"),
+    measuresGroup = document.querySelectorAll(
+        ".comparator-wrapper-measures__theme"
+    ),
+    comparatorRevealContent = document.querySelector(
+        ".comparator-wrapper__content-reveal"
+    ),
+    sliderWrapper = document.getElementById("slider-nav-wrapper"),
+    sliderItems = document.getElementById("slider-nav-wrapper__list"),
+    comparatorWrapperGrid = document.querySelector(".comparator-wrapper-grid"),
+    returnToChoice = document.getElementById("return-to-choice");
 
-const tickElementClass = 'tick-selection-candidate';
-const tickElement = (number) => `<span class="${tickElementClass}">${number}</span>`;
+const tickElementClass = "tick-selection-candidate";
+const tickElement = (number) =>
+    `<span class="${tickElementClass}">${number}</span>`;
 const nbMaxCandidatesToCompare = 4;
 const nbMinCandidatesToCompare = 2;
 let candidateCardsSelectedByOrder = {};
 
-let stepComparaison = 'standard';
+let stepComparaison = "standard";
 
 let idsTicks = [1, 2, 3, 4];
 let nbElementSelected = 0;
 
-const gridDisplayStandard = ['col-6', 'col-lg-3'];
-const gridDisplayComparator = ['col-sm-3', 'col-6'];
+const gridDisplayStandard = ["col-6", "col-lg-3"];
+const gridDisplayComparator = ["col-sm-3", "col-6"];
 
-const comparatorWidthRevealClass = ['col-12', 'col-lg-10', 'mx-auto'];
-
+const comparatorWidthRevealClass = ["col-12", "col-lg-10", "mx-auto"];
 
 // Event listener on choice of candidates to compare
-allCardCandidates.forEach(candidateCard => {
-    candidateCard.addEventListener('click', e => {
+allCardCandidates.forEach((candidateCard) => {
+    candidateCard.addEventListener("click", (e) => {
         // Activation of the choice only on "choice" part of the comparator (not in "reveal")
-        if (stepComparaison === 'standard') {
-
+        if (stepComparaison === "standard") {
             // Toggle on tick in card on click
             if (candidateCard.innerHTML.includes(tickElementClass)) {
-                removeCandidate(candidateCard)
+                removeCandidate(candidateCard);
 
                 // Update number of candidates selected
                 nbElementSelected--;
                 updateNbCandidateCardsSelected(nbElementSelected);
 
                 // Add .grey-filter class
-                candidateCard.querySelector('.card').classList.add('grey-filter');
+                candidateCard
+                    .querySelector(".card")
+                    .classList.add("grey-filter");
             } else {
                 if (nbElementSelected <= nbMaxCandidatesToCompare) {
                     addCandidate(candidateCard);
@@ -57,52 +70,56 @@ allCardCandidates.forEach(candidateCard => {
                     updateNbCandidateCardsSelected(nbElementSelected);
 
                     // Remove .grey-filter class
-                    candidateCard.querySelector('.card').classList.remove('grey-filter');
+                    candidateCard
+                        .querySelector(".card")
+                        .classList.remove("grey-filter");
                 } else {
                     // Error message
-                    flashMessage('Vous ne pouvez selectionner que ' + nbMaxCandidatesToCompare + ' éléments', 'icon-lvdv-shield-white');
+                    flashMessage(
+                        "Vous ne pouvez selectionner que " +
+                            nbMaxCandidatesToCompare +
+                            " éléments",
+                        "icon-lvdv-shield-white"
+                    );
                 }
             }
         }
-    })
-})
+    });
+});
 
 // Passage to the reveal of the comparator on click on start button
-startComparaisonButton.addEventListener('click', e => {
+startComparaisonButton.addEventListener("click", (e) => {
     // Verification of the number of candidates choose
-    if (Object.keys(candidateCardsSelectedByOrder).length >= nbMinCandidatesToCompare) {
-
-        switchStandardToReveal('reveal');
+    if (
+        Object.keys(candidateCardsSelectedByOrder).length >=
+        nbMinCandidatesToCompare
+    ) {
+        switchStandardToReveal("reveal");
         // Click on the first measure
         onClickOnOneMeasure(mesuresButtons[0]);
     } else {
         // Error message
-        flashMessage('Sélectionner au moins 2 candidats pour effectuer une comparaison', 'icon-lvdv-shield-white');
+        flashMessage(
+            "Sélectionner au moins 2 candidats pour effectuer une comparaison",
+            "icon-lvdv-shield-white"
+        );
     }
-})
+});
 
 // Event on click on measure nav
-mesuresButtons.forEach(measureButton => {
-    measureButton.addEventListener('click', () => {
+mesuresButtons.forEach((measureButton) => {
+    measureButton.addEventListener("click", () => {
         // if this measures is not already selected
-        if (!measureButton.classList.contains('active')) {
+        if (!measureButton.classList.contains("active")) {
             onClickOnOneMeasure(measureButton);
         }
-    })
-})
+    });
+});
 
 // Action to return to choice screen
-returnToChoice.addEventListener('click', () => {
-    switchStandardToReveal('standard');
-})
-
-/**
- * Questions :
- *      - A voir avec sensei : Mettre fix la barre des noms de mesure dès qu'elle touche le haut de la page, j'y arrive pas...
- *      - A voir avec Kiki :
- *           - Poser la question si le 'comparer les X programmes' est nécéssaire et pas seulement => "Comparer les programmes" => POse des problème en responsive
- *           - Trouver une UI pour le bouton retour
- */
+returnToChoice.addEventListener("click", () => {
+    switchStandardToReveal("standard");
+});
 
 // Slide nav for small screens
 dragNav(sliderItems, sliderWrapper);
@@ -111,26 +128,25 @@ dragNav(sliderItems, sliderWrapper);
  * Switch between choice view and reveal view
  * @param state {string} - State of the screen 'standard' or 'reveal'
  */
-function switchStandardToReveal(state = 'reveal') {
-
-    const oppositeState = state === 'reveal' ? 'standard' : 'reveal';
+function switchStandardToReveal(state = "reveal") {
+    const oppositeState = state === "reveal" ? "standard" : "reveal";
     // Set action for each block
     let action = {};
-    if (state === 'reveal') {
+    if (state === "reveal") {
         action = {
-            toggleAdd: 'add',
-            toggleRemove: 'remove',
-        }
+            toggleAdd: "add",
+            toggleRemove: "remove",
+        };
     } else {
         action = {
-            toggleAdd: 'remove',
-            toggleRemove: 'add',
-        }
+            toggleAdd: "remove",
+            toggleRemove: "add",
+        };
     }
 
     stepComparaison = state;
 
-    returnToChoice.classList[action.toggleRemove]('d-none');
+    returnToChoice.classList[action.toggleRemove]("d-none");
     comparatorWrapperGrid.classList[action.toggleAdd](state);
     comparatorWrapperGrid.classList[action.toggleRemove](oppositeState);
 
@@ -138,43 +154,62 @@ function switchStandardToReveal(state = 'reveal') {
     comparatorWrapper.classList[action.toggleAdd](comparatorWidthRevealClass);
 
     // Don't display standard header and display reveal header
-    comparatorHeaderStandard.classList[action.toggleAdd]('d-none');
-    comparatorHeaderReveal.classList[action.toggleAdd]('d-flex');
+    comparatorHeaderStandard.classList[action.toggleAdd]("d-none");
+    comparatorHeaderReveal.classList[action.toggleAdd]("d-flex");
 
     // Display comparator measures
-    comparatorRevealContent.classList[action.toggleRemove]('d-none')
+    comparatorRevealContent.classList[action.toggleRemove]("d-none");
 
     // Don't display start comparaison button
-    startComparaisonButton.classList[action.toggleAdd]('d-none');
+    startComparaisonButton.classList[action.toggleAdd]("d-none");
 
-    allCardCandidates.forEach(candidate => {
+    // Don't display return to choice button 
+    returnToChoice.classList[action.toggleRemove]("d-none");
+
+    allCardCandidates.forEach((candidate) => {
         // Don't display all candidates cards
-        if (!Object.keys(candidateCardsSelectedByOrder).includes(candidate.dataset.name)) {
-            candidate.classList[action.toggleAdd]('d-none');
+        if (
+            !Object.keys(candidateCardsSelectedByOrder).includes(
+                candidate.dataset.name
+            )
+        ) {
+            candidate.classList[action.toggleAdd]("d-none");
         } else {
-            candidate.querySelector('.card').classList[action.toggleRemove]('grey-filter');
+            candidate
+                .querySelector(".card")
+                .classList[action.toggleRemove]("grey-filter");
             // Don't display all candidates card titles
-            candidate.querySelector('.card-title').classList[action.toggleAdd]('d-none');
-            candidate.querySelector('.card-subtitle').classList[action.toggleAdd]('d-none');
+            candidate
+                .querySelector(".card-title")
+                .classList[action.toggleAdd]("d-none");
+            candidate
+                .querySelector(".card-subtitle")
+                .classList[action.toggleAdd]("d-none");
 
             // Change col disposition on candidates card
-            gridDisplayStandard.forEach(className => {
-                candidate.classList[action.toggleRemove](gridDisplayStandard[className])
-            })
-            gridDisplayComparator.forEach(className => {
-                candidate.classList[action.toggleAdd](gridDisplayComparator[className])
-            })
+            gridDisplayStandard.forEach((className) => {
+                candidate.classList[action.toggleRemove](
+                    gridDisplayStandard[className]
+                );
+            });
+            gridDisplayComparator.forEach((className) => {
+                candidate.classList[action.toggleAdd](
+                    gridDisplayComparator[className]
+                );
+            });
 
-            candidate.classList[action.toggleAdd]('comparator-card');
+            candidate.classList[action.toggleAdd]("comparator-card");
         }
-    })
+    });
 
     // Don't display all tick on candidates cards
-    if (state === 'reveal') {
+    if (state === "reveal") {
         // Remove all ticks
-        document.querySelectorAll('.tick-selection-candidate').forEach(tick => {
-            tick.remove();
-        })
+        document
+            .querySelectorAll(".tick-selection-candidate")
+            .forEach((tick) => {
+                tick.remove();
+            });
     } else {
         // Reset vars
         candidateCardsSelectedByOrder = {};
@@ -184,7 +219,6 @@ function switchStandardToReveal(state = 'reveal') {
         // Measures slider go to left 0
         sliderItems.style.left = "0";
     }
-
 }
 
 /**
@@ -193,30 +227,35 @@ function switchStandardToReveal(state = 'reveal') {
  */
 function onClickOnOneMeasure(measureButton) {
     // Add active class on button
-    toggleClass(mesuresButtons, measureButton, 'active');
+    toggleClass(mesuresButtons, measureButton, "active");
 
     // Don't display candidates measures for candidates no selected
-    [].slice.call(document.getElementById(measureButton.dataset.theme).children).forEach(candidateMeasure => {
-        if (!Object.keys(candidateCardsSelectedByOrder).includes(candidateMeasure.dataset.name)) {
-            candidateMeasure.classList.add('d-none');
-        } else {
-            candidateMeasure.classList.remove('d-none');
-        }
-    })
+    [].slice
+        .call(document.getElementById(measureButton.dataset.theme).children)
+        .forEach((candidateMeasure) => {
+            if (
+                !Object.keys(candidateCardsSelectedByOrder).includes(
+                    candidateMeasure.dataset.name
+                )
+            ) {
+                candidateMeasure.classList.add("d-none");
+            } else {
+                candidateMeasure.classList.remove("d-none");
+            }
+        });
 
     // Sorting candidates choices by order of selection
     sortingCandidatesByOrderSelected(measureButton.dataset.theme);
 
     // Don't display the measureGroup for themes no selected
-    measuresGroup.forEach(measureGroup => {
+    measuresGroup.forEach((measureGroup) => {
         if (measureButton.dataset.theme !== measureGroup.dataset.theme) {
-            measureGroup.classList.add('d-none');
+            measureGroup.classList.add("d-none");
         } else {
-            measureGroup.classList.remove('d-none');
+            measureGroup.classList.remove("d-none");
         }
-    })
+    });
 }
-
 
 /**
  * Sort candidates by slected order choice
@@ -228,19 +267,24 @@ function sortingCandidatesByOrderSelected(theme) {
     // Separation between displayed elements from the non-displayed
     let dNoneCandidateMeasure = [];
     let displayedCandidateMeasure = [];
-    [...themeGroup.children].map(candidateMeasure => {
-        if (candidateMeasure.classList.contains('d-none')) {
+    [...themeGroup.children].map((candidateMeasure) => {
+        if (candidateMeasure.classList.contains("d-none")) {
             dNoneCandidateMeasure.push(candidateMeasure);
         } else {
             displayedCandidateMeasure.push(candidateMeasure);
         }
-    })
+    });
 
     // Sort all displayed candidates measures by user choice
-    displayedCandidateMeasure = displayedCandidateMeasure.sort((a, b) => candidateCardsSelectedByOrder[a.dataset.name] > candidateCardsSelectedByOrder[b.dataset.name] ? 1 : -1)
+    displayedCandidateMeasure = displayedCandidateMeasure.sort((a, b) =>
+        candidateCardsSelectedByOrder[a.dataset.name] >
+        candidateCardsSelectedByOrder[b.dataset.name]
+            ? 1
+            : -1
+    );
 
     // Delete previous order of candidates
-    themeGroup.innerHTML = '';
+    themeGroup.innerHTML = "";
 
     // Add new order of candidates
     themeGroup.append(...displayedCandidateMeasure, ...dNoneCandidateMeasure);
@@ -256,9 +300,9 @@ function sortingCandidatesByOrderSelected(theme) {
  * @param className {string} - Classname to add on selected element
  */
 function toggleClass(all, selected, className) {
-    all.forEach(one => {
-        one.classList.remove(className)
-    })
+    all.forEach((one) => {
+        one.classList.remove(className);
+    });
     selected.classList.add(className);
 }
 
@@ -267,15 +311,14 @@ function toggleClass(all, selected, className) {
  * @param {Element} candidate - Candidate card to remove tick
  */
 function removeCandidate(candidate) {
-
-    const tick = candidate.querySelector('.' + tickElementClass);
+    const tick = candidate.querySelector("." + tickElementClass);
 
     actualizeCandidatesTick(tick.innerHTML);
 
     delete candidateCardsSelectedByOrder[candidate.dataset.name];
 
     // Remove the tick of the DOM
-    candidate.removeChild(tick)
+    candidate.removeChild(tick);
 }
 
 /**
@@ -286,17 +329,17 @@ function removeCandidate(candidate) {
 function actualizeCandidatesTick(numberRemoved) {
     // The tick already there
     let currentTick = [];
-    document.querySelectorAll('.' + tickElementClass).forEach(function(tick) {
+    document.querySelectorAll("." + tickElementClass).forEach(function (tick) {
         let tickNumber = tick.innerHTML;
         if (parseInt(tickNumber) > parseInt(numberRemoved)) {
             tickNumber--;
-           tick.innerHTML = tickNumber.toString();
+            tick.innerHTML = tickNumber.toString();
         }
         currentTick.push(parseInt(tick.innerHTML));
     });
     // Invert the tab to create the new idTicks array with the tick that aren't in html DOM
     let newIdTick = [];
-    for (let i = 1; i <= 4 ; i++) {
+    for (let i = 1; i <= 4; i++) {
         if (!currentTick.includes(i)) {
             newIdTick.push(i);
         }
@@ -310,7 +353,10 @@ function actualizeCandidatesTick(numberRemoved) {
  */
 function addCandidate(candidate) {
     // Remove the tick in the array
-    const counter = idsTicks.splice(idsTicks.indexOf(Math.min(...idsTicks)), 1)[0];
+    const counter = idsTicks.splice(
+        idsTicks.indexOf(Math.min(...idsTicks)),
+        1
+    )[0];
 
     // Add candidate to selected candidates
     candidateCardsSelectedByOrder[candidate.dataset.name] = counter;
@@ -320,7 +366,8 @@ function addCandidate(candidate) {
 }
 
 function updateNbCandidateCardsSelected(nbElementSelected) {
-    nbCandidateCardsSelected.textContent = nbElementSelected === 0 ? '...' : nbElementSelected;
+    nbCandidateCardsSelected.textContent =
+        nbElementSelected === 0 ? "..." : nbElementSelected;
 }
 
 /**
@@ -328,14 +375,31 @@ function updateNbCandidateCardsSelected(nbElementSelected) {
  */
 function sliderShouldBeSticky() {
     const sliderInitialYPosition = getOffset(sliderWrapper).top;
-    const footerInitialYPosition = getOffset(document.querySelector('.supportus-wrapper')).top;
-    window.addEventListener('scroll', function(_) {
+    const footerInitialYPosition = getOffset(
+        document.querySelector(".supportus-wrapper")
+    ).top;
+    window.addEventListener("scroll", function (_) {
         if (window.matchMedia("(max-width:991px)").matches) {
             const scrollYPosition = window.scrollY;
-            if (scrollYPosition > sliderInitialYPosition + 210 && scrollYPosition < (footerInitialYPosition - document.querySelector('.supportus-wrapper').clientHeight)) {
-                const topMenuHeight = document.querySelector('.header-responsive').clientHeight;
-                sliderWrapper.style.transform = "translateY(" + ((- sliderInitialYPosition - topMenuHeight - 210) + scrollYPosition) + "px)";
-            } else if (getOffset(sliderWrapper).top !== sliderInitialYPosition) {
+            if (
+                scrollYPosition > sliderInitialYPosition + 210 &&
+                scrollYPosition <
+                    footerInitialYPosition -
+                        document.querySelector(".supportus-wrapper")
+                            .clientHeight
+            ) {
+                const topMenuHeight =
+                    document.querySelector(".header-responsive").clientHeight;
+                sliderWrapper.style.transform =
+                    "translateY(" +
+                    (-sliderInitialYPosition -
+                        topMenuHeight -
+                        210 +
+                        scrollYPosition) +
+                    "px)";
+            } else if (
+                getOffset(sliderWrapper).top !== sliderInitialYPosition
+            ) {
                 sliderWrapper.style.transform = "translateY(0px)";
             }
         }
@@ -346,7 +410,7 @@ function getOffset(el) {
     const rect = el.getBoundingClientRect();
     return {
         left: rect.left + window.scrollX,
-        top: rect.top + window.scrollY
+        top: rect.top + window.scrollY,
     };
 }
 
