@@ -11,9 +11,28 @@
     opacity: 0;
     display: none;
   }
+  .bg-image {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      filter: brightness(60%);
+      background-image: inherit;
+      background-size: cover;
+    }
+  }
   .candidates-grid-wrapper__item .card {
     @include zoom-effect();
     cursor: pointer;
+    .card-title {
+      z-index: 800;
+    }
+    .card-subtitle {
+      z-index: 800;
+    }
   }
 }
 
