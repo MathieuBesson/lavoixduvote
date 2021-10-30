@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="d-flex justify-content-between align-items-center">
                     <input id="responsive-menu-checkbox" type="checkbox" class="responsive-menu-checkbox">
-                    {% if route_prefix == 'candidates' or route_prefix == 'why' %}
+                    {% if route_prefix == 'candidates' or route_prefix == 'why' or route_prefix == 'comparator' %}
                         <div class="back-wrapper">
                             <a href="{{ path('home') }}"><img src="/images/pictos/back.svg" alt="Retour aux programmes"></a>
                         </div>
