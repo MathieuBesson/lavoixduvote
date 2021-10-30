@@ -113,14 +113,15 @@
                                 <span class="icon-twitter-white col-6 col-lg-3"></span>
                             </div>
                         </aside>
-                        <section class="footer-wrapper__main-programmes col-6">
-                            <strong>Les programmes</strong>
+	                    <section class="footer-wrapper__main-programmes col-12 d-none d-lg-block text-center text-md-start col-md-6 ">
+		                    <strong><a class="text-center" href="{{ path('home') }}">Les programmes</a></strong>
                             <ul class="footer-wrapper__main-programmes-list d-flex flex-wrap">
                                 {{ render(url('candidates_list_name')) }}
                             </ul>
                         </section>
                         <aside class="footer-wrapper__main-menu text-lg-start text-center col-12 col-lg-2">
                             <ul>
+	                            <li class="d-lg-none"><strong><a class="text-center" href="{{ path('home') }}">Les programmes</a></strong>	                            </li>
                                 <li><a href="#">Pourquoi&nbsp;voter&nbsp;?</a></li>
                                 <li><a href="#">Glossaire</a></li>
 	                            <li><a href="{{ path('contact_index') }}">Nous contacter</a></li>

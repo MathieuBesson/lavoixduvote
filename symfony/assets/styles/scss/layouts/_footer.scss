@@ -7,6 +7,10 @@
 
         // List of programs
         &-programmes {
+	        a {
+		        @include link($white, $gray-300);
+		        @include border-bottom-animation($white);
+	        }
             &-list {
                 padding: 20px 0;
 
@@ -77,10 +81,6 @@
 	            }
             }
 
-            // List of programs
-            &-programmes {
-                display: none;
-            }
 
             // Logo + social network links
             &-social-network {
