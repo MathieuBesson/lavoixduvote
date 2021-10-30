@@ -1,5 +1,5 @@
 {% for candidate in candidates %}
     <li class="col-4 mb-3">
-        <a href="#">{{ candidate.firstName }} {{ candidate.lastName }}</a>
+        <a href="{{ path('candidates_show', {'candidate': candidate.lastName }) }}">{{ candidate.firstName }} {{ candidate.lastName }}</a>
     </li>
 {% endfor %}
