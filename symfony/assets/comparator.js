@@ -88,23 +88,25 @@ allCardCandidates.forEach((candidateCard) => {
 });
 
 // Passage to the reveal of the comparator on click on start button
-startComparaisonButton.addEventListener("click", (e) => {
-    // Verification of the number of candidates choose
-    if (
-        Object.keys(candidateCardsSelectedByOrder).length >=
-        nbMinCandidatesToCompare
-    ) {
-        switchStandardToReveal("reveal");
-        // Click on the first measure
-        onClickOnOneMeasure(mesuresButtons[0]);
-    } else {
-        // Error message
-        flashMessage(
-            "Sélectionner au moins 2 candidats pour effectuer une comparaison",
-            "icon-lvdv-shield-white"
-        );
-    }
-});
+['click', 'touchend'].forEach(function(e) {
+	startComparaisonButton.addEventListener(e, (e) => {
+		// Verification of the number of candidates choose
+		if (
+				Object.keys(candidateCardsSelectedByOrder).length >=
+				nbMinCandidatesToCompare
+		) {
+			switchStandardToReveal("reveal");
+			// Click on the first measure
+			onClickOnOneMeasure(mesuresButtons[0]);
+		} else {
+			// Error message
+			flashMessage(
+					"Sélectionner au moins 2 candidats pour effectuer une comparaison",
+					"icon-lvdv-shield-white"
+			);
+		}
+	});
+})
 
 // Event on click on measure nav
 mesuresButtons.forEach((measureButton) => {
