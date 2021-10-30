@@ -237,12 +237,11 @@
                     font-weight: $bold;
                     line-height: 22px;
                     letter-spacing: 0.02em;
-
-                    &,
+                    color: #6e66c4;
                     &:focus,
                     &:active,
                     &:hover {
-                        color: #6e66c4;
+                        color: $white;
                     }
                 }
 
