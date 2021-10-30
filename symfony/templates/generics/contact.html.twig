@@ -8,11 +8,15 @@
 	{% set array = [] %}
 	<div class="contact">
 		<img src="{{ asset('images/logos/contact.svg') }}" alt="Contactez-nous">
-		<h1>Vous avez une demande<br /> concernant, <span class="contact__dynamic-word">une {{ random(['question', 'information', 'correction'])}} ?</span></h1>
+		<h1>Vous avez une demande<br /> concernant, <span class="contact__dynamic-word">une correction ?</span></h1>
 		<div class="contact__text">
 			<div>On est disponibles sur Twitter, Instagram et LinkedIn,</div>
 			<div>ou directement sur lavoixduvote@protonmail.com</div>
 		</div>
 		<a href="mailto:lavoixduvote@protonmail.com" class="btn btn-primary btn-ripple-primary contact__cta">Contactez-nous !</a>
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('dynamic_contact_word') }}
 {% endblock %}

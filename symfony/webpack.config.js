@@ -28,6 +28,7 @@ Encore
     .addEntry('roll', './assets/roll.js')
     .addEntry('glossary', './assets/glossary.js')
     .addEntry('comparator', './assets/comparator.js')    
+    .addEntry('dynamic_contact_word', './assets/dynamic_contact_word.js')
 
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
