@@ -141,7 +141,10 @@
 
         .btn {
             width: auto;
-            font-size: 18px;
+	        font-size: 14px;
+	        @include media-breakpoint-up(sm) {
+		        font-size: 18px;
+	        }
             font-weight: $bold;
             line-height: 22px;
             letter-spacing: 0.02em;
