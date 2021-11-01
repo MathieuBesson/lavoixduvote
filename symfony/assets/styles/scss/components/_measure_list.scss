@@ -4,7 +4,7 @@
     position: relative;
     font-weight: bold;
     color: $primary;
-    padding-left: 30px;
+    padding-left: 40px;
     align-items: center;
 
     &-theme {
@@ -16,8 +16,8 @@
       content: '';
       position: absolute;
       left: 0;
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 30px;
       background-size: cover;
       margin-right: 10px;
     }
@@ -70,6 +70,7 @@
 
   &__actions {
     margin-bottom: 45px;
+    margin-left: 1.25rem;
     li {
       list-style: url($icon-path + '/list_style.svg');
       font-size: 15px;
