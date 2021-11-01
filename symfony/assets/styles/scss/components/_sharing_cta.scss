@@ -29,6 +29,9 @@
 			// + becomes x
 			.cross img {
 				transform: rotate(45deg);
+				position: absolute;
+				top: 26px;
+				left: 25px;	
 			}
 		}
 	}
@@ -97,6 +100,11 @@
 			}
 			&:nth-child(3) {
 				top: 60%;
+				margin: 0;
+				width: 70px;
+				height: 70px;
+				left: 0px;
+				top: 48%;
 			}
 			img {
 				height: 20px;
@@ -112,6 +120,9 @@
 			// x becomes +
 			transition: transform .5s ease;
 			transform: rotate(0);
+			position: absolute;
+			top: 26px;
+			left: 25px;	
 		}
 	}
 }
