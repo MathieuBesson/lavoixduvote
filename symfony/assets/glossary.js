@@ -43,11 +43,27 @@ function displayDefinitionByCategorie(id) {
     })
 }
 
+function toggleIcon(icon){
+    const iconsClass = {
+        'close': 'icon-lvdv-world-research', 
+        'open': 'icon-twitter-primary'
+    }
+
+    if(icon.className.split(' ').includes(iconsClass.close)){
+        icon.classList.remove(iconsClass.close); 
+        icon.classList.add(iconsClass.open); 
+    } else {
+        icon.classList.remove(iconsClass.open); 
+        icon.classList.add(iconsClass.close); 
+    }
+}
+
 // Toggle search input
 researchIcon.addEventListener('click', e => {
     researchInput.classList.toggle('visible');
     navList.classList.toggle('no-visible');
     navResearch.classList.toggle('visible');
+    toggleIcon(researchIcon); 
 })
 
 // Display defintion in function of target data in input

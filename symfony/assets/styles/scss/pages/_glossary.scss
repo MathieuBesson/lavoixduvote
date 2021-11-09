@@ -8,7 +8,7 @@
       color: $primary;
       margin-bottom: 30px;
     }
-
+    
     &-delimiter {
       height: 2px;
       color: $primary;
@@ -82,5 +82,9 @@
     color: $primary;
     font-weight: $medium;
     font-size: $font-normal;
+  }
+
+  .drag-nav-slider {
+    background-color: $grey;
   }
 }
