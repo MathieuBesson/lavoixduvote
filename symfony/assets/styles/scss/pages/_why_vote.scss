@@ -24,18 +24,16 @@ $slider-width-sm : 350px;
   &__list {
     margin-bottom: 80px;
 
-    &-item {
-      padding-bottom: 30px;
+    &-item-wrapper {
+      //padding-bottom: 30px;
+      padding: 20px;
+      border: 1px solid rgba(13, 0, 157, 0.1);
+      border-radius: 5px;
 
       &-title {
         margin: 15px 0px 20px 0px;
         font-size: $font-large;
-        font-weight: $bold;
-        color: $primary;
-
-        .red-word {
-          color: $thirdary-color;
-        }
+        @include section-title-with-red-word();
       }
     }
   }

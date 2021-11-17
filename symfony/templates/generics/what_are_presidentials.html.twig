@@ -1,0 +1,90 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}
+	La Voix du Vote - C'est quoi les présidentielles ?
+{% endblock %}
+
+{% block main %}
+	{% set navList = [{'label': 'Textes de loi'}] %}
+	{% set explanations = [
+		{
+			'title': 'Comment peut-on <em>voter ?</em>',
+			'icon': 'icon-lvdv-heart',
+			'content': 'Summum a vobis bonum voluptas dicitur. Sine ea igitur iucunde negat posse se vivere? Tamen a proposito, inquam, aberramus. Tibi hoc incredibile, quod beatissimum. Quid sequatur, quid repugnet, vident. Hoc est non dividere, sed frangere.'
+		},
+		{
+			'title': 'Comment peut-on <em>voter ?</em>',
+			'icon': 'icon-lvdv-heart',
+			'content': 'Summum a vobis bonum voluptas dicitur. Sine ea igitur iucunde negat posse se vivere? Tamen a proposito, inquam, aberramus. Tibi hoc incredibile, quod beatissimum. Quid sequatur, quid repugnet, vident. Hoc est non dividere, sed frangere.'
+		},
+		{
+			'title': 'Comment peut-on <em>voter ?</em>',
+			'icon': 'icon-lvdv-heart',
+			'content': 'Summum a vobis bonum voluptas dicitur. Sine ea igitur iucunde negat posse se vivere? Tamen a proposito, inquam, aberramus. Tibi hoc incredibile, quod beatissimum. Quid sequatur, quid repugnet, vident. Hoc est non dividere, sed frangere.'
+		}
+	] %}
+	<div class="what-are-presidentials-wrapper m-auto col-12 col-md-10">
+		<h1 class="what-are-presidentials-wrapper__title text-center">C'est quoi les présidentielles ? </h1>
+
+		<nav class="drag-nav-slider d-flex justify-content-center">
+			<div class="drag-nav-slider-wrapper col-12">
+				<ul class="drag-nav-slider-wrapper__list d-flex flex-row">
+					<li class="drag-nav-slider-wrapper__list-item">
+						<button class="active d-md-flex align-items-md-center justify-content-md-center" data-id="all">
+							Tout
+						</button>
+					</li>
+
+					{% for navItem in navList %}
+						<li class="drag-nav-slider-wrapper__list-item">
+							<button class="d-md-flex align-items-md-center justify-content-md-center"
+									data-id="{{ navItem.label|lower|slug }}">
+								{{ navItem.label }}
+							</button>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</nav>
+
+		<article class="what-are-presidentials-wrapper__explanation-list">
+			{% for explanation in explanations %}
+				<section class="what-are-presidentials-wrapper__explanation-list-item">
+					<h3 class="what-are-presidentials-wrapper__explanation-list-item-title">
+						{{ explanation.title|raw }}
+					</h3>
+					<div class="what-are-presidentials-wrapper__explanation-list-item-content">
+						{{ explanation.content|raw }}
+					</div>
+					<span class="toggle-open-icon open"></span>
+				</section>
+			{% endfor %}
+		</article>
+
+		<article class="what-are-presidentials-wrapper__history">
+			<h2 class="what-are-presidentials-wrapper__history-title">Pour la petite <em>histoire</em></h2>
+			<div id="slider" class="slider mx-auto">
+				<div class="slider-wrapper">
+					<div id="slider-wrapper__slides" class="slider-wrapper__slides why-vote-wrapper__list justify-content-between row gx-0 gx-md-4">
+						{% for explanation in explanations %}
+							<section class="slider-wrapper__slides-item why-vote-wrapper__list-item flex-column col-12 col-md-6 col-lg-4">
+								<div class="slider-wrapper__slides-item why-vote-wrapper__list-item-wrapper">
+									<span class="icon {{ explanation.icon }}"></span>
+									<h2 class="why-vote-wrapper__list-item-wrapper-title">{{ explanation.title|raw }}</h2>
+									<div class="why-vote-wrapper__list-item-wrapper-content">{{ explanation.content|raw }}</div>
+								</div>
+							</section>
+						{% endfor %}
+					</div>
+				</div>
+				<div id="slider-dots" class="slider-dots row justify-content-center d-flex d-md-none">
+				</div>
+			</div>
+
+		</article>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('dynamic_contact_word') }}
+{% endblock %}

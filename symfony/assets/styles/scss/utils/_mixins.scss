@@ -91,3 +91,12 @@
         overflow: hidden;
     }
 }
+
+@mixin section-title-with-red-word() {
+    font-weight: $bold;
+    color: $primary;
+    em{
+        color: $thirdary-color;
+        font-style: normal;
+    }
+}

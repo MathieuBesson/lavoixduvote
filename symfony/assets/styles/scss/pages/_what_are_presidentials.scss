@@ -1,0 +1,73 @@
+.what-are-presidentials-wrapper{
+
+  &__title {
+    font-weight: $bold;
+    font-size: $font-title-h1;
+    color: $primary;
+    margin-bottom: 95px;
+  }
+
+  &__explanation-list{
+    margin-bottom: 70px;
+    &-item{
+      position: relative;
+      margin-bottom: 20px;
+      padding: 30px;
+      border: 1px solid rgba(13, 0, 157, 0.1);
+      border-radius: 5px;
+      &-title{
+        font-size: $font-large;
+        @include section-title-with-red-word();
+      }
+      &-content{
+        margin-top: 30px;
+      }
+
+      .toggle-open-icon{
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        top: 30px;
+        right: 30px;
+        border-radius: 50%;
+        background-color: $primary;
+        &.open::before, &.open::after,
+        &.close::before, &.close::after{
+          content: "";
+          position: absolute;
+          height: 2px;
+          width: 14px;
+          background-color: white;
+          border-radius: 2px;
+        }
+
+        &.open::after{
+          transform: rotate(90deg);
+          top: 14px;
+          left: 8px;
+        }
+
+        &.open::before{
+          top: 14px;
+          left: 8px;
+        }
+
+        &.close::before{
+          top: 14px;
+          left: 8px;
+        }
+
+        &.close::after{
+          height: 0;
+          width: 0;
+        }
+      }
+    }
+  }
+
+  &__history-title{
+    margin-bottom: 35px;
+    font-size: $font-extra-large;
+    @include section-title-with-red-word();
+  }
+}
