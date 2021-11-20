@@ -2,21 +2,21 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\GlossaryCategory;
+use App\Entity\FaqTheme;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class GlossaryCategoryCrudController extends AbstractCrudController
+class FaqThemeCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return GlossaryCategory::class;
+        return FaqTheme::class;
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('label','Label'),
+            TextField::new('label', 'Label'),
         ];
     }
 }

@@ -1,73 +1,234 @@
-.what-are-presidentials-wrapper{
+$slider-width: 500px;
+$slider-width-sm: 350px;
+.what-are-presidentials-wrapper {
 
   &__title {
     font-weight: $bold;
     font-size: $font-title-h1;
     color: $primary;
-    margin-bottom: 95px;
+    margin: 70px 0;
   }
 
-  &__explanation-list{
+  &__explanation-list {
     margin-bottom: 70px;
-    &-item{
+
+    &-item {
       position: relative;
       margin-bottom: 20px;
-      padding: 30px;
+      padding: 0;
       border: 1px solid rgba(13, 0, 157, 0.1);
       border-radius: 5px;
-      &-title{
+
+      &-title {
+        z-index: 300;
+        position: relative;
         font-size: $font-large;
+        padding: 30px 80px 30px 30px;
+        margin-bottom: 0;
+        cursor: pointer;
         @include section-title-with-red-word();
       }
-      &-content{
-        margin-top: 30px;
+
+      &-content {
+        margin: 0 30px 0 30px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, margin-bottom 0.4s ease;
+
+        &.close {
+          margin-bottom: 30px;
+          max-height: 0;
+        }
+
+        ul {
+          margin-bottom: 0;
+
+          li {
+            position: relative;
+            margin-top: 10px;
+
+            &::before {
+              content: "";
+              position: absolute;
+              height: 7px;
+              width: 7px;
+              left: -12px;
+              top: 7px;
+              background-color: transparent;
+              border: 2px solid black;
+              border-radius: 50%;
+            }
+          }
+        }
       }
 
-      .toggle-open-icon{
+      &.invisible {
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+      }
+
+      .toggle-open-icon {
         position: absolute;
+        z-index: 1;
         height: 30px;
         width: 30px;
         top: 30px;
         right: 30px;
         border-radius: 50%;
         background-color: $primary;
-        &.open::before, &.open::after,
-        &.close::before, &.close::after{
+
+        &.close::before, &.close::after,
+        &::before, &::after {
           content: "";
           position: absolute;
           height: 2px;
           width: 14px;
           background-color: white;
           border-radius: 2px;
-        }
-
-        &.open::after{
-          transform: rotate(90deg);
           top: 14px;
           left: 8px;
         }
 
-        &.open::before{
-          top: 14px;
-          left: 8px;
-        }
-
-        &.close::before{
-          top: 14px;
-          left: 8px;
-        }
-
-        &.close::after{
+        &::after {
           height: 0;
           width: 0;
+        }
+
+        &.close::after {
+          transform: rotate(90deg);
         }
       }
     }
   }
 
-  &__history-title{
-    margin-bottom: 35px;
-    font-size: $font-extra-large;
-    @include section-title-with-red-word();
+  &__history {
+    &-title {
+      margin-bottom: 35px;
+      font-size: $font-extra-large;
+      @include section-title-with-red-word();
+    }
+
+    // List of issues réponses
+    &-list {
+      margin-bottom: 80px;
+
+      &-item {
+        margin-bottom: 30px;
+        &-wrapper {
+          padding: 20px;
+          border: 1px solid rgba(13, 0, 157, 0.1);
+          border-radius: 5px;
+
+          &-title {
+            margin: 15px 0 20px 0;
+            font-size: $font-large;
+            @include section-title-with-red-word();
+          }
+        }
+      }
+    }
+  }
+
+  // CTA
+  .dl-program-cta .btn {
+    font-size: $font-large;
+    font-weight: $bold;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    padding: 20px 55px;
+    display: flex;
+  }
+
+  // Mobile items
+  .clone {
+    display: none;
+  }
+
+  @include media-breakpoint-down(xl) {
+    &__title {
+      margin: 0;
+      margin-bottom: 40px;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    &__title {
+      font-size: $font-title-h1-md;
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    // Slider
+    &__history-list-item-wrapper {
+      border: 0;
+      padding: 0;
+    }
+    .slider {
+      width: $slider-width;
+      padding: 0;
+      margin-bottom: 50px;
+
+      // Slide wrapper
+      &-wrapper {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+
+        // Slide group
+        &__slides {
+          margin: 0;
+          position: relative;
+          top: 0;
+          left: -100%;
+          width: var(--slider-items-width);
+
+          &.shifting {
+            transition: left .2s ease-out;
+          }
+
+          // Each slide
+          &-item {
+            display: flex;
+            width: var(--slide-width);
+            cursor: pointer;
+            transition: all 1s ease;
+            position: relative;
+            border-radius: 2px;
+            padding: 15px;
+          }
+        }
+      }
+
+      // Display the slide clone to create infinite slider
+      .clone {
+        display: flex;
+      }
+
+      // Dot class on bottom of th slider
+      &-dots-item {
+        transition: width 0.4s ease;
+        padding: 0;
+        display: block;
+        width: 4px;
+        height: 4px;
+        background-color: $grey-clear;
+        border-radius: 50px;
+        margin: 5px;
+
+        &.active-dot {
+          background-color: $primary;
+          width: 25px;
+        }
+      }
+    }
+  }
+
+  // Update the slider width for small screen
+  @include media-breakpoint-down(sm) {
+    .slider {
+      width: $slider-width-sm !important;
+    }
   }
 }

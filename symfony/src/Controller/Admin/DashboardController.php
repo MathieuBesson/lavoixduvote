@@ -11,6 +11,8 @@ use App\Entity\Primary;
 use App\Entity\Program;
 use App\Entity\StarMeasure;
 use App\Entity\Theme;
+use App\Entity\FaqTheme;
+use App\Entity\Faq;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -50,5 +52,7 @@ class DashboardController extends AbstractDashboardController {
         yield MenuItem::linkToCrud('Star Measures', 'fas fa-star', StarMeasure::class);
         yield MenuItem::linkToCrud('Glossary', 'fas fa-spell-check', Glossary::class);
         yield MenuItem::linkToCrud('Glossary Themes', 'far fa-bookmark', GlossaryCategory::class);
+        yield MenuItem::linkToCrud('FAQ', 'far fa-question-circle', Faq::class);
+        yield MenuItem::linkToCrud('FAQ Themes', 'far fa-bookmark', FaqTheme::class);
     }
 }

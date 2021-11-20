@@ -8,5 +8,4 @@ window.setInterval(function() {
 		currentWord = 0;
 	}
 	element.textContent = wording[currentWord];
-	console.log(currentWord);
 }, 3000);

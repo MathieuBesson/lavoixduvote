@@ -24,12 +24,8 @@ $slider-width-sm : 350px;
   &__list {
     margin-bottom: 80px;
 
-    &-item-wrapper {
-      //padding-bottom: 30px;
-      padding: 20px;
-      border: 1px solid rgba(13, 0, 157, 0.1);
-      border-radius: 5px;
-
+    &-item {
+      padding-bottom: 30px;
       &-title {
         margin: 15px 0px 20px 0px;
         font-size: $font-large;
@@ -82,8 +78,6 @@ $slider-width-sm : 350px;
         font-size: $font-small;
       }
     }
-
-
     
     // Slider
     .slider {
@@ -91,14 +85,14 @@ $slider-width-sm : 350px;
       padding: 0;
       margin-bottom: 50px;
 
-      // Slide wrapper 
+      // Slide wrapper
       &-wrapper {
         overflow: hidden;
         position: relative;
         width: 100%;
         z-index: 1;
 
-        // Slide group 
+        // Slide group
         &__slides {
           margin: 0;
           position: relative;
@@ -110,7 +104,7 @@ $slider-width-sm : 350px;
             transition: left .2s ease-out;
           }
 
-          // Each slide 
+          // Each slide
           &-item {
             display: flex;
             width: var(--slide-width);
@@ -128,7 +122,7 @@ $slider-width-sm : 350px;
         display: flex;
       }
 
-      // Dot class on bottom of th slider 
+      // Dot class on bottom of th slider
       &-dots-item {
         transition: width 0.4s ease;
         padding: 0;
@@ -147,7 +141,7 @@ $slider-width-sm : 350px;
     }
   }
 
-  // Update the slider width for small screen 
+  // Update the slider width for small screen
   @include media-breakpoint-down(sm) {
     .slider {
       width: $slider-width-sm !important;

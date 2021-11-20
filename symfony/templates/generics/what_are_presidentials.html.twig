@@ -5,20 +5,32 @@
 {% endblock %}
 
 {% block main %}
-	{% set navList = [{'label': 'Textes de loi'}] %}
+	{% set navList = [{'label': 'Textes de loi'}, {'label': 'Actu'}] %}
 	{% set explanations = [
 		{
-			'title': 'Comment peut-on <em>voter ?</em>',
+			'theme': 'Textes de loi',
+			'title': '1Comment peut-on <em>voter ?</em>',
+			'icon': 'icon-lvdv-heart',
+			'faq': true,
+			'content': 'Summum a vobis bonum voluptas dicitur.
+			 Sine ea igitur iucunde negat posse se vivere? Tamen a proposito,
+			 inquam, aberramus. Tibi hoc incredibile, quod beatissimum. Quid
+			  sequatur, quid repugnet, vident. Hoc est non dividere, sed frangere.
+			<ul>
+			<li>Summumangere. </li>
+			</ul>'
+		},
+		{
+			'theme': 'Textes de loi',
+			'faq': false,
+			'title': '2Comment peut-on <em>voter ?</em>',
 			'icon': 'icon-lvdv-heart',
 			'content': 'Summum a vobis bonum voluptas dicitur. Sine ea igitur iucunde negat posse se vivere? Tamen a proposito, inquam, aberramus. Tibi hoc incredibile, quod beatissimum. Quid sequatur, quid repugnet, vident. Hoc est non dividere, sed frangere.'
 		},
 		{
-			'title': 'Comment peut-on <em>voter ?</em>',
-			'icon': 'icon-lvdv-heart',
-			'content': 'Summum a vobis bonum voluptas dicitur. Sine ea igitur iucunde negat posse se vivere? Tamen a proposito, inquam, aberramus. Tibi hoc incredibile, quod beatissimum. Quid sequatur, quid repugnet, vident. Hoc est non dividere, sed frangere.'
-		},
-		{
-			'title': 'Comment peut-on <em>voter ?</em>',
+			'theme': 'Actu',
+			'faq': true,
+			'title': '3Comment peut-on <em>voter ?</em>',
 			'icon': 'icon-lvdv-heart',
 			'content': 'Summum a vobis bonum voluptas dicitur. Sine ea igitur iucunde negat posse se vivere? Tamen a proposito, inquam, aberramus. Tibi hoc incredibile, quod beatissimum. Quid sequatur, quid repugnet, vident. Hoc est non dividere, sed frangere.'
 		}
@@ -49,15 +61,17 @@
 
 		<article class="what-are-presidentials-wrapper__explanation-list">
 			{% for explanation in explanations %}
-				<section class="what-are-presidentials-wrapper__explanation-list-item">
-					<h3 class="what-are-presidentials-wrapper__explanation-list-item-title">
-						{{ explanation.title|raw }}
-					</h3>
-					<div class="what-are-presidentials-wrapper__explanation-list-item-content">
-						{{ explanation.content|raw }}
-					</div>
-					<span class="toggle-open-icon open"></span>
-				</section>
+				{% if explanation.faq %}
+					<section class="what-are-presidentials-wrapper__explanation-list-item" data-theme="{{ explanation.theme|lower|slug }}">
+						<h3 class="what-are-presidentials-wrapper__explanation-list-item-title">
+							{{ explanation.title|raw }}
+						</h3>
+						<div class="what-are-presidentials-wrapper__explanation-list-item-content">
+							{{ explanation.content|raw }}
+						</div>
+						<span class="toggle-open-icon close"></span>
+					</section>
+				{% endif %}
 			{% endfor %}
 		</article>
 
@@ -65,26 +79,43 @@
 			<h2 class="what-are-presidentials-wrapper__history-title">Pour la petite <em>histoire</em></h2>
 			<div id="slider" class="slider mx-auto">
 				<div class="slider-wrapper">
-					<div id="slider-wrapper__slides" class="slider-wrapper__slides why-vote-wrapper__list justify-content-between row gx-0 gx-md-4">
+					<div id="slider-wrapper__slides"
+						 class="slider-wrapper__slides what-are-presidentials-wrapper__history-list justify-content-between row gx-0 gx-md-4">
 						{% for explanation in explanations %}
-							<section class="slider-wrapper__slides-item why-vote-wrapper__list-item flex-column col-12 col-md-6 col-lg-4">
-								<div class="slider-wrapper__slides-item why-vote-wrapper__list-item-wrapper">
-									<span class="icon {{ explanation.icon }}"></span>
-									<h2 class="why-vote-wrapper__list-item-wrapper-title">{{ explanation.title|raw }}</h2>
-									<div class="why-vote-wrapper__list-item-wrapper-content">{{ explanation.content|raw }}</div>
-								</div>
-							</section>
+							{% if explanation.faq != true %}
+								<section
+										class="slider-wrapper__slides-item what-are-presidentials-wrapper__history-list-item flex-column col-12 col-md-6 col-lg-4">
+									<div class="what-are-presidentials-wrapper__history-list-item-wrapper">
+										<span class="icon {{ explanation.icon }}"></span>
+										<h2 class="what-are-presidentials-wrapper__history-list-item-wrapper-title">{{ explanation.title|raw }}</h2>
+										<div class="what-are-presidentials-wrapper__history-list-item-wrapper-content">{{ explanation.content|raw }}</div>
+									</div>
+								</section>
+							{% endif %}
 						{% endfor %}
 					</div>
 				</div>
-				<div id="slider-dots" class="slider-dots row justify-content-center d-flex d-md-none">
+				<div id="slider-dots" class="slider-dots row justify-content-center d-flex d-lg-none">
 				</div>
 			</div>
 
 		</article>
 	</div>
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}
 
 {% block javascripts %}
-	{{ encore_entry_script_tags('dynamic_contact_word') }}
+	{{ encore_entry_script_tags('what-are-presidentials') }}
+	{{ encore_entry_script_tags('slider-why-vote') }}
 {% endblock %}

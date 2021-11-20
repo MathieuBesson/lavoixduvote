@@ -12,15 +12,15 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class GenericController extends AbstractController
 {
-//    /**
-//     * @Route(name="why_vote_index", path="/pourquoi-voter")
-//     */
-//    public function whyVotePage(): Response
-//    {
-//        return $this->render('generics/why_vote_index.html.twig', [
-//            'controller_name' => 'WhyVoteController',
-//        ]);
-//    }
+    /**
+     * @Route(name="why_vote_index", path="/pourquoi-voter")
+     */
+    public function whyVotePage(): Response
+    {
+        return $this->render('generics/why_vote_index.html.twig', [
+            'controller_name' => 'WhyVoteController',
+        ]);
+    }
 
     /**
      * @Route(name="what_are_presidentials_index", path="/c-est-quoi-les-presidentielles")
