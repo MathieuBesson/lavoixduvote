@@ -31,7 +31,7 @@
 
 		<article class="what-are-presidentials-wrapper__explanation-list">
 			{% for explanation in explanations %}
-				{% if explanation.faq %}
+				{% if explanation.faq and explanation.theme %}
 					<section class="what-are-presidentials-wrapper__explanation-list-item" data-theme="{{ explanation.theme.label|lower|slug }}">
 						<h3 class="what-are-presidentials-wrapper__explanation-list-item-title">
 							{{ explanation.title|raw }}

@@ -2,31 +2,16 @@
 document.querySelectorAll(".what-are-presidentials-wrapper__explanation-list-item-title").forEach(section => {
     section.addEventListener("click", e => {
         // Toggle icon X to -
-        e.target.parentNode.querySelector(".toggle-open-icon").classList.toggle("close");
-        let sectionContent = e.target.parentNode.querySelector(".what-are-presidentials-wrapper__explanation-list-item-content")
-        sectionContent.classList.toggle("close");
-        // Update Section content height
-        sectionContent.style.maxHeight = sectionContent.style.maxHeight ? null : sectionContent.scrollHeight + "px"
+        toggleOpenIcon = e.target.parentNode.querySelector(".toggle-open-icon");
+        if (toggleOpenIcon) {
+            toggleOpenIcon.classList.toggle("close");
+            let sectionContent = e.target.parentNode.querySelector(".what-are-presidentials-wrapper__explanation-list-item-content")
+            sectionContent.classList.toggle("close");
+            // Update Section content height
+            sectionContent.style.maxHeight = sectionContent.style.maxHeight ? null : sectionContent.scrollHeight + "px"
+        }
     });
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 const dragNav = require('./drag-nav');
