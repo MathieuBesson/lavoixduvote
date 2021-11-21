@@ -19,7 +19,7 @@ class FaqCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('title', 'Title'),
+            TextEditorField::new('title', 'Title'),
             TextEditorField::new('content', 'Content'),
             AssociationField::new('theme', 'Theme'),
             TextField::new('icon', 'Icon'),

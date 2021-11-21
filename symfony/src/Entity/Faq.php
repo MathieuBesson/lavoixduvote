@@ -39,6 +39,7 @@ class Faq
 
     /**
      * @ORM\ManyToOne(targetEntity=FaqTheme::class, inversedBy="faqs")
+     * @ORM\JoinColumn(name="theme_id", referencedColumnName="id", nullable=true)
      */
     private $theme;
 
