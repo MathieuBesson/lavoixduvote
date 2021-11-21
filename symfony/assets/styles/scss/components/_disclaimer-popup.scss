@@ -1,0 +1,48 @@
+.disclaimer-popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1500;
+
+  &__card {
+    background-color: $primary;
+    z-index: 1501;
+    color: $secondary;
+    padding: 30px;
+    border-radius: 11px;
+    opacity: 0.9;
+
+    &-title {
+      font-weight: $bold;
+      font-size: $font-title-h1-md;
+      margin-bottom: 20px;
+
+      em {
+        font-style: normal;
+        color: $thirdary-color;
+      }
+    }
+
+    &-content {
+      font-size: $font-normal;
+    }
+
+    &-signature{
+      font-weight: $bold;
+      font-size: $font-large;
+    }
+
+    .btn {
+      color: $primary;
+      font-size: $font-normal;
+      font-weight: $bold;
+      line-height: 16px;
+      letter-spacing: 0.05em;
+      padding: 12px 20px;
+      border-radius: 45px;
+      border: 1px solid transparent;
+    }
+  }
+}

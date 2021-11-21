@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Candidate;
 use App\EventSubscriber\PrimaryChoiceSubscriber;
+use App\EventSubscriber\FakeDataDisclaimerSubscriber;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,5 +34,16 @@ class HomeController extends AbstractController
         return $this->render('home/home_index.html.twig', [
             'candidates' => $candidates,
         ]);
+    }
+
+    /**
+     * @Route(name="diclaimerSeen", path="/diclaimer-seen")
+     */
+    public function diclaimerSeen(RequestStack $requestStack)
+    {
+        $session = $requestStack->getSession();
+        $session->set(FakeDataDisclaimerSubscriber::NOTIFICATION_SEEN_ID, true);
+
+        return $this->redirectToRoute('home');
     }
 }

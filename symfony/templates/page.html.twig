@@ -1,149 +1,168 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% block menuresponsive %}
-        <div class="d-block d-xl-none header-responsive">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-between align-items-center">
-                    <input id="responsive-menu-checkbox" type="checkbox" class="responsive-menu-checkbox">
-                    {% if route_prefix == 'candidates' or route_prefix == 'why' or route_prefix == 'comparator' %}
-                        <div class="back-wrapper">
-                            <a href="{{ path('home') }}"><img src="/images/pictos/back.svg" alt="Retour aux programmes"></a>
-                        </div>
-                    {% endif %}
-                    <div class="logo-wrapper">
-                        <a href="{{ path('home') }}"><img src="/images/logos/Logo_45x45.svg" alt="Logo La Voix du Vote"></a>
-                    </div>
-                    {% if route_prefix == 'home' %}
-                        <div class="grid-or-roll-wrapper d-flex">
-                            <img class="switcher-roll on" src="/images/icons/icon-roll.svg" alt="Choisir la roue">
-                            <img class="switcher-grid" src="/images/icons/icon-grid.svg" alt="Choisir la grille">
-                        </div>
-                    {% endif %}
-                    <div class="responsive-menu-wrapper">
-                        <label for="responsive-menu-checkbox" class="responsive-menu-wrapper__icon">
-                            <img src="/images/icons/icon-menu.svg" alt="Afficher le menu">
-                        </label>
-                        <div class="responsive-menu-wrapper__background"></div>
-                        <nav class="responsive-menu-wrapper__menu">
-                            {{ include('navigation/menu.html.twig') }}
-                            <div class="responsive-menu-wrapper__menu-supportus text-center">
-                                <div class="d-flex justify-content-center responsive-menu-wrapper__menu-supportus-socialmedia">
-                                    <span class="icon-facebook-white"></span>
-                                    <span class="icon-instagram-white"></span>
-                                    <span class="icon-linkedin-white"></span>
-                                    <span class="icon-twitter-white"></span>
-                                </div>
-                                Vous souhaitez nous soutenir ?<br/>
-                                <a href="">Payez-nous un café :)</a>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endblock %}
+	{% block menuresponsive %}
+		<div class="d-block d-xl-none header-responsive">
+			<div class="container-fluid">
+				<div class="d-flex justify-content-between align-items-center">
+					<input id="responsive-menu-checkbox" type="checkbox" class="responsive-menu-checkbox">
+					{% if route_prefix == 'candidates' or route_prefix == 'what' or route_prefix == 'comparator' %}
+						<div class="back-wrapper">
+							<a href="{{ path('home') }}"><img src="/images/pictos/back.svg" alt="Retour aux programmes"></a>
+						</div>
+					{% endif %}
+					<div class="logo-wrapper">
+						<a href="{{ path('home') }}"><img src="/images/logos/Logo_45x45.svg" alt="Logo La Voix du Vote"></a>
+					</div>
+					{% if route_prefix == 'home' %}
+						<div class="grid-or-roll-wrapper d-flex">
+							<img class="switcher-roll on" src="/images/icons/icon-roll.svg" alt="Choisir la roue">
+							<img class="switcher-grid" src="/images/icons/icon-grid.svg" alt="Choisir la grille">
+						</div>
+					{% endif %}
+					<div class="responsive-menu-wrapper">
+						<label for="responsive-menu-checkbox" class="responsive-menu-wrapper__icon">
+							<img src="/images/icons/icon-menu.svg" alt="Afficher le menu">
+						</label>
+						<div class="responsive-menu-wrapper__background"></div>
+						<nav class="responsive-menu-wrapper__menu">
+							{{ include('navigation/menu.html.twig') }}
+							<div class="responsive-menu-wrapper__menu-supportus text-center">
+								<div class="d-flex justify-content-center responsive-menu-wrapper__menu-supportus-socialmedia">
+									<span class="icon-facebook-white"></span>
+									<span class="icon-instagram-white"></span>
+									<span class="icon-linkedin-white"></span>
+									<span class="icon-twitter-white"></span>
+								</div>
+								Vous souhaitez nous soutenir ?<br/>
+								<a href="">Payez-nous un café :)</a>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
 
-    <header>
-        <div class="w-100 header-wrapper">
-            <div class="container">
-                {% block menudesktop %}
-                    <div class="d-none d-xl-flex">
-                        <a href="{{ path('home') }}">
-                            <img class="header-desktop-logo" src="/images/logos/logo-text-lvdv-color.svg" alt="Logo La Voix du Vote">
-                        </a>
+	<header>
+		<div class="w-100 header-wrapper">
+			<div class="container">
+				{% block menudesktop %}
+					<div class="d-none d-xl-flex">
+						<a href="{{ path('home') }}">
+							<img class="header-desktop-logo" src="/images/logos/logo-text-lvdv-color.svg"
+								 alt="Logo La Voix du Vote">
+						</a>
 
-                        {% include 'navigation/menu.html.twig' %}
-                        <div class="d-flex justify-content-center align-items-center nav-social-icon">
-                            <span class="icon-facebook-primary"></span>
-                            <span class="icon-instagram-primary"></span>
-                            <span class="icon-linkedin-primary"></span>
-                            <span class="icon-twitter-primary"></span>
-                        </div>
-                    </div>
-                {% endblock %}
-            </div>
-        </div>
-    </header>
-    <main>
-        <div class="container">
-            {% block main %}
-                <div>
-                    lorem ipsum dolor lolilol loiiiolloll
-                </div>
-            {% endblock %}
-        </div>
-    </main>
-    <div class="w-100 supportus-wrapper">
-        <div class="container">
-            {% block supportus %}
-                <div class="supportus">
-                    <div class="row">
-                        <div class="col-12 col-lg-4">
-                            <div class="supportus__logo text-center">
-                                <img src="/images/logos/supportus.svg" alt="Illustration payez-nous un café">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-8">
-                            <div class="d-lg-flex flex-lg-column justify-content-lg-center h-100 text-center text-lg-start">
-                                <div class="supportus__teaser">
-                                    Vous souhaitez supporter cette initiative ?
-                                </div>
-                                <div class="supportus__cta text-center text-lg-start">
-                                    <a class="btn btn-secondary" href="#">Payez-nous un café :)</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endblock %}
-        </div>
-    </div>
-    <div class="w-100 footer-wrapper">
-        <footer>
-            {% block footer %}
-                <div class="container">
-                    <div class="footer-wrapper__main align-items-center align-items-lg-stretch d-flex flex-column flex-lg-row">
-                        <aside class="footer-wrapper__main-social-network d-flex flex-row flex-lg-column justify-content-around align-items-lg-end col-9 col-sm-7 col-lg-3 me-lg-auto">
-                            <img class="col-4" src="/images/logos/logo-text-lvdv-white.svg" alt="Logo La Voix Du Vote">
-                            <div class="footer-wrapper__main-social-network-icons d-flex flex-row col-4 col-lg-12 flex-wrap justify-content-between">
-                                <span class="icon-facebook-white col-6 col-lg-3"></span>
-                                <span class="icon-instagram-white col-6 col-lg-3"></span>
-                                <span class="icon-linkedin-white col-6 col-lg-3"></span>
-                                <span class="icon-twitter-white col-6 col-lg-3"></span>
-                            </div>
-                        </aside>
-	                    <section class="footer-wrapper__main-programmes col-12 d-none d-lg-block text-center text-md-start col-md-6 ">
-		                    <strong><a class="text-center" href="{{ path('home') }}">Les programmes</a></strong>
-                            <ul class="footer-wrapper__main-programmes-list d-flex flex-wrap">
-                                {{ render(url('candidates_list_name')) }}
-                            </ul>
-                        </section>
-                        <aside class="footer-wrapper__main-menu text-lg-start text-center col-12 col-lg-2">
-                            <ul>
-	                            <li class="d-lg-none"><strong><a class="text-center" href="{{ path('home') }}">Les programmes</a></strong>	                            </li>
-                                <li><a href="#">Pourquoi&nbsp;voter&nbsp;?</a></li>
-                                <li><a href="#">Glossaire</a></li>
-	                            <li><a href="{{ path('contact_index') }}">Nous contacter</a></li>
-                            </ul>
-                        </aside>
-                    </div>
-                    <div class="footer-wrapper__legal-notice text-center">
-                        <ul class="d-flex flex-column flex-md-row justify-content-center">
-                            <li>
-                                <em><a href="#">Politique de confidentialité</a></em>
-                            </li>
-                            <li>
-                                <em><a href="#" id="tacjs-open">Gestion des cookies</a></em>
-                            </li>
-                            <li>
-                                <em>@LaVoixDuVote</em>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            {% endblock footer %}
+						{% include 'navigation/menu.html.twig' %}
+						<div class="d-flex justify-content-center align-items-center nav-social-icon">
+							<span class="icon-facebook-primary"></span>
+							<span class="icon-instagram-primary"></span>
+							<span class="icon-linkedin-primary"></span>
+							<span class="icon-twitter-primary"></span>
+						</div>
+					</div>
+				{% endblock %}
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="container">
+			{% if notificationSeen == false %}
+				<div class="disclaimer-popup row">
+					<article class="disclaimer-popup__card m-auto col-12 col-md-6 col-lg-4">
+						<h5 class="disclaimer-popup__card-title">Note <em>informative</em></h5>
+						<p class="disclaimer-popup__card-content">
+							Vous êtes actuellement sur la version de démo de la plateforme La voix du vote.
+						</p>
+						<p class="disclaimer-popup__card-content">
+							Les données que vous allez visualiser sont des données fictives permettant de découvrir la
+							plateforme
+							et seront remplacées par les vrais programmes sur la version public.
+						</p>
+						<p class="disclaimer-popup__card-signature">Bonne visite !</p>
+						<div class="d-flex justify-content-end">
+							<a class="btn btn-secondary" href="{{ path('diclaimerSeen') }}">Continuer</a>
+						</div>
+					</article>
+				</div>
+			{% endif %}
+			{% block main %}
+			{% endblock %}
+		</div>
+	</main>
+	<div class="w-100 supportus-wrapper">
+		<div class="container">
+			{% block supportus %}
+				<div class="supportus">
+					<div class="row">
+						<div class="col-12 col-lg-4">
+							<div class="supportus__logo text-center">
+								<img src="/images/logos/supportus.svg" alt="Illustration payez-nous un café">
+							</div>
+						</div>
+						<div class="col-12 col-lg-8">
+							<div class="d-lg-flex flex-lg-column justify-content-lg-center h-100 text-center text-lg-start">
+								<div class="supportus__teaser">
+									Vous souhaitez supporter cette initiative ?
+								</div>
+								<div class="supportus__cta text-center text-lg-start">
+									<a class="btn btn-secondary" href="#">Payez-nous un café :)</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endblock %}
+		</div>
+	</div>
+	<div class="w-100 footer-wrapper">
+		<footer>
+			{% block footer %}
+				<div class="container">
+					<div class="footer-wrapper__main align-items-center align-items-lg-stretch d-flex flex-column flex-lg-row">
+						<aside class="footer-wrapper__main-social-network d-flex flex-row flex-lg-column justify-content-around align-items-lg-end col-9 col-sm-7 col-lg-3 me-lg-auto">
+							<img class="col-4" src="/images/logos/logo-text-lvdv-white.svg" alt="Logo La Voix Du Vote">
+							<div class="footer-wrapper__main-social-network-icons d-flex flex-row col-4 col-lg-12 flex-wrap justify-content-between">
+								<span class="icon-facebook-white col-6 col-lg-3"></span>
+								<span class="icon-instagram-white col-6 col-lg-3"></span>
+								<span class="icon-linkedin-white col-6 col-lg-3"></span>
+								<span class="icon-twitter-white col-6 col-lg-3"></span>
+							</div>
+						</aside>
+						<section
+								class="footer-wrapper__main-programmes col-12 d-none d-lg-block text-center text-md-start col-md-6 ">
+							<strong><a class="text-center" href="{{ path('home') }}">Les programmes</a></strong>
+							<ul class="footer-wrapper__main-programmes-list d-flex flex-wrap">
+								{{ render(url('candidates_list_name')) }}
+							</ul>
+						</section>
+						<aside class="footer-wrapper__main-menu text-lg-start text-center col-12 col-lg-2">
+							<ul>
+								<li class="d-lg-none"><strong><a class="text-center" href="{{ path('home') }}">Les
+											programmes</a></strong></li>
+								<li><a href="#">Pourquoi&nbsp;voter&nbsp;?</a></li>
+								<li><a href="#">Glossaire</a></li>
+								<li><a href="{{ path('contact_index') }}">Nous contacter</a></li>
+							</ul>
+						</aside>
+					</div>
+					<div class="footer-wrapper__legal-notice text-center">
+						<ul class="d-flex flex-column flex-md-row justify-content-center">
+							<li>
+								<em><a href="#">Politique de confidentialité</a></em>
+							</li>
+							<li>
+								<em><a href="#" id="tacjs-open">Gestion des cookies</a></em>
+							</li>
+							<li>
+								<em>@LaVoixDuVote</em>
+							</li>
+						</ul>
+					</div>
+				</div>
+			{% endblock footer %}
 
-        </footer>
-    </div>
+		</footer>
+	</div>
 {% endblock %}
