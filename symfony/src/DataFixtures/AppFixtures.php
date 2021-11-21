@@ -4,6 +4,8 @@ namespace App\DataFixtures;
 
 use App\Entity\Action;
 use App\Entity\Candidate;
+use App\Entity\Faq;
+use App\Entity\FaqTheme;
 use App\Entity\Glossary;
 use App\Entity\GlossaryCategory;
 use App\Entity\PoliticalParty;
@@ -88,16 +90,16 @@ EOT
         // StarMeasure
         for ($i = 0; $i < 3; $i++) {
             $measures = [
-                'Santé'              => 'icon-lvdv-heart-white',
-                'Sécurité'           => 'icon-lvdv-shield-white',
-                'Économie'           => 'icon-lvdv-economy-white',
-                'Écologie'           => 'icon-lvdv-environment-white',
-                'Immigration'        => 'icon-lvdv-immigrations-white',
-                'Éducation'          => 'icon-lvdv-education',
-                'Culture'            => 'icon-lvdv-culture-white',
+                'Santé' => 'icon-lvdv-heart-white',
+                'Sécurité' => 'icon-lvdv-shield-white',
+                'Économie' => 'icon-lvdv-economy-white',
+                'Écologie' => 'icon-lvdv-environment-white',
+                'Immigration' => 'icon-lvdv-immigrations-white',
+                'Éducation' => 'icon-lvdv-education',
+                'Culture' => 'icon-lvdv-culture-white',
                 'Protection Sociale' => 'icon-lvdv-social-protection-white',
-                'Innovation'         => 'icon-lvdv-innovations-white',
-                'Emploi'             => 'icon-lvdv-employment-white',
+                'Innovation' => 'icon-lvdv-innovations-white',
+                'Emploi' => 'icon-lvdv-employment-white',
             ];
 
             for ($j = 0; $j < 3; $j++) {
@@ -494,6 +496,73 @@ EOT
             }
             $manager->persist($glossary);
         }
+
+
+        // FAQ
+        // FAQ Theme
+        $faqThemeList = [];
+        for ($i = 0; $i < 3; $i++) {
+            $faqTheme = new FaqTheme();
+            switch ($i) {
+                case 0:
+                    $faqTheme->setLabel('Questions communes');
+                    break;
+                case 1:
+                    $faqTheme->setLabel('Comment ça fonctionne ?');
+                    break;
+                case 2:
+                    $faqTheme->setLabel('Un autre thème');
+                    break;
+            }
+            $manager->persist($faqTheme);
+            $faqThemeList[] = $faqTheme;
+        }
+
+        for ($i = 0; $i < 8; $i++) {
+            $glossary = new Faq();
+            $glossary->setTheme($faqThemeList[mt_rand(0, 2)]);
+            $titleList = [
+                'Lorem rteps <em>nsc</em>',
+                'Ipsum fsdaza <em>per</em>',
+                'Dolor <em>plpl</em>',
+                'Aristidem mani <em>zea</em>',
+                'Platonis msd <em>per</em>'
+            ];
+
+            $icons = [
+                'icon-lvdv-heart',
+                'icon-lvdv-shield',
+                'icon-lvdv-economy',
+            ];
+            $glossary->setTitle($titleList[mt_rand(0, count($titleList) - 1)]);
+
+            if ($i <= count($icons) - 1) {
+                $glossary->setIcon($icons[$i]);
+                $glossary->setFaq(false);
+                $glossary->setContent(<<<EOT
+<p>Lorem ipsum dolor sit amet, com ares, quo optimum atque humanises: constructio interrete. </p>
+<p>Conferam tecum, quam go, inquit, tibi Q. Tu vero, inquam, ducas licet, si sequetur; Prave, nequiter, turpiter cenabat; </p>
+<p>Tum Duo enim genera quae erant, fecit tria. Quid vero? </p>
+EOT
+                );
+            } else {
+                $glossary->setFaq(true);
+                $glossary->setContent(<<<EOT
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Illi enim inter se dissentiunt. Bestiarum vero nullum iudicium puto. Respondeat totidem verbis. Illum mallem levares, quo optimum atque humanissimum virum, Cn. Duo Reges: constructio interrete. </p>
+<p>Conferam tecum, quam cuique verso rem subicias; Fortasse id optimum, sed ubi illud: Plus semper voluptatis? Quae sequuntur igitur? Ergo, inquit, tibi Q. Tu vero, inquam, ducas licet, si sequetur; Prave, nequiter, turpiter cenabat; </p>
+<p>Tum Torquatus: Prorsus, inquit, assentior; Quae quidem vel cum periculo est quaerenda vobis; Honesta oratio, Socratica, Platonis etiam. Ut id aliis narrare gestiant? Occultum facinus esse potuerit, gaudebit; Istam voluptatem, inquit, Epicurus ignorat? </p>
+<ul>
+    <li>Puidem vel cum periculo est quaerenda vobis; Honesta oratio, Soc</li>
+    <li>Gubicias; Fortasse id optimum, sed ubi illud: Plus semper voluptatis? </li>
+    <li>Consectetur adipiscing elit. Illi enim inter se dissentiunt. Besti</li>
+</ul>
+<p>Quae ista amicitia est? Tamen a proposito, inquam, aberramus. Ut in geometria, prima si dederis, danda sunt omnia. Vide, quantum, inquam, fallare, Torquate. Duo enim genera quae erant, fecit tria. Quid vero? </p>
+EOT
+                );
+            }
+            $manager->persist($glossary);
+        }
+
         $user = new User();
         $user->setUsername('admin');
         $user->setPassword($this->passwordHasher->hashPassword($user, '1231'));
