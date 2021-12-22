@@ -34,4 +34,12 @@ class GenericController extends AbstractController
 	{
 		return $this->render('generics/contact.html.twig');
 	}
+
+    /**
+	 * @Route(name="privacy_policy", path="/politique-de-confidentialite")
+	 */
+	public function privacyPolicy(): Response
+	{
+		return $this->render('generics/privacy_policy.html.twig');
+	}
 }

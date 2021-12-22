@@ -4,7 +4,7 @@
   &__header {
     &-title {
       font-weight: $bold;
-      font-size: $font-title-h1;
+      font-size: $font-title-h1-lg;
       color: $primary;
       margin-bottom: 30px;
     }
@@ -16,13 +16,13 @@
 
     @include media-breakpoint-down(lg) {
       &-title {
-        font-size: $font-title-h1-lg;
+        font-size: $font-title-h1-md;
       }
     }
 
     @include media-breakpoint-down(md) {
       &-title {
-        font-size: $font-title-h1-md;
+        font-size: $font-title-h1-sm;
       }
     }
   }

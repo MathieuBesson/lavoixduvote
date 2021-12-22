@@ -1,0 +1,21 @@
+.privacy-policy {
+    margin-bottom: 75px;
+    &__title {
+        font-weight: $bold;
+        font-size: $font-title-h1-lg;
+        color: $primary;
+        margin: 35px 0;
+    }
+
+    &__category{
+        &-title{
+            font-weight: $bold;
+            font-size: $font-title-h2-lg;
+            color: $primary;
+            margin: 40px 0 15px 0;
+        }
+        &-content p{
+            margin-bottom: 10px;
+        }
+    }
+}

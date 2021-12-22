@@ -4,7 +4,7 @@ $slider-width-sm: 350px;
 
   &__title {
     font-weight: $bold;
-    font-size: $font-title-h1;
+    font-size: $font-title-h1-lg;
     color: $primary;
     margin: 70px 0;
   }
@@ -154,7 +154,7 @@ $slider-width-sm: 350px;
 
   @include media-breakpoint-down(md) {
     &__title {
-      font-size: $font-title-h1-md;
+      font-size: $font-title-h1-sm;
     }
   }
 

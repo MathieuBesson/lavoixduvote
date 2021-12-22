@@ -7,12 +7,12 @@
     text-align: center;
   }
   &-title{
-    font-size: $font-title-h1;
+    font-size: $font-title-h1-lg;
     @include media-breakpoint-down(lg) {
-      font-size: $font-title-h1-lg;
+      font-size: $font-title-h1-md;
     }
     @include media-breakpoint-down(md) {
-      font-size: $font-title-h1-md;
+      font-size: $font-title-h1-sm;
     }
   }
   
