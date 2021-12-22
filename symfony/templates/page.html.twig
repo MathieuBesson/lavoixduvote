@@ -29,10 +29,18 @@
 							{{ include('navigation/menu.html.twig') }}
 							<div class="responsive-menu-wrapper__menu-supportus text-center">
 								<div class="d-flex justify-content-center responsive-menu-wrapper__menu-supportus-socialmedia">
-									<span class="icon-facebook-white"></span>
-									<span class="icon-instagram-white"></span>
-									<span class="icon-linkedin-white"></span>
-									<span class="icon-twitter-white"></span>
+									<a href="https://www.instagram.com/lavoixduvote/" target="_blank">
+										<span class="icon-instagram-white"></span>
+									</a>
+									<a href="https://www.linkedin.com/company/la-voix-du-vote" target="_blank">
+										<span class="icon-linkedin-white"></span>
+									</a>
+									<a href="#">
+										<span class="icon-twitter-white"></span>
+									</a>
+									<a href="#">
+										<span class="icon-facebook-white"></span>
+									</a>
 								</div>
 								Vous souhaitez nous soutenir ?<br/>
 								<a href="">Payez-nous un café :)</a>
@@ -50,16 +58,23 @@
 				{% block menudesktop %}
 					<div class="d-none d-xl-flex">
 						<a href="{{ path('home') }}">
-							<img class="header-desktop-logo" src="/images/logos/logo-text-lvdv-color.svg"
-								 alt="Logo La Voix du Vote">
+							<img class="header-desktop-logo" src="/images/logos/logo-text-lvdv-color.svg" alt="Logo La Voix du Vote">
 						</a>
 
 						{% include 'navigation/menu.html.twig' %}
 						<div class="d-flex justify-content-center align-items-center nav-social-icon">
-							<span class="icon-facebook-primary"></span>
-							<span class="icon-instagram-primary"></span>
-							<span class="icon-linkedin-primary"></span>
-							<span class="icon-twitter-primary"></span>
+							<a href="https://www.instagram.com/lavoixduvote/" target="_blank">
+								<span class="icon-instagram-primary"></span>
+							</a>
+							<a href="https://www.linkedin.com/company/la-voix-du-vote" target="_blank">
+								<span class="icon-linkedin-primary"></span>
+							</a>
+							<a href="#">
+								<span class="icon-twitter-primary"></span>
+							</a>
+							<a href="#">
+								<span class="icon-facebook-primary"></span>
+							</a>
 						</div>
 					</div>
 				{% endblock %}
@@ -71,14 +86,16 @@
 			{% if notificationSeen == false %}
 				<div class="disclaimer-popup row">
 					<article class="disclaimer-popup__card m-auto col-12 col-md-6 col-lg-4">
-						<h5 class="disclaimer-popup__card-title">Note <em>informative</em></h5>
+						<h5 class="disclaimer-popup__card-title">Note
+							<em>informative</em>
+						</h5>
 						<p class="disclaimer-popup__card-content">
 							Vous êtes actuellement sur la version de démo de la plateforme La voix du vote.
 						</p>
 						<p class="disclaimer-popup__card-content">
 							Les données que vous allez visualiser sont des données fictives permettant de découvrir la
-							plateforme
-							et seront remplacées par les vrais programmes sur la version publique.
+																																																															plateforme
+																																																															et seront remplacées par les vrais programmes sur la version publique.
 						</p>
 						<p class="disclaimer-popup__card-signature">Bonne visite !</p>
 						<div class="d-flex justify-content-end">
@@ -87,8 +104,7 @@
 					</article>
 				</div>
 			{% endif %}
-			{% block main %}
-			{% endblock %}
+			{% block main %}{% endblock %}
 		</div>
 	</main>
 	<div class="w-100 supportus-wrapper">
@@ -124,36 +140,59 @@
 						<aside class="footer-wrapper__main-social-network d-flex flex-row flex-lg-column justify-content-around align-items-lg-end col-9 col-sm-7 col-lg-3 me-lg-auto">
 							<img class="col-4" src="/images/logos/logo-text-lvdv-white.svg" alt="Logo La Voix Du Vote">
 							<div class="footer-wrapper__main-social-network-icons d-flex flex-row col-4 col-lg-12 flex-wrap justify-content-between">
-								<span class="icon-facebook-white col-6 col-lg-3"></span>
-								<span class="icon-instagram-white col-6 col-lg-3"></span>
-								<span class="icon-linkedin-white col-6 col-lg-3"></span>
-								<span class="icon-twitter-white col-6 col-lg-3"></span>
+								<a href="https://www.instagram.com/lavoixduvote/" target="_blank" class="col-6 col-lg-3">
+									<span class="icon-instagram-white"></span>
+								</a>
+								<a href="https://www.linkedin.com/company/la-voix-du-vote" target="_blank" class="col-6 col-lg-3">
+									<span class="icon-linkedin-white"></span>
+								</a>
+								<a href="#" class="col-6 col-lg-3">
+									<span class="icon-twitter-white"></span>
+								</a>
+								<a href="#" class="col-6 col-lg-3">
+									<span class="icon-facebook-white"></span>
+								</a>
 							</div>
 						</aside>
-						<section
-								class="footer-wrapper__main-programmes col-12 d-none d-lg-block text-center text-md-start col-md-6 ">
-							<strong><a class="text-center" href="{{ path('home') }}">Les programmes</a></strong>
+						<section class="footer-wrapper__main-programmes col-12 d-none d-lg-block text-center text-md-start col-md-6 ">
+							<strong>
+								<a class="text-center" href="{{ path('home') }}">Les programmes</a>
+							</strong>
 							<ul class="footer-wrapper__main-programmes-list d-flex flex-wrap">
 								{{ render(url('candidates_list_name')) }}
 							</ul>
 						</section>
 						<aside class="footer-wrapper__main-menu text-lg-start text-center col-12 col-lg-2">
 							<ul>
-								<li class="d-lg-none"><strong><a class="text-center" href="{{ path('home') }}">Les
-											programmes</a></strong></li>
-								<li><a href="{{ path('what_are_presidentials_index') }}">Les présidentielles ?</a></li>
-								<li><a href="{{ path('glossary_index') }}">Glossaire</a></li>
-								<li><a href="{{ path('contact_index') }}">Nous contacter</a></li>
+								<li class="d-lg-none">
+									<strong>
+										<a class="text-center" href="{{ path('home') }}">Les
+																																																																																																			programmes</a>
+									</strong>
+								</li>
+								<li>
+									<a href="{{ path('what_are_presidentials_index') }}">Les présidentielles ?</a>
+								</li>
+								<li>
+									<a href="{{ path('glossary_index') }}">Glossaire</a>
+								</li>
+								<li>
+									<a href="{{ path('contact_index') }}">Nous contacter</a>
+								</li>
 							</ul>
 						</aside>
 					</div>
 					<div class="footer-wrapper__legal-notice text-center">
 						<ul class="d-flex flex-column flex-md-row justify-content-center">
 							<li>
-								<em><a href="{{ path('privacy_policy_index') }}">Politique de confidentialité</a></em>
+								<em>
+									<a href="{{ path('privacy_policy_index') }}">Politique de confidentialité</a>
+								</em>
 							</li>
 							<li>
-								<em><a href="#" id="tacjs-open">Gestion des cookies</a></em>
+								<em>
+									<a href="#" id="tacjs-open">Gestion des cookies</a>
+								</em>
 							</li>
 							<li>
 								<em>@LaVoixDuVote</em>
