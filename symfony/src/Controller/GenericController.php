@@ -36,7 +36,7 @@ class GenericController extends AbstractController
 	}
 
     /**
-	 * @Route(name="privacy_policy", path="/politique-de-confidentialite")
+	 * @Route(name="privacy_policy_index", path="/politique-de-confidentialite")
 	 */
 	public function privacyPolicy(): Response
 	{
