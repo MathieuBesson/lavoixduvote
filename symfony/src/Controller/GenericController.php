@@ -15,7 +15,7 @@ use App\Repository\FaqThemeRepository;
 class GenericController extends AbstractController
 {
     /**
-     * @Route(name="what_are_presidentials_index", path="/c-est-quoi-les-presidentielles")
+     * @Route(name="what_are_presidentials_index", path="/comment-voter-faq")
      */
     public function whatArePresidentialsPage(FaqRepository $faqRepository, FaqThemeRepository $faqThemeRepository): Response
     {
