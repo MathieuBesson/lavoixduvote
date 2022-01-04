@@ -29,10 +29,6 @@ $socialNetworkIconNames: 40px, 50px, 80px;
     background-image: url(#{$icon-path} + 'social_networks/white/linkedin-logo.svg');
 }
 
-.icon-twitter-white {
-    background-image: url(#{$icon-path} + 'social_networks/white/twitter-logo.svg');
-}
-
 .icon-facebook-primary {
     background-image: url(#{$icon-path} + 'social_networks/primary/facebook-logo.svg');
 }
@@ -43,10 +39,6 @@ $socialNetworkIconNames: 40px, 50px, 80px;
 
 .icon-linkedin-primary {
     background-image: url(#{$icon-path} + 'social_networks/primary/linkedin-logo.svg');
-}
-
-.icon-twitter-primary {
-    background-image: url(#{$icon-path} + 'social_networks/primary/twitter-logo.svg');
 }
 
 // White custom icons
