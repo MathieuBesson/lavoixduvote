@@ -43,6 +43,11 @@ class Faq
      */
     private $theme;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $source;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +109,18 @@ class Faq
     public function setTheme(?FaqTheme $theme): self
     {
         $this->theme = $theme;
+
+        return $this;
+    }
+
+    public function getSource(): ?string
+    {
+        return $this->source;
+    }
+
+    public function setSource(?string $source): self
+    {
+        $this->source = $source;
 
         return $this;
     }
