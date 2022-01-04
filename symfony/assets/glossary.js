@@ -45,8 +45,8 @@ function displayDefinitionByCategorie(id) {
 
 function toggleIcon(icon){
     const iconsClass = {
-        'close': 'icon-lvdv-world-research', 
-        'open': 'icon-twitter-primary'
+        'close': 'icon-lvdv-research', 
+        'open': 'icon-lvdv-cross'
     }
 
     if(icon.className.split(' ').includes(iconsClass.close)){
