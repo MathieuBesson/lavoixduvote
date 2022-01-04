@@ -38,6 +38,11 @@
 						</h3>
 						<div class="what-are-presidentials-wrapper__explanation-list-item-content">
 							{{ explanation.content|raw }}
+							{% if explanation.source %}
+								<p class="link-primary fw-bolder mt-4">
+									Source : <a href="{{ explanation.source }}">{{ explanation.source }}</a>
+								</p>
+							{% endif %}
 						</div>
 						<span class="toggle-open-icon close"></span>
 					</section>

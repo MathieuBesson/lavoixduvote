@@ -48,6 +48,11 @@
                         <article class="glossary-wrapper__definitions-list-item-content">
                             {{ definition.definition|raw }}
                         </article>
+	                    {% if definition.source %}
+		                    <p class="link-primary fw-bolder">
+			                    Source : <a href="{{ definition.source }}">{{ definition.source }}</a>
+		                    </p>
+	                    {% endif %}
                     </li>
                 {% endfor %}
             </ul>
