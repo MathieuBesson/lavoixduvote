@@ -56,6 +56,15 @@
       &-innovation::before {
         background-image: url($icon-path + '/lvdv_lib/colorful/innovations.svg');
       }
+      &-europe::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/europe.svg');
+      }
+      &-society::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/society.svg');
+      }
+      &-justice::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/justice.svg');
+      }
     }
 
     &::after {

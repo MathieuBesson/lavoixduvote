@@ -11,6 +11,10 @@
     @extend .icon;
 }
 
+$socialNetworkIconNames: 40px, 50px, 80px;
+
+
+
 // Social networks icons
 
 .icon-facebook-white {
@@ -75,7 +79,7 @@
     background-image: url(#{$icon-path} + 'lvdv_lib/white/social_protection.svg');
 }
 
-.icon-lvdv-world-research-white {
+.icon-lvdv-research-white {
     background-image: url(#{$icon-path} + 'lvdv_lib/white/research.svg');
 }
 
@@ -101,6 +105,22 @@
 
 .icon-lvdv-employment-white {
     background-image: url(#{$icon-path} + 'lvdv_lib/white/employment.svg');
+}
+
+.icon-lvdv-europe-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/europe.svg');
+}
+
+.icon-lvdv-justice-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/justice.svg');
+}
+
+.icon-lvdv-society-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/society.svg');
+}
+
+.icon-lvdv-cross-white {
+    background-image: url(#{$icon-path} + 'lvdv_lib/white/cross.svg');
 }
 
 // Colorful custom icons
@@ -133,7 +153,7 @@
     background-image: url(#{$icon-path} + 'lvdv_lib/colorful/social_protection.svg');
 }
 
-.icon-lvdv-world-research {
+.icon-lvdv-research {
     background-image: url(#{$icon-path} + 'lvdv_lib/colorful/research.svg');
 }
 
@@ -159,4 +179,20 @@
 
 .icon-lvdv-employment {
     background-image: url(#{$icon-path} + 'lvdv_lib/colorful/employment.svg');
+}
+
+.icon-lvdv-europe {
+    background-image: url(#{$icon-path} + 'lvdv_lib/colorful/europe.svg');
+}
+
+.icon-lvdv-justice {
+    background-image: url(#{$icon-path} + 'lvdv_lib/colorful/justice.svg');
+}
+
+.icon-lvdv-society {
+    background-image: url(#{$icon-path} + 'lvdv_lib/colorful/society.svg');
+}
+
+.icon-lvdv-cross {
+    background-image: url(#{$icon-path} + 'lvdv_lib/colorful/cross.svg');
 }
