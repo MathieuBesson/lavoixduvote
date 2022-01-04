@@ -20,7 +20,7 @@
 					{% for navItem in navList %}
 						<li class="drag-nav-slider-wrapper__list-item">
 							<button class="d-md-flex align-items-md-center justify-content-md-center"
-									data-id="{{ navItem.label|lower|slug }}">
+							        data-id="{{ navItem.label|lower|slug }}">
 								{{ navItem.label }}
 							</button>
 						</li>
@@ -29,8 +29,11 @@
 			</div>
 		</nav>
 
+		{% set isThereAStory = false %}
+
 		<article class="what-are-presidentials-wrapper__explanation-list">
 			{% for explanation in explanations %}
+				{% if explanation.faq != true %} {% set isThereAStory = true %} {% endif %}
 				{% if explanation.faq and explanation.theme %}
 					<section class="what-are-presidentials-wrapper__explanation-list-item" data-theme="{{ explanation.theme.label|lower|slug }}">
 						<h3 class="what-are-presidentials-wrapper__explanation-list-item-title">
@@ -50,31 +53,32 @@
 			{% endfor %}
 		</article>
 
-		<article class="what-are-presidentials-wrapper__history">
-			<h2 class="what-are-presidentials-wrapper__history-title">Pour la petite <em>histoire</em></h2>
-			<div id="slider" class="slider mx-auto">
-				<div class="slider-wrapper">
-					<div id="slider-wrapper__slides"
-						 class="slider-wrapper__slides what-are-presidentials-wrapper__history-list justify-content-between row gx-0 gx-md-4">
-						{% for explanation in explanations %}
-							{% if explanation.faq != true %}
-								<section
-										class="slider-wrapper__slides-item what-are-presidentials-wrapper__history-list-item flex-column col-12 col-md-6 col-lg-4">
-									<div class="what-are-presidentials-wrapper__history-list-item-wrapper">
-										<span class="icon {{ explanation.icon }}"></span>
-										<h2 class="what-are-presidentials-wrapper__history-list-item-wrapper-title">{{ explanation.title|raw }}</h2>
-										<div class="what-are-presidentials-wrapper__history-list-item-wrapper-content">{{ explanation.content|raw }}</div>
-									</div>
-								</section>
-							{% endif %}
-						{% endfor %}
+		{% if isThereAStory %}
+			<article class="what-are-presidentials-wrapper__history">
+				<h2 class="what-are-presidentials-wrapper__history-title">Pour la petite <em>histoire</em></h2>
+				<div id="slider" class="slider mx-auto">
+					<div class="slider-wrapper">
+						<div id="slider-wrapper__slides"
+						     class="slider-wrapper__slides what-are-presidentials-wrapper__history-list justify-content-between row gx-0 gx-md-4">
+							{% for explanation in explanations %}
+								{% if explanation.faq != true %}
+									<section
+											class="slider-wrapper__slides-item what-are-presidentials-wrapper__history-list-item flex-column col-12 col-md-6 col-lg-4">
+										<div class="what-are-presidentials-wrapper__history-list-item-wrapper">
+											<span class="icon {{ explanation.icon }}"></span>
+											<h2 class="what-are-presidentials-wrapper__history-list-item-wrapper-title">{{ explanation.title|raw }}</h2>
+											<div class="what-are-presidentials-wrapper__history-list-item-wrapper-content">{{ explanation.content|raw }}</div>
+										</div>
+									</section>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+					<div id="slider-dots" class="slider-dots row justify-content-center d-flex d-lg-none">
 					</div>
 				</div>
-				<div id="slider-dots" class="slider-dots row justify-content-center d-flex d-lg-none">
-				</div>
-			</div>
-
-		</article>
+			</article>
+		{% endif %}
 	</div>
 
 
