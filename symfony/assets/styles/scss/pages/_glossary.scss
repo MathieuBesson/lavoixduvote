@@ -1,90 +1,98 @@
 .glossary-wrapper {
 
-  // Header part
-  &__header {
-    &-title {
-      font-weight: $bold;
-      font-size: $font-title-h1-lg;
-      color: $primary;
-      margin-bottom: 30px;
-    }
-    
-    &-delimiter {
-      height: 2px;
-      color: $primary;
-    }
+	// Header part
+	&__header {
+		&-title {
+			font-weight: $bold;
+			font-size: $font-title-h1-lg;
+			color: $primary;
+			margin-bottom: 30px;
+		}
 
-    @include media-breakpoint-down(lg) {
-      &-title {
-        font-size: $font-title-h1-md;
-      }
-    }
+		&-delimiter {
+			height: 2px;
+			color: $primary;
+		}
 
-    @include media-breakpoint-down(md) {
-      &-title {
-        font-size: $font-title-h1-sm;
-      }
-    }
-  }
+		@include media-breakpoint-down(lg) {
+			&-title {
+				font-size: $font-title-h1-md;
+			}
+		}
 
-  // Content part (defintions)
-  &__definitions {
-    margin-bottom: 50px;
+		@include media-breakpoint-down(md) {
+			&-title {
+				font-size: $font-title-h1-sm;
+			}
+		}
+	}
 
-    &-list {
-      padding: 0;
+	// Content part (defintions)
+	&__definitions {
+		margin-bottom: 50px;
 
-      &-item {
-        margin-bottom: 45px;
-        transition: all 0.3s ease;
+		&-list {
+			padding: 0;
 
-        &-title {
-          color: $primary;
-          font-weight: $bold;
-          font-size: $font-large;
-          margin-bottom: 20px;
-        }
+			&-item {
+				margin-bottom: 45px;
+				transition: all 0.3s ease;
 
-        &-content {
-          padding-left: 40px;
+				&-title {
+					color: $primary;
+					font-weight: $bold;
+					font-size: $font-large;
+					margin-bottom: 20px;
+				}
 
-          p, div {
-            font-weight: $medium;
-            font-size: $font-small;
-            position: relative;
-            margin-bottom: 15px;
+				&-content {
+					padding-left: 40px;
 
-            &::before {
-              position: absolute;
-              content: "";
-              left: -20px;
-              top: 5px;
-              width: 8px;
-              height: 8px;
-              background: white;
-              border: solid 2px black;
-              border-radius: 50%;
-            }
-          }
-        }
+					p, div, li {
+						&::before {
+							position: absolute;
+							content: "";
+							left: -20px;
+							top: 5px;
+							width: 8px;
+							height: 8px;
+							background: white;
+							border: solid 2px black;
+							border-radius: 50%;
+						}
+					}
 
-        &.invisible {
-          visibility: hidden;
-          opacity: 0;
-          display: none;
-        }
-      }
-    }
-  }
+					li::before {
+						border: solid 1px black;
+						width: 6px;
+						height: 6px;
+					}
 
-  &__no-definitions {
-    display: none;
-    color: $primary;
-    font-weight: $medium;
-    font-size: $font-normal;
-  }
+					* {
+						font-weight: $medium;
+						font-size: $font-small;
+						position: relative;
+						margin-bottom: 15px;
+					}
+				}
 
-  .drag-nav-slider {
-    background-color: $grey;
-  }
+				&.invisible {
+					visibility: hidden;
+					opacity: 0;
+					display: none;
+				}
+			}
+		}
+	}
+
+	&__no-definitions {
+		display: none;
+		color: $primary;
+		font-weight: $medium;
+		font-size: $font-normal;
+	}
+
+	.drag-nav-slider {
+		background-color: $grey;
+	}
 }
