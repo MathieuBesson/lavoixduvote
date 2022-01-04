@@ -20,6 +20,7 @@ class GlossaryCrudController extends AbstractCrudController
         return [
             TextField::new('word', 'Word'),
             TextEditorField::new('definition', 'Definition'),
+            TextField::new('source', 'Source'),
             AssociationField::new('category', 'Category')
         ];
     }

@@ -21,6 +21,7 @@ class FaqCrudController extends AbstractCrudController
         return [
             TextEditorField::new('title', 'Title'),
             TextEditorField::new('content', 'Content'),
+            TextField::new('source', 'Source'),
             AssociationField::new('theme', 'Theme'),
             TextField::new('icon', 'Icon'),
             BooleanField::new('faq', 'Part of FAQ')
