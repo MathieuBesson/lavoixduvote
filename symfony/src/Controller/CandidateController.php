@@ -29,7 +29,7 @@ class CandidateController extends AbstractController
     /**
      * Display a candidate, the slug is for lastName
      *
-     * @Route(name="_show", path="/{candidate}", requirements={"candidate"="\w+"})
+     * @Route(name="_show", path="/show/{candidate}")
      */
     public function show(string $candidate)
     {
