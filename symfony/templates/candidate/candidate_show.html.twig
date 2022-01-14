@@ -1,7 +1,7 @@
 {% extends 'page.html.twig' %}
 
 {% block title %}
-	La Voix du Vote - {{ candidate.firstName }} {{ candidate.lastName }}
+    La Voix du Vote - {{ candidate.firstName }} {{ candidate.lastName }}
 {% endblock %}
 
 {% block main %}
@@ -19,56 +19,61 @@
         </div>
     </div>
     {# Star measures tab #}
-    <div class="col-12 col-xl-8 offset-xl-2 star-measure">
-        <ul class="nav nav-tabs" id="starMeasuresTab" role="tablist">
-            {% for measure in candidate.starMeasures %}
-                {% set measure_id = 'id-' ~ measure.id %}
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link {% if loop.first %}active{% endif %} d-md-flex align-items-md-center justify-content-md-center"
-                            id="{{ measure_id }}-tab"
-                            data-match-height="navlink"
-                            data-bs-toggle="tab" data-bs-target="#{{ measure_id }}" type="button" role="tab"
-                            aria-controls="{{ measure_id }}"
-                            aria-selected="{% if loop.first %}true{% else %}false{% endif %}"><i
-                                class="{{ measure.icon }}"></i><span
-                                class="d-none d-xl-block title">{{ measure.title }}</span></button>
-                </li>
-            {% endfor %}
-        </ul>
-        <div class="tab-content" id="starMeasuresTabContent">
-            {% for measure in candidate.starMeasures %}
-                {% set measure_id = 'id-' ~ measure.id %}
-                <div class="tab-pane fade {% if loop.first %}show active{% endif %}" id="{{ measure_id }}"
-                     role="tabpanel" aria-labelledby="{{ measure_id }}-tab">
-                    <h2 class="d-block d-xl-none">
-                        {{ measure.title }}
-                    </h2>
-                    <div class="measure-description">
-                        {{ measure.description|raw }}
+    {% if candidate.starMeasures is not empty %}
+        <div class="col-12 col-xl-8 offset-xl-2 star-measure">
+            <ul class="nav nav-tabs" id="starMeasuresTab" role="tablist">
+                {% for measure in candidate.starMeasures %}
+                    {% set measure_id = 'id-' ~ measure.id %}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link {% if loop.first %}active{% endif %} d-md-flex align-items-md-center justify-content-md-center"
+                                id="{{ measure_id }}-tab"
+                                data-match-height="navlink"
+                                data-bs-toggle="tab" data-bs-target="#{{ measure_id }}" type="button" role="tab"
+                                aria-controls="{{ measure_id }}"
+                                aria-selected="{% if loop.first %}true{% else %}false{% endif %}"><i
+                                    class="{{ measure.icon }}"></i><span
+                                    class="d-none d-xl-block title">{{ measure.title }}</span></button>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="tab-content" id="starMeasuresTabContent">
+                {% for measure in candidate.starMeasures %}
+                    {% set measure_id = 'id-' ~ measure.id %}
+                    <div class="tab-pane fade {% if loop.first %}show active{% endif %}" id="{{ measure_id }}"
+                         role="tabpanel" aria-labelledby="{{ measure_id }}-tab">
+                        <h2 class="d-block d-xl-none">
+                            {{ measure.title }}
+                        </h2>
+                        <div class="measure-description">
+                            {{ measure.description|raw }}
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    {% endif %}
     {# Program #}
     <div class="program">
-        <div class="row">
-            {% for theme, actions in program %}
-                <div class="col-12 col-md-5 {% if loop.index % 2 == 1 %}offset-md-1{% endif %}">
-                    <h3 class="program__title mesure-list__title mesure-list__title-{{ theme|clean_class }}"><span>Mesures&nbsp;</span><span
-                                class="mesure-list__title-theme">{{ theme }}</span></h3>
-                    <ul class="mesure-list__actions">
-                        {% for action in actions %}
-                            <li class="mesure-list__action">{{ action.title }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endfor %}
-        </div>
+        {% if program is not empty %}
+            <div class="row">
+                {% for theme, actions in program %}
+                    <div class="col-12 col-md-5 {% if loop.index % 2 == 1 %}offset-md-1{% endif %}">
+                        <h3 class="program__title mesure-list__title mesure-list__title-{{ theme|clean_class }}"><span>Mesures&nbsp;</span><span
+                                    class="mesure-list__title-theme">{{ theme }}</span></h3>
+                        <ul class="mesure-list__actions">
+                            {% for action in actions %}
+                                <li class="mesure-list__action">{{ action.title }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
         {# CTA program #}
         <div class="dl-program-cta">
             <div class="row">
-                <a target="_blank" class="btn btn-primary btn-ripple-primary mx-auto" href="{{ candidate.program.getProgramLink() }}">Le programme complet</a>
+                <a target="_blank" class="btn btn-primary btn-ripple-primary mx-auto"
+                   href="{{ candidate.program.getProgramLink() }}">Le programme complet</a>
             </div>
         </div>
     </div>
@@ -100,5 +105,5 @@
             {% endif %}
         </div>
     </div>
-	{% include 'navigation/sharing-cta.html.twig' %}
+    {% include 'navigation/sharing-cta.html.twig' %}
 {% endblock %}

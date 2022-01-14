@@ -7,6 +7,7 @@
             border-radius: 8px;
 	        min-height: 200px;
 	        @include media-breakpoint-up(md) {
+                width: 100%;
 		        border-radius: 15px;
 	        }
             filter: brightness(60%);
