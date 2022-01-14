@@ -50,7 +50,8 @@ rollButton.addEventListener('click', function(e) {
     // Smoooth it
     smoothScrollit(newScrollLeft);
 });
-leftButton.addEventListener('click', (e) => {
+function moveToLeft() {
+    leftButton.removeEventListener('click', moveToLeft);
     let newScrollLeft = rollWrapper.scrollLeft - widthToCenter;
     currentCenteredElement--;
     // Overflow !
@@ -60,8 +61,13 @@ leftButton.addEventListener('click', (e) => {
     }
     // Smoooth it
     smoothScrollit(newScrollLeft);
-});
-rightButton.addEventListener('click', (e) => {
+    setTimeout(() => {
+        leftButton.addEventListener('click', moveToLeft);
+    }, 500);
+}
+
+function moveToRight() {
+    rightButton.removeEventListener('click', moveToRight);
     let newScrollLeft = rollWrapper.scrollLeft + widthToCenter;
     currentCenteredElement++;
     // Overflow !
@@ -71,7 +77,12 @@ rightButton.addEventListener('click', (e) => {
     }
     // Smoooth it
     smoothScrollit(newScrollLeft);
-});
+    setTimeout(() => {
+        rightButton.addEventListener('click', moveToRight);
+    }, 500);
+}
+leftButton.addEventListener('click', moveToLeft);
+rightButton.addEventListener('click', moveToRight);
 
 // Inject bgImage through javascript and css variables
 const candidatesWrapper = document.querySelectorAll('.candidate-roll-wrapper');
