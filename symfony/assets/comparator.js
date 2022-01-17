@@ -4,10 +4,10 @@ const dragNav = require("./drag-nav"),
     allCardCandidates = document.querySelectorAll(
         ".candidates-grid-wrapper__item"
     ),
-    nbCandidateCardsSelected = document.getElementById(
-        "nb-candidates-selected"
+    nbCandidateCardsSelected = document.querySelectorAll(
+        ".nb-candidates-selected"
     ),
-    startComparaisonButton = document.getElementById("start-comparaison"),
+    startComparaisonButtons = document.querySelectorAll(".start-comparaison"),
     comparatorHeaderStandard = document.querySelector(
         ".comparator-wrapper__header-standard"
     ),
@@ -62,7 +62,7 @@ allCardCandidates.forEach((candidateCard) => {
                     .querySelector(".card")
                     .classList.add("grey-filter");
             } else {
-                if (nbElementSelected <= nbMaxCandidatesToCompare) {
+	            if (nbElementSelected + 1 <= nbMaxCandidatesToCompare) {
                     addCandidate(candidateCard);
 
                     // Update number of candidates selected
@@ -89,22 +89,24 @@ allCardCandidates.forEach((candidateCard) => {
 
 // Passage to the reveal of the comparator on click on start button
 ['click', 'touchend'].forEach(function(e) {
-	startComparaisonButton.addEventListener(e, (e) => {
-		// Verification of the number of candidates choose
-		if (
-				Object.keys(candidateCardsSelectedByOrder).length >=
-				nbMinCandidatesToCompare
-		) {
-			switchStandardToReveal("reveal");
-			// Click on the first measure
-			onClickOnOneMeasure(mesuresButtons[0]);
-		} else {
-			// Error message
-			flashMessage(
-					"Sélectionner au moins 2 candidats pour effectuer une comparaison",
-					"icon-lvdv-shield-white"
-			);
-		}
+	startComparaisonButtons.forEach(function(el) {
+		el.addEventListener(e, (e) => {
+			// Verification of the number of candidates choose
+			if (
+					Object.keys(candidateCardsSelectedByOrder).length >=
+					nbMinCandidatesToCompare
+			) {
+				switchStandardToReveal("reveal");
+				// Click on the first measure
+				onClickOnOneMeasure(mesuresButtons[0]);
+			} else {
+				// Error message
+				flashMessage(
+						"Sélectionner au moins 2 candidats pour effectuer une comparaison",
+						"icon-lvdv-shield-white"
+				);
+			}
+		});
 	});
 })
 
@@ -163,9 +165,11 @@ function switchStandardToReveal(state = "reveal") {
     comparatorRevealContent.classList[action.toggleRemove]("d-none");
 
     // Don't display start comparaison button
-    startComparaisonButton.classList[action.toggleAdd]("d-none");
+    startComparaisonButtons.forEach(function(e) {
+        e.classList[action.toggleAdd]("d-none");
+    });
 
-    // Don't display return to choice button 
+    // Don't display return to choice button
     returnToChoice.classList[action.toggleRemove]("d-none");
 
     allCardCandidates.forEach((candidate) => {
@@ -368,52 +372,7 @@ function addCandidate(candidate) {
 }
 
 function updateNbCandidateCardsSelected(nbElementSelected) {
-    nbCandidateCardsSelected.textContent =
-        nbElementSelected === 0 ? "..." : nbElementSelected;
-}
-
-/**
- * Makes the slider sticky, but not on footer, and not on his top
- */
-function sliderShouldBeSticky() {
-    const sliderInitialYPosition = getOffset(sliderWrapper).top;
-    const footerInitialYPosition = getOffset(
-        document.querySelector(".supportus-wrapper")
-    ).top;
-    window.addEventListener("scroll", function (_) {
-        if (window.matchMedia("(max-width:991px)").matches) {
-            const scrollYPosition = window.scrollY;
-            if (
-                scrollYPosition > sliderInitialYPosition + 210 &&
-                scrollYPosition <
-                    footerInitialYPosition -
-                        document.querySelector(".supportus-wrapper")
-                            .clientHeight
-            ) {
-                const topMenuHeight =
-                    document.querySelector(".header-responsive").clientHeight;
-                sliderWrapper.style.transform =
-                    "translateY(" +
-                    (-sliderInitialYPosition -
-                        topMenuHeight -
-                        210 +
-                        scrollYPosition) +
-                    "px)";
-            } else if (
-                getOffset(sliderWrapper).top !== sliderInitialYPosition
-            ) {
-                sliderWrapper.style.transform = "translateY(0px)";
-            }
-        }
+    nbCandidateCardsSelected.forEach(function(e) {
+		e.textContent = nbElementSelected === 0 ? "..." : nbElementSelected;
     });
 }
-
-function getOffset(el) {
-    const rect = el.getBoundingClientRect();
-    return {
-        left: rect.left + window.scrollX,
-        top: rect.top + window.scrollY,
-    };
-}
-
-sliderShouldBeSticky();
