@@ -22,6 +22,7 @@ class CandidateCrudController extends AbstractCrudController {
             AssociationField::new('politicalParty', 'Political party'),
             TextField::new('lastName', 'Last name'),
             TextField::new('firstName', 'First name'),
+            TextField::new('pictureSource', 'Picture source'),
             ImageField::new('picture', 'Picture')
                       ->setBasePath('uploads/candidates')
                       ->setUploadDir('public/uploads/candidates')

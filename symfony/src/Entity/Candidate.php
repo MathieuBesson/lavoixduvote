@@ -70,6 +70,11 @@ class Candidate
      */
     private $starMeasures;
 
+    /**
+     * @ORM\Column(type="string", length=300, nullable=true)
+     */
+    private $pictureSource;
+
     public function __construct()
     {
         $this->starMeasures = new ArrayCollection();
@@ -228,6 +233,18 @@ class Candidate
                 $starMeasure->setCandidate(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPictureSource(): ?string
+    {
+        return $this->pictureSource;
+    }
+
+    public function setPictureSource(?string $pictureSource): self
+    {
+        $this->pictureSource = $pictureSource;
 
         return $this;
     }

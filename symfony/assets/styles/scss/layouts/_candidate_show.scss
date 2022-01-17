@@ -5,12 +5,29 @@
 
         img {
             border-radius: 8px;
-	        min-height: 200px;
-	        @include media-breakpoint-up(md) {
+            min-height: 200px;
+            position: relative;
+            @include media-breakpoint-up(md) {
                 width: 100%;
-		        border-radius: 15px;
-	        }
+                border-radius: 15px;
+            }
             filter: brightness(60%);
+        }
+        &-source {
+            content: "";
+            position: absolute;
+            color: white;
+            font-size: $font-very-small;
+            right: 9px;
+            bottom: 9px;
+            width: 15%;
+            text-align: right;
+            @include media-breakpoint-down(xl) {
+                width: 100%;
+            }
+            @include media-breakpoint-down(sm) {
+                font-size: $font-very-very-small;
+            }
         }
 
         &-info {
@@ -148,10 +165,10 @@
 
         .btn {
             width: auto;
-	        font-size: 14px;
-	        @include media-breakpoint-up(sm) {
-		        font-size: 18px;
-	        }
+            font-size: 14px;
+            @include media-breakpoint-up(sm) {
+                font-size: 18px;
+            }
             font-weight: $bold;
             line-height: 22px;
             letter-spacing: 0.02em;
