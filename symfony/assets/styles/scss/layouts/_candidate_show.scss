@@ -5,7 +5,6 @@
 
         img {
             border-radius: 8px;
-            min-height: 200px;
             position: relative;
             @include media-breakpoint-up(md) {
                 width: 100%;
