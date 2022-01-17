@@ -4,10 +4,10 @@ const dragNav = require("./drag-nav"),
     allCardCandidates = document.querySelectorAll(
         ".candidates-grid-wrapper__item"
     ),
-    nbCandidateCardsSelected = document.getElementById(
-        "nb-candidates-selected"
+    nbCandidateCardsSelected = document.querySelectorAll(
+        ".nb-candidates-selected"
     ),
-    startComparaisonButton = document.getElementById("start-comparaison"),
+    startComparaisonButtons = document.querySelectorAll(".start-comparaison"),
     comparatorHeaderStandard = document.querySelector(
         ".comparator-wrapper__header-standard"
     ),
@@ -89,22 +89,24 @@ allCardCandidates.forEach((candidateCard) => {
 
 // Passage to the reveal of the comparator on click on start button
 ['click', 'touchend'].forEach(function(e) {
-	startComparaisonButton.addEventListener(e, (e) => {
-		// Verification of the number of candidates choose
-		if (
-				Object.keys(candidateCardsSelectedByOrder).length >=
-				nbMinCandidatesToCompare
-		) {
-			switchStandardToReveal("reveal");
-			// Click on the first measure
-			onClickOnOneMeasure(mesuresButtons[0]);
-		} else {
-			// Error message
-			flashMessage(
-					"Sélectionner au moins 2 candidats pour effectuer une comparaison",
-					"icon-lvdv-shield-white"
-			);
-		}
+	startComparaisonButtons.forEach(function(el) {
+		el.addEventListener(e, (e) => {
+			// Verification of the number of candidates choose
+			if (
+					Object.keys(candidateCardsSelectedByOrder).length >=
+					nbMinCandidatesToCompare
+			) {
+				switchStandardToReveal("reveal");
+				// Click on the first measure
+				onClickOnOneMeasure(mesuresButtons[0]);
+			} else {
+				// Error message
+				flashMessage(
+						"Sélectionner au moins 2 candidats pour effectuer une comparaison",
+						"icon-lvdv-shield-white"
+				);
+			}
+		});
 	});
 })
 
@@ -163,9 +165,11 @@ function switchStandardToReveal(state = "reveal") {
     comparatorRevealContent.classList[action.toggleRemove]("d-none");
 
     // Don't display start comparaison button
-    startComparaisonButton.classList[action.toggleAdd]("d-none");
+    startComparaisonButtons.forEach(function(e) {
+        e.classList[action.toggleAdd]("d-none");
+    });
 
-    // Don't display return to choice button 
+    // Don't display return to choice button
     returnToChoice.classList[action.toggleRemove]("d-none");
 
     allCardCandidates.forEach((candidate) => {
@@ -368,6 +372,7 @@ function addCandidate(candidate) {
 }
 
 function updateNbCandidateCardsSelected(nbElementSelected) {
-    nbCandidateCardsSelected.textContent =
-        nbElementSelected === 0 ? "..." : nbElementSelected;
+    nbCandidateCardsSelected.forEach(function(e) {
+		e.textContent = nbElementSelected === 0 ? "..." : nbElementSelected;
+    });
 }
