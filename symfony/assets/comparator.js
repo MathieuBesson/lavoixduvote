@@ -62,7 +62,7 @@ allCardCandidates.forEach((candidateCard) => {
                     .querySelector(".card")
                     .classList.add("grey-filter");
             } else {
-                if (nbElementSelected <= nbMaxCandidatesToCompare) {
+	            if (nbElementSelected + 1 <= nbMaxCandidatesToCompare) {
                     addCandidate(candidateCard);
 
                     // Update number of candidates selected
