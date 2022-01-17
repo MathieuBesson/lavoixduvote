@@ -37,7 +37,6 @@ class FakeDataDisclaimerSubscriber implements EventSubscriberInterface
      */
     public function doesUserHaveSeenPopUp()
     {
-        $session = $this->requestStack->getSession();
-        $this->twig->addGlobal(self::NOTIFICATION_SEEN_ID, $session->get(self::NOTIFICATION_SEEN_ID));
+        $this->twig->addGlobal(self::NOTIFICATION_SEEN_ID, true);
     }
 }
