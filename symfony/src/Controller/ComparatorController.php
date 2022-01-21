@@ -26,6 +26,7 @@ class ComparatorController extends AbstractController
             ->getRepository(Candidate::class);
 
         $candidatesPresidential = $candidatesRepository->getPresidentialCandidates();
+		shuffle($candidatesPresidential);
 
         $themesRepository = $this->getDoctrine()
             ->getRepository(Theme::class);
@@ -35,7 +36,7 @@ class ComparatorController extends AbstractController
         $candidatesActionsByTheme = $candidatesRepository->getAllWithProgramPartyActionsAndTheme();
         
         return $this->render('comparator/comparator_index.html.twig', [
-            'candidatesPresidential' => shuffle($candidatesPresidential),
+            'candidatesPresidential' => $candidatesPresidential,
             'themesNames' => $themesNames,
             'candidatesActionsByTheme' => $candidatesActionsByTheme
         ]);
