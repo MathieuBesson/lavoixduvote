@@ -12,7 +12,8 @@
     },
     "dependencies": {
         "@symfony/webpack-encore": "^1.0.0",
-        "@tannerhodges/match-height": "^1.1.1"
+        "@tannerhodges/match-height": "^1.1.1",
+        "tiny-slider": "^2.9.4"
     },
     "license": "UNLICENSED",
     "private": true,

@@ -15,6 +15,13 @@ const rightButton = document.getElementById('roll-right');
 // Random at start
 smoothScrollit(widthToCenter * currentCenteredElement);
 
+import { tns } from 'tiny-slider/src/tiny-slider'
+ window.slider = tns({
+	container: '.rolling-base',
+	controls: false,
+	nav: false,
+});
+
 // Vertical smoth scroll on rollWraper element
 function smoothScrollit(newScrollLeft) {
     rollWrapper.scroll({
@@ -47,6 +54,14 @@ rollButton.addEventListener('click', function(e) {
             newScrollLeft += widthToCenter;
         }
     }
+
+	function generateRandom(min, max, exception) {
+		const num = Math.floor(Math.random() * (max - min + 1)) + min;
+		return (num === exception) ? generateRandom(min, max, exception) : num;
+	}
+
+	const nb = generateRandom(1, window.slider.getInfo().slideCount, window.slider.getInfo().index)
+	window.slider.goTo(nb - 1);
     // Smoooth it
     smoothScrollit(newScrollLeft);
 });
@@ -59,8 +74,11 @@ function moveToLeft() {
         newScrollLeft = maxWidthToScroll;
         currentCenteredElement = elementsToRoll.length - 1;
     }
-    // Smoooth it
-    smoothScrollit(newScrollLeft);
+	window.slider.goTo("prev");
+
+	// Smoooth it
+	console.log(currentCenteredElement);
+	smoothScrollit(newScrollLeft);
     setTimeout(() => {
         leftButton.addEventListener('click', moveToLeft);
     }, 500);
@@ -75,7 +93,9 @@ function moveToRight() {
         newScrollLeft = 0;
         currentCenteredElement = 1;
     }
-    // Smoooth it
+	window.slider.goTo("next");
+
+	// Smoooth it
     smoothScrollit(newScrollLeft);
     setTimeout(() => {
         rightButton.addEventListener('click', moveToRight);
