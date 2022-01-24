@@ -20,6 +20,7 @@ import { tns } from 'tiny-slider/src/tiny-slider'
 	container: '.rolling-base',
 	controls: false,
 	nav: false,
+    gutter: 20
 });
 
 // Vertical smoth scroll on rollWraper element

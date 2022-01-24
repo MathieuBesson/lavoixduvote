@@ -13,7 +13,7 @@
             {% include 'candidate/candidate_grid_list.html.twig' with {'markup': 'a', 'greyFilter': false} %}
             <section id="candidates-roll-wrapper" class="candidates-roll-wrapper flex-wrap switcher-appearance">
                 <div class="container g-0">
-                    <div class="rolling-base row flex-nowrap overflow-auto">
+                    <div class="rolling-base">
                         {% for candidate in candidates %}
                             <div class="col-12">
                                 <div class="candidate-roll-wrapper d-flex flex-column justify-content-end"
@@ -23,6 +23,7 @@
 
                                     <h2 class="candidate-roll-wrapper__party-name">
                                         {% if primaryChoice != 0 %}
+
                                             Primaire {{ candidate.politicalParty.acronym }}
                                         {% else %}
                                             {{ candidate.politicalParty.name }}</h2>
