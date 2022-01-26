@@ -28,6 +28,7 @@ class SitemapController extends AbstractController
 		$urls[] = ['loc' => $this->generateUrl('privacy_policy_index')];
 		$urls[] = ['loc' => $this->generateUrl('glossary_index')];
 		$urls[] = ['loc' => $this->generateUrl('home')];
+		$urls[] = ['loc' => $this->generateUrl('comparator_index')];
 
 		// On ajoute les URLs dynamiques des articles dans le tableau
 		/** @var Candidate $candidate */
