@@ -39,7 +39,7 @@ class SitemapController extends AbstractController
 
 			$urls[] = [
 				'loc'     => $this->generateUrl('candidates_show', [
-					'candidate' => $candidate->getFirstName(),
+					'candidate' => $candidate->getLastName(),
 				]),
 				'image'   => $images,
 			];
