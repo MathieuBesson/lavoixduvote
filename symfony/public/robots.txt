@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /admin*
+Disallow: /glossaire/*
 Sitemap: https://www.lavoixduvote.fr/sitemap.xml
