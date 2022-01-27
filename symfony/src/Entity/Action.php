@@ -31,11 +31,6 @@ class Action
     private $theme;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $importance;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Program::class, mappedBy="actions")
      */
     private $programs;
@@ -70,18 +65,6 @@ class Action
     public function setTheme(?Theme $theme): self
     {
         $this->theme = $theme;
-
-        return $this;
-    }
-
-    public function getImportance(): ?int
-    {
-        return $this->importance;
-    }
-
-    public function setImportance(int $importance): self
-    {
-        $this->importance = $importance;
 
         return $this;
     }

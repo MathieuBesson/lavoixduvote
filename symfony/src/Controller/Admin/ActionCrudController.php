@@ -20,7 +20,6 @@ class ActionCrudController extends AbstractCrudController
         return [
             AssociationField::new('theme', 'Theme'),
             TextField::new('title', 'Action'),
-            IntegerField::new('importance', 'Importance'),
         ];
     }
 }
