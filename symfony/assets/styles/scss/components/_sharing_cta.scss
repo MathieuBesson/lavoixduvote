@@ -25,6 +25,9 @@
 			.cta__menu-collapse {
 				filter: unset;
 				opacity: 1;
+				.disabled{
+					cursor: not-allowed;
+				}
 			}
 			// + becomes x
 			.cross img {

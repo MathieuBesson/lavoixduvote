@@ -1,10 +1,19 @@
 <input id="cta-button" class="cta__button" type="checkbox">
 <div class="cta">
-	<div class="cta__background">
-	</div>
+	<div class="cta__background"></div>
 	<div class="cta__menu">
-		<div class="cta__menu-collapse"><a href="#"><img src="{{ asset('images/pictos/signal.svg') }}" alt="Signaler un problème"></a></div>
-		<div class="cta__menu-collapse"><a href=""><img src="{{ asset('images/pictos/download.svg') }}" alt="Télécharger le programme"></a></div>
+		<div class="cta__menu-collapse">
+			<a href="{{ path('contact_index') }}"><img src="{{ asset('images/pictos/signal.svg') }}" alt="Signaler un problème"></a>
+		</div>
+		<div class="cta__menu-collapse">
+			{% if programLink is not null %}
+				<a href="{{ programLink }}" target="_blank">
+					<img src="{{ asset('images/pictos/download.svg') }}" alt="Télécharger le programme">
+				</a>
+			{% else %}
+				<img src="{{ asset('images/pictos/download.svg') }}" class="disabled" alt="Télécharger le programme">
+			{% endif %}
+		</div>
 		<label for="cta-button" class="cross"><img src="{{ asset('images/pictos/add.svg') }}" alt="Ouvrir le menu"></label>
 	</div>
 </div>

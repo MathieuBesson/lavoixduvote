@@ -71,12 +71,14 @@
             </div>
         {% endif %}
         {# CTA program #}
-        <div class="dl-program-cta">
-            <div class="row">
-                <a target="_blank" class="btn btn-primary btn-ripple-primary mx-auto"
-                   href="{{ candidate.program.getProgramLink() }}">Le programme complet</a>
+        {% if candidate.program.getProgramLink() is not null %}
+            <div class="dl-program-cta">
+                <div class="row">
+                    <a target="_blank" class="btn btn-primary btn-ripple-primary mx-auto"
+                    href="{{ candidate.program.getProgramLink() }}">Le programme complet</a>
+                </div>
             </div>
-        </div>
+        {% endif %}
     </div>
     {# Party history #}
     <div class="party-history">
@@ -106,5 +108,5 @@
             {% endif %}
         </div>
     </div>
-    {% include 'navigation/sharing-cta.html.twig' %}
+    {% include 'navigation/sharing-cta.html.twig' with {'programLink': candidate.program.getProgramLink()} %}
 {% endblock %}
