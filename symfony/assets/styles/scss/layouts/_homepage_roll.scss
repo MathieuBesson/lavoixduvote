@@ -156,4 +156,14 @@
             color: $secondary;
         }
     }
+
+    &__source {
+        content: "";
+        position: absolute;
+        color: white;
+        font-size: $font-very-very-small;
+        right: 9px;
+        top: 9px;
+        text-align: left;
+    }
 }
