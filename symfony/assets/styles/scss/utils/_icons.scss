@@ -25,7 +25,7 @@ $social-network-list: "facebook", "instagram", "linkedin";
 }
 
 // Custom icons
-$icon-name-list: "shield", "coffee", "economy", "education", "environment", "world", "research", "social-protection", "innovation", "immigration", "heart", "cutlery", "employment", "europe", "justice", "society", "cross"; 
+$icon-name-list: "shield", "coffee", "economy", "education", "environment", "world", "research", "social-protection", "innovation", "immigration", "heart", "cutlery", "employment", "europe", "justice", "society", "cross", "check"; 
 @each $icon-name-item in $icon-name-list {
     // White 
     .icon-lvdv-#{$icon-name-item}-white {

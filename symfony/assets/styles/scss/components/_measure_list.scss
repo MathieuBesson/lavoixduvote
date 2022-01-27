@@ -26,9 +26,6 @@
       &-ecologie::before {
         background-image: url($icon-path + '/lvdv_lib/colorful/environment.svg');
       }
-      &-employment::before {
-        background-image: url($icon-path + '/lvdv_lib/colorful/employment.svg');
-      }
       &-sante::before {
         background-image: url($icon-path + '/lvdv_lib/colorful/heart.svg');
       }
@@ -61,6 +58,9 @@
       }
       &-justice::before {
         background-image: url($icon-path + '/lvdv_lib/colorful/justice.svg');
+      }
+      &-international::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/world.svg');
       }
     }
 
