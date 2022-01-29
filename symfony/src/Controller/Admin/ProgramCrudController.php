@@ -7,6 +7,7 @@ use App\Form\ActionType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -26,6 +27,7 @@ class ProgramCrudController extends AbstractCrudController
             AssociationField::new('candidate', 'Candidate')->setCssClass('candidate-wrapper'),
             TextEditorField::new('presentation', 'Presentation'),
             UrlField::new('programLink', 'Program link'),
+            BooleanField::new('certificated', 'Certifié'),
             CollectionField::new('actions', 'Actions')
                 ->setSortable(true)
                 ->allowAdd()

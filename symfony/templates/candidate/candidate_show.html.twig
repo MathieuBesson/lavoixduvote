@@ -55,6 +55,11 @@
     {% endif %}
     {# Program #}
     <div class="program">
+	    {% if candidate.program.certificated %}
+		    <div class="d-flex justify-content-center my-5">
+			    <i class="icon-lvdv-check me-3"></i><strong class="text-primary h3">Contenu certifié par le candidat</strong>
+		    </div>
+	    {% endif %}
         {% if program is not empty %}
             <div class="row">
                 {% for theme, actions in program %}
