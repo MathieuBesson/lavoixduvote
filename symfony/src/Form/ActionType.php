@@ -15,7 +15,6 @@ class ActionType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('importance')
             ->add('theme')
             ->add('programs')
             ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {

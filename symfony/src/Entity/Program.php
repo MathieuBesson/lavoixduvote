@@ -40,6 +40,11 @@ class Program
      */
     private $actions;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default":false})
+     */
+    private $certificated;
+
     public function __construct()
     {
         $this->actions = new ArrayCollection();
@@ -112,5 +117,17 @@ class Program
 
     public function __toString() {
         return 'Programme de ' . $this->getCandidate()->getLastName();
+    }
+
+    public function getCertificated(): ?bool
+    {
+        return $this->certificated;
+    }
+
+    public function setCertificated(bool $certificated): self
+    {
+        $this->certificated = $certificated;
+
+        return $this;
     }
 }

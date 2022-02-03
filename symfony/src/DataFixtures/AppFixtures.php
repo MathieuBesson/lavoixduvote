@@ -191,20 +191,17 @@ EOT
                         $action->setTheme($theme);
                         switch ($j) {
                             case 0:
-                                $action->setImportance(5);
                                 $action->setTitle('Sortie du nucléaire en 2050');
                                 $programStup->addAction($action);
                                 $programPtt->addAction($action);
                                 $programAst->addAction($action);
                                 break;
                             case 1:
-                                $action->setImportance(2);
                                 $action->setTitle('Recyclage obligatoire');
                                 $programStup->addAction($action);
                                 $programAst->addAction($action);
                                 break;
                             case 2:
-                                $action->setImportance(3);
                                 $action->setTitle('Interdiction du gasoil');
                                 $programAst->addAction($action);
                                 break;
@@ -219,18 +216,15 @@ EOT
                         $action->setTheme($theme);
                         switch ($j) {
                             case 0:
-                                $action->setImportance(5);
                                 $action->setTitle('Nationalisation des hôpitaux');
                                 $programAst->addAction($action);
                                 break;
                             case 1:
-                                $action->setImportance(2);
                                 $action->setTitle('Mutation des médecins pour lutter contre les déserts médicaux');
                                 $programStup->addAction($action);
                                 $programAst->addAction($action);
                                 break;
                             case 2:
-                                $action->setImportance(3);
                                 $action->setTitle('Augmentation des salaires du personnel hospitalier');
                                 $programPtt->addAction($action);
                                 break;
@@ -245,18 +239,15 @@ EOT
                         $action->setTheme($theme);
                         switch ($j) {
                             case 0:
-                                $action->setImportance(5);
                                 $action->setTitle('Augmentation du SMIC');
                                 $programStup->addAction($action);
                                 $programAst->addAction($action);
                                 break;
                             case 1:
-                                $action->setImportance(2);
                                 $action->setTitle('Suppression du RSA');
                                 $programPtt->addAction($action);
                                 break;
                             case 2:
-                                $action->setImportance(3);
                                 $action->setTitle('Augmentation des impôts');
                                 $programStup->addAction($action);
                                 break;
@@ -271,17 +262,14 @@ EOT
                         $action->setTheme($theme);
                         switch ($j) {
                             case 0:
-                                $action->setImportance(5);
                                 $action->setTitle('Recrutement de 20 000 policiers supplémentaires');
                                 $programStup->addAction($action);
                                 break;
                             case 1:
-                                $action->setImportance(2);
                                 $action->setTitle('Retour de la double peine');
                                 $programAst->addAction($action);
                                 break;
                             case 2:
-                                $action->setImportance(3);
                                 $action->setTitle('Policiers dans les écoles');
                                 $programPtt->addAction($action);
                                 break;
@@ -296,19 +284,16 @@ EOT
                         $action->setTheme($theme);
                         switch ($j) {
                             case 0:
-                                $action->setImportance(5);
                                 $action->setTitle('Suppression de la Loi Travail');
                                 $programStup->addAction($action);
                                 $programPtt->addAction($action);
                                 $programAst->addAction($action);
                                 break;
                             case 1:
-                                $action->setImportance(2);
                                 $action->setTitle('Recrutement de 30 000 fonctionnaires');
                                 $programStup->addAction($action);
                                 break;
                             case 2:
-                                $action->setImportance(3);
                                 $action->setTitle('Suppression de 100 000 fonctionnaires');
                                 $programAst->addAction($action);
                                 break;
@@ -323,17 +308,14 @@ EOT
                         $action->setTheme($theme);
                         switch ($j) {
                             case 0:
-                                $action->setImportance(5);
                                 $action->setTitle('Création d\'un système de mère au foyer à partir de 12 enfants');
                                 $programStup->addAction($action);
                                 break;
                             case 1:
-                                $action->setImportance(2);
                                 $action->setTitle('Supprimer le bouclier fiscal');
                                 $programAst->addAction($action);
                                 break;
                             case 2:
-                                $action->setImportance(3);
                                 $action->setTitle('Création d\'un revenu universel');
                                 $programPtt->addAction($action);
                                 break;
@@ -348,17 +330,14 @@ EOT
                         $action->setTheme($theme);
                         switch ($j) {
                             case 0:
-                                $action->setImportance(5);
                                 $action->setTitle('Régularisation de tous les sans-papiers');
                                 $programStup->addAction($action);
                                 break;
                             case 1:
-                                $action->setImportance(2);
                                 $action->setTitle('Expulsion de tous les sans-papiers');
                                 $programAst->addAction($action);
                                 break;
                             case 2:
-                                $action->setImportance(3);
                                 $action->setTitle('Suppression du rassemblement familial');
                                 $programPtt->addAction($action);
                                 break;
@@ -373,17 +352,14 @@ EOT
                         $action->setTheme($theme);
                         switch ($j) {
                             case 0:
-                                $action->setImportance(5);
                                 $action->setTitle('Pass Culture monté à 10000000€');
                                 $programStup->addAction($action);
                                 break;
                             case 1:
-                                $action->setImportance(2);
                                 $action->setTitle('Subvention pour les artistes');
                                 $programAst->addAction($action);
                                 break;
                             case 2:
-                                $action->setImportance(3);
                                 $action->setTitle('Brûler tous les livres');
                                 $programPtt->addAction($action);
                                 break;
@@ -398,17 +374,14 @@ EOT
                         $action->setTheme($theme);
                         switch ($j) {
                             case 0:
-                                $action->setImportance(5);
                                 $action->setTitle('On va sur la Lune !');
                                 $programStup->addAction($action);
                                 break;
                             case 1:
-                                $action->setImportance(2);
                                 $action->setTitle('Budget de 1 000 000 000 € pour la recherche');
                                 $programAst->addAction($action);
                                 break;
                             case 2:
-                                $action->setImportance(3);
                                 $action->setTitle('On reprend la recherche sur les cellules souches');
                                 $programPtt->addAction($action);
                                 break;
@@ -423,17 +396,14 @@ EOT
                         $action->setTheme($theme);
                         switch ($j) {
                             case 0:
-                                $action->setImportance(5);
                                 $action->setTitle('Suppression du bac');
                                 $programStup->addAction($action);
                                 break;
                             case 1:
-                                $action->setImportance(2);
                                 $action->setTitle('Recrutement de 50 000 profs');
                                 $programAst->addAction($action);
                                 break;
                             case 2:
-                                $action->setImportance(3);
                                 $action->setTitle('Suppression des prépas');
                                 $programPtt->addAction($action);
                                 break;

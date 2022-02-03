@@ -55,7 +55,6 @@ class CandidateRepository extends ServiceEntityRepository
             ->innerJoin('a.theme', 't')
             ->where('c.id = :id',)
             ->orderBy('a.title', 'ASC')
-            ->orderBy('a.importance', 'DESC')
             ->setParameter('id', $candidateId)
             ->getQuery()
             ->getScalarResult();
@@ -66,7 +65,6 @@ class CandidateRepository extends ServiceEntityRepository
                 $measuresByThemes[$result['t_label']] = [];
             }
             $measuresByThemes[$result['t_label']][$result['a_id']]['title'] = $result['a_title'];
-            $measuresByThemes[$result['t_label']][$result['a_id']]['importance'] = $result['a_importance'];
         }
 
         return $measuresByThemes;
@@ -126,7 +124,6 @@ class CandidateRepository extends ServiceEntityRepository
             ->innerJoin('pr.actions', 'a')
             ->innerJoin('a.theme', 't')
             ->orderBy('a.title', 'ASC')
-            ->orderBy('a.importance', 'DESC')
             ->getQuery()
             ->getScalarResult();
 
