@@ -96,7 +96,7 @@ EOT
                 'Écologie' => 'icon-lvdv-environment-white',
                 'Immigration' => 'icon-lvdv-immigration-white',
                 'Éducation' => 'icon-lvdv-education',
-                'Culture' => 'icon-lvdv-cultery-white',
+                'Culture' => 'icon-lvdv-culture-white',
                 'Protection Sociale' => 'icon-lvdv-social-protection-white',
                 'Innovation' => 'icon-lvdv-innovation-white',
                 'Emploi' => 'icon-lvdv-employment-white',

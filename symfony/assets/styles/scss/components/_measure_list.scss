@@ -47,6 +47,9 @@
       &-immigration::before {
         background-image: url($icon-path + '/lvdv_lib/colorful/immigration.svg');
       }
+      &-culture::before {
+        background-image: url($icon-path + '/lvdv_lib/colorful/culture.svg');
+      }
       &-innovation::before {
         background-image: url($icon-path + '/lvdv_lib/colorful/innovation.svg');
       }
