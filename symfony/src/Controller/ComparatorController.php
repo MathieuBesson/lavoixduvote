@@ -25,7 +25,7 @@ class ComparatorController extends AbstractController
         $candidatesRepository = $this->getDoctrine()
             ->getRepository(Candidate::class);
 
-        $candidatesPresidential = $candidatesRepository->getPresidentialCandidates();
+        $candidatesPresidential = $candidatesRepository->getPresidentialCandidatesWithProgram();
 		shuffle($candidatesPresidential);
 
         $themesRepository = $this->getDoctrine()

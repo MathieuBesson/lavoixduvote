@@ -102,6 +102,21 @@ class CandidateRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+	/**
+	 * Get all candidates to the presidential, aka that had been elected to the primary
+	 *
+	 * @return int|mixed|string
+	 */
+	public function getPresidentialCandidatesWithProgram()
+	{
+		return $this->createQueryBuilder('c')
+		            ->select('c')
+		            ->where('c.electedByPrimary = true')
+					->where('c.program IS NOT NULL')
+		            ->getQuery()
+		            ->getResult();
+	}
+
     public function findAllNames()
     {
         return $this->createQueryBuilder('candidates')
