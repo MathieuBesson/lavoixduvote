@@ -113,8 +113,8 @@ class CandidateRepository extends ServiceEntityRepository
 		$qb = $this->createQueryBuilder('c');
 		return $qb
 		            ->select('c')
+					->innerJoin('c.program', pr)
 		            ->where('c.electedByPrimary = true')
-					->where($qb->expr()->isNotNull('c.program'))
 		            ->getQuery()
 		            ->getResult();
 	}
