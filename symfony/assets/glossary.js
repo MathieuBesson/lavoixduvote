@@ -65,13 +65,22 @@ researchIcon.addEventListener('click', e => {
     researchInput.classList.toggle('visible');
     navList.classList.toggle('no-visible');
     navResearch.classList.toggle('visible');
-    toggleIcon(researchIcon); 
+    toggleIcon(researchIcon);
+    researchInput.value = "";
+    displayAllDefinitions();
 })
+
+function displayAllDefinitions(){
+    definitions.forEach(definition => {
+        definition.classList.remove('invisible');
+    })
+    noDefinitions.style.display = 'none';
+}
 
 // Display defintion in function of target data in input
 researchInput.addEventListener('input', e => {
     let nbVisible = 0;
-    // Comparaison between definition word and text enter in search input
+        // Comparaison between definition word and text enter in search input
     definitions.forEach(definition => {
         if (definition.querySelector('.glossary-wrapper__definitions-list-item-title').textContent.toLowerCase().includes(e.target.value.toLowerCase())) {
             nbVisible++;
@@ -80,7 +89,7 @@ researchInput.addEventListener('input', e => {
             definition.classList.add('invisible');
         }
     })
-
+    
     // If no defintions display default message
     if (nbVisible == 0) {
         noDefinitions.style.display = 'block';
