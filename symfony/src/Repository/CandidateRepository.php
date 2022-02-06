@@ -114,6 +114,7 @@ class CandidateRepository extends ServiceEntityRepository
 		return $qb
 		            ->select('c')
 					->innerJoin('c.program', 'pr')
+					->innerJoin('pr.actions', 'ac')
 		            ->where('c.electedByPrimary = true')
 		            ->getQuery()
 		            ->getResult();
