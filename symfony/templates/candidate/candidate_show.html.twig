@@ -59,12 +59,12 @@ La voix du vote, la plateforme des présidetielles 2022 ! {{ candidate.political
     {% endif %}
     {# Program #}
     <div class="program">
-	    {% if candidate.program.certificated %}
-		    <div class="d-flex justify-content-center my-5">
-			    <i class="icon-lvdv-check me-3"></i><strong class="text-primary h3">Contenu certifié par le candidat</strong>
-		    </div>
-	    {% endif %}
         {% if program is not empty %}
+            {% if candidate.program.certificated %}
+                <div class="d-flex justify-content-center my-5">
+                    <i class="icon-lvdv-check me-3"></i><strong class="text-primary h3">Contenu certifié par le candidat</strong>
+                </div>
+            {% endif %}
             <div class="row">
                 {% for theme, actions in program %}
                     <div class="col-12 col-md-5 {% if loop.index % 2 == 1 %}offset-md-1{% endif %}">
@@ -78,15 +78,19 @@ La voix du vote, la plateforme des présidetielles 2022 ! {{ candidate.political
                     </div>
                 {% endfor %}
             </div>
-        {% endif %}
-        {# CTA program #}
-        {% if candidate.program.getProgramLink() is not null %}
-            <div class="dl-program-cta">
-                <div class="row">
-                    <a target="_blank" class="btn btn-primary btn-ripple-primary mx-auto"
-                    href="{{ candidate.program.getProgramLink() }}">Le programme complet</a>
+            {# CTA program #}
+            {% if candidate.program.getProgramLink() is not null %}
+                <div class="dl-program-cta">
+                    <div class="row">
+                        <a target="_blank" class="btn btn-primary btn-ripple-primary mx-auto"
+                        href="{{ candidate.program.getProgramLink() }}">Le programme complet</a>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
+        {% else %}
+            <p class="text-lg-center program__not-ready col-12 col-md-8 m-auto">
+                <strong>Ce programme est en cours de synthétisation par l'équipe de la Voix du Vote, nous faisons tout notre possible pour qu'il soit disponible rapidement :)</strong>
+            </p>
         {% endif %}
     </div>
     {# Party history #}
@@ -117,5 +121,7 @@ La voix du vote, la plateforme des présidetielles 2022 ! {{ candidate.political
             {% endif %}
         </div>
     </div>
-    {% include 'navigation/sharing-cta.html.twig' with {'programLink': candidate.program.getProgramLink()} %}
+    {% if program is not empty %}
+        {% include 'navigation/sharing-cta.html.twig' with {'programLink': candidate.program.getProgramLink()} %}
+    {% endif %}
 {% endblock %}

@@ -162,6 +162,10 @@
         letter-spacing: 0.02em;
     }
 
+    &__not-ready{
+        color: $primary;
+    }
+
     // Download program CTA
     .dl-program-cta {
         margin-top: 50px;
