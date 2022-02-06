@@ -25,7 +25,7 @@ class Program
     private $presentation;
 
     /**
-     * @ORM\OneToOne(targetEntity=Candidate::class, inversedBy="program", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Candidate::class, inversedBy="program", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $candidate;
