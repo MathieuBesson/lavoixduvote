@@ -112,12 +112,14 @@ allCardCandidates.forEach((candidateCard) => {
 
 // Event on click on measure nav
 mesuresButtons.forEach((measureButton) => {
-    measureButton.addEventListener("click", () => {
-        // if this measures is not already selected
-        if (!measureButton.classList.contains("active")) {
-            onClickOnOneMeasure(measureButton);
-        }
-    });
+	['click', 'touchend'].forEach(function(e) {
+		measureButton.addEventListener(e, () => {
+			// if this measures is not already selected
+			if (!measureButton.classList.contains("active")) {
+				onClickOnOneMeasure(measureButton);
+			}
+		});
+	})
 });
 
 // Action to return to choice screen
