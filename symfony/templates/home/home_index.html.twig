@@ -30,9 +30,11 @@
                                         {% endif %}
                                     <h3 class="candidate-roll-wrapper__candidate-name">Candidat
                                         : {{ candidate.firstName }} {{ candidate.lastName }}</h3>
-                                    <div class="candidate-roll-wrapper__biography d-none d-xl-block">
-                                        {{ candidate.program.presentation|raw }}
-                                    </div>
+	                                {% if candidate.program is defined %}
+	                                    <div class="candidate-roll-wrapper__biography d-none d-xl-block">
+	                                        {{ candidate.program.presentation|raw }}
+	                                    </div>
+	                                {% endif %}
                                     <a class="candidate-roll-wrapper__link"
                                        href="{{ path('candidates_show', {'candidate': candidate.lastName}) }}">Découvrir
                                         le programme</a>
