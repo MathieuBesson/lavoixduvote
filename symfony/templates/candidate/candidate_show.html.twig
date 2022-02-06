@@ -46,7 +46,7 @@ La voix du vote, la plateforme des présidetielles 2022 ! {{ candidate.political
                     {% set measure_id = 'id-' ~ measure.id %}
                     <div class="tab-pane fade {% if loop.first %}show active{% endif %}" id="{{ measure_id }}"
                          role="tabpanel" aria-labelledby="{{ measure_id }}-tab">
-                        <h2 class="d-block d-xl-none">
+                        <h2 class="d-block d-xl-none measure-title">
                             {{ measure.title }}
                         </h2>
                         <div class="measure-description">
