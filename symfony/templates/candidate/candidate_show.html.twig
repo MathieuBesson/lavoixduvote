@@ -4,6 +4,10 @@
     La Voix du Vote - {{ candidate.firstName }} {{ candidate.lastName }}
 {% endblock %}
 
+{% block meta_description %} 
+La voix du vote, la plateforme des présidetielles 2022 ! {{ candidate.politicalParty.description|slice(0, 100) }}...
+{% endblock %}
+
 {% block main %}
     {# Header, picture / name #}
     <div class="col-12 candidate">
