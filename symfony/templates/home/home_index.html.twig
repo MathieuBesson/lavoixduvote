@@ -30,7 +30,7 @@
                                         {% endif %}
                                     <h3 class="candidate-roll-wrapper__candidate-name">Candidat
                                         : {{ candidate.firstName }} {{ candidate.lastName }}</h3>
-	                                {% if candidate.program is defined %}
+	                                {% if candidate.program is not null %}
 	                                    <div class="candidate-roll-wrapper__biography d-none d-xl-block">
 	                                        {{ candidate.program.presentation|raw }}
 	                                    </div>
