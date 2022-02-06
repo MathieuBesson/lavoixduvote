@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Candidate;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Candidate|null find($id, $lockMode = null, $lockVersion = null)
@@ -109,10 +110,11 @@ class CandidateRepository extends ServiceEntityRepository
 	 */
 	public function getPresidentialCandidatesWithProgram()
 	{
-		return $this->createQueryBuilder('c')
+		$qb = $this->createQueryBuilder('c');
+		return $qb
 		            ->select('c')
 		            ->where('c.electedByPrimary = true')
-					->where('c.program IS NOT NULL')
+					->where($qb->expr()->isNotNull('c.program'))
 		            ->getQuery()
 		            ->getResult();
 	}
