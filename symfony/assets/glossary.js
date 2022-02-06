@@ -19,14 +19,16 @@ const queryArgs = window.location.pathname.split('/');
 
 // Add .active class for nav items and display or not definitions
 [...buttons].forEach(currentButton => {
-    currentButton.addEventListener('click', e => {
-        [...buttons].forEach(button => {
-            button.classList.remove('active')
-        })
-        currentButton.classList.add('active')
-
-        displayDefinitionByCategorie(currentButton.dataset.id);
-    });
+	['click', 'touchend'].forEach(function(e) {
+        currentButton.addEventListener(e, () => {
+            [...buttons].forEach(button => {
+                button.classList.remove('active')
+            })
+            currentButton.classList.add('active')
+    
+            displayDefinitionByCategorie(currentButton.dataset.id);
+        });
+	})
 })
 
 /**
