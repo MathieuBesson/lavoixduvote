@@ -23,14 +23,16 @@ const definitions = document.querySelectorAll('.what-are-presidentials-wrapper__
 
 // Add .active class for nav items and display or not definitions
 [...buttons].forEach(currentButton => {
-    currentButton.addEventListener('click', e => {
-        [...buttons].forEach(button => {
-            button.classList.remove('active')
-        })
-        currentButton.classList.add('active')
+    ['click', 'touchend'].forEach(function(e) {
+        currentButton.addEventListener(e, () => {
+            [...buttons].forEach(button => {
+                button.classList.remove('active')
+            })
+            currentButton.classList.add('active')
 
-        displayDefinitionByCategorie(currentButton.dataset.id);
-    });
+            displayDefinitionByCategorie(currentButton.dataset.id);
+        });
+    })
 })
 
 /**
