@@ -124,6 +124,7 @@ class CandidateRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('candidates')
             ->select(['candidates.firstName', 'candidates.lastName'])
+	        ->where('candidates.electedByPrimary = true')
             ->getQuery()
             ->getResult();
     }
