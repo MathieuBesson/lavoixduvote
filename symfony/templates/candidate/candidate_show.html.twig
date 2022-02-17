@@ -24,7 +24,7 @@ La voix du vote, la plateforme des présidetielles 2022 ! {{ candidate.political
         </div>
     </div>
     {# Star measures tab #}
-    {% if candidate.starMeasures is not empty %}
+    {# {% if candidate.starMeasures is not empty %}
         <div class="col-12 col-xl-8 offset-xl-2 star-measure">
             <ul class="nav nav-tabs" id="starMeasuresTab" role="tablist">
                 {% for measure in candidate.starMeasures %}
@@ -56,7 +56,7 @@ La voix du vote, la plateforme des présidetielles 2022 ! {{ candidate.political
                 {% endfor %}
             </div>
         </div>
-    {% endif %}
+    {% endif %} #}
     {# Program #}
     <div class="program">
         {% if program is not empty %}
