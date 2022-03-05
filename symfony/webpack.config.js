@@ -31,7 +31,7 @@ Encore
     .addEntry('dynamic_contact_word', './assets/dynamic_contact_word.js')
     .addEntry('what-are-presidentials', './assets/what-are-presidentials.js')
     .addEntry('swipe', './assets/swipe.js')
-
+    .addEntry('counter', './assets/counter.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

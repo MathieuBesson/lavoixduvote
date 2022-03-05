@@ -1,0 +1,70 @@
+
+
+.countdown {
+    color: $primary;
+    margin-bottom: 15px;
+    @include media-breakpoint-down(sm) {
+        margin-bottom: 7px;
+    }
+    &-counters{
+        margin-bottom: 25px;
+    }
+    .counter {
+        width: 60px;
+        position: relative;
+        font-size: $font-title-h2-lg;
+        font-weight: $medium;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 1;
+
+        @include media-breakpoint-down(sm) {
+			font-size: 25px;
+		}
+
+        span{
+            &::before {
+                content: attr(b);
+                display: inline-block;
+            }
+
+            &.ping::before {
+                -webkit-animation: pingEffect 0.4s 1 forwards;
+                animation: pingEffect 0.4s 1 forwards;
+            }
+        }
+
+        b {
+            font-size: 10px;
+            font-weight: $regular;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+        }
+    }
+    &-title{
+        font-size: $font-small;
+        padding: 9px 12px;
+        background-color: $primary;
+        color: $secondary;
+        border-radius: 5px;
+        text-transform: uppercase;
+        sup{
+            text-transform:none;
+        }
+    }
+}
+
+@-webkit-keyframes pingEffect {
+    0% {transform: scale(0.92);}
+    10% {opacity: 0.7;}
+    20% {opacity: 1;}
+    100% {transform: scale(1);}
+}
+@keyframes pingEffect {
+    0% {transform: scale(0.92);}
+    10% {opacity: 0.7;}
+    20% {opacity: 1;}
+    100% {transform: scale(1);}
+}
