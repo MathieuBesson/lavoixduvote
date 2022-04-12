@@ -9,7 +9,6 @@ const elementsToRoll = rollWrapper.children;
 // Current centered element, it will be usefull for reculalting the scroll after resizing window
 let currentCenteredElement = Math.floor(Math.random() * elementsToRoll.length);
 // Buttons
-const rollButton = document.getElementById('letsroll');
 const leftButton = document.getElementById('roll-left');
 const rightButton = document.getElementById('roll-right');
 // Random at start
@@ -41,31 +40,6 @@ window.addEventListener('resize', function() {
     rollWrapper.scrollLeft = widthToCenter * currentCenteredElement;
 });
 
-// Random scroll
-rollButton.addEventListener('click', function(e) {
-    // random index of our elementsToRoll array factorized with our with to set
-    rollButton.classList.toggle('rotate');
-    currentCenteredElement = Math.floor(Math.random() * elementsToRoll.length);
-    let newScrollLeft = widthToCenter * currentCenteredElement;
-    // We don't want the same choice that before
-    if (newScrollLeft === rollWrapper.scrollLeft) {
-        if ((newScrollLeft + widthToCenter) > maxWidthToScroll) {
-            newScrollLeft -= widthToCenter;
-        } else {
-            newScrollLeft += widthToCenter;
-        }
-    }
-
-	function generateRandom(min, max, exception) {
-		const num = Math.floor(Math.random() * (max - min + 1)) + min;
-		return (num === exception) ? generateRandom(min, max, exception) : num;
-	}
-
-	const nb = generateRandom(1, window.slider.getInfo().slideCount, window.slider.getInfo().index)
-	window.slider.goTo(nb - 1);
-    // Smoooth it
-    smoothScrollit(newScrollLeft);
-});
 function moveToLeft() {
     leftButton.removeEventListener('click', moveToLeft);
     let newScrollLeft = rollWrapper.scrollLeft - widthToCenter;
