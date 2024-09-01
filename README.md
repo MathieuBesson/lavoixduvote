@@ -60,4 +60,4 @@ For example, to deploy the changes to the project hosted in `/var/www/preprod`, 
 
 ## License
 
-This project is licensed under the GPL License. See the [LICENSE](./LICENSE) file for more details.
+See the [LICENSE](./LICENSE) file for details.
