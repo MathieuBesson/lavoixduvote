@@ -1,59 +1,63 @@
 # La Voix du Vote
 
-## Environnement de développement 
+## Prerequisites
 
-### Prérequis
+![Docker](https://img.shields.io/badge/Docker-v20-2496ED?logo=docker&logoColor=white&labelColor=2496ED&color=white)
+![Docker Compose](https://img.shields.io/badge/Docker--Compose-v1-2496ED?logo=docker&logoColor=white&labelColor=2496ED&color=white)
+![Make](https://img.shields.io/badge/Make-v4-427819?logo=gnu&logoColor=white&labelColor=427819&color=white)
 
-- docker
-- docker-compose
-- make
+## Usage
 
-### Utilisation
+### Initial Setup
 
-#### Première installation
+`make start`: Pulls the containers and installs dependencies via Composer.
 
-`make start` : pull les containers + composer install.
+The project will then be accessible at [http://localhost:3000](http://localhost:3000).
 
-Le projet est ensuite accessible à l'adresse http://localhost:3000
+### Useful commands
 
-#### Au quotidien...
+#### Docker Commands
 
-##### Docker
+`make up`: Starts the containers.
 
-`make up` : lance les containers
+`make recreate`: Recreates the containers.
 
-`make recreate` : recrée les containers
+`make rebuild`: Rebuilds the containers.
 
-`make rebuild` : rebuild les containers
+#### Composer Commands
 
-##### Composer
+`make composer $args`: Runs a Composer command.
 
-`make composer $args` : Lance une commande composer. 
+For example: `make composer install`.
 
-Par ex. : `make composer install`. 
-
-*Pour utiliser des arguments longs, utiliser des doubles quotes :*
+*To use long arguments, enclose them in double quotes:*
 
 `make composer "update symfony/* --with-dependencies"`
 
-##### Symfony console
+#### Symfony Console
 
-`make symfony $args` : Lance une commande de la console Symfony.
+`make symfony $args`: Runs a Symfony console command.
 
-Par ex. : `make symfony cache:clear`.
+For example: `make symfony cache:clear`.
 
-*Pour utiliser des arguments longs, utiliser des doubles quotes :*
+*To use long arguments, enclose them in double quotes:*
 
 `make symfony "doctrine:schema:update --dump-sql"`
 
-##### Webpack Encore
+#### Webpack Encore
 
-`make npm run dev` : Compilation des assets
+`make npm run dev`: Compiles assets.
 
-`make npm run watch` : Lancement du serveur front en observer (re-compilation des assets à chaque modification)
+`make npm run watch`: Starts the frontend watcher (re-compiles assets on every change).
 
-##### Mise en production
+#### Production Deployment
 
-`make deploy $context` : Mise en production. L'argument $context correspond au nom du dossier dans /var/www/.
-                         Par exemple, si on envoyer en prod les modifications du projet hébergé dans /var/www/preprod
-                         Il suffira de faire `make deploy preprod`
+`make deploy $context`: Deploys the project to production. The `$context` argument corresponds to the directory name in `/var/www/`.
+
+For example, to deploy the changes to the project hosted in `/var/www/preprod`, run:
+
+`make deploy preprod`
+
+## License
+
+This project is licensed under the GPL License. See the [LICENSE](./LICENSE) file for more details.
